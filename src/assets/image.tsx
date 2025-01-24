@@ -38,6 +38,10 @@ import recieveIcon from './image/icons/receive.svg';
 import sendIcon from './image/icons/send.svg';
 import swapIcon from './image/icons/swap.svg';
 
+import customerSupport from './image/icons/customerSupport.svg';
+import employees from './image/icons/employees.svg';
+import secureTransferIcon from './image/icons/secureTransfer.svg';
+
 import grade from './image/icons/grade.png';
 
 import usdt from './image/icons/currency/usdt.svg';
@@ -69,6 +73,10 @@ import customer1 from './image/users/user1.png';
 import customer2 from './image/users/user2.png';
 import customer3 from './image/users/user3.png';
 import customer from './image/users/user.png';
+import teamMember1 from './image/users/teamMember1.png';
+import teamMember2 from './image/users/teamMember2.png';
+import teamMember3 from './image/users/teamMember3.png';
+import teamMember4 from './image/users/teamMember4.png';
 
 import authBanner from './image/auth_banner.png';
 import forgotPwdBanner from './image/forgot_pwd_banner.png';
@@ -77,6 +85,20 @@ import googleUrl from './image/icons/google.svg';
 
 import bronzeFeeReduction from './image/nft/BronzeFeeReduction.svg';
 import silverFeeReduction from './image/nft/SilverFeeReduction.svg';
+
+import benzinga from './image/medias/benzinga.svg';
+import bloomberg from './image/medias/bloomberg.svg';
+import digitalJournal from './image/medias/digitalJournal.svg';
+import yahoo from './image/medias/yahoo.svg';
+
+import aboutus from './image/users/aboutUsHero.png';
+
+import UAEflag from './image/offices/UAE.svg';
+import UKflag from './image/offices/UK.svg';
+import Franceflag from './image/offices/france.svg';
+import HongKongflag from './image/offices/hongkong.svg';
+import IvoryCoastflag from './image/offices/ivorycoast.svg';
+import Singaporflag from './image/offices/singapor.svg';
 
 export const logoImg = logo;
 export const heroBackgroundImg = heroBackground;
@@ -98,6 +120,10 @@ export const customer1Img = customer1;
 export const customer2Img = customer2;
 export const customer3Img = customer3;
 export const customerImg = customer;
+export const teamMember1Img = teamMember1;
+export const teamMember2Img = teamMember2;
+export const teamMember3Img = teamMember3;
+export const teamMember4Img = teamMember4;
 
 export const authBannerImg = authBanner;
 export const forgotPwdBannerImg = forgotPwdBanner;
@@ -105,6 +131,8 @@ export const forgotPwdBannerImg = forgotPwdBanner;
 export const google = googleUrl;
 
 export const gradeImg = grade;
+
+export const aboutUsHeroImg = aboutus;
 
 export const icons = {
   nft,
@@ -142,6 +170,9 @@ export const icons = {
   recieveIcon,
   sendIcon,
   swapIcon,
+  customerSupport,
+  employees,
+  secureTransferIcon,
 };
 
 export const currency = {
@@ -165,4 +196,20 @@ export const language = {
 export const nftIcons = {
   bronzeFeeReduction,
   silverFeeReduction,
+};
+
+export const mediaIcons = {
+  benzinga,
+  bloomberg,
+  digitalJournal,
+  yahoo,
+};
+
+export const countryFlags = {
+  UAEflag,
+  UKflag,
+  Franceflag,
+  HongKongflag,
+  IvoryCoastflag,
+  Singaporflag,
 };

@@ -899,7 +899,7 @@ const StyledMenu = styled(Menu)(({ theme }) => ({
       margin: 0,
       top: '94px !important',
       right: '15px !important',
-      left: 'auto !important', // Override Material-UI's left positioning
+      left: 'auto !important',
       borderRadius: theme.spacing(1),
     },
   },
