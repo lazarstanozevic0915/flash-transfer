@@ -45,6 +45,7 @@ import wave from './image/partners/wave.svg';
 import customer1 from './image/users/user1.png';
 import customer2 from './image/users/user2.png';
 import customer3 from './image/users/user3.png';
+import customer from './image/users/user.png';
 
 import authBanner from './image/auth_banner.png';
 import forgotPwdBanner from './image/forgot_pwd_banner.png';
@@ -70,6 +71,7 @@ export const waveImg = wave;
 export const customer1Img = customer1;
 export const customer2Img = customer2;
 export const customer3Img = customer3;
+export const customerImg = customer;
 
 export const authBannerImg = authBanner;
 export const forgotPwdBannerImg = forgotPwdBanner;
