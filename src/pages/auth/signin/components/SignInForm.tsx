@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
 import { Input } from 'antd';
-import { ThirdButton } from '../../../../components/buttons/buttons';
+import { FirstButton, ThirdButton } from '../../../../components/buttons/buttons';
 import AppleIcon from '@mui/icons-material/Apple';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { icons } from '../../../../assets/image';
@@ -71,6 +71,9 @@ const SignInForm = () => {
             Forgot Password
           </a>
         </Box>
+        <FirstButton>
+          <Typography variant='body2'>Log in</Typography>
+        </FirstButton>
       </Box>
 
       <Box className='flex justify-between items-center w-3/5 gap-5'>
