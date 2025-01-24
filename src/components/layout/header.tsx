@@ -137,6 +137,17 @@ const Header = () => {
     { icon: <img src={icons.setting} alt='setting' />, title: 'Setting', link: '/settings' },
   ];
 
+  const languageMenu = [
+    { icon: language.french, label: 'french', lanugage: 'French' },
+    { icon: language.germany, label: 'germany', lanugage: 'Germany' },
+    { icon: language.spanish, label: 'spanish', lanugage: 'Spanish' },
+    { icon: language.netherlands, label: 'netherlands', lanugage: 'Netherlands' },
+    { icon: language.portuguese, label: 'portuguese', lanugage: 'Portuguese' },
+    { icon: language.arabic, label: 'arabic', lanugage: 'Arabic' },
+    { icon: language.indian, label: 'indian', lanugage: 'Indian' },
+    { icon: language.vietnamese, label: 'vietnamese', lanugage: 'Vietnamese' },
+  ];
+
   const afterLoginSection = (
     <LoginRightSection>
       <WalletAmountWrapper onClick={(e) => handlePopupOpen(e, setCurrencyAnchorEl)}>
@@ -279,13 +290,17 @@ const Header = () => {
           horizontal: 'right',
         }}
       >
-        {/* Add language menu items */}
-        <StyledMenuItem>
-          <Typography variant='body1'>English</Typography>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <Typography variant='body1'>Spanish</Typography>
-        </StyledMenuItem>
+        {languageMenu.map((item, index) => (
+          <LanguageItem>
+            <CountrySection>
+              <IconSection>
+                <img src={item.icon} alt={item.label} />
+              </IconSection>
+              <Typography variant='body1'>{item.lanugage}</Typography>
+            </CountrySection>
+            <Divider className='!my-0' />
+          </LanguageItem>
+        ))}
       </StyledMenu>
 
       <StyledMenu
@@ -783,6 +798,37 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
       backgroundColor: '#00C735',
     }),
   },
+}));
+
+const LanguageItem = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+
+  gap: theme.spacing(2),
+
+  '&:hover': {
+    backgroundColor: theme.palette.common.firstBoxBg,
+
+    svg: {
+      color: theme.palette.common.firstTypography,
+    },
+
+    p: {
+      color: theme.palette.common.firstTypography,
+    },
+  },
+}));
+
+const CountrySection = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'start',
+  alignItems: 'center',
+
+  padding: theme.spacing(1, 2),
+
+  gap: theme.spacing(1),
 }));
 
 export { Header };
