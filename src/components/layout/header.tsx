@@ -1,17 +1,33 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import { Stack, Typography, IconButton, Menu } from '@mui/material';
+import { Stack, Typography, IconButton, Menu, Button } from '@mui/material';
 import MuiMenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import CopyIcon from '@mui/icons-material/ContentCopy';
+
+import DoneIcon from '@mui/icons-material/Done';
 
 import { GlobalSpacing } from './styles';
-import { currency, customerImg, gradeImg, icons, language, logoImg } from '../../assets/image';
-import { FirstButton, FirstOutlineButton, TransparentButton } from '../buttons/buttons';
+import {
+  currency,
+  customerImg,
+  gradeImg,
+  icons,
+  language,
+  logoImg,
+  nftIcons,
+} from '../../assets/image';
+import {
+  FirstButton,
+  FirstOutlineButton,
+  ThirdButton,
+  TransparentButton,
+} from '../buttons/buttons';
 import { Drawer } from '../drawer/drawer';
 import { Divider } from 'antd';
 
@@ -148,6 +164,44 @@ const Header = () => {
     { icon: language.vietnamese, label: 'vietnamese', lanugage: 'Vietnamese' },
   ];
 
+  const nftMenu = [
+    {
+      icon: nftIcons.bronzeFeeReduction,
+      label: 'Bronze Fee Reduction',
+      lanugage: 'Discount on transaction fees - Bronze #44',
+    },
+    {
+      icon: nftIcons.silverFeeReduction,
+      label: 'Silver Fee Reduction',
+      lanugage: 'Discount on transaction fees - Silver #30',
+    },
+    {
+      icon: nftIcons.bronzeFeeReduction,
+      label: 'Bronze Fee Reduction',
+      lanugage: 'Ranking increase - Bronze #88',
+    },
+    {
+      icon: nftIcons.silverFeeReduction,
+      label: 'Silver Fee Reduction',
+      lanugage: 'Ranking increase - Silver #67',
+    },
+  ];
+
+  const notificationMenu = [
+    {
+      icon: <DoneIcon color='success' fontSize='small' />,
+      label: 'success',
+      title: 'Payment sent!',
+      content: 'your payment #1234 has been send',
+    },
+    {
+      icon: <CloseIcon color='error' fontSize='small' />,
+      label: 'failed',
+      title: 'Payment Failed!',
+      content: 'your payment #1234 has been send',
+    },
+  ];
+
   const afterLoginSection = (
     <LoginRightSection>
       <WalletAmountWrapper onClick={(e) => handlePopupOpen(e, setCurrencyAnchorEl)}>
@@ -205,7 +259,6 @@ const Header = () => {
           horizontal: 'right',
         }}
       >
-        {/* Add currency menu items */}
         <StyledMenuItem>
           <Typography variant='body1'>USDT</Typography>
         </StyledMenuItem>
@@ -227,13 +280,22 @@ const Header = () => {
           horizontal: 'right',
         }}
       >
-        {/* Add NFT menu items */}
-        <StyledMenuItem>
-          <Typography variant='body1'>My NFTs</Typography>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <Typography variant='body1'>Marketplace</Typography>
-        </StyledMenuItem>
+        {/* Add nft menu items */}
+        <Typography variant='h5' mb={2} paddingY={'8px'} paddingX={'16px'}>
+          NFT
+        </Typography>
+
+        {nftMenu.map((item, index) => (
+          <NFTItem>
+            <NFTItemSection>
+              <IconSection>
+                <img src={item.icon} alt={item.label} />
+              </IconSection>
+              <Typography variant='body1'>{item.lanugage}</Typography>
+            </NFTItemSection>
+            <Divider className='!my-0' />
+          </NFTItem>
+        ))}
       </StyledMenu>
 
       <StyledMenu
@@ -249,13 +311,77 @@ const Header = () => {
           horizontal: 'right',
         }}
       >
-        {/* Add wallet menu items */}
-        <StyledMenuItem>
-          <Typography variant='body1'>Balance</Typography>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <Typography variant='body1'>Transactions</Typography>
-        </StyledMenuItem>
+        <WalletContainer>
+          <WalletHeaderSection>
+            <Typography variant='h6'>My Wallet</Typography>
+            <WalletTokenSection>
+              <img src={currency.solanaIcon} alt='solana' />
+              <Typography className='!text-base !text-[#6E757D] '>Solana</Typography>
+            </WalletTokenSection>
+          </WalletHeaderSection>
+
+          <WalletBalanceSection>
+            <Typography variant='body2' color={'#6E757D'}>
+              Total Balance
+            </Typography>
+            <Typography variant='h4'>$54,730.00</Typography>
+            <WalletAddress>
+              <Typography variant='body2' color={'#6E757D'}>
+                0x4f07...4075
+              </Typography>
+              <CopyIcon fontSize='small' />
+            </WalletAddress>
+          </WalletBalanceSection>
+
+          <WalletActionsSection>
+            <WalletActionButtonSection>
+              <WalletActionButton>
+                <img src={icons.recieveIcon} alt='recieveIcon' />
+              </WalletActionButton>
+              <Typography fontSize={'16px'} fontWeight={400} color={'#6E757D'}>
+                Receive
+              </Typography>
+            </WalletActionButtonSection>
+            <WalletActionButtonSection>
+              <WalletActionButton>
+                <img src={icons.sendIcon} alt='sendIcon' />
+              </WalletActionButton>
+              <Typography fontSize={'16px'} fontWeight={400} color={'#6E757D'}>
+                Send
+              </Typography>
+            </WalletActionButtonSection>
+            <WalletActionButtonSection>
+              <WalletActionButton>
+                <img src={icons.swapIcon} alt='swapIcon' />
+              </WalletActionButton>
+              <Typography fontSize={'16px'} fontWeight={400} color={'#6E757D'}>
+                Swap
+              </Typography>
+            </WalletActionButtonSection>
+          </WalletActionsSection>
+
+          <WalletInputSection>
+            <TokenInput>
+              <img src={currency.usdt} alt='USDT' />
+              <Typography color={'#6E757D'} fontWeight={400} fontSize={'14px'}>
+                USDT
+              </Typography>
+              <Typography color={'#6E757D'} fontWeight={400} fontSize={'14px'}>
+                0.00
+              </Typography>
+            </TokenInput>
+            <AddressInput placeholder='To' className='!text-[#000]' />
+            <WalletButtonGroup>
+              <ThirdButton fullWidth>
+                <Typography className='!text-[#FF3E24] !text-base'>Disconnect</Typography>
+              </ThirdButton>
+              <FirstButton fullWidth>
+                <Typography className='!text-base'>Send</Typography>
+              </FirstButton>
+              {/* <SendButton>Send</SendButton> */}
+            </WalletButtonGroup>
+          </WalletInputSection>
+        </WalletContainer>
       </StyledMenu>
 
       <StyledMenu
@@ -272,9 +398,24 @@ const Header = () => {
         }}
       >
         {/* Add notification menu items */}
-        <StyledMenuItem>
-          <Typography variant='body1'>Recent Notifications</Typography>
-        </StyledMenuItem>
+        <Typography variant='h5' mb={2} paddingY={'8px'} paddingX={'16px'}>
+          Notification
+        </Typography>
+
+        {notificationMenu.map((item, index) => (
+          <LanguageItem>
+            <NotificationIcons>
+              <NotificationIconsSection>{item.icon}</NotificationIconsSection>
+              <NotificationContentSection>
+                <Typography variant='body1'>{item.title}</Typography>
+                <Typography variant='subtitle1' fontSize={'15px'} width={'70%'}>
+                  {item.content}
+                </Typography>
+              </NotificationContentSection>
+            </NotificationIcons>
+            <Divider className='!my-0' />
+          </LanguageItem>
+        ))}
       </StyledMenu>
 
       <StyledMenu
@@ -290,6 +431,10 @@ const Header = () => {
           horizontal: 'right',
         }}
       >
+        <Typography variant='h5' mb={2} paddingY={'8px'} paddingX={'16px'}>
+          Languages
+        </Typography>
+
         {languageMenu.map((item, index) => (
           <LanguageItem>
             <CountrySection>
@@ -805,7 +950,31 @@ const LanguageItem = styled(Stack)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
 
-  gap: theme.spacing(2),
+  '&:hover': {
+    backgroundColor: theme.palette.common.firstBoxBg,
+    cursor: 'pointer',
+
+    p: {
+      color: theme.palette.common.firstTypography,
+    },
+  },
+}));
+
+const CountrySection = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'start',
+  alignItems: 'center',
+
+  padding: theme.spacing(2, 2),
+
+  gap: theme.spacing(1),
+}));
+
+const NFTItem = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
 
   '&:hover': {
     backgroundColor: theme.palette.common.firstBoxBg,
@@ -820,15 +989,156 @@ const LanguageItem = styled(Stack)(({ theme }) => ({
   },
 }));
 
-const CountrySection = styled(Stack)(({ theme }) => ({
+const NFTItemSection = styled(Stack)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'start',
   alignItems: 'center',
 
-  padding: theme.spacing(1, 2),
+  padding: theme.spacing(2, 2),
 
   gap: theme.spacing(1),
+}));
+
+const NotificationIcons = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'start',
+
+  padding: theme.spacing(2, 1),
+
+  gap: theme.spacing(1),
+}));
+
+const NotificationIconsSection = styled('div')({
+  width: '36px',
+  height: '36px',
+  display: 'flex',
+  borderRadius: '50%',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  backgroundColor: '#F4F5F7',
+});
+
+const NotificationContentSection = styled(Stack)(({ theme }) => ({
+  width: 'auto',
+  height: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+
+  gap: theme.spacing(1),
+}));
+
+const WalletHeaderSection = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+}));
+
+const WalletTokenSection = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  height: '36px',
+  border: '1px solid #D3D8DD',
+  minWidth: theme.spacing(2),
+  borderRadius: '18px',
+  padding: theme.spacing(0, 1),
+  gap: theme.spacing(1),
+
+  img: {
+    width: '20px',
+    height: '20px',
+    borderRadius: '10px',
+  },
+}));
+
+const WalletContainer = styled(Stack)(({ theme }) => ({
+  padding: theme.spacing(2),
+  minWidth: 320,
+}));
+
+const WalletBalanceSection = styled(Stack)(({ theme }) => ({
+  backgroundColor: theme.palette.grey[100],
+  borderRadius: theme.spacing(1),
+  padding: theme.spacing(2),
+  marginTop: theme.spacing(2),
+  alignItems: 'center',
+}));
+
+const WalletAddress = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  marginTop: theme.spacing(1),
+  color: theme.palette.grey[600],
+}));
+
+const WalletActionsSection = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: theme.spacing(5),
+  margin: theme.spacing(2, 0),
+}));
+
+const WalletActionButtonSection = styled(Stack)(({ theme }) => ({
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: theme.spacing(0.5),
+  margin: theme.spacing(2, 0),
+}));
+
+const WalletActionButton = styled(Button)(({ theme }) => ({
+  flexDirection: 'column',
+  backgroundColor: '#2475FF',
+  borderRadius: theme.spacing(1),
+  padding: theme.spacing(1),
+  minWidth: '44px',
+  height: '44px',
+  color: theme.palette.common.white,
+  '&:hover': {
+    backgroundColor: '#2475FF',
+  },
+}));
+
+const WalletInputSection = styled(Stack)(({ theme }) => ({
+  gap: theme.spacing(2),
+}));
+
+const TokenInput = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  padding: theme.spacing(1.5),
+  border: `1px solid ${theme.palette.grey[300]}`,
+  borderRadius: theme.spacing(1),
+
+  img: {
+    width: '22px',
+    height: '22px',
+  },
+}));
+
+const AddressInput = styled('input')(({ theme }) => ({
+  padding: theme.spacing(1.5),
+  border: `1px solid ${theme.palette.grey[300]}`,
+  borderRadius: theme.spacing(1),
+  width: '100%',
+  '&::placeholder': {
+    color: theme.palette.grey[500],
+  },
+}));
+
+const WalletButtonGroup = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  gap: theme.spacing(2),
+  marginTop: theme.spacing(1),
 }));
 
 export { Header };

@@ -34,11 +34,15 @@ import referFriends from './image/icons/referFriends.svg';
 import setting from './image/icons/setting.svg';
 import trackTransfer from './image/icons/trackTransfer.svg';
 import user from './image/icons/user.svg';
+import recieveIcon from './image/icons/receive.svg';
+import sendIcon from './image/icons/send.svg';
+import swapIcon from './image/icons/swap.svg';
 
 import grade from './image/icons/grade.png';
 
 import usdt from './image/icons/currency/usdt.svg';
 import eur from './image/icons/currency/eur.svg';
+import solanaIcon from './image/icons/currency/solana.svg';
 
 import english from './image/icons/language/english.svg';
 import arabic from './image/icons/language/arabic.svg';
@@ -70,6 +74,9 @@ import authBanner from './image/auth_banner.png';
 import forgotPwdBanner from './image/forgot_pwd_banner.png';
 
 import googleUrl from './image/icons/google.svg';
+
+import bronzeFeeReduction from './image/nft/BronzeFeeReduction.svg';
+import silverFeeReduction from './image/nft/SilverFeeReduction.svg';
 
 export const logoImg = logo;
 export const heroBackgroundImg = heroBackground;
@@ -132,11 +139,15 @@ export const icons = {
   setting,
   trackTransfer,
   user,
+  recieveIcon,
+  sendIcon,
+  swapIcon,
 };
 
 export const currency = {
   usdt,
   eur,
+  solanaIcon,
 };
 
 export const language = {
@@ -149,4 +160,9 @@ export const language = {
   portuguese,
   spanish,
   vietnamese,
+};
+
+export const nftIcons = {
+  bronzeFeeReduction,
+  silverFeeReduction,
 };
