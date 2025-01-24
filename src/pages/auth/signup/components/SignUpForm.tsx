@@ -69,7 +69,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className={`${classes.root} max-lg:!w-full`}>
+    <div className={`${classes.root} max-lg:!w-full max-sm:px-8`}>
       <Box className='flex flex-col justify-center items-center'>
         <Typography variant='h2'>Create an account</Typography>
         <Typography variant='h6' mt={2}>
@@ -77,7 +77,7 @@ const SignUpForm = () => {
         </Typography>
       </Box>
 
-      <Box className={classes.inputWrap}>
+      <Box className={`${classes.inputWrap} max-sm:!w-full`}>
         <Box className='flex flex-col gap-3'>
           <label className='text-lg' htmlFor='email'>
             Send Form
@@ -148,36 +148,36 @@ const SignUpForm = () => {
         </FirstButton>
       </Box>
 
-      <Box className='flex justify-between items-center w-3/5 gap-5'>
+      <Box className='flex justify-between items-center w-3/5 gap-5 max-sm:w-full'>
         <hr className='w-full' />
         <Box>OR</Box>
         <hr className='w-full' />
       </Box>
 
-      <Box className='flex flex-col w-3/5 gap-5'>
-        <Box className='flex justify-between gap-5 sm-max:flex-col'>
-          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
+      <Box className='flex flex-col w-3/5 gap-5 max-sm:w-full'>
+        <Box className='flex justify-between gap-5'>
+          <ThirdButton className='w-1/2 bg-slate-50'>
             <img src={icons.google} alt='' />
             <Typography variant='body2'>Google</Typography>
           </ThirdButton>
-          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
+          <ThirdButton className='w-1/2 bg-slate-50'>
             <img src={icons.facebook} alt='' className='bg-[blue] rounded-full' />
             <Typography variant='body2'>Facebook</Typography>
           </ThirdButton>
         </Box>
-        <Box className='flex justify-between gap-5 sm-max:flex-col'>
-          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
+        <Box className='flex justify-between gap-5'>
+          <ThirdButton className='w-1/2 bg-slate-50'>
             <AppleIcon className='text-[black]' />
             <Typography variant='body2'>Apple</Typography>
           </ThirdButton>
-          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
+          <ThirdButton className='w-1/2 bg-slate-50'>
             <AccountBalanceWalletIcon className='text-[black]' />
             <Typography variant='body2'>Wallet</Typography>
           </ThirdButton>
         </Box>
       </Box>
 
-      <Box className='flex items-center gap-2'>
+      <Box className='flex items-center justify-center gap-2 max-sm:w-full'>
         <Typography variant='body2' className='text-[#000]'>
           Already have an account?
         </Typography>

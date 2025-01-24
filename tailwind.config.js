@@ -130,6 +130,7 @@ module.exports = {
     screens: {
       sm: '576px',
       'sm-max': { max: '576px' },
+      'max-sm': { max: '639px' },
       md: '768px',
       'md-max': { max: '768px' },
       lg: '992px',
