@@ -37,12 +37,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const SignInForm = () => {
+const SignUpForm = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Box className='flex flex-col justify-center items-center'>
-        <Typography variant='h2'>Sign in</Typography>
+        <Typography variant='h2'>Create an account</Typography>
         <Typography variant='h5' mt={2}>
           Welcome back 👋
         </Typography>
@@ -106,7 +106,7 @@ const SignInForm = () => {
         <Typography variant='body2' className='text-[#000]'>
           Do not have an account?
         </Typography>
-        <a href='/auth/signup' className='text-[blue] font-[500] text-[14px] hover:underline'>
+        <a href='/register' className='text-[blue] font-[500] text-[14px] hover:underline'>
           Register
         </a>
       </Box>
@@ -114,4 +114,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignUpForm;
