@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Stack, Typography, IconButton, Menu, Button } from '@mui/material';
@@ -54,6 +54,21 @@ const Header = () => {
   const [walletAnchorEl, setWalletAnchorEl] = useState<null | HTMLElement>(null);
   const [notificationAnchorEl, setNotificationAnchorEl] = useState<null | HTMLElement>(null);
   const [languageAnchorEl, setLanguageAnchorEl] = useState<null | HTMLElement>(null);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchData = () => {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const navigation = useNavigate();
 
@@ -76,7 +91,26 @@ const Header = () => {
 
   // Create handlers for each popup
   const handlePopupOpen = (event: React.MouseEvent<HTMLElement>, setter: Function) => {
-    setter(event.currentTarget);
+    const isMobile = window.innerWidth < 1024; // lg breakpoint
+
+    if (isMobile) {
+      // For mobile, position at top-right of screen
+      setter({
+        getBoundingClientRect: () => ({
+          top: 0,
+          right: 0,
+          left: window.innerWidth - 311, // 311px is the width of the popup
+          bottom: 0,
+          width: 311,
+          height: 0,
+        }),
+      });
+    } else {
+      // For desktop, position relative to clicked element
+      setter(event.currentTarget);
+    }
+
+    setMobileOpen(false);
   };
 
   const handlePopupClose = (setter: Function) => {
@@ -103,14 +137,56 @@ const Header = () => {
         ))}
       </MobileMenuItems>
 
-      <MobileAuthButtons>
-        <FirstOutlineButton fullWidth onClick={() => navigate('/auth/signin')}>
-          <Typography variant='body1'>Login</Typography>
-        </FirstOutlineButton>
-        <FirstButton fullWidth onClick={() => navigate('/auth/signup')}>
-          <Typography variant='body1'>Sign up</Typography>
-        </FirstButton>
-      </MobileAuthButtons>
+      {isLogin ? (
+        <MobileLoginSection>
+          <MobileWalletSection>
+            <WalletAmountWrapper>
+              <WalletAmountSection>
+                <SelectedCurrencyContainer>
+                  <img src={currency.usdt} alt='' />
+                  <Stack direction='row' alignItems='center'>
+                    <ExpandMoreIcon fontSize='medium' />
+                  </Stack>
+                </SelectedCurrencyContainer>
+                <Divider variant='solid' type='vertical' className='!mx-0' />
+                <Typography variant='body2' className='!text-[#6E757D]'>
+                  $100.00
+                </Typography>
+              </WalletAmountSection>
+            </WalletAmountWrapper>
+          </MobileWalletSection>
+
+          <MobileActionButtons>
+            <MobileIconButton onClick={(e) => handlePopupOpen(e, setNftAnchorEl)}>
+              <img src={icons.nft} alt='nft icon' />
+            </MobileIconButton>
+            <MobileIconButton onClick={(e) => handlePopupOpen(e, setWalletAnchorEl)}>
+              <img src={icons.wallet} alt='wallet icon' />
+            </MobileIconButton>
+            <MobileIconButton onClick={(e) => handlePopupOpen(e, setNotificationAnchorEl)}>
+              <img src={icons.notification} alt='notification icon' />
+            </MobileIconButton>
+            <MobileIconButton onClick={(e) => handlePopupOpen(e, setLanguageAnchorEl)}>
+              <img src={language.english} alt='language icon' />
+            </MobileIconButton>
+          </MobileActionButtons>
+
+          <MobileUserSection onClick={handleClick}>
+            <img src={customerImg} alt='customer' />
+            <Typography variant='subtitle1'>Alex Smeth</Typography>
+            <ExpandMoreIcon />
+          </MobileUserSection>
+        </MobileLoginSection>
+      ) : (
+        <MobileAuthButtons>
+          <FirstOutlineButton fullWidth onClick={() => navigate('/auth/signin')}>
+            <Typography variant='body1'>Login</Typography>
+          </FirstOutlineButton>
+          <FirstButton fullWidth onClick={() => navigate('/auth/signup')}>
+            <Typography variant='body1'>Sign up</Typography>
+          </FirstButton>
+        </MobileAuthButtons>
+      )}
     </MobileMenuContainer>
   );
 
@@ -202,6 +278,20 @@ const Header = () => {
     },
   ];
 
+  const menuProps = {
+    anchorOrigin: {
+      vertical: 'bottom' as const,
+      horizontal: 'right' as const,
+    },
+    transformOrigin: {
+      vertical: 'top' as const,
+      horizontal: 'right' as const,
+    },
+    TransitionProps: {
+      timeout: 200,
+    },
+  };
+
   const afterLoginSection = (
     <LoginRightSection>
       <WalletAmountWrapper onClick={(e) => handlePopupOpen(e, setCurrencyAnchorEl)}>
@@ -239,7 +329,7 @@ const Header = () => {
       </HeaderButtonsSection>
 
       <UserInfoSection onClick={handleClick}>
-        <img src={customerImg} alt='user image' />
+        <img src={customerImg} alt='customer' />
         <Stack direction='row' alignItems='center' marginRight={0.5} color={'#6E757D'}>
           <ExpandMoreIcon fontSize='medium' />
         </Stack>
@@ -250,14 +340,7 @@ const Header = () => {
         anchorEl={currencyAnchorEl}
         open={Boolean(currencyAnchorEl)}
         onClose={() => handlePopupClose(setCurrencyAnchorEl)}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        {...menuProps}
       >
         <StyledMenuItem>
           <Typography variant='body1'>USDT</Typography>
@@ -271,14 +354,7 @@ const Header = () => {
         anchorEl={nftAnchorEl}
         open={Boolean(nftAnchorEl)}
         onClose={() => handlePopupClose(setNftAnchorEl)}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        {...menuProps}
       >
         {/* Add nft menu items */}
         <Typography variant='h5' mb={2} paddingY={'8px'} paddingX={'16px'}>
@@ -286,7 +362,7 @@ const Header = () => {
         </Typography>
 
         {nftMenu.map((item, index) => (
-          <NFTItem>
+          <NFTItem key={index}>
             <NFTItemSection>
               <IconSection>
                 <img src={item.icon} alt={item.label} />
@@ -302,14 +378,7 @@ const Header = () => {
         anchorEl={walletAnchorEl}
         open={Boolean(walletAnchorEl)}
         onClose={() => handlePopupClose(setWalletAnchorEl)}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        {...menuProps}
       >
         <WalletContainer>
           <WalletHeaderSection>
@@ -378,7 +447,6 @@ const Header = () => {
               <FirstButton fullWidth>
                 <Typography className='!text-base'>Send</Typography>
               </FirstButton>
-              {/* <SendButton>Send</SendButton> */}
             </WalletButtonGroup>
           </WalletInputSection>
         </WalletContainer>
@@ -388,14 +456,7 @@ const Header = () => {
         anchorEl={notificationAnchorEl}
         open={Boolean(notificationAnchorEl)}
         onClose={() => handlePopupClose(setNotificationAnchorEl)}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        {...menuProps}
       >
         {/* Add notification menu items */}
         <Typography variant='h5' mb={2} paddingY={'8px'} paddingX={'16px'}>
@@ -403,7 +464,7 @@ const Header = () => {
         </Typography>
 
         {notificationMenu.map((item, index) => (
-          <LanguageItem>
+          <LanguageItem key={index}>
             <NotificationIcons>
               <NotificationIconsSection>{item.icon}</NotificationIconsSection>
               <NotificationContentSection>
@@ -422,21 +483,14 @@ const Header = () => {
         anchorEl={languageAnchorEl}
         open={Boolean(languageAnchorEl)}
         onClose={() => handlePopupClose(setLanguageAnchorEl)}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        {...menuProps}
       >
         <Typography variant='h5' mb={2} paddingY={'8px'} paddingX={'16px'}>
           Languages
         </Typography>
 
         {languageMenu.map((item, index) => (
-          <LanguageItem>
+          <LanguageItem key={index}>
             <CountrySection>
               <IconSection>
                 <img src={item.icon} alt={item.label} />
@@ -448,19 +502,7 @@ const Header = () => {
         ))}
       </StyledMenu>
 
-      <StyledMenu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-      >
+      <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose} {...menuProps}>
         <UserProfileSection>
           <UserAvatar>
             <img src={customerImg} alt='user avatar' />
@@ -493,6 +535,20 @@ const Header = () => {
     </LoginRightSection>
   );
 
+  useEffect(() => {
+    const handleResize = () => {
+      // Close all popups on resize to prevent positioning issues
+      setWalletAnchorEl(null);
+      setCurrencyAnchorEl(null);
+      setNftAnchorEl(null);
+      setNotificationAnchorEl(null);
+      setLanguageAnchorEl(null);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <HeaderWrapper>
       <HeaderContainer>
@@ -513,7 +569,7 @@ const Header = () => {
         </LeftSection>
 
         {/* Right Section - Auth Buttons */}
-        {afterLoginSection}
+        {isLogin ? afterLoginSection : authButtonSection}
 
         {/* Mobile Menu Button */}
         <MobileMenuButton onClick={handleDrawerToggle} aria-label='open menu'>
@@ -542,7 +598,7 @@ const HeaderWrapper = styled(GlobalSpacing)(({ theme }) => ({
   backgroundColor: theme.palette.common.headerBg,
   borderBottom: `1px solid ${theme.palette.common.headerBorder}`,
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     minHeight: '80px',
   },
 }));
@@ -563,7 +619,7 @@ const LeftSection = styled(Stack)(({ theme }) => ({
     fontWeight: 600,
   },
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     gap: theme.spacing(3),
   },
 
@@ -582,7 +638,7 @@ const LogoSection = styled(Link)(({ theme }) => ({
     height: '50px',
   },
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     '& img': {
       height: '40px',
     },
@@ -597,7 +653,7 @@ const MenuSection = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   gap: theme.spacing(4),
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     display: 'none', // Hide on mobile
   },
 }));
@@ -616,7 +672,7 @@ const MenuItem = styled('a')(({ theme }) => ({
     },
   },
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     p: {
       opacity: 0.75,
       color: theme.palette.common.white,
@@ -646,7 +702,7 @@ const MenuLink = styled('a')(({ theme }) => ({
     },
   },
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     p: {
       opacity: 0.75,
       color: theme.palette.common.white,
@@ -665,7 +721,7 @@ const RightSection = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   gap: theme.spacing(2),
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     display: 'none', // Hide on mobile
   },
 }));
@@ -674,8 +730,8 @@ const LoginRightSection = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   gap: theme.spacing(1),
 
-  [theme.breakpoints.down('lg')]: {
-    display: 'none', // Hide on mobile
+  [theme.breakpoints.down(1280)]: {
+    display: 'none', // Hide on mobile, will show in drawer instead
   },
 }));
 
@@ -690,7 +746,7 @@ const MobileMenuButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.common.firstTypography,
   },
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down(1280)]: {
     display: 'flex',
   },
 }));
@@ -833,6 +889,19 @@ const StyledMenu = styled(Menu)(({ theme }) => ({
     boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
     marginTop: theme.spacing(1),
     padding: '10px',
+    transition: 'transform 0.2s ease-out !important',
+    transformOrigin: 'top right !important',
+
+    [theme.breakpoints.down(1280)]: {
+      width: '311px',
+      maxWidth: '311px',
+      height: 'auto',
+      margin: 0,
+      top: '94px !important',
+      right: '15px !important',
+      left: 'auto !important', // Override Material-UI's left positioning
+      borderRadius: theme.spacing(1),
+    },
   },
 }));
 
@@ -1139,6 +1208,57 @@ const WalletButtonGroup = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   gap: theme.spacing(2),
   marginTop: theme.spacing(1),
+}));
+
+const MobileLoginSection = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(2),
+  padding: theme.spacing(2, 0),
+}));
+
+const MobileWalletSection = styled(Stack)(({ theme }) => ({
+  width: '100%',
+  '& > div': {
+    // Target WalletAmountWrapper
+    width: '100%',
+  },
+}));
+
+const MobileActionButtons = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  gap: theme.spacing(2),
+  padding: theme.spacing(1, 0),
+}));
+
+const MobileIconButton = styled(IconButton)(({ theme }) => ({
+  backgroundColor: theme.palette.common.white,
+  borderRadius: '50%',
+  padding: theme.spacing(1),
+  '& img': {
+    width: 24,
+    height: 24,
+  },
+}));
+
+const MobileUserSection = styled(Stack)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  padding: theme.spacing(1.5),
+  backgroundColor: theme.palette.common.white,
+  borderRadius: theme.spacing(1),
+  '& img': {
+    width: 40,
+    height: 40,
+    borderRadius: '50%',
+  },
+  '& svg': {
+    color: theme.palette.grey[600],
+  },
 }));
 
 export { Header };
