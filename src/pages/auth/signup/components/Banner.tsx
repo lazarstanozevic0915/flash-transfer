@@ -19,8 +19,8 @@ const Banner = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <img src={authBannerImg} className={classes.bannerImg} alt='' />
+    <div className={`${classes.root} max-lg:!w-full`}>
+      <img src={authBannerImg} className={`${classes.bannerImg} max-lg:!w-2/3`} alt='' />
     </div>
   );
 };

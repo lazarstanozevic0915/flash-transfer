@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-import { authBannerImg } from '../../../../assets/image';
+import { forgotPwdBannerImg } from '../../../../assets/image';
 import { Theme } from '@mui/material/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -20,7 +20,7 @@ const Banner = () => {
 
   return (
     <div className={`${classes.root} max-lg:!w-full`}>
-      <img src={authBannerImg} className={`${classes.bannerImg} max-lg:!w-2/3`} alt='' />
+      <img src={forgotPwdBannerImg} className={`${classes.bannerImg} max-lg:!w-2/3`} alt='' />
     </div>
   );
 };

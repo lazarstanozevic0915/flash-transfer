@@ -10,6 +10,7 @@ import { icons } from '../../../../assets/image';
 // import { TransparentTextField } from '../../../../components/textfield/textfield';
 import Flag from 'react-world-flags';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -51,6 +52,7 @@ const countries = [
 const SignUpForm = () => {
   const [selectedLocation, setSelectedLocation] = useState<string | undefined>('US');
   const classes = useStyles();
+  const navigate = useNavigate();
 
   const [checked, setChecked] = useState(false);
 
@@ -61,8 +63,13 @@ const SignUpForm = () => {
   const handleChange = (value: string) => {
     setSelectedLocation(value);
   };
+
+  const handleCreateAccount = () => {
+    navigate('/');
+  };
+
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} max-lg:!w-full`}>
       <Box className='flex flex-col justify-center items-center'>
         <Typography variant='h2'>Create an account</Typography>
         <Typography variant='h6' mt={2}>
@@ -136,7 +143,7 @@ const SignUpForm = () => {
             marketing information about our products and special offers, please check this box.
           </label>
         </Box>
-        <FirstButton>
+        <FirstButton onClick={handleCreateAccount}>
           <Typography variant='body2'>Create Account</Typography>
         </FirstButton>
       </Box>
@@ -148,22 +155,22 @@ const SignUpForm = () => {
       </Box>
 
       <Box className='flex flex-col w-3/5 gap-5'>
-        <Box className='flex justify-between gap-5'>
-          <ThirdButton className='w-1/2 bg-slate-50'>
+        <Box className='flex justify-between gap-5 sm-max:flex-col'>
+          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
             <img src={icons.google} alt='' />
             <Typography variant='body2'>Google</Typography>
           </ThirdButton>
-          <ThirdButton className='w-1/2 bg-slate-50'>
+          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
             <img src={icons.facebook} alt='' className='bg-[blue] rounded-full' />
             <Typography variant='body2'>Facebook</Typography>
           </ThirdButton>
         </Box>
-        <Box className='flex justify-between gap-5'>
-          <ThirdButton className='w-1/2 bg-slate-50'>
+        <Box className='flex justify-between gap-5 sm-max:flex-col'>
+          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
             <AppleIcon className='text-[black]' />
             <Typography variant='body2'>Apple</Typography>
           </ThirdButton>
-          <ThirdButton className='w-1/2 bg-slate-50'>
+          <ThirdButton className='w-1/2 bg-slate-50 sm-max:w-full'>
             <AccountBalanceWalletIcon className='text-[black]' />
             <Typography variant='body2'>Wallet</Typography>
           </ThirdButton>
