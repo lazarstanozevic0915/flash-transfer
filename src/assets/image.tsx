@@ -25,11 +25,30 @@ import facebook from './image/icons/facebook.svg';
 import instagram from './image/icons/instagram.svg';
 import youtubeWhite from './image/icons/youtube-white.svg';
 import pinterest from './image/icons/pinterest.svg';
+import logout from './image/icons/logout.svg';
+import myCard from './image/icons/myCard.svg';
+import myRank from './image/icons/myRank.svg';
+import myRecipients from './image/icons/myRecipients.svg';
+import myTransaction from './image/icons/myTransaction.svg';
+import referFriends from './image/icons/referFriends.svg';
+import setting from './image/icons/setting.svg';
+import trackTransfer from './image/icons/trackTransfer.svg';
+import user from './image/icons/user.svg';
+
+import grade from './image/icons/grade.png';
 
 import usdt from './image/icons/currency/usdt.svg';
 import eur from './image/icons/currency/eur.svg';
 
 import english from './image/icons/language/english.svg';
+import arabic from './image/icons/language/arabic.svg';
+import french from './image/icons/language/french.svg';
+import germany from './image/icons/language/germany.svg';
+import indian from './image/icons/language/indian.svg';
+import netherlands from './image/icons/language/netherlands.svg';
+import portuguese from './image/icons/language/portuguese.svg';
+import spanish from './image/icons/language/spanish.svg';
+import vietnamese from './image/icons/language/vietnamese.svg';
 
 import binance from './image/partners/binance.svg';
 import blockmate from './image/partners/blockmate.svg';
@@ -78,6 +97,8 @@ export const forgotPwdBannerImg = forgotPwdBanner;
 
 export const google = googleUrl;
 
+export const gradeImg = grade;
+
 export const icons = {
   nft,
   wallet,
@@ -102,6 +123,15 @@ export const icons = {
   youtubeWhite,
   pinterest,
   google,
+  logout,
+  myCard,
+  myRank,
+  myRecipients,
+  myTransaction,
+  referFriends,
+  setting,
+  trackTransfer,
+  user,
 };
 
 export const currency = {
@@ -111,4 +141,12 @@ export const currency = {
 
 export const language = {
   english,
+  arabic,
+  french,
+  germany,
+  indian,
+  netherlands,
+  portuguese,
+  spanish,
+  vietnamese,
 };
