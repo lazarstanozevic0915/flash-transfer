@@ -37,6 +37,7 @@ import user from './image/icons/user.svg';
 import recieveIcon from './image/icons/receive.svg';
 import sendIcon from './image/icons/send.svg';
 import swapIcon from './image/icons/swap.svg';
+import phone from './image/icons/phone.svg';
 
 import customerSupport from './image/icons/customerSupport.svg';
 import employees from './image/icons/employees.svg';
@@ -99,6 +100,12 @@ import Franceflag from './image/offices/france.svg';
 import HongKongflag from './image/offices/hongkong.svg';
 import IvoryCoastflag from './image/offices/ivorycoast.svg';
 import Singaporflag from './image/offices/singapor.svg';
+
+import facebookIcon from './image/socials/facebookIcon.svg';
+import instagramIcon from './image/socials/instagramIcon.svg';
+import linkedInIcon from './image/socials/linkedInIcon.svg';
+import twitterIcon from './image/socials/twitterIcon.svg';
+import youtubeIcon from './image/socials/youtubeIcon.svg';
 
 export const logoImg = logo;
 export const heroBackgroundImg = heroBackground;
@@ -173,6 +180,7 @@ export const icons = {
   customerSupport,
   employees,
   secureTransferIcon,
+  phone,
 };
 
 export const currency = {
@@ -212,4 +220,12 @@ export const countryFlags = {
   HongKongflag,
   IvoryCoastflag,
   Singaporflag,
+};
+
+export const socialIcons = {
+  facebookIcon,
+  instagramIcon,
+  linkedInIcon,
+  twitterIcon,
+  youtubeIcon,
 };

@@ -8,6 +8,7 @@ import { AuthPage } from './pages/auth';
 import { useGlobalContext } from './provider';
 import { Loading } from './components/Loading';
 import AboutUs from './pages/aboutUs';
+import ContactUs from './pages/contactUs';
 
 export const Routers = () => {
   const [state] = useGlobalContext();
@@ -18,6 +19,7 @@ export const Routers = () => {
         <Route path='*' element={<Dashboard />} />
         <Route path='/auth/*' element={<AuthPage />} />
         <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/contactus' element={<ContactUs />} />
       </Routes>
 
       <NotificationContainer />
