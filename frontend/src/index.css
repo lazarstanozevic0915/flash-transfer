@@ -34,32 +34,37 @@
   font-weight: 700;
   font-style: normal;
 }
+.dm-sans {
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+}
+
 .dm-sans-100 {
-  font-family: "Inter", serif;
+  font-family: "DM Sans", serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
 }
 .dm-sans-light {
-  font-family: "Inter", serif;
+  font-family: "DM Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 .dm-sans-medium {
-  font-family: "Inter", serif;
+  font-family: "DM Sans", serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 .dm-sans-semibold {
-  font-family: "Inter", serif;
+  font-family: "DM Sans", serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
 .dm-sans-bold {
-  font-family: "Inter", serif;
+  font-family: "DM Sans", serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
