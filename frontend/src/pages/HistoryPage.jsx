@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import heroBackground from '../assets/image/hero-background.png';
@@ -6,6 +6,10 @@ import { icons } from '../assets/image';
 import TransactionTable from '../components/TransactionTable';
 
 export default function HistoryPage() {
+
+        const [searchQuery, setSearchQuery] = useState('');
+        const [filterType, setFilterType] = useState('all');
+
   return (
     <div>
         <Navbar /> 
@@ -28,12 +32,21 @@ export default function HistoryPage() {
                     <div className="w-full h-[1px] bg-[#D3D8DD]"></div>
                     <div className="flex gap-4">
                         <div className="relative w-full">
-                            <input type="text" className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg p-2.5 pl-12 ' placeholder='Search' />
+                            <input 
+                                type="text" 
+                                className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg p-2.5 pl-12 ' 
+                                placeholder='Search' 
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)} 
+                            />
                             <div className="absolute left-3 bottom-3">
                                 <img src={icons.search} alt="" />
                             </div>
                         </div>
-                        <button className='px-8 py-2 rounded-md bg-white text-[#6E757D] font-semibold text-[14px] flex items-center justify-center gap-2 border border-[#D3D8DD]'>
+                        <button 
+                            className='px-8 py-2 rounded-md bg-white text-[#6E757D] font-semibold text-[14px] flex items-center justify-center gap-2 border border-[#D3D8DD]'
+                            onClick={() => setFilterType('all')}
+                        >
                             <img src={icons.filter} alt="" />
                             Filter
                         </button>
@@ -41,7 +54,7 @@ export default function HistoryPage() {
                 </div>
             </div>
             <div className="px-32 py-20 w-full">
-                <TransactionTable />
+                <TransactionTable  searchQuery={searchQuery} filterType={filterType} />
             </div>
         </div>
         <Footer />
