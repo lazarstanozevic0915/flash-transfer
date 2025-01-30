@@ -11,7 +11,7 @@ export default function Navbar() {
                 <span className='inter-semibold text-[16px]'>Flash Transfer</span>
             </div>
             <div className="flex space-x-5 mt-1 items-center dm-sans-light text-[#6E757D] text-[12px]">
-                <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Send</NavLink>
+                <NavLink to={`/send`} className={`hover:text-[#111] hover:dm-sans-bold`}>Send</NavLink>
                 <NavLink to={`/find-location`} className={`hover:text-[#111] hover:dm-sans-bold`}>Find location</NavLink>
                 <NavLink to={`/track-order`} className={`hover:text-[#111] hover:dm-sans-bold`}>Track a transfer</NavLink>
                 <NavLink to={`/help`} className={`hover:text-[#111] hover:dm-sans-bold`}>Help</NavLink>

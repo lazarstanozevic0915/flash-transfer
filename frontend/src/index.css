@@ -5,6 +5,9 @@
 *{
   outline: none;
 }
+button{
+  cursor: pointer;
+}
 
 /* fonts */
 .inter-100 {

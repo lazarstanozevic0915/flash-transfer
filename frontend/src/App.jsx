@@ -11,6 +11,7 @@ import CompliantsPage from "./pages/CompliantsPage"
 import ProfilePage from "./pages/ProfilePage"
 import HistoryPage from "./pages/HistoryPage"
 import AllCurrencyPage from "./pages/AllCurrencyPage"
+import SendPage from "./pages/SendPage"
 
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route index element = { <Landing /> } />
           <Route path="/about" element = { <AboutUs /> } />
           <Route path="/contact" element = { <ContactUs /> } />
+          <Route path="/send" element = { <SendPage /> } />
           <Route path="/track-order" element = { <TrackOrder /> } />
           <Route path="/find-location" element = { <FindLocation /> } />
           <Route path="/store-location" element = { <StoreLocation /> } />
