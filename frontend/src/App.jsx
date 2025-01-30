@@ -7,6 +7,10 @@ import FindLocation from "./pages/FindLocation"
 import StoreLocation from "./pages/StoreLocation"
 import HelpPage from "./pages/HelpPage"
 import Blogs from "./pages/Blogs"
+import CompliantsPage from "./pages/CompliantsPage"
+import ProfilePage from "./pages/ProfilePage"
+import HistoryPage from "./pages/HistoryPage"
+import AllCurrencyPage from "./pages/AllCurrencyPage"
 
 
 
@@ -23,6 +27,10 @@ function App() {
           <Route path="/store-location" element = { <StoreLocation /> } />
           <Route path="/help" element = { <HelpPage /> } />
           <Route path="/blogs" element = { <Blogs /> } />
+          <Route path="/complaints" element = { <CompliantsPage /> } />
+          <Route path="/profile" element = { <ProfilePage /> } />
+          <Route path="/history" element = { <HistoryPage  /> } />
+          <Route path="/currency" element = { <AllCurrencyPage  /> } />
       </Route>
     )
   )
