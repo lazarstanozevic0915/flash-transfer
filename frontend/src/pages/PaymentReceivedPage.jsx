@@ -27,15 +27,15 @@ const PaymentReceivedPage = () => {
             <div className="flex justify-between relative">
             {/* Progress Line */}
             <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
-                <div className="w-full h-full bg-blue-500" />
+                <div className="w-[66%] h-full bg-blue-500" />
             </div>
             
             {/* Steps */}
             {[
                 { label: "Receiver's info", description: "Enter the informations", active: false, completed: true },
                 { label: "Receiver's Method", description: "Enter the informations", active: false, completed: true },
-                { label: "Review Details", description: "Enter the informations", active: false, completed: true },
-                { label: "Payment Complete", description: "Enter the informations", active: false, completed: true }
+                { label: "Review Details", description: "Enter the informations", active: true, completed: false },
+                { label: "Payment Complete", description: "Enter the informations", active: false, completed: false }
             ].map((step, index) => (
                 <div key={index} className="relative flex flex-col items-center w-1/4">
                     <div className=" bg-white rounded-full w-13 h-13 flex items-center justify-center">

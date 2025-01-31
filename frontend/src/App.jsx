@@ -84,9 +84,11 @@ function App() {
               <Route path="payment">
               <Route index element={<PendingPage />} />
               <Route path="success" element={<PaymentCompletePage />} />
-              <Route path="complete" element={<PaymentReceivedPage />} />
               </Route>
-              <Route path="review-details" element={<ReviewDetailsPage />} />
+              <Route path="review-details"> 
+                <Route index element={<ReviewDetailsPage />} />
+                <Route path="confirm" element={<PaymentReceivedPage />} />
+              </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
       </Route>
