@@ -6,11 +6,13 @@ import { validateSignIn } from '../utils/validation'
 import AuthLayout from '../components/AuthLayout'
 import SocialButtons from '../components/SocialButtons'
 import { MoneyTransferIllustration } from '../components/Illustrations'
+import { useAuth } from '../auth/AuthProvider'
 
 
 export default function SignIn() {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
+  const { login } = useAuth();
   
   const {
     values,
@@ -31,8 +33,9 @@ export default function SignIn() {
     console.log('Submitting:', formValues)
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
+    login();
     // Navigate on success
-    navigate('/dashboard')
+    navigate('/landing')
   }
 
   return (

@@ -39,6 +39,8 @@ import PaymentCompletePage from "./pages/PaymentCompletePage";
 import PaymentReceivedPage from "./pages/PaymentReceivedPage";
 import SendCryptoPage from "./pages/SendCryptoPage";
 
+import { AuthProvider } from "./auth/AuthProvider";
+
 function App() {
 
   const router = createBrowserRouter(
@@ -98,9 +100,9 @@ function App() {
   )
 
   return (
-    <>
+    <AuthProvider>
       <RouterProvider router = { router }  />
-    </>
+    </AuthProvider>
   )
 }
 
