@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../assets/image/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
+import { Bell, HelpCircle, Settings } from 'lucide-react';
 
 export default function Navbar() {
     const { isAuthenticated } = useAuth();
@@ -21,6 +22,36 @@ export default function Navbar() {
         </div>
         {isAuthenticated ? (
             <>
+            <div className="flex items-center space-x-4">
+        {/* Amount Display */}
+        <div className="flex items-center space-x-2">
+          <span className="text-green-600 font-medium">$</span>
+          <span className="text-[14px]">90000</span>
+        </div>
+
+        {/* Icons */}
+        <div className="flex items-center space-x-4">
+          <Settings className="w-5 h-5 text-gray-600 cursor-pointer" />
+          <Bell className="w-5 h-5 text-gray-600 cursor-pointer" />
+          <HelpCircle className="w-5 h-5 text-gray-600 cursor-pointer" />
+        </div>
+
+        {/* Language Selector */}
+        <div className="flex items-center space-x-2 cursor-pointer">
+          <img 
+            src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/us.svg" 
+            alt="US Flag" 
+            className="w-5 h-4"
+          />
+        </div>
+
+        {/* Profile */}
+        <div className="flex items-center space-x-2 cursor-pointer">
+          <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+            <span className="text-sm">JD</span>
+          </div>
+        </div>
+      </div>
             </>
         ) : (
             <div className="flex items-center space-x-1  text-[12px] dm-sans-medium">

@@ -35,7 +35,7 @@ export default function SignIn() {
     await new Promise(resolve => setTimeout(resolve, 1000))
     login();
     // Navigate on success
-    navigate('/landing')
+    navigate('/')
   }
 
   return (
