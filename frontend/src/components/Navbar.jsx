@@ -55,7 +55,7 @@ export default function Navbar() {
         </div>
 
         {/* Language Selector */}
-        <div className="flex items-center rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer">
+        <div className="flex items-center rounded-full bg-white w-8 h-8 justify-center space-x-2 cursor-pointer">
           <img 
             src={language.english}
             alt="US Flag" 
