@@ -34,7 +34,8 @@ import CardPage from "./pages/CardPage";
 import ReviewDetailsPage from "./pages/ReviewDetailsPage";
 import ConfirmCryptoPage from "./pages/ConfirmCryptoPage";
 import PendingPage from "./pages/PendingPage";
-// import NotFoundPage from "./pages/NotFoundPage"; // Assuming you have a 404 page
+import NotFoundPage from "./pages/NotFoundPage";
+import PaymentCompletePage from "./pages/PaymentCompletePage";
 
 function App() {
 
@@ -79,8 +80,9 @@ function App() {
                   <Route path="cash" element={<CashPage />} />
                   <Route path="card" element={<CardPage />} />
               </Route>
-              <Route path="payment-complete">
+              <Route path="payment">
               <Route index element={<PendingPage />} />
+              <Route path="success" element={<PaymentCompletePage />} />
               </Route>
               <Route path="review-details" element={<ReviewDetailsPage />} />
             </Route>
