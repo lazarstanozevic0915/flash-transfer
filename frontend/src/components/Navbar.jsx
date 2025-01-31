@@ -6,11 +6,13 @@ import { Bell, ChevronDown, HelpCircle, Settings } from 'lucide-react';
 import { blogUser1Img, icons, language } from '../assets/image';
 import ProfileDropdown from './ProfileDropdown';
 import WalletDropdown from './WalletDropdown';
+import CurrencyLanguageDropdown from './CurrencyLanguageDropdown';
 
 export default function Navbar() {
     const { isAuthenticated } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isWalletDropdownOpen, setIsWalletDropdownOpen] = useState(false);
+    const [isCurrencyDropdownOpen, setIsCurrencyDropdownOpen] = useState(false);
 
   return (
     <nav className='flex items-center justify-between relative z-50 border-b bg-[#F6F6F6] border-[#D3D8DD] px-32 py-3'>
@@ -55,12 +57,18 @@ export default function Navbar() {
         </div>
 
         {/* Language Selector */}
-        <div className="flex items-center rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer">
+        <div className="flex items-center  relative rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer"  onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}>
           <img 
             src={language.english}
             alt="US Flag" 
             className="w-4 h-4"
           />
+          <div>
+          <CurrencyLanguageDropdown
+            isOpen={isCurrencyDropdownOpen} 
+            onClose={() => setIsCurrencyDropdownOpen(false)} 
+            />
+          </div>
         </div>
 
         {/* Profile */}
