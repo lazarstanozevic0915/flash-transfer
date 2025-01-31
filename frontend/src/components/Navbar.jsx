@@ -55,6 +55,7 @@ export default function Navbar() {
         </div>
 
         {/* Language Selector */}
+        <div className="flex items-center  relative rounded-full bg-white w-8 h-8 justify-center space-x-2 cursor-pointer"  onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}>
         <div className=" rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer">
           <img 
             src={language.english}
