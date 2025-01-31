@@ -55,9 +55,9 @@ const Footer = () => {
             <h3 className="font-medium mb-4">Company</h3>
             <ul className="space-y-2 text-sm text-gray-600 dm-sans-light">
               <li><NavLink to="/about">About</NavLink></li>
-              <li><NavLink to="/faq">FAQ</NavLink></li>
+              <li><NavLink to="/help">FAQ</NavLink></li>
               <li><NavLink to="/blog">Blog</NavLink></li>
-              <li><NavLink to="/countries">Countries</NavLink></li>
+              <li><NavLink to="/currency">Countries</NavLink></li>
             </ul>
           </div>
 
@@ -67,8 +67,8 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-gray-600 dm-sans-light">
               <li><NavLink to="/download">Download App</NavLink></li>
               <li><NavLink to="/currency">All currency</NavLink></li>
-              <li><NavLink to="/support">Support</NavLink></li>
-              <li><NavLink to="/status">Status</NavLink></li>
+              <li><NavLink to="/contact-us">Support</NavLink></li>
+              <li><NavLink to="/history">Status</NavLink></li>
             </ul>
           </div>
 

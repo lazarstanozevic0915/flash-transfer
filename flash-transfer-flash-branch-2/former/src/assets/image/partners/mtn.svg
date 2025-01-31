@@ -1,0 +1,25 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 60" width="140" height="60">
+	<title>mnt</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m0 5h140v50h-140z"/>
+		</clipPath>
+	</defs>
+	<style>
+		.s0 { fill: #006891 } 
+		.s1 { fill: none;stroke: #006891;stroke-miterlimit:3.8636;stroke-width: .4 } 
+		.s2 { fill: #ffffff } 
+		.s3 { fill: #ee4034 } 
+		.s4 { fill: #ffc325 } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g>
+			<path class="s0" d="m7 30c0-13.6 28.2-24.6 63-24.6 34.8 0 63 11 63 24.6 0 13.6-28.2 24.6-63 24.6-34.8 0-63-11-63-24.6z"/>
+			<path class="s1" d="m7 30c0-13.6 28.2-24.6 63-24.6 34.8 0 63 11 63 24.6 0 13.6-28.2 24.6-63 24.6-34.8 0-63-11-63-24.6z"/>
+			<path fill-rule="evenodd" class="s2" d="m30.1 41.9l6.5-24.4h10.4v14.4l7-14.4h10.5l-6.5 24.4h-6.8l4.1-15.6-8.3 15.6h-5.5v-15.6h-0.1l-4.2 15.6z"/>
+			<path fill-rule="evenodd" class="s3" d="m66.3 42.4l1-3.4h7.5l-0.9 3.4z"/>
+			<path fill-rule="evenodd" class="s4" d="m67.5 38l3.8-14.2h-6.8l1.7-6.3h21.2l-1.7 6.3h-6.8l-3.8 14.2z"/>
+			<path fill-rule="evenodd" class="s2" d="m82.5 41.9l6.5-24.4h7.4l3.3 13.1h0.1l3.5-13.1h6.8l-6.5 24.4h-7l-3.6-13.3h-0.1l-3.6 13.3z"/>
+		</g>
+	</g>
+</svg>
