@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/image/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { Bell, ChevronDown, HelpCircle, Settings } from 'lucide-react';
 import { blogUser1Img, icons, language } from '../assets/image';
+import ProfileDropdown from './ProfileDropdown';
 
 export default function Navbar() {
     const { isAuthenticated } = useAuth();
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   return (
     <nav className='flex items-center justify-between relative z-20 border-b bg-[#F6F6F6] border-[#D3D8DD] px-32 py-3'>
         <div className="flex space-x-8">
@@ -53,10 +56,15 @@ export default function Navbar() {
         </div>
 
         {/* Profile */}
-        <div className="flex items-center space-x-2 cursor-pointer">
+        <div className="flex items-center space-x-2 cursor-pointer relative z-50"  onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
           <div className=" p-1 rounded-full gap-2 bg-white flex text-[#D3D8DD] border-[#D3D8DD] items-center justify-center">
             <img src={blogUser1Img} alt="" className='w-7 h-7 object-fill' />
             <ChevronDown size={16} />
+
+            <ProfileDropdown 
+            isOpen={isDropdownOpen} 
+            onClose={() => setIsDropdownOpen(false)} 
+          />
           </div>
         </div>
       </div>
