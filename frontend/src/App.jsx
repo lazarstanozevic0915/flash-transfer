@@ -36,6 +36,7 @@ import ConfirmCryptoPage from "./pages/ConfirmCryptoPage";
 import PendingPage from "./pages/PendingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PaymentCompletePage from "./pages/PaymentCompletePage";
+import PaymentReceivedPage from "./pages/PaymentReceivedPage";
 
 function App() {
 
@@ -83,6 +84,7 @@ function App() {
               <Route path="payment">
               <Route index element={<PendingPage />} />
               <Route path="success" element={<PaymentCompletePage />} />
+              <Route path="complete" element={<PaymentReceivedPage />} />
               </Route>
               <Route path="review-details" element={<ReviewDetailsPage />} />
             </Route>
