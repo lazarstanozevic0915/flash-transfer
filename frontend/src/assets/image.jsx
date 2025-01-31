@@ -61,6 +61,9 @@ import search from './image/icons/search.svg';
 import filter from './image/icons/filter.svg';
 
 import customerSupport from './image/icons/customerSupport.svg';
+import moneyIcon from './image/icons/moneyIcon.svg';
+import receiverSup from './image/icons/receiverSup.svg';
+import receiverCard from './image/icons/receiverCard.svg';
 import employees from './image/icons/employees.svg';
 import secureTransferIcon from './image/icons/secureTransfer.svg';
 
@@ -280,6 +283,9 @@ export const icons = {
   sendHandIcon,
   swapIcon,
   customerSupport,
+  moneyIcon,
+  receiverSup,
+  receiverCard,
   employees,
   secureTransferIcon,
   phone,
