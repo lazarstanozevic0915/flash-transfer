@@ -37,6 +37,7 @@ import PendingPage from "./pages/PendingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PaymentCompletePage from "./pages/PaymentCompletePage";
 import PaymentReceivedPage from "./pages/PaymentReceivedPage";
+import SendCryptoPage from "./pages/SendCryptoPage";
 
 function App() {
 
@@ -74,6 +75,7 @@ function App() {
               <Route path="receiver-info" >
                   <Route index element={<ReceiverInfoPage />} />
                   <Route path="beneficiary" element={<BeneficiaryInfoPage />} />
+                  <Route path="send-crypto" element={<SendCryptoPage />} />
                   <Route path="confirm-crypto" element={<ConfirmCryptoPage />} />
               </Route>
               <Route path="receiver-method" >
