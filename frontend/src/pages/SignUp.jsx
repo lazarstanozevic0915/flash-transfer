@@ -35,7 +35,7 @@ export default function SignUp() {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     // Navigate on success
-    navigate('/dashboard')
+    navigate('/signIn')
   }
 
   return (
