@@ -31,9 +31,7 @@ import BeneficiaryInfoPage from "./pages/BeneficiaryInfoPage";
 import MobileMoneyPage from "./pages/MobileMoneyPage";
 import CashPage from "./pages/CashPage";
 import CardPage from "./pages/CardPage";
-import ConfirmCryptoPage from "./pages/ConfirmCryptoPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import PendingPage from "./pages/PendingPage";
+import ReviewDetailsPage from "./pages/ReviewDetailsPage";
 // import NotFoundPage from "./pages/NotFoundPage"; // Assuming you have a 404 page
 
 function App() {
@@ -66,20 +64,19 @@ function App() {
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/currency" element={<AllCurrencyPage />} />
             <Route path="/send">
-            <Route index element={<SendPage />} />
-            <Route path="new-contact" element={<NewContactPage />} /> {/* Relative to /send */}
-            <Route path="my-contact" element={<MyContactPage />} /> {/* Relative to /send */}
-            <Route path="receiver-info" >
-                <Route index element={<ReceiverInfoPage />} />
-                <Route path="beneficiary" element={<BeneficiaryInfoPage />} />
-                <Route path="confirm-crypto" element={<ConfirmCryptoPage />} />
-                <Route path="pending" element={<PendingPage />} />
-            </Route>
-            <Route path="receiver-method" >
-                <Route index element={<MobileMoneyPage />} />
-                <Route path="cash" element={<CashPage />} />
-                <Route path="card" element={<CardPage />} />
-            </Route>
+              <Route index element={<SendPage />} />
+              <Route path="new-contact" element={<NewContactPage />} /> {/* Relative to /send */}
+              <Route path="my-contact" element={<MyContactPage />} /> {/* Relative to /send */}
+              <Route path="receiver-info" >
+                  <Route index element={<ReceiverInfoPage />} />
+                  <Route path="beneficiary" element={<BeneficiaryInfoPage />} />
+              </Route>
+              <Route path="receiver-method" >
+                  <Route index element={<MobileMoneyPage />} />
+                  <Route path="cash" element={<CashPage />} />
+                  <Route path="card" element={<CardPage />} />
+              </Route>
+              <Route path="review-details" element={<ReviewDetailsPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
       </Route>
