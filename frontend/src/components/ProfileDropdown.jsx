@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   LogOut,
@@ -12,9 +12,11 @@ import {
   Settings
 } from 'lucide-react';
 import { blogUser1Img } from '../assets/image';
+import { useAuth } from '../auth/AuthProvider';
 
-const ProfileDropdown = ({ isOpen, onClose }) => {
+const ProfileDropdown = ({ isOpen }) => {
   if (!isOpen) return null;
+  const { logout } = useAuth();
 
   return (
     <div className="absolute right-0 top-8 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 border border-gray-100 ">
@@ -79,7 +81,7 @@ const ProfileDropdown = ({ isOpen, onClose }) => {
         </NavLink>
         
         <button 
-          onClick={onClose}
+          onClick={() => logout()}
           className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
         >
           <LogOut className="w-4 h-4" />
