@@ -11,6 +11,7 @@ import Bank from '../icons/Bank';
 import CashPick from '../icons/CashPick';
 import CashWallet from '../icons/cashWallet';
 import MobileMoney from '../icons/MobileMoney';
+import { NavLink } from 'react-router-dom';
 
 const SendPage = () => {
   const [activePage, setActivePage] = useState('form');
@@ -33,8 +34,8 @@ const SendPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-full relative flex justify-center dm-sans">
-        <div className="w-full h-[50%] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
+      <div className="w-full relative min-h-screen flex justify-center dm-sans">
+        <div className="w-full h-[50vh] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
           <div className="absolute top-2 -right-20 z-10">
             <img
               src={heroBackground}
@@ -51,7 +52,7 @@ const SendPage = () => {
           </div>
         </div>
         
-        <div className={`w-[700px] min-h-screen  ${activePage === 'form' ? 'h-[500px]' : 'h-[650px]'} space-y-6 relative z-20 flex flex-col items-center justify-center`}>
+        <div className={`w-[700px] min-h-screen space-y-6 relative z-20 flex flex-col items-center justify-center`}>
           <span className="text-[44px]/12 dm-sans-medium">
             Send through
           </span>
@@ -121,7 +122,7 @@ const SendPage = () => {
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <button className='w-full p-3 border rounded-xl text-[14px] border-[#2475FF] text-[#2475FF]'>Add From Contact</button>
+                        <NavLink to={`/send/new-contact`} className='w-full p-3 flex items-center justify-center border rounded-xl text-[14px] border-[#2475FF] text-[#2475FF]'>Add From Contact</NavLink>
                         <button className='w-full p-3 rounded-xl text-[14px] bg-[#FFC000]'>Add New</button>
                     </div>
                 </form>

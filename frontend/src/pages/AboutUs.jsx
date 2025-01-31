@@ -38,7 +38,7 @@ return (
                     <div className="w-full h-[70%] rounded-4xl border-white shadow-2xl border-6 overflow-hidden">
                         <div className="relative w-full h-full rounded-4xl overflow-hidden">
                             <ReactPlayer
-                                url="https://www.youtube.com/watch?v=LWkE3vCDaWk"
+                                url="https://www.youtube.com/watch?v=5olILJjMlVM"
                                 width="100%"
                                 height="100%"
                                 controls

@@ -52,6 +52,7 @@ import trackTransfer from './image/icons/trackTransfer.svg';
 import user from './image/icons/user.svg';
 import recieveIcon from './image/icons/receive.svg';
 import sendIcon from './image/icons/send.svg';
+import sendHandIcon from './image/icons/sendHand.svg';
 import swapIcon from './image/icons/swap.svg';
 import phone from './image/icons/phone.svg';
 import download from './image/icons/Download.svg';
@@ -134,10 +135,14 @@ import coinbase from './image/partners/coinbase.svg';
 import julaya from './image/partners/julaya.svg';
 import microsoft from './image/partners/microsoft.svg';
 import mooveMoney from './image/partners/mooveMoney.svg';
+import moov2 from './image/partners/moov2.svg';
 import mtn from './image/partners/mtn.svg';
+import mtn2 from './image/partners/mtn2.svg';
 import orangeMoney from './image/partners/orangeMoney.svg';
+import orangeMoney2 from './image/partners/orangeMoney2.svg';
 import walletConnect from './image/partners/walletConnect.svg';
 import wave from './image/partners/wave.svg';
+import wave2 from './image/partners/wave2.svg';
 
 import customer1 from './image/users/user1.png';
 import customer2 from './image/users/user2.png';
@@ -205,10 +210,14 @@ export const coinbaseImg = coinbase;
 export const julayaImg = julaya;
 export const microsoftImg = microsoft;
 export const mooveMoneyImg = mooveMoney;
+export const moov2Img = moov2;
 export const mtnImg = mtn;
+export const mtn2Img = mtn2;
 export const orangeMoneyImg = orangeMoney;
+export const orangeMoney2Img = orangeMoney2;
 export const walletConnectImg = walletConnect;
 export const waveImg = wave;
+export const wave2Img = wave2;
 
 export const customer1Img = customer1;
 export const customer2Img = customer2;
@@ -268,6 +277,7 @@ export const icons = {
   user,
   recieveIcon,
   sendIcon,
+  sendHandIcon,
   swapIcon,
   customerSupport,
   employees,
