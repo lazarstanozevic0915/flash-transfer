@@ -11,17 +11,18 @@ import {
   ImageIcon,
   Settings
 } from 'lucide-react';
+import { blogUser1Img } from '../assets/image';
 
 const ProfileDropdown = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 border border-gray-100 z-50">
+    <div className="absolute right-0 top-8 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 border border-gray-100 ">
       {/* Profile Header */}
       <div className="px-4 py-2 border-b border-gray-100">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
-            <span>AS</span>
+            <img src={blogUser1Img} alt="" />
           </div>
           <div>
             <h4 className="text-sm font-medium">Alex Smeth</h4>
