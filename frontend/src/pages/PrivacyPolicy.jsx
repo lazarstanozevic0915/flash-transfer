@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import heroBackground from '../assets/image/hero-background.png'
 import logo from '../assets/image/logo.svg'
 import { NavLink } from 'react-router-dom'
+import Navbar from '../components/Navbar';
 
 
 export default function PrivacyPolicy() {
@@ -16,25 +17,8 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-            <nav className='flex items-center justify-between border-b border-[#D3D8DD] px-32 py-3'>
-                <div className="flex space-x-8">
-                    <div className="flex items-center space-x-1">
-                        <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px]' />
-                        <span className='inter-semibold text-[16px]'>Flash Transfer</span>
-                    </div>
-                    <div className="flex space-x-5 mt-1 items-center dm-sans-light text-[#6E757D] text-[12px]">
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Send</NavLink>
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Find location</NavLink>
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Track a transfer</NavLink>
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Help</NavLink>
-                    </div>
-                </div>
-                <div className="flex items-center space-x-1  text-[12px] dm-sans-medium">
-                    <NavLink to={``} className={`py-4 px-6 hover:scale-105`}>Login</NavLink>
-                    <NavLink to={``} className={`py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105`}>Sign up</NavLink>
-                </div>
-            </nav>
-      <main className=" mx-auto px-0 ">
+            <Navbar />
+                   <main className=" mx-auto px-0 ">
         <div className="text-center mb-28 bg-gray-100  py-38 rounded-b-2xl relative ">
         <div className="absolute -bottom-10 -left-70 z-10">
                 <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />

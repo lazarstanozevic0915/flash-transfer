@@ -18,8 +18,8 @@ export default function Navbar() {
             </div>
         </div>
         <div className="flex items-center space-x-1  text-[12px] dm-sans-medium">
-            <NavLink to={``} className={`py-4 px-6 hover:scale-105`}>Login</NavLink>
-            <NavLink to={``} className={`py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105`}>Sign up</NavLink>
+            <NavLink to={`/signin`} className={`py-4 px-6 hover:scale-105`}>Login</NavLink>
+            <NavLink to={`/signup`} className={`py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105`}>Sign up</NavLink>
         </div>
     </nav>
   )

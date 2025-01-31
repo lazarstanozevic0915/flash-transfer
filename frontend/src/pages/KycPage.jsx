@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import check from "../assets/image/icons/check.svg"
 import check1 from "../assets/image/icons/check1.svg"
 import caution from "../assets/image/icons/caution.svg"
+import Navbar from '../components/Navbar';
 
 const VerificationCard = ({ title, items, isVerified, buttonText, buttonStyle }) => {
   return (
@@ -63,24 +64,7 @@ export default function KycPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-       <nav className='flex items-center justify-between border-b border-[#D3D8DD] px-32 py-3'>
-                <div className="flex space-x-8">
-                    <div className="flex items-center space-x-1">
-                        <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px]' />
-                        <span className='inter-semibold text-[16px]'>Flash Transfer</span>
-                    </div>
-                    <div className="flex space-x-5 mt-1 items-center dm-sans-light text-[#6E757D] text-[12px]">
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Send</NavLink>
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Find location</NavLink>
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Track a transfer</NavLink>
-                        <NavLink to={``} className={`hover:text-[#111] hover:dm-sans-bold`}>Help</NavLink>
-                    </div>
-                </div>
-                <div className="flex items-center space-x-1  text-[12px] dm-sans-medium">
-                    <NavLink to={``} className={`py-4 px-6 hover:scale-105`}>Login</NavLink>
-                    <NavLink to={``} className={`py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105`}>Sign up</NavLink>
-                </div>
-            </nav>
+       <Navbar />
       <main className=" mx-auto px-0">
         <div className="text-center mb-1 py-18">
                 <h1 className="text-5xl font-semibold mb-6">Personal Verification</h1>

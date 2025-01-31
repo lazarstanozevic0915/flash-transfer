@@ -31,6 +31,9 @@ import BeneficiaryInfoPage from "./pages/BeneficiaryInfoPage";
 import MobileMoneyPage from "./pages/MobileMoneyPage";
 import CashPage from "./pages/CashPage";
 import CardPage from "./pages/CardPage";
+import ConfirmCryptoPage from "./pages/ConfirmCryptoPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import PendingPage from "./pages/PendingPage";
 // import NotFoundPage from "./pages/NotFoundPage"; // Assuming you have a 404 page
 
 function App() {
@@ -69,6 +72,8 @@ function App() {
             <Route path="receiver-info" >
                 <Route index element={<ReceiverInfoPage />} />
                 <Route path="beneficiary" element={<BeneficiaryInfoPage />} />
+                <Route path="confirm-crypto" element={<ConfirmCryptoPage />} />
+                <Route path="pending" element={<PendingPage />} />
             </Route>
             <Route path="receiver-method" >
                 <Route index element={<MobileMoneyPage />} />
@@ -76,7 +81,7 @@ function App() {
                 <Route path="card" element={<CardPage />} />
             </Route>
             </Route>
-            {/* <Route path="*" element={<NotFoundPage />} /> 404 Page */}
+            <Route path="*" element={<NotFoundPage />} />
       </Route>
     )
   )

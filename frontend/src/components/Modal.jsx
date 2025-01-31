@@ -4,7 +4,7 @@ export default function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
+    <div className="fixed inset-0 z-50 overflow-y-auto ">
       {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-black/20 backdrop-blur-[2px]"
@@ -12,7 +12,7 @@ export default function Modal({ isOpen, onClose, children }) {
       />
       
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4">
+      <div className="flex min-h-full  items-center justify-center p-8">
         <div className="relative w-full max-w-md overflow-hidden rounded-lg bg-white p-6 shadow-xl">
           <button
             onClick={onClose}
