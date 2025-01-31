@@ -2,7 +2,8 @@ import React from 'react'
 import logo from '../assets/image/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
-import { Bell, HelpCircle, Settings } from 'lucide-react';
+import { Bell, ChevronDown, HelpCircle, Settings } from 'lucide-react';
+import { blogUser1Img, icons, language } from '../assets/image';
 
 export default function Navbar() {
     const { isAuthenticated } = useAuth();
@@ -22,7 +23,7 @@ export default function Navbar() {
         </div>
         {isAuthenticated ? (
             <>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
         {/* Amount Display */}
         <div className="flex items-center space-x-2">
           <span className="text-green-600 font-medium">$</span>
@@ -30,25 +31,32 @@ export default function Navbar() {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center space-x-4">
-          <Settings className="w-5 h-5 text-gray-600 cursor-pointer" />
-          <Bell className="w-5 h-5 text-gray-600 cursor-pointer" />
-          <HelpCircle className="w-5 h-5 text-gray-600 cursor-pointer" />
+        <div className="flex items-center space-x-3">
+          <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+            <img src={icons.nft} alt="" className="w-4 h-4" />
+          </div>
+          <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+            <img src={icons.wallet} alt="" className="w-4 h-4" />
+          </div>
+          <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+            <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
+          </div>
         </div>
 
         {/* Language Selector */}
-        <div className="flex items-center space-x-2 cursor-pointer">
+        <div className="flex items-center rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer">
           <img 
-            src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/us.svg" 
+            src={language.english}
             alt="US Flag" 
-            className="w-5 h-4"
+            className="w-4 h-4"
           />
         </div>
 
         {/* Profile */}
         <div className="flex items-center space-x-2 cursor-pointer">
-          <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-            <span className="text-sm">JD</span>
+          <div className=" p-1 rounded-full gap-2 bg-white flex text-[#D3D8DD] border-[#D3D8DD] items-center justify-center">
+            <img src={blogUser1Img} alt="" className='w-7 h-7 object-fill' />
+            <ChevronDown size={16} />
           </div>
         </div>
       </div>
