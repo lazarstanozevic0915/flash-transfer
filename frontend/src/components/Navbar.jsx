@@ -5,10 +5,12 @@ import { useAuth } from '../auth/AuthProvider'
 import { Bell, ChevronDown, HelpCircle, Settings } from 'lucide-react';
 import { blogUser1Img, icons, language } from '../assets/image';
 import ProfileDropdown from './ProfileDropdown';
+import WalletDropdown from './WalletDropdown';
 
 export default function Navbar() {
     const { isAuthenticated } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isWalletDropdownOpen, setIsWalletDropdownOpen] = useState(false);
 
   return (
     <nav className='flex items-center justify-between relative z-50 border-b bg-[#F6F6F6] border-[#D3D8DD] px-32 py-3'>
@@ -38,8 +40,14 @@ export default function Navbar() {
           <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
             <img src={icons.nft} alt="" className="w-4 h-4" />
           </div>
-          <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+          <div className='w-7 h-7 items-center relative flex justify-center rounded-full bg-white ' onClick={() => setIsWalletDropdownOpen(!isWalletDropdownOpen)}>
             <img src={icons.wallet} alt="" className="w-4 h-4" />
+            <div>
+            <WalletDropdown 
+            isOpen={isWalletDropdownOpen} 
+            onClose={() => setIsWalletDropdownOpen(false)} 
+            />
+            </div>
           </div>
           <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
             <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
