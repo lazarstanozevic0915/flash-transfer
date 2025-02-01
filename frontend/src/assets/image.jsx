@@ -60,6 +60,11 @@ import letter from './image/icons/letter-send.svg';
 import search from './image/icons/search.svg';
 import filter from './image/icons/filter.svg';
 
+import flashIcon from './image/icons/flashLogo.svg';
+import metamaskIcon from './image/icons/metamask-icon.svg';
+import phantomIcon from './image/icons/phantom.svg';
+import ledgerIcon from './image/icons/ledgerIcon.svg';
+
 import customerSupport from './image/icons/customerSupport.svg';
 import moneyIcon from './image/icons/moneyIcon.svg';
 import receiverSup from './image/icons/receiverSup.svg';
@@ -391,3 +396,10 @@ export const socialIcons = {
   twitterIcon,
   youtubeIcon,
 };
+
+export const walletIcons = {
+  flashIcon,
+  metamaskIcon,
+  ledgerIcon,
+  phantomIcon
+}

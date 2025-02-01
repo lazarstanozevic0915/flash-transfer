@@ -40,9 +40,13 @@ import FAQSection from '../components/FAQSection'
 import TestimonialsSection from '../components/TestimonialSection'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import { useAuth } from '../auth/AuthProvider'
+import { walletIcons } from '../assets/image'
 
 export default function Landing() {
 
+    const { connectedWallet } = useAuth();
+    
     const faqData = [
         {
             title: "How send crypto to Flash Transfer?",
@@ -95,7 +99,20 @@ export default function Landing() {
                     </div>
                     <div className="w-[440px] h-full p-4 rounded-2xl shadow-2xl bg-white">
                         <div className="w-full h-full flex flex-col space-y-1">
-                            <div className="w-full h-[48%] relative flex flex-col gap-2">
+                            {
+                                connectedWallet !== '' && (
+                                    <div className='h-[8%] border p-0.5 w-full mb-2 flex items-center justify-center gap-1 rounded-lg bg-[rgba(0,199,53,0.2)] border-[rgba(0,199,53,0.6)]'>
+                                        { connectedWallet === 'Flash Wallet' && <img src={walletIcons.flashIcon} alt="" className='w-7 h-7 onject-fill' /> }
+                                        { connectedWallet === 'Metamask' && <img src={walletIcons.metamaskIcon} alt="" className='w-5 h-5 mr-1 onject-fill' /> }
+                                        { connectedWallet === 'Phantom' && <img src={walletIcons.phantomIcon} alt="" className='w-5 h-5 mr-1 onject-fill' /> }
+                                        { connectedWallet === 'Ledger' && <img src={walletIcons.ledgerIcon} alt="" className='w-5 h-5 mr-1 onject-fill' /> }
+                                        <span className='font-normal text-[#181F30] text-[13px]'>
+                                            {`${connectedWallet} - Connected`}
+                                        </span>
+                                    </div>
+                                )
+                            }
+                            <div className={`w-full ${connectedWallet !== '' ? 'h-[40%]' : 'h-[48%]'} relative flex flex-col gap-2`}>
                                 <div className="w-full h-[50%] rounded-2xl bg-[#EFF0F1] p-3">
                                     <div className="w-full h-[30%] flex items-center justify-between">
                                         <div>
