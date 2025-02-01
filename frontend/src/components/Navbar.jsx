@@ -7,12 +7,16 @@ import { blogUser1Img, icons, language } from '../assets/image';
 import ProfileDropdown from './ProfileDropdown';
 import WalletDropdown from './WalletDropdown';
 import CurrencyLanguageDropdown from './CurrencyLanguageDropdown';
+import NFTDropdown from './NFTdropdown';
+import NotificationDropdown from './NotificationDropdown';
 
 export default function Navbar() {
     const { isAuthenticated } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isWalletDropdownOpen, setIsWalletDropdownOpen] = useState(false);
     const [isCurrencyDropdownOpen, setIsCurrencyDropdownOpen] = useState(false);
+    const [isNftDropdownOpen, setIsNftDropdownOpen] = useState(false);
+    const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] = useState(false);
 
   return (
     <nav className='flex items-center justify-between relative z-50 border-b bg-[#F6F6F6] border-[#D3D8DD] px-32 py-3'>
@@ -39,8 +43,14 @@ export default function Navbar() {
 
                 {/* Icons */}
                 <div className="flex items-center space-x-3">
-                  <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+                  <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white relative' onClick={() => setIsNftDropdownOpen(!isNftDropdownOpen)}>
                     <img src={icons.nft} alt="" className="w-4 h-4" />
+                    <div>
+                      <NFTDropdown 
+                      isOpen={isNftDropdownOpen}
+                      onClose={() => setIsNftDropdownOpen(false)}
+                      />
+                    </div>
                   </div>
                   <div className='w-7 h-7 items-center relative flex justify-center rounded-full bg-white ' onClick={() => setIsWalletDropdownOpen(!isWalletDropdownOpen)}>
                     <img src={icons.wallet} alt="" className="w-4 h-4" />
@@ -51,8 +61,14 @@ export default function Navbar() {
                       />
                     </div>
                   </div>
-                  <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+                  <div className='w-7 h-7 items-center relative flex justify-center rounded-full bg-white' onClick={() => setIsNotificationDropdownOpen(!isNotificationDropdownOpen)}>
                     <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
+                    <div>
+                    <NotificationDropdown 
+                      isOpen={isNotificationDropdownOpen}
+                      onClose={() => setIsNotificationDropdownOpen(false)}
+                    />
+                    </div>
                   </div>
                 </div>
 
