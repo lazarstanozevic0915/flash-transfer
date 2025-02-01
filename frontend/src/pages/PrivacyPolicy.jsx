@@ -18,30 +18,30 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
             <Navbar />
-                   <main className=" mx-auto px-0 ">
-        <div className="text-center mb-28 bg-gray-100  py-38 rounded-b-2xl relative ">
-        <div className="absolute -bottom-10 -left-70 z-10">
+        <main className=" mx-auto px-0 ">
+        <div className="text-center mb-28 max-md:mb-16 bg-gray-100  py-38 rounded-b-2xl relative max-md:py-32 max-md:px-2 ">
+        <div className="absolute -bottom-10 -left-70 z-10 max-md:hidden">
                 <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
             </div>
-        <div className="absolute -bottom-10 -right-70 z-10">
-                <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
+        <div className="absolute -bottom-10 max-md:right-10 -right-70 z-10">
+                <img src={heroBackground} alt="" className='h-[500px] max-md:max-w-screen w-[820px] object-fill' />
             </div>
-        <h1 className="text-5xl font-semibold mb-6">Privacy Policy</h1>
-          <p className="text-gray-600">
+        <h1 className="text-5xl font-semibold mb-6 max-md:text-4xl max-md:mb-1">Privacy Policy</h1>
+          <p className="text-gray-600 max-md:text-lg">
             Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-6 mt-1">
-          <div className="col-span-2">
-            <div className="mb-12 px-20">
-              <h2 className=" ml-6 text-3xl font-semibold mb-4">Privacy Policy - France</h2>
-              <p className="ml-6 text-gray-600 mb-4">
-                Can't find the answer you're looking for? Reach out to our <a href="/support" className="text-blue-600">customer support</a> team.
+        <div className="grid grid-cols-3 gap-6 mt-1 max-md:block">
+          <div className="col-span-2 max-md:block max-md:text-lg">
+            <div className="mb-12 px-20 max-md:px-1">
+              <h2 className=" ml-6 text-3xl font-semibold max-md:text-2xl mb-4 max-md:mb-2 max-md:mr-10">Privacy Policy - France</h2>
+              <p className="ml-6 text-gray-600 mb-4 max-md:mr-10">
+                Can't find the answer you're looking for? Reach out to our <a href="/support" className="text-[#2475FF]">customer support</a> team.
               </p>
 
               <div className=" p-6 mb-8">
-                <h3 className="text-3xl font-semibold mb-4">Introduction</h3>
+                <h3 className="text-3xl font-semibold mb-4 max-md:text-2xl max-md:mb-2">Introduction</h3>
                 <p className="text-gray-600 mb-4">
                   Your privacy and keeping your personal information secure are extremely important to us. At WorldRemit Limited, we are committed to protecting and respecting Your privacy and handling Your information in an open and transparent manner.
                 </p>
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
               </div>
 
               <div className=" p-6 mb-8">
-                <h3 className="text-3xl font-semibold mb-4">If you don't want to read all the details. Here are the highlights that you may really wish to know:</h3>
+                <h3 className="text-3xl font-semibold mb-4 max-md:text-2xl max-md:mb-2">If you don't want to read all the details. Here are the highlights that you may really wish to know:</h3>
                 <p className="text-gray-600 mb-4">
                 Your privacy and keeping your personal information secure are extremely important to us. At WorldRemit Limited, we are committed to protecting and respecting Your privacy and handling Your information in an open and transparent manner.
                 </p>
@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
               </div>
 
               <div className=" p-6 mb-8">
-                <h3 className="text-3xl font-semibold mb-4">Who are we?</h3>
+                <h3 className="text-3xl font-semibold mb-4 max-md:text-2xl max-md:mb-2">Who are we?</h3>
                 <p className="text-gray-600 mb-4">
                 This website is operated and provided by WorldRemit Limited ("WorldRemit", "we", "us", "our") having its registered office at 62 Buckingham Gate, London, SW1E 6AJ. 
                 </p>
@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
               </div>
 
               <div className=" p-6 mb-8">
-                <h3 className="text-3xl font-semibold mb-4">How we use your personal information</h3>
+                <h3 className="text-3xl font-semibold mb-4 max-md:text-2xl max-md:mb-2">How we use your personal information</h3>
                 <p className="text-gray-600 mb-4">
                 Our primary purpose in collecting user information is to provide You with a safe, smooth, efficient, and customised experience and to provide the services You have requested from us. We may also use the information that You have provided to ensure that the content on our site is presented in the most effective manner for You and Your computer or device.
                 </p>
@@ -145,13 +145,13 @@ export default function PrivacyPolicy() {
             </div>
           </div>
 
-          <div className="border border-gray-300 rounded-lg p-4 w-full max-w-sm h-max">
+          <div className="border border-gray-300 rounded-lg p-4 w-full max-w-sm h-max max-md:mx-2 max-md:mb-12 max-md:w-[95%] ">
               <h3 className="text-lg font-semibold mb-3">Related</h3>
               <hr className="border-gray-300 mb-3" />
 
               <nav>
                 {relatedLinks.map((link, index) => (
-                  <div key={index}>
+                  <div key={index} className='max-md:text-lg'>
                     <a
                       href={link.href}
                       className="block text-blue-600 hover:text-blue-700 py-2"

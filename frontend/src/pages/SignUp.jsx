@@ -6,6 +6,7 @@ import { validateSignUp } from '../utils/validation'
 import AuthLayout from '../components/AuthLayout'
 import SocialButtons from '../components/SocialButtons'
 import { MoneyTransferIllustration } from '../components/Illustrations'
+import logo from '../assets/image/logo.svg'
 
 export default function SignUp() {
   const navigate = useNavigate()
@@ -41,10 +42,16 @@ export default function SignUp() {
   return (
     <AuthLayout illustration={<MoneyTransferIllustration />}>
       <div>
-        <h2 className="text-3xl font-semibold mb-1 text-center">Create an account</h2>
-        <p className="text-gray-600 mb-6 text-center">
+        <div className=' md:hidden flex justify-center items-center'>
+              <img src={logo} alt="" className='h-[80px] w-[80px] object-contain' />
+        </div>
+        <h2 className="text-3xl font-semibold mb-4 text-center">Create an account</h2>
+        <div>
+        <p className="md:text-gray-600 md:mb-6 md:text-center hidden">
           Let's get started with your 30 days free trial
         </p>
+        <p className="md:hidden text-gray-800 text-lg font-semibold text-center mb-10">Register Your Account ✍️</p>
+        </div>
         
         <form onSubmit={(e) => handleSubmit(e, onSubmit)} className="space-y-4">
           <div>
@@ -182,7 +189,7 @@ export default function SignUp() {
 
         <SocialButtons />
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="md:mt-6 text-center text-sm text-gray-600 mt-12">
           Already have an account?{' '}
           <Link to="/" className="text-blue-600 hover:text-blue-500">
             Login

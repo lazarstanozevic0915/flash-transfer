@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 import AuthLayout from '../components/AuthLayout'
 import { PasswordIllustration } from '../components/Illustrations'
+import logo from '../assets/image/logo.svg'
 
 export default function ForgotPassword() {
   return (
     <AuthLayout illustration={<PasswordIllustration />}>
       <div>
-        <h2 className="text-2xl font-semibold mb-1 text-center">Forgot Password</h2>
-        <p className="text-gray-600 mb-6 text-center">Reset your password to securely regain access to your account</p>
+        <div className=' md:hidden flex justify-center items-center  -mt-40 mb-3'>
+                      <img src={logo} alt="" className='h-[80px] w-[80px] object-contain' />
+                </div>
+        <h2 className=" text-3xl font-semibold md:mb-1 mb-3 text-center">Forgot Password</h2>
+        <p className="text-gray-600 mb-6 text-center text-sm">Reset your password to securely regain access <br /> to your account</p>
         
         <form className="space-y-4">
           <div>
@@ -21,7 +25,7 @@ export default function ForgotPassword() {
 
           <button
             type="submit"
-            className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+            className="w-full py-2 px-4 border border-transparent font-medium rounded-md shadow-sm text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
           >
             Send an email
           </button>

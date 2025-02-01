@@ -7,12 +7,12 @@ import AuthLayout from '../components/AuthLayout'
 import SocialButtons from '../components/SocialButtons'
 import { MoneyTransferIllustration } from '../components/Illustrations'
 import { useAuth } from '../auth/AuthProvider'
-
+import logo from '../assets/image/logo.svg'
 
 export default function SignIn() {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
-  const { login } = useAuth();
+  const { login } = useAuth()
   
   const {
     values,
@@ -29,23 +29,28 @@ export default function SignIn() {
   )
 
   const onSubmit = async (formValues) => {
-    // Here you would typically make an API call to authenticate
     console.log('Submitting:', formValues)
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
-    login();
-    // Navigate on success
+    login()
     navigate('/')
   }
 
   return (
-    <AuthLayout illustration={<MoneyTransferIllustration />} >
-      <div>
-        <h2 className="text-3xl font-semibold mb-1 text-center">Sign in</h2>
-        <p className="text-gray-600 mb-6 text-center">Welcome back 👋</p>
+    <AuthLayout illustration={<MoneyTransferIllustration />}>
+      <div className="w-full">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className=' md:hidden flex justify-center items-center'>
+          <img src={logo} alt="" className='h-[80px] w-[80px] object-contain' />
+          </div>
+          <h2 className="text-2xl font-semibold mb-2">Sign in</h2>
+          <p className="text-gray-600">Welcome back 👋</p>
+        </div>
+
+        {/* Form */}
         <form onSubmit={(e) => handleSubmit(e, onSubmit)} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               Email address
             </label>
             <input
@@ -54,7 +59,7 @@ export default function SignIn() {
               value={values.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 
+              className={`block w-full px-4 py-3 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500 
                 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
             />
             {errors.email && (
@@ -63,7 +68,7 @@ export default function SignIn() {
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               Password
             </label>
             <div className="relative">
@@ -73,13 +78,13 @@ export default function SignIn() {
                 value={values.password}
                 onChange={handleChange}
                 placeholder="Password here"
-                className={`mt-1 block w-full px-3 py-2 pr-10 border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500
+                className={`block w-full px-4 py-3 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500
                   ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 mt-1 pr-3 flex items-center"
+                className="absolute right-3 top-1/2 -translate-y-1/2"
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
@@ -109,7 +114,7 @@ export default function SignIn() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 px-4 rounded-lg text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
           >
             {isSubmitting ? 'Signing in...' : 'Log in'}
           </button>
@@ -117,10 +122,10 @@ export default function SignIn() {
 
         <SocialButtons />
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="md:mt-8 text-center text-sm text-gray-600 mt-18">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-blue-600 hover:text-blue-500">
-            Register
+          <Link to="/signup" className="text-blue-600 hover:text-blue-500 font-medium">
+            Register now
           </Link>
         </p>
       </div>

@@ -18,18 +18,18 @@ export default function AppInfo() {
     <div className="min-h-screen bg-white overflow-x-hidden">
        <Navbar />
       <main className=" mx-auto px-0">
-        <div className="text-center mb-28 bg-gray-100  py-38 rounded-b-2xl relative ">
-                <div className="absolute -bottom-10 -left-70 z-10">
-                        <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
-                    </div>
-                <div className="absolute -bottom-10 -right-70 z-10">
-                        <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
-                    </div>
-                <h1 className="text-5xl font-semibold mb-6">Fast Transfer mobile app</h1>
-                  <p className="text-gray-600">
-                    Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
-                  </p>
-        </div>
+         <div className="text-center max-md:text-start  mb-28 max-md:mb-16 bg-gray-100  py-38 rounded-b-2xl relative max-md:py-32 max-md:px-2 ">
+                        <div className="absolute -bottom-10 -left-70 z-10 max-md:hidden ">
+                                <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
+                            </div>
+                        <div className="absolute -bottom-10 max-md:right-10 -right-70 z-10">
+                                <img src={heroBackground} alt="" className='h-[500px] max-md:max-w-screen w-[820px] object-fill' />
+                            </div>
+                        <h1 className="text-5xl font-semibold mb-6 max-md:text-3xl max-md:mb-3 max-md:mr-18">Fast Transfer Mobile App</h1>
+                          <p className="text-gray-600 max-md:text-lg">
+                            Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
+                          </p>
+          </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-2 py-10 mb-16 -mt-8">
           <div className='p-20 flex flex-col justify-center ml-14 '>

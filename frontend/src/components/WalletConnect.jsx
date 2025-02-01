@@ -34,7 +34,7 @@ export default function WalletConnect({ isOpen, onClose }) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="flex justify-between gap-8 dm-sans bg-white">
+      <div className="flex max-md:flex-col justify-between gap-8 max-md:gap-2 dm-sans bg-white">
         {/* Left side - Wallet List */}
         <div className="flex flex-col p-5 gap-5 w-full ">
           <h2 className="text-[22px] font-normal mb-2">Sign in with Wallet</h2>
