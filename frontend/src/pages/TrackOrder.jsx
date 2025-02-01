@@ -115,12 +115,12 @@ const TransferOrder = () => {
                   </p>
                 </div>
 
-                <div className="space-y-6 bg-[#F6F6F6] p-5 ">
+                <div className="space-y-2 bg-[#F6F6F6] p-5 ">
                   {status === 'inProgress' ? (
                     <>
                       <div className="flex items-start gap-4">
                         <div className="flex flex-col items-center">
-                          <CheckCircle className="w-6 h-6 text-green-500" />
+                          <CheckCircle className="w-6 h-6 mb-2 text-green-500" />
                           <div className="w-0.5 h-12 bg-green-500" />
                         </div>
                         <div>
@@ -130,7 +130,7 @@ const TransferOrder = () => {
 
                       <div className="flex items-start gap-4">
                         <div className="flex flex-col items-center">
-                          <CheckCircle className="w-6 h-6 text-green-500" />
+                          <CheckCircle className="w-6 h-6 mb-2 text-green-500" />
                           <div className="w-0.5 h-12 bg-blue-500" />
                         </div>
                         <div>
@@ -154,8 +154,8 @@ const TransferOrder = () => {
                     <>
                       <div className="flex items-start gap-4">
                         <div className="flex flex-col items-center">
-                          <CheckCircle className="w-6 h-6 text-green-500" />
-                          <div className="w-0.5 h-12 bg-red-500" />
+                          <CheckCircle className="w-6 h-6 mb-2 text-green-500" />
+                          <div className="w-0.5 h-18 bg-[#FF3E24]" />
                         </div>
                         <div>
                           <p className="font-medium">Sent</p>
@@ -164,7 +164,7 @@ const TransferOrder = () => {
 
                       <div className="flex items-start gap-4">
                         <div className="flex flex-col items-center">
-                          <XCircleIcon className="w-6 h-6 text-red-500" />
+                          <XCircleIcon className="w-6 h-6 text-white bg-[#FF3E24] rounded-full" />
                         </div>
                         <div>
                           <p className="font-medium">Cancelled</p>
