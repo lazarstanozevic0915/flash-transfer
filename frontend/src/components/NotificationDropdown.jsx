@@ -57,7 +57,7 @@ const NotificationDropdown = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-100">
+    <div className="absolute right-0 top-6 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-100">
       {/* Header */}
       <div className="p-4 border-b border-gray-100">
         <h3 className="text-base font-medium">Notifications</h3>
@@ -70,7 +70,7 @@ const NotificationDropdown = ({ isOpen, onClose }) => {
             key={notification.id}
             className="px-4 py-3 hover:bg-gray-50 flex items-start space-x-3"
           >
-            <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full border p-4">
+            <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#F4F5F7]">
               {notification.icon}
             </div>
             <div>

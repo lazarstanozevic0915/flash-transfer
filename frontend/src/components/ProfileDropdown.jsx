@@ -19,7 +19,7 @@ const ProfileDropdown = ({ isOpen }) => {
   const { logout } = useAuth();
 
   return (
-    <div className="absolute right-0 top-8 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 border border-gray-100 ">
+    <div className="absolute right-0 top-4 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 border border-gray-100 ">
       {/* Profile Header */}
       <div className="px-4 py-2 border-b border-gray-100">
         <div className="flex items-center gap-3">
