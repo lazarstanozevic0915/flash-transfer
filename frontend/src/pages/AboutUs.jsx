@@ -23,42 +23,42 @@ export default function AboutUs() {
 
 return (
     <div className='w-full dm-sans'>
-        <div className="w-full h-screen bg-[#F6F6F6] rounded-b-[50px] relative" >
+        <div className="w-full h-screen max-md:h-full bg-[#F6F6F6] rounded-b-[50px] relative" >
             <div className="absolute top-10 right-8 z-10">
                 <img src={heroBackground} alt="" className=' h-[600px] w-[880px] object-fill' />
             </div>
             <Navbar />
-            <main className='w-full h-[88%] px-32 py-6'>
-                <div className="w-full h-full flex justify-between items-center relative z-20">
-                    <div className="w-[500px] h-[400px] flex flex-col space-y-4">
-                        <span className='text-[54px]/16 dm-sans-medium'>World first platform to convert directly crypto to cash</span>
-                        <p className='text-[#6E757D] dm-sans-light text-[14px]/7'>Flash Transfer is the world’s first platform enabling direct crypto-to-cash conversion, making it easy to buy, sell, or exchange crypto for cash with secure, instant transactions.</p>
+            <main className='w-full h-[88%] px-32 max-md:px-12 py-6'>
+                <div className="w-full h-full flex max-md:grid justify-between items-center relative z-20">
+                    <div className="w-[500px] max-sm:w-[300px] h-[400px] max-md:h-full flex flex-col space-y-4">
+                        <span className='text-[54px]/16 max-sm:text-[34px]/10 dm-sans-medium'>World first platform to convert directly crypto to cash</span>
+                        <p className='text-[#6E757D] dm-sans-light text-[14px]/7 max-sm:text-[12px]/5'>Flash Transfer is the world’s first platform enabling direct crypto-to-cash conversion, making it easy to buy, sell, or exchange crypto for cash with secure, instant transactions.</p>
                     </div>
-                    <div className="w-[480px] -mt-12 flex items-center h-full">
-                    <div className="w-full h-[70%] rounded-4xl border-white shadow-2xl border-6 overflow-hidden">
-                        <div className="relative w-full h-full rounded-4xl overflow-hidden">
-                            <ReactPlayer
-                                url="https://www.youtube.com/watch?v=5olILJjMlVM"
-                                width="100%"
-                                height="100%"
-                                controls
-                                style={{ borderRadius: '30px' }}
-                            />
+                    <div className="w-[480px] max-md:h-[400px] max-sm:w-[300px] -mt-12 flex items-center h-full">
+                        <div className="w-full h-[70%] rounded-4xl border-white shadow-2xl border-6 overflow-hidden">
+                            <div className="relative w-full h-full rounded-4xl overflow-hidden">
+                                <ReactPlayer
+                                    url="https://www.youtube.com/watch?v=5olILJjMlVM"
+                                    width="100%"
+                                    height="100%"
+                                    controls
+                                    style={{ borderRadius: '30px' }}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
-        <div className="w-full bg-white pt-24 px-12 space-y-14" >
-            <div className="w-full px-20 flex flex-col items-center">
+        <div className="w-full bg-white pt-24 max-md:5 px-12 max-md:px-2 space-y-14" >
+            <div className="w-full max-md:px-10 px-20 flex flex-col items-center">
                 <div className='w-full flex flex-col items-center space-y-6'>
                     <span className='text-[36px] dm-sans-medium'>Why Choose Flash Transfer?</span>
                     <div className='flex flex-col items-center space-y-1'>
                         <span className='text-[#6E757D] dm-sans-light text-[14px]'>With 24/7 support, secure transfers, and a team of 200+ experts, Flash Transfer ensures crypto</span>
                         <span className='text-[#6E757D] dm-sans-light text-[14px]'> transactions are simple, safe, and fully supported.</span>
                     </div>
-                    <div className="grid grid-cols-3 w-full h-[300px] gap-8">
+                    <div className="grid grid-cols-3 max-md:grid-cols-1 w-full h-[300px] max-md:h-full gap-8">
                         <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 rounded-2xl'>
                             <div className='p-3 rounded-full bg-[#2475FF] flex items-center justify-center w-[90px] h-[90px]'>
                                 <img src={fastLogo} alt="" />
@@ -90,14 +90,14 @@ return (
                 </div>
             </div>
             <TeamSection />
-            <div className="w-full px-20 flex flex-col items-center">
-                <div className='w-full flex flex-col items-center space-y-3'>
+            <div className="w-full px-20 max-md:px-5 flex flex-col items-center">
+                <div className='w-full flex flex-col items-center max-md:items-start space-y-3'>
                     <span className='text-[36px] dm-sans-medium'>Seen in the Media</span>
                     <div className='flex flex-col items-center space-y-1'>
                         <span className='text-[#6E757D] dm-sans-light text-[14px]'>A short paragraph describing your team. You may want to describe</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'>  what they are responsible for</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-md:text-left'>  what they are responsible for</span>
                     </div>
-                    <div className="grid grid-cols-4 w-full h-[100px] gap-4">
+                    <div className="grid grid-cols-4 max-md:grid-cols-1 w-full max-md:h-full h-[100px] gap-4">
                         <div className='w-full h-full py-3 bg-[#F6F6F6] border border-[#D3D8DD] rounded-md flex items-center justify-center'>
                             <img src={bloombergLogo} alt="bloomberg logo" className='w-[8rem] object-cover' />
                         </div>
@@ -113,15 +113,15 @@ return (
                     </div>
                 </div>
             </div>
-            <div className="w-full px-20 py-16 flex flex-col items-center space-y-8 bg-white">
-                <div className="w-full flex justify-between items-start">
+            <div className="w-full px-20 max-md:px-5 py-16 max-md:pt-5 max-md:pb-12 flex flex-col items-center space-y-8 bg-white">
+                <div className="w-full flex justify-between max-md:grid items-start">
                     <h2 className="text-[36px] dm-sans-medium">Visit our offices around the world</h2>
-                    <p className="text-[#6E757D] dm-sans-light text-[14px] max-w-[200px]">
+                    <p className="text-[#6E757D] dm-sans-light text-[14px] max-w-[200px] max-md:w-full">
                         A short paragraph describing your team. You may want to describe what they are responsible for
                     </p>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-6 w-full">
+                <div className="grid grid-cols-3 max-md:grid-cols-1 max-md:gap-3 gap-6 w-full">
                     {/* Dubai Office */}
                     <div className="bg-[#F6F6F6] rounded-xl p-6 space-y-4">
                         <div className="flex items-center space-x-2">
