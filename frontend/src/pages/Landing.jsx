@@ -71,7 +71,7 @@ export default function Landing() {
     ];
 
   return (
-    <div className='w-full '>
+    <div className='w-full dm-sans '>
         <div className="w-full h-screen bg-[#F6F6F6] rounded-b-[50px] relative" >
             <div className="absolute bottom-0 right-0 z-10">
                 <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
@@ -421,7 +421,9 @@ export default function Landing() {
                     <div className="grid grid-cols-2 grid-rows-2 w-full gap-x-6 gap-y-4">
                         {
                             faqData.map(faq => (
-                                <FAQSection title={faq.title} content={faq.content} />
+                                <div key={faq.title}>
+                                    <FAQSection title={faq.title} content={faq.content} />
+                                </div>
                             ))
                         }
                     </div>
