@@ -421,7 +421,9 @@ export default function Landing() {
                     <div className="grid grid-cols-2 grid-rows-2 w-full gap-x-6 gap-y-4">
                         {
                             faqData.map(faq => (
-                                <FAQSection title={faq.title} content={faq.content} />
+                                <div key={faq.title}>
+                                    <FAQSection title={faq.title} content={faq.content} />
+                                </div>
                             ))
                         }
                     </div>
