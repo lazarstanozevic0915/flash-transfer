@@ -71,7 +71,7 @@ export default function Landing() {
     ];
 
   return (
-    <div className='w-full '>
+    <div className='w-full dm-sans '>
         <div className="w-full h-screen bg-[#F6F6F6] rounded-b-[50px] relative" >
             <div className="absolute bottom-0 right-0 z-10">
                 <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
