@@ -44,54 +44,42 @@ export default function Navbar() {
 
                 {/* Icons */}
                 <div className="flex items-center space-x-3">
-                  <div className='w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white relative' onClick={() => {
-                                    setActiveDropdown('nft');
-                                    setIsNftDropdownOpen(!isNftDropdownOpen);
-                                  }}
-                                >
+                  <div className='w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white relative' onClick={() => {setActiveDropdown('nft')}}>
                     <img src={icons.nft} alt="" className="w-4 h-4" />
                     {
                       activeDropdown === 'nft' &&
                              ( <div>
                                   <NFTDropdown 
-                                  isOpen={isNftDropdownOpen}
-                                  onClose={() => setIsNftDropdownOpen(false)}
+                                  isOpen={activeDropdown === 'nft'}
+                                  onClose={activeDropdown !== 'nft'}
                                   />
                                 </div>
                               )
                     }
                   </div>
-                  <div className='w-7 h-7 items-center relative cursor-pointer flex justify-center rounded-full bg-white ' onClick={() => {
-                                    setActiveDropdown('wallet');
-                                    setIsWalletDropdownOpen(!isWalletDropdownOpen);
-                                  }}
-                                >
+                  <div className='w-7 h-7 items-center relative cursor-pointer flex justify-center rounded-full bg-white ' onClick={() => {setActiveDropdown('wallet')}}>
                     <img src={icons.wallet} alt="" className="w-4 h-4" />
                     { 
                       activeDropdown === 'wallet' &&
                       (
                         <div>
                             <WalletDropdown 
-                            isOpen={isWalletDropdownOpen} 
-                            onClose={() => setIsWalletDropdownOpen(false)} 
+                            isOpen={activeDropdown === 'wallet'} 
+                            onClose={activeDropdown !== 'wallet'} 
                             />
                         </div>
                       )
                     }
                   </div>
-                  <div className='w-7 h-7 items-center relative flex justify-center cursor-pointer rounded-full bg-white' onClick={() => {
-                                  setActiveDropdown('notification');
-                                  setIsNotificationDropdownOpen(!isNotificationDropdownOpen);
-                                  }}
-                                >
+                  <div className='w-7 h-7 items-center relative flex justify-center cursor-pointer rounded-full bg-white' onClick={() => {setActiveDropdown('notification')}}>
                     <Bell className="w-4 h-4 text-gray-600" />
                      {
                         activeDropdown === 'notification' &&
                       (
                         <div>
                           <NotificationDropdown 
-                            isOpen={isNotificationDropdownOpen}
-                            onClose={() => setIsNotificationDropdownOpen(false)}
+                            isOpen={activeDropdown === 'notification'}
+                            onClose={activeDropdown !== 'notification'}
                           />
                         </div>
                       )
@@ -100,11 +88,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Language Selector */}
-                <div className="flex items-center  relative rounded-full bg-white w-8 h-8 justify-center cursor-pointer"  onClick={() => {
-                                                            setActiveDropdown('currency');
-                                                            setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen);
-                                                          }}
-                                                        >
+                <div className="flex items-center  relative rounded-full bg-white w-8 h-8 justify-center cursor-pointer"  onClick={() => {setActiveDropdown('currency')}}>
                   <div className=" rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer">
                     <img 
                       src={language.english}
@@ -116,18 +100,15 @@ export default function Navbar() {
                     activeDropdown === 'currency' &&
                     (<div className="relative z-50">
                       <CurrencyLanguageDropdown
-                          isOpen={isCurrencyDropdownOpen} 
-                          onClose={() => setIsCurrencyDropdownOpen(false)} 
+                          isOpen={activeDropdown === 'currency'} 
+                          onClose={activeDropdown !== 'currency'} 
                       />
                     </div>)
                   }
                 </div>
 
                 {/* Profile */}
-                <div className="flex items-center space-x-2 cursor-pointer"  onClick={() => {
-                  setActiveDropdown('profile');
-                  setIsDropdownOpen(!isDropdownOpen);
-                  }}>
+                <div className="flex items-center space-x-2 cursor-pointer"  onClick={() => {setActiveDropdown('profile')}}>
                   <div className=" p-1 rounded-full gap-2 bg-white relative flex z-50 text-[#D3D8DD] border-[#D3D8DD] items-center justify-center">
                         <img src={blogUser1Img} alt="" className='w-7 h-7 object-fill' />
                         <ChevronDown size={16} />
@@ -136,8 +117,8 @@ export default function Navbar() {
                           activeDropdown === 'profile' &&
                           (<div className="relative z-50">
                               <ProfileDropdown 
-                                  isOpen={isDropdownOpen} 
-                                  onClose={() => setIsDropdownOpen(false)} 
+                                  isOpen={activeDropdown === 'profile'} 
+                                  onClose={activeDropdown !== 'profile'} 
                               />
                           </div>)
                         }

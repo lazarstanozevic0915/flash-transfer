@@ -32,7 +32,7 @@ const NFTDropdown = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <div className="absolute right-0 mt-2 w-98 bg-white rounded-lg shadow-lg border border-gray-100">
+    <div className="absolute right-0 top-6 mt-2 w-98 bg-white rounded-lg shadow-lg border border-gray-100">
       {/* Header */}
       <div className="px-3 py-2 mx-3">
         <h3 className="text-sm font-medium text-[#181F30]">NFT</h3>
