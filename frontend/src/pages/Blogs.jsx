@@ -28,7 +28,7 @@ export default function Blogs() {
                 </div>
             </div>
             <div className="flex flex-col items-center w-full">
-                <div className="w-[600px] h-[350px] space-y-6 relative z-20 pt-16 pb-40">
+                <div className="w-[600px] max-sm:w-[320px] h-[350px] space-y-6 relative z-20 pt-16 pb-40">
                     <div className="flex flex-col items-center space-y-4">
                         <h1 className="text-[44px] leading-tight dm-sans-medium">
                             Our Blogs
@@ -39,8 +39,8 @@ export default function Blogs() {
                     </div>
                 </div>
             </div>
-            <div className='w-full px-32 py-10 space-y-24 bg-white mb-20'>
-                <div className="flex items-center w-full pr-10 gap-16 shadow-sm justify-between bg-[#F6F6F6] rounded-xl ">
+            <div className='w-full px-32 max-sm:px-4 max-md:px-6 py-10 space-y-24 max-sm:space-y-12 bg-white mb-20'>
+                <div className="flex max-sm:flex-col items-center w-full pr-10 max-sm:pr-0 gap-16 max-md:gap-2 shadow-sm justify-between bg-[#F6F6F6] rounded-xl ">
                     <div className="">
                         <img
                             src={blogImage1Img}
@@ -48,7 +48,7 @@ export default function Blogs() {
                             className="w-[680px] h-[400px]"
                         />
                     </div>
-                    <div className="">
+                    <div className="max-sm:p-4">
                         <h3 className='text-gray-600 text-[14px] mb-6 max-w-md'><span className='text-[#2475FF]'>Banking</span> . March 14th, 2019</h3>
                         <h2 className="text-xl font-medium mb-4">User our Flash Transfer to send, buy or sell your crypto vs cash money in the world.</h2>
                         <p className="text-gray-600 mb-6 max-w-md">
@@ -66,7 +66,7 @@ export default function Blogs() {
                     <p className="text-[#6E757D] dm-sans-light mb-8 text-[14px] text-center">
                         Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
                     </p>
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-5">
                         <div className="flex flex-col">
                             <img src={blogImage2Img} alt="" />
                             <div className='flex flex-col space-y-3 p-5 rounded-b-lg bg-[#F6F6F6]'>
@@ -103,7 +103,7 @@ export default function Blogs() {
                     <p className="text-[#6E757D] dm-sans-light mb-8 text-[14px] text-left">
                         Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
                     </p>
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-5">
                         <div className="flex flex-col">
                             <img src={blogImage5Img} alt="" />
                             <div className='flex flex-col space-y-3 p-5 rounded-b-lg bg-[#F6F6F6]'>
@@ -158,7 +158,7 @@ export default function Blogs() {
                     <p className="text-[#6E757D] dm-sans-light mb-8 text-[14px] text-center">
                         Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
                     </p>
-                    <div className="grid grid-cols-2 grid-rows-2 gap-8">
+                    <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8">
                         <div className="flex items-center w-full shadow-sm gap-4 justify-between bg-[#F6F6F6] rounded-xl ">
                             <div className="w-[380px] rounded-md h-[300px]">
                                 <img

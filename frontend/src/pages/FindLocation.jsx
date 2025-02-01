@@ -125,13 +125,13 @@ const FindLocation = () => {
                     Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
                     </span>
                 </div>
-                <div className="grid grid-cols-5 max-sm:grid-cols-1 w-full h-[80px] max-sm:h-full gap-4">
+                <div className="grid grid-cols-5 max-sm:grid-cols-1 w-full h-[80px] max-sm:h-full  gap-4">
                     {Object.entries(socialIcons).map(([key, icon]) => (
                     <div
                         key={key}
-                        className="w-full h-full py-3 bg-[#F6F6F6] border border-[#D3D8DD] rounded-3xl flex items-center justify-center hover:bg-gray-100 transition-colors"
+                        className="w-full h-full  py-3 bg-[#F6F6F6] border border-[#D3D8DD] rounded-3xl flex items-center justify-center hover:bg-gray-100 transition-colors"
                     >
-                        <img src={icon} alt={`${key} logo`} className="w-[8rem] object-cover" />
+                        <img src={icon} alt={`${key} logo`} className="w-[8rem] max-sm:h-[50px] object-cover max-sm:object-fill " />
                     </div>
                     ))}
                 </div>
