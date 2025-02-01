@@ -26,7 +26,7 @@ const TransferOrder = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-full h-screen relative flex justify-center dm-sans">
+      <div className="w-full h-screen max-sm:px-3 relative flex justify-center dm-sans">
         <div className="w-full h-[50%] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
           <div className="absolute top-2 -right-20 z-10">
             <img
@@ -44,7 +44,7 @@ const TransferOrder = () => {
           </div>
         </div>
         
-        <div className={`w-[600px] ${activePage === 'form' ? 'h-[500px]' : 'h-[650px]'} space-y-6 relative z-20 flex flex-col items-center justify-center`}>
+        <div className={`w-[600px] ${activePage === 'form' ? 'h-[500px]' : 'h-[650px]'} space-y-6 relative z-20 flex flex-col items-center max-sm:pt-6 justify-center`}>
           <span className="text-[44px]/12 dm-sans-medium">
             Track a {activePage === 'form' ? 'Transfer' : 'Status'}
           </span>
