@@ -14,7 +14,7 @@ export default function AllCurrencyPage() {
     <div>
         <Navbar /> 
         <div className="w-full min-h-screen dm-sans">
-            <div className="w-full rounded-b-4xl px-32 py-16 bg-[#F6F6F6] relative">
+            <div className="w-full rounded-b-4xl px-32 max-sm:px-4 py-16 bg-[#F6F6F6] relative">
                 <div className="absolute top-2 -left-40 z-10">
                     <img
                         src={heroBackground}
@@ -51,7 +51,7 @@ export default function AllCurrencyPage() {
                     </div>
                 </div>
             </div>
-            <div className="px-32 py-20 w-full">
+            <div className="px-32 max-md:px-8 max-sm:px-4 py-20 max-sm:py-10 w-full max-md:w-[95vw] max-md:overflow-x-scroll">
                 <CurrencyTable searchQuery={searchQuery} filterType={filterType} />
             </div>
         </div>
