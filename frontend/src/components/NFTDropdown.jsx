@@ -32,18 +32,21 @@ const NFTDropdown = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <div className="absolute right-0 top-6 mt-2 w-88 bg-white rounded-lg shadow-lg border border-gray-100">
+    <div className="absolute right-0 mt-2 w-98 bg-white rounded-lg shadow-lg border border-gray-100">
       {/* Header */}
-      <div className="p-3">
+      <div className="px-3 py-2 mx-3">
         <h3 className="text-sm font-medium text-[#181F30]">NFT</h3>
       </div>
 
       {/* NFT List */}
       <div className="py-2">
-        {nftItems.map((item) => (
+        {nftItems.map((item, index) => (
           <div
             key={item.id}
-            className="p-3 mx-3 hover:bg-gray-50 flex items-center space-x-2 cursor-pointer border-b border-gray-300"
+            className='p-3 mx-3 hover:bg-gray-50 flex items-center space-x-2 cursor-pointer border-b border-gray-300'
+            style={{
+                borderBottom: index === nftItems.length - 1 ? 'none' : '1px solid #e5e7eb'
+              }}
           >
             <div>
                 <img src={item.imgSrc} alt="" className='object-contain' />
