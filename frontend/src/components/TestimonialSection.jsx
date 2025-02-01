@@ -48,14 +48,14 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <div className="w-full px-20 py-16 flex flex-col dm-sans items-center bg-white">
+    <div className="w-full px-20 py-16 max-md:px-8 max-md:py-8 flex flex-col dm-sans items-center bg-white">
       <div className="w-full max-w-7xl">
         <div className="flex items-center justify-between mb-8">
             <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 max-sm:gap-3">
                     <img src={trustIcon} alt="Trustpilot logo" className="h-6" />
                     <span className='font-bold'>TrustPilot</span>
-                    <span className="text-sm text-gray-500">Our reviews verified by Trustpilot</span>
+                    <span className="text-sm max-sm:w-full text-gray-500">Our reviews verified by Trustpilot</span>
                 </div>
                 <h2 className="text-3xl dm-sans-medium">What our customers says</h2>
             </div>
@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
         
-        <div className="flex gap-6">
+        <div className="flex gap-6 max-sm:grid">
           {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial) => (
             <div 
               key={testimonial.id}
