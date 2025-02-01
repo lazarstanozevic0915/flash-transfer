@@ -35,7 +35,7 @@ const CurrencyLanguageDropdown = ({ onClose, isOpen }) => {
             {languages.map((lang) => (
               <button
                 key={lang.name}
-                className={`flex items-center space-x-2 px-1 py-2 rounded-lg hover:bg-gray-50 text-left ${
+                className={`flex items-center space-x-2 px-1 py-2 hover:bg-gray-50 text-left border-b border-[#D3D8DD] ${
                   selectedLanguage === lang.name ? 'bg-gray-50' : ''
                 }`}
                 onClick={() => setSelectedLanguage(lang.name)}
