@@ -44,7 +44,7 @@ export default function Navbar() {
 
                 {/* Icons */}
                 <div className="flex items-center space-x-3">
-                  <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white relative' onClick={() => {
+                  <div className='w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white relative' onClick={() => {
                                     setActiveDropdown('nft');
                                     setIsNftDropdownOpen(!isNftDropdownOpen);
                                   }}
@@ -61,7 +61,7 @@ export default function Navbar() {
                               )
                     }
                   </div>
-                  <div className='w-7 h-7 items-center relative flex justify-center rounded-full bg-white ' onClick={() => {
+                  <div className='w-7 h-7 items-center relative cursor-pointer flex justify-center rounded-full bg-white ' onClick={() => {
                                     setActiveDropdown('wallet');
                                     setIsWalletDropdownOpen(!isWalletDropdownOpen);
                                   }}
@@ -79,12 +79,12 @@ export default function Navbar() {
                       )
                     }
                   </div>
-                  <div className='w-7 h-7 items-center relative flex justify-center rounded-full bg-white' onClick={() => {
+                  <div className='w-7 h-7 items-center relative flex justify-center cursor-pointer rounded-full bg-white' onClick={() => {
                                   setActiveDropdown('notification');
                                   setIsNotificationDropdownOpen(!isNotificationDropdownOpen);
                                   }}
                                 >
-                    <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
+                    <Bell className="w-4 h-4 text-gray-600" />
                      {
                         activeDropdown === 'notification' &&
                       (
@@ -100,7 +100,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Language Selector */}
-                <div className="flex items-center  relative rounded-full bg-white w-8 h-8 justify-center space-x-2 cursor-pointer"  onClick={() => {
+                <div className="flex items-center  relative rounded-full bg-white w-8 h-8 justify-center cursor-pointer"  onClick={() => {
                                                             setActiveDropdown('currency');
                                                             setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen);
                                                           }}
