@@ -4,6 +4,7 @@ import heroBackground from '../assets/image/hero-background.png'
 import logo from '../assets/image/logo.svg'
 import { NavLink } from 'react-router-dom'
 import iphone from "../assets/iPhone 15 Pro 1.png"
+import phoneBack from '../assets/image/icons/phoneBack.svg'
 import apple from "../assets/image/icons/apple.svg"
 import playstore from "../assets/image/icons/googlePlay.svg"
 import Navbar from '../components/Navbar';
@@ -30,7 +31,7 @@ export default function AppInfo() {
                   </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center px-2 py-20 mb-16 -mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-2 py-10 mb-16 -mt-8">
           <div className='p-20 flex flex-col justify-center ml-14 '>
             <h2 className="text-5xl font-medium mb-6">
               Send money in one <br /> tap with the app
@@ -70,8 +71,8 @@ export default function AppInfo() {
           </div>
 
           {/* Phone Mockup */}
-          <div className="bg-gray-100 pr-0 pt-8 pb-0 pl-2 rounded-3xl flex items-center justify-center ">
-            <img src={iphone} alt="iphone mockup" className='object-contain'/>
+          <div className="bg-[#F6F6F6] pr-0 pt-8 pb-0 pl-0 rounded-3xl flex items-center justify-center w-150 ">
+            <img src={phoneBack} alt="" className='w-[600px] h-[500px]' />
           </div>
         </div>
       </main>
