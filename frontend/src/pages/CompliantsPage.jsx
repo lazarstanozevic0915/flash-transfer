@@ -8,9 +8,9 @@ export default function CompliantsPage() {
   return (
     <div>
         <Navbar />
-        <div className="w-full min-h-screen relative flex flex-col items-center dm-sans">
-            <div className="px-32 py-12 border-b bg-[#F6F6F6] border-[#D3D8DD] w-full">
-                <div className="rounded-md shadow-sm p-1 h-[46px] flex w-100 bg-white">
+        <div className="w-full max-sm:w-screen min-h-screen relative flex flex-col items-center dm-sans">
+            <div className="px-32 max-sm:px-5 max-md:px-6 py-12 border-b bg-[#F6F6F6] border-[#D3D8DD] w-full">
+                <div className="rounded-md shadow-sm p-1 h-[46px] flex w-100 max-sm:w-[280px] bg-white">
                     <button
                     className={`flex items-center gap-1 w-[50%] justify-center text-[12px] font-light text-[#6E757D] ${
                         activePage === 'how-to' && 'font-medium bg-[#2475FF] text-white rounded-md shadow-md'
@@ -31,7 +31,7 @@ export default function CompliantsPage() {
             </div>
             {
                 activePage === 'how-to' && (
-                    <div className="pl-32 pr-48 py-12 w-full space-y-4">
+                    <div className="pl-32 max-sm:pl-4 pr-48 max-sm:pr-4 py-12 w-full space-y-4">
                         <h1 className="text-[36px] text-[#181F30] leading-tight dm-sans-medium">
                             How we address complaints
                         </h1>
@@ -62,17 +62,17 @@ export default function CompliantsPage() {
             }
             {
                 activePage === 'rewards' && (
-                    <div className='px-32 pb-20 w-full'>
-                        <div className="w-full h-full flex justify-between items-center">
+                    <div className='px-32 max-sm:px-5 max-sm:pt-8 pb-20 w-full'>
+                        <div className="w-full h-full flex max-md:flex-col-reverse justify-between items-center">
                             <div className='flex flex-col space-y-4'>
                                     <span className='text-[#181F30] dm-sans-medium text-[36px]'>
                                         Get Rewarded with Flash <br/ > Transfer Plus Rewards™
                                     </span>
                                     <span className='text-[#6E757D] dm-sans-light w-[360px] text-[14px]'>Earn exclusive rewards every time you use Flash Transfer Plus 
                                     Rewards™. Enjoy benefits like cashback, discounts, and special offers, making every transaction even more rewarding.</span>
-                                    <div className='flex gap-4 w-full'>
-                                        <button className='bg-[#FFC000] text-[12px] p-3 w-[50%] rounded-lg'>Register with Plus Rewards</button>
-                                        <button className='bg-white border text-[12px] rounded-lg border-[#2475FF] p-3 w-[40%] text-[#2475FF]'>Send Online</button>
+                                    <div className='flex max-sm:grid gap-4 w-full'>
+                                        <button className='bg-[#FFC000] text-[12px] p-3 w-[50%] max-sm:w-[96%] rounded-lg'>Register with Plus Rewards</button>
+                                        <button className='bg-white border text-[12px] rounded-lg border-[#2475FF] p-3 w-[40%] max-sm:w-[96%] text-[#2475FF]'>Send Online</button>
                                     </div>
                             </div>
                             <div className='rounded-4xl'>
