@@ -28,56 +28,57 @@ export default function Navbar() {
         </div>
         {isAuthenticated ? (
             <>
-            <div className="flex items-center space-x-3">
-        {/* Amount Display */}
-        <div className="flex items-center space-x-2">
-          <span className="text-green-600 font-medium">$</span>
-          <span className="text-[14px]">90000</span>
-        </div>
-
-        {/* Icons */}
-        <div className="flex items-center space-x-3">
-          <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
-            <img src={icons.nft} alt="" className="w-4 h-4" />
-          </div>
-          <div className='w-7 h-7 items-center relative flex justify-center rounded-full bg-white ' onClick={() => setIsWalletDropdownOpen(!isWalletDropdownOpen)}>
-            <img src={icons.wallet} alt="" className="w-4 h-4" />
-            <div>
-            <WalletDropdown 
-            isOpen={isWalletDropdownOpen} 
-            onClose={() => setIsWalletDropdownOpen(false)} 
-            />
-            </div>
-          </div>
-          <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
-            <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
-          </div>
-        </div>
-
-        {/* Language Selector */}
-        <div className="flex items-center  relative rounded-full bg-white w-8 h-8 justify-center space-x-2 cursor-pointer"  onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}>
-        <div className=" rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer">
-          <img 
-            src={language.english}
-            alt="US Flag" 
-            className="w-4 h-4"
-          />
-        </div>
-
-        {/* Profile */}
-        <div className="flex items-center space-x-2 cursor-pointer"  onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-          <div className=" p-1 rounded-full gap-2 bg-white relative flex z-50 text-[#D3D8DD] border-[#D3D8DD] items-center justify-center">
-                <img src={blogUser1Img} alt="" className='w-7 h-7 object-fill' />
-                <ChevronDown size={16} />
-                <div className="relative z-50">
-                    <ProfileDropdown 
-                        isOpen={isDropdownOpen} 
-                        onClose={() => setIsDropdownOpen(false)} 
-                    />
+              <div className="flex items-center space-x-3">
+                {/* Amount Display */}
+                <div className="flex items-center space-x-2">
+                  <span className="text-green-600 font-medium">$</span>
+                  <span className="text-[14px]">90000</span>
                 </div>
-          </div>
-        </div>
-      </div>
+
+                {/* Icons */}
+                <div className="flex items-center space-x-3">
+                  <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+                    <img src={icons.nft} alt="" className="w-4 h-4" />
+                  </div>
+                  <div className='w-7 h-7 items-center relative flex justify-center rounded-full bg-white ' onClick={() => setIsWalletDropdownOpen(!isWalletDropdownOpen)}>
+                    <img src={icons.wallet} alt="" className="w-4 h-4" />
+                    <div>
+                      <WalletDropdown 
+                      isOpen={isWalletDropdownOpen} 
+                      onClose={() => setIsWalletDropdownOpen(false)} 
+                      />
+                    </div>
+                  </div>
+                  <div className='w-7 h-7 items-center flex justify-center rounded-full bg-white '>
+                    <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
+                  </div>
+                </div>
+
+                {/* Language Selector */}
+                <div className="flex items-center  relative rounded-full bg-white w-8 h-8 justify-center space-x-2 cursor-pointer"  onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}>
+                  <div className=" rounded-full bg-white w-8 h-8 flex items-center justify-center space-x-2 cursor-pointer">
+                    <img 
+                      src={language.english}
+                      alt="US Flag" 
+                      className="w-4 h-4"
+                    />
+                  </div>
+                </div>
+
+                {/* Profile */}
+                <div className="flex items-center space-x-2 cursor-pointer"  onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                  <div className=" p-1 rounded-full gap-2 bg-white relative flex z-50 text-[#D3D8DD] border-[#D3D8DD] items-center justify-center">
+                        <img src={blogUser1Img} alt="" className='w-7 h-7 object-fill' />
+                        <ChevronDown size={16} />
+                        <div className="relative z-50">
+                            <ProfileDropdown 
+                                isOpen={isDropdownOpen} 
+                                onClose={() => setIsDropdownOpen(false)} 
+                            />
+                        </div>
+                  </div>
+                </div>
+              </div>
             </>
         ) : (
             <div className="flex items-center space-x-1  text-[12px] dm-sans-medium">
