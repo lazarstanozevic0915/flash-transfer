@@ -12,7 +12,7 @@ const FindLocation = () => {
   return (
     <div className="min-h-screen dm-sans flex flex-col">
       <Navbar />
-      <div className="w-full min-h-screen relative flex flex-col items-center dm-sans">
+      <div className="w-full min-h-screen max-sm:px-4 relative flex flex-col items-center dm-sans">
         <div className="w-full h-[50vh] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
           <div className="absolute top-2 -right-20 z-10">
             <img
@@ -30,7 +30,7 @@ const FindLocation = () => {
           </div>
         </div>
         <div className='flex flex-col items-center'>
-            <div className="w-[600px] space-y-6 relative z-20 pt-16">
+            <div className="w-[600px] max-sm:w-[320px] space-y-6 relative z-20 pt-16">
             <div className="flex flex-col items-center space-y-4">
                 <h1 className="text-[44px] leading-tight dm-sans-medium">
                 Find locations
@@ -47,7 +47,7 @@ const FindLocation = () => {
                 </div>
 
                 <div className="space-y-4">
-                <div className="flex gap-4">
+                <div className="flex max-sm:grid gap-4">
                     <div className="flex-1">
                     <label className="text-sm text-gray-600 mb-1 block">Send From</label>
                     <div className="relative">
@@ -116,8 +116,8 @@ const FindLocation = () => {
             </div>
             </div>
 
-            <div className="w-full bg-white pt-24 pb-24 px-12 space-y-14 relative z-20">
-            <div className="w-full px-20 flex flex-col items-center">
+            <div className="w-full bg-white py-24 max-sm:py-8 px-12 max-sm:px-2 space-y-14 relative z-20">
+            <div className="w-full px-20 max-sm:px-2 flex flex-col items-center">
                 <div className="w-full flex flex-col items-center space-y-3">
                 <span className="text-[36px] dm-sans-medium">Visit us</span>
                 <div className="flex flex-col items-center space-y-1">
@@ -125,7 +125,7 @@ const FindLocation = () => {
                     Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
                     </span>
                 </div>
-                <div className="grid grid-cols-5 w-full h-[80px] gap-4">
+                <div className="grid grid-cols-5 max-sm:grid-cols-1 w-full h-[80px] max-sm:h-full gap-4">
                     {Object.entries(socialIcons).map(([key, icon]) => (
                     <div
                         key={key}
@@ -138,7 +138,7 @@ const FindLocation = () => {
                 </div>
             </div>
             
-            <div className="w-full px-20 flex flex-col items-center">
+            <div className="w-full px-20 max-sm:px-4 flex flex-col items-center">
                 <img src={contactBack} alt="" className="w-full h-full rounded-2xl" />
             </div>
             </div>
