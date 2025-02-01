@@ -65,10 +65,13 @@ const NotificationDropdown = ({ isOpen, onClose }) => {
 
       {/* Notifications List */}
       <div className="max-h-[400px] overflow-y-auto">
-        {notifications.map((notification) => (
+        {notifications.map((notification, index) => (
           <div
             key={notification.id}
-            className="px-4 py-3 hover:bg-gray-50 flex items-start space-x-3"
+            className="px-4 py-3 hover:bg-gray-50 flex items-start space-x-3 border-b border-[#D3D8DD] mx-3"
+            style={{
+              borderBottom: index === notifications.length - 1 ? 'none' : '1px solid #e5e7eb'
+            }}
           >
             <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#F4F5F7]">
               {notification.icon}
