@@ -6,8 +6,13 @@ import metamask from "../assets/image/icons/metamask.svg";
 import phantom from "../assets/phantom.png";
 import ledger from "../assets/ledger.png";
 import walletconnect from "../assets/WalletConnect.svg";
+import { useAuth } from "../auth/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function WalletConnect({ isOpen, onClose }) {
+  const { login, connectWallet } = useAuth();
+  const navigate = useNavigate()
+
   const wallets = [
     { 
       name: 'Flash Wallet',
@@ -48,6 +53,12 @@ export default function WalletConnect({ isOpen, onClose }) {
                 </div>
                 <button 
                   className="px-6 py-2 bg-[#EBECED] rounded-full text-[13px] text-[#181F30] hover:bg-gray-100"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    login();
+                    connectWallet(`${name}`);
+                    navigate('/');
+                  }}
                 >
                   Connect
                 </button>

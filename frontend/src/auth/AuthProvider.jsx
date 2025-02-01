@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   });
   const [ connectedWallet, setConnectedWallet ] = useState(() => {
     // Check localStorage on initial load
-    return localStorage.getItem('isWalletConnected') === 'true';
+    return localStorage.getItem('isWalletConnected');
   });
 
   // Update localStorage when auth state changes
@@ -19,9 +19,12 @@ export const AuthProvider = ({ children }) => {
   }, [isAuthenticated]);
 
   const login = () => setIsAuthenticated(true);
-  const connectWallet = () => setConnectedWallet(true);
-  const disconnectWallet = () => setConnectedWallet(false);
-  const logout = () => setIsAuthenticated(false);
+  const connectWallet = (name) => setConnectedWallet(name);
+  const disconnectWallet = () => setConnectedWallet('');
+  const logout = () => {
+      setIsAuthenticated(false);
+      setConnectedWallet('');
+    };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, login, logout, connectWallet, disconnectWallet }}>
