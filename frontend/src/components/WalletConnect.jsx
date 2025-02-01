@@ -31,14 +31,14 @@ export default function WalletConnect({ isOpen, onClose }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="flex justify-between gap-8 bg-white">
         {/* Left side - Wallet List */}
-        <div className="flex-1 w-content ">
+        <div className="flex flex-col w-full ">
           <h2 className="text-xl font-semibold mb-4">Sign in with Wallet</h2>
           <p className="text-sm text-gray-600 mb-6">Connect to discover wallets:</p>
           
-          <div className="space-y-4">
+          <div className="space-y-4 space-x-2">
             {wallets.map(({ name, imgSrc }) => (
               <div key={name} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <img 
                     src={imgSrc} 
                     alt={`${name} logo`}
