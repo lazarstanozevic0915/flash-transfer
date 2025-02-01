@@ -11,7 +11,7 @@ import {
   ImageIcon,
   Settings
 } from 'lucide-react';
-import { blogUser1Img } from '../assets/image';
+import { blogUser1Img, icons } from '../assets/image';
 import { useAuth } from '../auth/AuthProvider';
 
 const ProfileDropdown = ({ isOpen }) => {
@@ -27,7 +27,7 @@ const ProfileDropdown = ({ isOpen }) => {
             <img src={blogUser1Img} alt="" />
           </div>
           <div>
-            <h4 className="text-sm font-medium">Alex Smeth</h4>
+            <h4 className="text-sm font-semibold text-[#181F30]">Alex Smeth</h4>
             <div className="h-1 w-24 bg-green-500 rounded-full mt-1"></div>
           </div>
         </div>
@@ -36,7 +36,8 @@ const ProfileDropdown = ({ isOpen }) => {
       {/* Menu Items */}
       <div className="py-1">
         <NavLink to="/profile" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <User className="w-4 h-4" />
+          {/* <User className="w-4 h-4" /> */}
+          <img src={icons.user} alt="" className='w-4 h-4' />
           <span>My Profile</span>
         </NavLink>
         

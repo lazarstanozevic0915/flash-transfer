@@ -29,25 +29,25 @@ export default function WalletConnect({ isOpen, onClose }) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="flex justify-between gap-8 bg-white">
+      <div className="flex justify-between gap-8 dm-sans bg-white">
         {/* Left side - Wallet List */}
-        <div className="flex flex-col w-full ">
-          <h2 className="text-xl font-semibold mb-4">Sign in with Wallet</h2>
-          <p className="text-sm text-gray-600 mb-6">Connect to discover wallets:</p>
+        <div className="flex flex-col p-5 gap-5 w-full ">
+          <h2 className="text-[22px] font-normal mb-2">Sign in with Wallet</h2>
+          <p className="text-sm text-[#6E757D] mb-2">Connect to discover wallets:</p>
           
           <div className="space-y-4 space-x-2">
             {wallets.map(({ name, imgSrc }) => (
-              <div key={name} className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+              <div key={name} className="flex w-full items-center justify-between">
+                <div className="flex items-center gap-4">
                   <img 
                     src={imgSrc} 
                     alt={`${name} logo`}
-                    className="h-8 w-8 object-contain"
+                    className="h-8 w-8 object-fill"
                   />
-                  <span className="text-sm font-medium text-gray-700">{name}</span>
+                  <span className="text-sm font-normal text-[#181F30]">{name}</span>
                 </div>
                 <button 
-                  className="px-6 py-2 bg-gray-50 rounded-full text-sm text-gray-500 hover:bg-gray-100"
+                  className="px-6 py-2 bg-[#EBECED] rounded-full text-[13px] text-[#181F30] hover:bg-gray-100"
                 >
                   Connect
                 </button>
@@ -55,23 +55,23 @@ export default function WalletConnect({ isOpen, onClose }) {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-col justify-center items-start">
-            <p className="text-sm text-gray-600">
+          <div className="mt-8 gap-1 flex flex-col justify-center items-start">
+            <p className="text-[14px] text-[#6E757D]">
               Don't see your wallet listed above?{' '}
             </p>
-            <button className="text-blue-600 hover:text-blue-500">
+            <button className="text-[#2475FF] text-[14px] hover:text-blue-500">
                 Connect to another wallet
               </button>
           </div>
         </div>
 
         {/* Right side - QR Code */}
-        <div className="flex flex-col items-center justify-center bg-gray-100 px-20 py-12 rounded-2xl w-[320px]">
-          <div className="flex flex-col items-center mb-4">
-            <img src={walletconnect} alt="WalletConnect" className="h-8 w-8 object-contain mb-2" />
-            <h3 className="text-base font-medium">Wallet connect</h3>
+        <div className="flex flex-col items-center justify-start bg-gray-100 px-20 py-12 rounded-2xl w-[320px]">
+          <div className="flex flex-col items-center mb-6">
+            <img src={walletconnect} alt="WalletConnect" className="h-8 w-8 object-contain" />
+            <h3 className="text-base font-light text-[#181F30]">Wallet connect</h3>
           </div>
-          <div className="bg-white rounded-lg p-4 w-[180px] h-[180px] flex items-center justify-center">
+          <div className="bg-white rounded-3xl p-1 w-[180px] h-[180px] flex items-center justify-center">
             <img 
               src={QrCode}
               alt="QR Code"

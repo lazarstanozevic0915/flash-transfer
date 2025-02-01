@@ -11,7 +11,7 @@ export default function Modal({ isOpen, onClose, children }) {
       
       {/* Modal */}
       <div className="flex min-h-full items-center justify-center px-20 py-8 max-w-full">
-        <div className="relative w-full max-w-3xl overflow-hidden rounded-lg bg-white p-6 shadow-xl">
+        <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-white p-6 shadow-xl">
           <button
             onClick={onClose}
             className="absolute right-4 top-4 text-gray-400 hover:text-gray-500"
