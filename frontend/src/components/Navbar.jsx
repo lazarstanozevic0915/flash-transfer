@@ -3,15 +3,17 @@ import logo from '../assets/image/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { Bell, ChevronDown, HelpCircle, Settings } from 'lucide-react';
-import { blogUser1Img, icons, language } from '../assets/image';
+import { blogUser1Img, currency, icons, language } from '../assets/image';
 import ProfileDropdown from './ProfileDropdown';
 import WalletDropdown from './WalletDropdown';
 import CurrencyLanguageDropdown from './CurrencyLanguageDropdown';
 import NFTDropdown from './NFTdropdown';
 import NotificationDropdown from './NotificationDropdown';
+import WalletConnect from './WalletConnect';
+import WalletConnectDropdown from './WalletConnectDropdown';
 
 export default function Navbar() {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, connectedWallet } = useAuth();
     const [ activeDropdown, setActiveDropdown  ] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isWalletDropdownOpen, setIsWalletDropdownOpen] = useState(false);
@@ -37,9 +39,13 @@ export default function Navbar() {
             <>
               <div className="flex items-center space-x-3">
                 {/* Amount Display */}
-                <div className="flex items-center space-x-2">
-                  <span className="text-green-600 font-medium">$</span>
-                  <span className="text-[14px]">90000</span>
+                <div className="flex items-center space-x-2 border-[#EBECED] bg-[rgba(255,255,255,0.8)] border p-1.5 pr-6 rounded-3xl ">
+                  <div className="flex gap-1 items-center text-[#6E757D]">
+                    <img src={currency.usdt} alt="" className='w-5 h-5 object-fill' />
+                    <ChevronDown size={12} />
+                  </div>
+                  <span className="text-[#6E757D] opacity-60 font-light">|</span>
+                  <span className="text-[13px] font-light text-[#6E757D]">$100.00</span>
                 </div>
 
                 {/* Icons */}
@@ -68,12 +74,19 @@ export default function Navbar() {
                                 >
                     <img src={icons.wallet} alt="" className="w-4 h-4" />
                     { 
-                      activeDropdown === 'wallet' &&
+                      activeDropdown === 'wallet' && connectedWallet === '' ? 
+                      (
+                        <WalletConnectDropdown
+                          isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
+                          onClose={!isWalletDropdownOpen} 
+                        />
+                      )
+                      :
                       (
                         <div>
                             <WalletDropdown 
-                            isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
-                            onClose={!isWalletDropdownOpen} 
+                              isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
+                              onClose={!isWalletDropdownOpen} 
                             />
                         </div>
                       )
