@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
-import { Bell, ChevronDown, Menu, X } from 'lucide-react'
+import { Bell, ChevronDown, LogOut, Menu, X } from 'lucide-react'
 import { blogUser1Img, currency, icons, language } from '../assets/image'
 import logo from '../assets/image/logo.svg'
 import ProfileDropdown from './ProfileDropdown'
@@ -28,6 +28,8 @@ export default function Navbar() {
         { to: '/track-order', label: 'Track a transfer' },
         { to: '/help', label: 'Help' }
     ]
+
+    const { logout } = useAuth();
 
     return (
         <nav className='relative z-50 border-b bg-[#F6F6F6] border-[#D3D8DD]'>
@@ -224,22 +226,106 @@ export default function Navbar() {
                         {/* Mobile User Menu Items (when authenticated) */}
                         {isAuthenticated && (
                             <div className="pt-4 border-t border-gray-200">
-                                <div className="flex items-center space-x-2 px-4 py-2">
+                                <div className="flex items-center space-x-2 px-4 py-2" 
+                                    onClick={() => {
+                                        setActiveDropdown('profile')
+                                        setIsDropdownOpen(!isDropdownOpen)
+                                    }}
+                                >
                                     <img src={blogUser1Img} alt="" className="w-8 h-8 rounded-full" />
                                     <span className="text-sm font-medium text-gray-700">Profile</span>
+                                    {activeDropdown === 'profile' && (
+                                            <ProfileDropdown 
+                                                isOpen={isDropdownOpen && activeDropdown === 'profile'}
+                                                onClose={!isDropdownOpen}
+                                            />
+                                        )}
+                                </div>
+                                <div className="pt-4 border-t border-gray-200">
+                                    <div className="flex items-center space-x-2 px-4 py-2"
+                                         onClick={() => {
+                                            setActiveDropdown('currency')
+                                            setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)
+                                        }}
+                                    >
+                                    <img src={language.english} alt="" className="w-6 h-6 rounded-full" />
+                                    <span className="text-sm font-medium text-gray-700">Language</span>
+                                    {activeDropdown === 'currency' && (
+                                        <CurrencyLanguageDropdown
+                                            isOpen={isCurrencyDropdownOpen && activeDropdown === 'currency'}
+                                            onClose={!isCurrencyDropdownOpen}
+                                        />
+                                    )}
+                                    </div>
+                            
                                 </div>
                                 <div className="px-4 py-2 space-y-1">
-                                    <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50">
+                                    <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setActiveDropdown('wallet');
+                                            setIsWalletDropdownOpen(!isWalletDropdownOpen);
+                                        }}
+                                    >
                                         <img src={icons.wallet} alt="" className="w-4 h-4" />
                                         <span>Wallet</span>
+                                        <div>
+                                            {
+                                                activeDropdown === 'wallet' && connectedWallet === '' ? 
+                                                (
+                                                    <WalletConnectDropdown
+                                                    isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
+                                                    onClose={!isWalletDropdownOpen} 
+                                                    />
+                                                )
+                                                :
+                                                (
+                                                    <div>
+                                                        <WalletDropdown 
+                                                        isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
+                                                        onClose={activeDropdown !== 'wallet'} 
+                                                        />
+                                                    </div>
+                                            )}
+                                        </div>
+
                                     </button>
-                                    <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50">
+                                    <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                                        onClick={() => {
+                                            setActiveDropdown('nft')
+                                            setIsNftDropdownOpen(!isNftDropdownOpen)
+                                        }}
+                                    >
                                         <img src={icons.nft} alt="" className="w-4 h-4" />
                                         <span>NFTs</span>
+                                        {activeDropdown === 'nft' && (
+                                            <NFTDropdown 
+                                                isOpen={isNftDropdownOpen && activeDropdown === 'nft'}
+                                                onClose={!isNftDropdownOpen}
+                                            />
+                                        )}
                                     </button>
-                                    <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50">
+                                    <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                                        onClick={() => {
+                                            setActiveDropdown('notification')
+                                            setIsNotificationDropdownOpen(!isNotificationDropdownOpen)
+                                        }}
+                                    >
                                         <Bell className="w-4 h-4" />
                                         <span>Notifications</span>
+                                        {activeDropdown === 'notification' && (
+                                            <NotificationDropdown 
+                                                isOpen={isNotificationDropdownOpen && activeDropdown === 'notification'}
+                                                onClose={!isNotificationDropdownOpen}
+                                            />
+                                        )}
+                                    </button>
+                                    <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                                        onClick={() => logout()}
+                                    >
+                                    <LogOut className="w-4 h-4" />
+                                        <span>Log out</span>
+                                        
                                     </button>
                                 </div>
                             </div>

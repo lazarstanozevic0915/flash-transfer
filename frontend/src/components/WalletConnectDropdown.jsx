@@ -36,7 +36,7 @@ export default function WalletConnectDropdown({ isOpen, onClose }) {
 
   return (
     <div className="absolute -right-12 flex items-center justify-center -top-2 mt-2 scale-85 bg-white rounded-lg shadow-lg  overflow-hidden">
-      <div className="flex justify-between gap-8 dm-sans bg-white">
+      <div className="flex justify-between gap-8 dm-sans bg-white max-sm:flex-col">
         {/* Left side - Wallet List */}
         <div className="flex flex-col p-5 gap-5 w-full ">
           <h2 className="text-[22px] font-normal mb-2">Sign in with Wallet</h2>

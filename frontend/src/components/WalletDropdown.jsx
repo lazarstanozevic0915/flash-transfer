@@ -8,7 +8,7 @@ const WalletDropdown = ({ isOpen, onClose, balance = "54,730.00" }) => {
   const { disconnectWallet } = useAuth();
 
   return (
-    <div className="absolute right-2 top-6 mt-2 w-72 bg-white pb-4 rounded-lg shadow-lg border border-gray-100">
+    <div className="absolute right-2 top-6 mt-2 w-72 bg-white pb-4 rounded-lg shadow-lg border border-gray-100 ">
       {/* Wallet Header */}
       <div className="p-4 border-b border-gray-100 space-y-4">
         <div className="flex items-center justify-between">
