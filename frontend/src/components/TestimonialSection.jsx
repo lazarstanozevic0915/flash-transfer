@@ -55,11 +55,11 @@ const TestimonialsSection = () => {
                 <div className="flex items-center gap-2 max-sm:gap-3">
                     <img src={trustIcon} alt="Trustpilot logo" className="h-6" />
                     <span className='font-bold'>TrustPilot</span>
-                    <span className="text-sm max-sm:w-full text-gray-500">Our reviews verified by Trustpilot</span>
+                    <span className="text-sm max-sm:w-full text-gray-500 max-sm:hidden">Our reviews verified by Trustpilot</span>
                 </div>
                 <h2 className="text-3xl dm-sans-medium">What our customers says</h2>
             </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 max-sm:hidden">
             <button 
               onClick={handlePrevious}
               className="p-2 rounded-full bg-[#FFC000] hover:bg-[#e6ac00] transition-colors"
