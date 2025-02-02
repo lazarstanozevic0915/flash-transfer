@@ -25,13 +25,13 @@ export default function TermsAndConditions() {
                         <img src={heroBackground} alt="" className='h-[500px] max-md:max-w-screen w-[820px] object-fill' />
                     </div>
                 <h1 className="text-5xl font-semibold mb-6 max-md:text-3xl max-md:mb-3">Terms And Conditons</h1>
-                  <p className="text-gray-600 max-md:text-lg">
+                  <p className="text-gray-600 text-[16px]">
                     Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
                   </p>
                 </div>
 
         <div className="grid grid-cols-3 gap-6 mt-1 max-md:block">
-          <div className="col-span-2 max-md:block max-md:text-lg">
+          <div className="col-span-2 max-md:block max-md:text-[16px]">
             <div className="mb-12 px-20 max-md:px-1">
 
               <div className=" p-6 mb-8">

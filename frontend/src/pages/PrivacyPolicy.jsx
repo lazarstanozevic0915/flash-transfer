@@ -27,13 +27,13 @@ export default function PrivacyPolicy() {
                 <img src={heroBackground} alt="" className='h-[500px] max-md:max-w-screen w-[820px] object-fill' />
             </div>
         <h1 className="text-5xl font-semibold mb-6 max-md:text-4xl max-md:mb-1">Privacy Policy</h1>
-          <p className="text-gray-600 max-md:text-lg">
+          <p className="text-gray-600 text-[16px]">
             Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
           </p>
         </div>
 
         <div className="grid grid-cols-3 gap-6 mt-1 max-md:block">
-          <div className="col-span-2 max-md:block max-md:text-lg">
+          <div className="col-span-2 max-md:block max-md:text-[16px]">
             <div className="mb-12 px-20 max-md:px-1">
               <h2 className=" ml-6 text-3xl font-semibold max-md:text-2xl mb-4 max-md:mb-2 max-md:mr-10">Privacy Policy - France</h2>
               <p className="ml-6 text-gray-600 mb-4 max-md:mr-10">

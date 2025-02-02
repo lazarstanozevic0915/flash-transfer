@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar';
 
 const VerificationCard = ({ title, items, isVerified, buttonText, buttonStyle }) => {
   return (
-    <div className="bg-gray-50 rounded-2xl border border-gray-200 px-6 py-10 flex flex-col justify-between h-full">
+    <div className="bg-gray-50 rounded-2xl border border-gray-200 px-6 py-10 flex flex-col justify-between h-full max-md:mb-8">
       <h3 className="text-2xl font-medium mb-6">{title}</h3>
       <span className='text-gray-300 mb-4'><hr /></span>
       <div className="flex-grow space-y-4 mb-6">
@@ -66,14 +66,17 @@ export default function KycPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
        <Navbar />
       <main className=" mx-auto px-0">
-        <div className="text-center mb-1 py-18">
-                <h1 className="text-5xl font-semibold mb-6">Personal Verification</h1>
-                  <p className="text-gray-600">
+        <div className="text-center mb-1 py-18 max-md:pb-1">
+                <h1 className="text-5xl font-semibold mb-6 max-md:text-3xl max-md:mb-3">Personal Verification</h1>
+                  <p className="text-gray-600 text-[16px] max-md:hidden">
                     Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
+                  </p>
+                  <p className="text-gray-600 text-[16px] md:hidden">
+                    Home is behind, the world ahead and there <br /> are many paths to tread through shadows to <br /> the edge.
                   </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-35 mb-20 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-35 mb-20 py-16 max-md:block max-md:mx-2 max-md:my-0">
           <VerificationCard
             title="Basic"
             items={basicItems}

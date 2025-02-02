@@ -3,16 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 import bell from "../assets/image/icons/notification.svg";
 import wallet from "../assets/image/icons/wallet.svg";
 
-const Sidebar = () => {
+const Sidebar = ({ isMobile, onNavigate }) => {
   const location = useLocation();
   const currentPath = location.pathname;
 
   return (
-    <div className="w-72 bg-gray-50 h-screen p-6 ml-34 mt-8 rounded-lg mb-8">
+    <div className={`${
+      isMobile ? 'w-full' : 'w-72'
+    } bg-gray-50 p-6 rounded-lg h-screen`}>
       <h2 className="text-2xl font-semibold mb-8">Settings</h2>
       <div className="space-y-2">
         <Link 
           to="/settings"
+          onClick={() => onNavigate && onNavigate('cards')}
           className={`w-full flex items-center font-normal gap-1 p-3 rounded-lg ${
             currentPath === '/settings' 
               ? 'bg-blue-500 text-white' 
@@ -25,6 +28,7 @@ const Sidebar = () => {
         </Link>
         <Link 
           to="/notifications"
+          onClick={() => onNavigate && onNavigate('notifications')}
           className={`w-full flex items-center font-normal gap-1 p-3 rounded-lg ${
             currentPath === '/notifications' 
               ? 'bg-blue-500 text-white' 

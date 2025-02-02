@@ -10,7 +10,7 @@ export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden dm-sans">
        <Navbar />
-       <main className="flex-1 min-h-screen flex flex-col items-center justify-center py-12">
+       <main className="flex-1 min-h-screen flex flex-col items-center justify-center py-12 max-md:p-4">
         <div className="text-center">
           <img src={error} alt="404" className="mx-auto mb-6 w-[60%] object-contain" />
           <h1 className="text-3xl font-semibold mb-2">Opps! Page not found</h1>

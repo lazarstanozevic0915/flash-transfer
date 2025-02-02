@@ -26,15 +26,21 @@ export default function AppInfo() {
                                 <img src={heroBackground} alt="" className='h-[500px] max-md:max-w-screen w-[820px] object-fill' />
                             </div>
                         <h1 className="text-5xl font-semibold mb-6 max-md:text-3xl max-md:mb-3 max-md:mr-18">Fast Transfer Mobile App</h1>
-                          <p className="text-gray-600 max-md:text-lg">
+                          <p className="text-gray-600 text-[16px] max-md:hidden">
                             Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
+                          </p>
+                          <p className="text-gray-600 text-[16px] md:hidden">
+                            Home is behind, the world ahead and there are many paths to tread through shadows to the edge.
                           </p>
           </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-2 py-10 mb-16 -mt-8">
-          <div className='p-20 flex flex-col justify-center ml-14 '>
-            <h2 className="text-5xl font-medium mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-2 py-10 mb-16 -mt-8 max-md:-mt-8 max-md:flex max-md:flex-col-reverse">
+          <div className='p-20 flex flex-col justify-center ml-14 max-md:p-2 max-md:mx-0 max-md:text-[16px]'>
+            <h2 className="text-5xl font-medium mb-6 max-md:hidden">
               Send money in one <br /> tap with the app
+            </h2>
+            <h2 className="text-5xl font-medium mb-6 md:hidden text-[24px]">
+              Send money in one tap <br /> with the app
             </h2>
             <p className="text-gray-600 mb-6">
               With millions of downloads, the fast transfer mobile app is an <br /> easier way to send money.
@@ -58,12 +64,12 @@ export default function AppInfo() {
               </li>
             </ul>
             <p className="text-gray-600 mb-6">With millions of downloads, the fasttransfer mobile app is an <br /> easier way to send money.</p>
-            <div className="flex space-x-4">
-              <button className="flex items-center space-x-2 bg-black text-white px-8 py-3 rounded-lg">
+            <div className="flex space-x-4  max-md:flex-col  max-md:space-y-4 ">
+              <button className="flex items-center space-x-2 bg-black text-white px-8 py-3 max-md:w-full rounded-lg max-md:justify-center">
                 <img src={apple} alt="apple" className='object-contain' />
                 <span>App Store</span>
               </button>
-              <button className="flex items-center space-x-2 bg-black text-white px-6 py-3 rounded-lg">
+              <button className="flex items-center space-x-2 bg-black text-white px-6 py-3 rounded-lg max-md:w-full max-md:justify-center">
               <img src={playstore} alt="apple" className='object-contain' />
                 <span>Play Store</span>
               </button>
@@ -71,7 +77,7 @@ export default function AppInfo() {
           </div>
 
           {/* Phone Mockup */}
-          <div className="bg-[#F6F6F6] pr-0 pt-8 pb-0 pl-0 rounded-3xl flex items-center justify-center w-150 ">
+          <div className="bg-[#F6F6F6] pr-0 pt-8 pb-0 pl-0 rounded-3xl flex items-center justify-center w-150 max-md:w-full ">
             <img src={phoneBack} alt="" className='w-[600px] h-[500px]' />
           </div>
         </div>
