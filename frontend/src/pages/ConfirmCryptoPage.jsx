@@ -97,7 +97,7 @@ const ConfirmCryptoPage = () => {
 
                         
 
-                            <div className="flex gap-3">
+                            <div className="flex max-sm:flex-col-reverse gap-3">
                                 <NavLink to={``} className='w-full p-2.5 flex items-center justify-center border rounded-xl text-[14px] border-[#D3D8DD] font-medium text-[#6E757D]'>Cancel</NavLink>
                                 <button className='w-full p-2.5 rounded-xl text-[14px] bg-[#FFC000]'>Continue</button>
                             </div> 
