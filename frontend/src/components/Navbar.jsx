@@ -39,8 +39,8 @@ export default function Navbar() {
                     <div className="flex gap-6">
                         {/* Logo */}
                         <NavLink to={`/`} className="flex items-center space-x-1">
-                            <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px]' />
-                            <span className='inter-semibold text-[16px]'>Flash Transfer</span>
+                            <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px] max-sm:h-[48px]' />
+                            <span className='inter-semibold text-[16px] max-sm:hidden'>Flash Transfer</span>
                         </NavLink>
 
                         {/* Desktop Navigation */}
@@ -236,7 +236,7 @@ export default function Navbar() {
                                     <span className="text-sm font-medium text-gray-700">Profile</span>
                                     {activeDropdown === 'profile' && (
                                             <ProfileDropdown 
-                                                isOpen={isDropdownOpen && activeDropdown === 'profile'}
+                                                isOpen={isDropdownOpen && activeDropdown  === 'profile'}
                                                 onClose={!isDropdownOpen}
                                             />
                                         )}
