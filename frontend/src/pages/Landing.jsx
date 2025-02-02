@@ -113,7 +113,7 @@ export default function Landing() {
                             </NavLink>
                         </div>
                     </div>
-                    <div className="w-[440px] max-sm:w-[350px] h-full p-4 rounded-2xl shadow-2xl bg-white">
+                    <div className="w-[440px] max-sm:w-[350px] h-full max-sm:h-[76%] max-sm:pb-0 p-4 rounded-2xl shadow-2xl bg-white">
                         <div className="w-full h-full flex flex-col space-y-1">
                             {
                                 connectedWallet !== '' && connectedWallet !== null  && (
@@ -167,7 +167,7 @@ export default function Landing() {
                                     <img src={swapIcon} alt="swap" className='h-[12px] w-[12px] object-center'  />
                                 </button>
                             </div>
-                            <div className="w-full h-[36%] max-sm:h-[45%] flex flex-col">
+                            <div className="w-full h-[36%] max-sm:h-[50%] flex flex-col">
                                 <div className="flex w-full items-center text-[#000000] justify-center py-2 text-[12px] border-b border-[#D3D8DD]">
                                     <span className='dm-sans-light'>{`1 USDT = 1 EUR`}</span>
                                 </div>
@@ -196,7 +196,7 @@ export default function Landing() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full h-[16%] flex flex-col space-y-1">
+                            <div className="w-full h-[16%] flex flex-col max-sm:-mt-41 max-sm:space-y-3 space-y-1">
                                 <button className='h-[50%] text-[11px] rounded-lg bg-[#FFC000] dm-sans-medium'>Continue</button>
                                 <button className='h-[50%] text-[11px] rounded-lg border border-[#D3D8DD] dm-sans-medium'>Cancel</button>
                             </div>
