@@ -11,7 +11,7 @@ export default function ProfilePage() {
             <div className="w-full h-[40vh]">
                 <img src={profileBackImg} alt="" className='h-full w-full object-cover' />
             </div>
-            <div className="px-32 w-full">
+            <div className="px-32 max-lg:px-4 w-full">
                 <form className='w-full h-full'>
                     <div className="flex justify-between items-start py-3">
                         <div className='flex gap-4'>
@@ -19,13 +19,13 @@ export default function ProfilePage() {
                                 <img src={profileUserImg} alt="" className='w-46 h-46 object-cover' />
                             </div>
                             <div className="flex flex-col">
-                                <h3 className='text-[#181F30] dm-sans-medium text-[16px] text-left'>Jane Cooper</h3>
-                                <h3 className='text-[#6E757D] dm-sans-light text-[16px] text-left'>Customer ID :FT121212</h3>
+                                <h3 className='text-[#181F30] dm-sans-medium text-[16px] max-sm:text-[16px] text-left'>Jane Cooper</h3>
+                                <h3 className='text-[#6E757D] dm-sans-light text-[16px] max-sm:text-[16px] text-left'>Customer ID :FT121212</h3>
                             </div>
                         </div>
-                        <button className='px-12 py-3 rounded-md bg-[#2475FF] text-white text-[14px]'>Save</button>
+                        <button className='px-12 py-3 max-sm:hidden rounded-md bg-[#2475FF] text-white text-[14px]'>Save</button>
                     </div>
-                    <div className="grid grid-cols-2 gap-5 my-12">
+                    <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-5 my-12 max-sm:my-6">
                         <div className="flex flex-col gap-2">
                             <label htmlFor="firstName" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>First name</label>
                             <input type="text" id='firstName' className='border p-3 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter your first name' required />
@@ -58,6 +58,7 @@ export default function ProfilePage() {
                             <label htmlFor="country" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Country</label>
                             <input type="text" id='country' className='border p-3 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter country' required />
                         </div>
+                        <button className='px-12 py-3 sm:hidden rounded-md bg-[#2475FF] text-white text-[14px]'>Save</button>
                     </div>
                 </form>
             </div>
