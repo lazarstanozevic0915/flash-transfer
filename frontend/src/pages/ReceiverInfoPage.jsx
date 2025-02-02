@@ -64,11 +64,11 @@ const ReceiverInfoPage = () => {
 
         <div className="w-full relative flex justify-center dm-sans">
             <div className="w-full h-[70vh] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
-                <div className="absolute top-0 left-[26%] z-10">
+                <div className="absolute top-0 left-[26%] max-sm:-left-5 z-10">
                     <img
                     src={heroBackground}
                     alt=""
-                    className="h-[480px] w-[600px] object-fill"
+                    className="h-[480px] max-sm:h-[320px] w-[600px] object-fill"
                     />
                 </div>
             </div>

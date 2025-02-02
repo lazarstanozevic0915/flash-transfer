@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import heroBackground from '../assets/image/hero-background.png';
 import track from "../assets/image/icons/track.svg";
 import { Check, Printer } from 'lucide-react';
+import DonutProgress from '../components/DonutProgress';
 
 const PaymentReceivedPage = () => {
 
@@ -22,59 +23,66 @@ const PaymentReceivedPage = () => {
       {/* Main Content */}
       <main className="">
 
-        <div className='max-w-4xl mx-auto px-4 pt-8 pb-8'>
+      <div className='max-w-4xl mx-auto px-4 pt-8 pb-8 max-sm:py-0'>
             {/* Progress Steps */}
-            <div className="flex justify-between relative">
-            {/* Progress Line */}
-            <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
-                <div className="w-[66%] h-full bg-blue-500" />
-            </div>
-            
-            {/* Steps */}
-            {[
-                { label: "Receiver's info", description: "Enter the informations", active: false, completed: true },
-                { label: "Receiver's Method", description: "Enter the informations", active: false, completed: true },
-                { label: "Review Details", description: "Enter the informations", active: true, completed: false },
-                { label: "Payment Complete", description: "Enter the informations", active: false, completed: false }
-            ].map((step, index) => (
-                <div key={index} className="relative flex flex-col items-center w-1/4">
-                    <div className=" bg-white rounded-full w-13 h-13 flex items-center justify-center">
-                        <div className={` rounded-full border ${
-                            step.active 
-                            ? 'bg-blue-500 w-10 h-10 p-1 border-4 border-blue-50 text-white' 
-                            : step.completed ? 'bg-blue-500 w-9.5 h-9.5 p-1 text-white' : ' bg-white w-8 h-8 border-gray-200 text-gray-400'
-                        } flex items-center justify-center z-10 mb-2 text-sm font-medium`}>
-                            <div className={step.completed ? '' : `w-4 h-4 rounded-full ${ step.active ? 'bg-white' : 'bg-gray-200'}`}>
-                                {step.completed && <Check size={20} />}
+            <div className="flex max-sm:hidden justify-between relative">
+                {/* Progress Line */}
+                <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
+                    <div className="w-[62%] h-full bg-blue-500" />
+                </div>
+                
+                {/* Steps */}
+                {[
+                    { label: "Receiver's info", description: "Enter the informations", active: false, completed: true },
+                    { label: "Receiver's Method", description: "Enter the informations", active: false, completed: true },
+                    { label: "Review Details", description: "Enter the informations", active: true, completed: false },
+                    { label: "Payment Complete", description: "Enter the informations", active: false, completed: false }
+                ].map((step, index) => (
+                    <div key={index} className="relative flex flex-col items-center w-1/4">
+                        <div className=" bg-white rounded-full w-13 h-13 flex items-center justify-center">
+                            <div className={` rounded-full border ${
+                                step.active 
+                                ? 'bg-blue-500 w-10 h-10 p-1 border-4 border-blue-50 text-white' 
+                                : step.completed ? 'bg-blue-500 w-9.5 h-9.5 p-1 text-white' : ' bg-white w-8 h-8 border-gray-200 text-gray-400'
+                            } flex items-center justify-center z-10 mb-2 text-sm font-medium`}>
+                                <div className={step.completed ? '' : `w-4 h-4 rounded-full ${ step.active ? 'bg-white' : 'bg-gray-200'}`}>
+                                    {step.completed && <Check size={20} />}
+                                </div>
                             </div>
                         </div>
+                    <div className="text-center">
+                        <div className="text-sm font-semibold">{step.label}</div>
+                        <div className="text-[10px] text-gray-500">{step.description}</div>
                     </div>
-                <div className="text-center">
-                    <div className="text-sm font-semibold">{step.label}</div>
-                    <div className="text-[10px] text-gray-500">{step.description}</div>
+                    </div>
+                ))}
+            </div>
+            <div className='hidden max-sm:flex -space-x-4 items-center'>
+                <DonutProgress  size = "w-28 h-28" percentage = {75} />
+                <div className="flex flex-col justify-between items-start">
+                    <span className='text-[#181F30] text-[16px] font-bold'>Review Details</span>
+                    <span className='text-[#6E757D] text-[13px]'>Enter the informations.</span>
                 </div>
-                </div>
-            ))}
             </div>
         </div>
 
         <div className="w-full relative flex justify-center dm-sans">
             <div className="w-full h-[70vh] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
-                <div className="absolute top-0 left-[26%] z-10">
+                <div className="absolute top-0 left-[26%] max-sm:left-1 z-10">
                     <img
                     src={heroBackground}
                     alt=""
-                    className="h-[480px] w-[600px] object-fill"
+                    className="h-[480px] max-sm:h-[320px] w-[600px] object-fill"
                     />
                 </div>
             </div>
-            <div className={`w-[800px] min-h-screen space-y-4 pt-24 pb-40 relative z-20 flex flex-col items-center justify-center`}>
-                <span className="text-[44px]/10 dm-sans-medium">
+            <div className={`w-[800px] min-h-screen space-y-4 max-sm:space-y-3 pt-24 max-sm:pt-18 pb-40 relative z-20 flex flex-col items-center justify-center`}>
+                <span className="text-[44px]/10 max-sm:text-[32px] dm-sans-medium">
                     Received 
                 </span>
                 <div className="dm-sans-medium flex items-center gap-2 text-[18px] text-center">
                     You are almost done
-                    <div className='w-5 h-5 rounded-full text-white bg-[#00C735] flex items-center justify-center'>
+                    <div className='w-5 h-5 rounded-full text-white max-sm:hidden bg-[#00C735] flex items-center justify-center'>
                         <Check size={13} />
                     </div>
 
@@ -132,12 +140,12 @@ const PaymentReceivedPage = () => {
                                 <p>Your money will be available once we have received the total amount of 203.90 EUR</p>
                             </div>
 
-                            <div className="flex items-center bg-gray-200 py-4 px-3 rounded-lg mb-6">
+                            <div className="flex items-center bg-gray-200 py-4 px-3 max-sm:text-[13px] rounded-lg mb-6 max-sm:mb-0.5">
                                 <img src={track} alt="track" className="object-contain mr-3" />
                                 <p className="font-semibold">Tracking Number (FTN): <span className="text-gray-800">771 824 9542</span></p>
                             </div>
 
-                            <button className="w-full flex items-center justify-center py-3 bg-yellow-500 text-gray-900 font-bold rounded-lg gap-2 hover:bg-yellow-600 transition-colors">
+                            <button className="w-full flex items-center justify-center py-3 max-sm:py-4 bg-yellow-500 text-gray-900 font-bold rounded-lg gap-2 hover:bg-yellow-600 transition-colors">
                                 <Printer />
                                 Print
                             </button>

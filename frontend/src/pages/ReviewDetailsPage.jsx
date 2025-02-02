@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 // import { blogUser1Img, icons } from '../assets/image';
 import { Check } from 'lucide-react';
 import { blogUser1Img, currency, icons } from '../assets/image';
+import DonutProgress from '../components/DonutProgress';
 
 const ReviewDetailsPage = () => {
 
@@ -24,49 +25,56 @@ const ReviewDetailsPage = () => {
       {/* Main Content */}
       <main className="">
 
-        <div className='max-w-4xl mx-auto px-4 pt-8 pb-8'>
+        <div className='max-w-4xl mx-auto px-4 pt-8 pb-8 max-sm:py-0'>
             {/* Progress Steps */}
-            <div className="flex justify-between relative">
-            {/* Progress Line */}
-            <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
-                <div className="w-[62%] h-full bg-blue-500" />
-            </div>
-            
-            {/* Steps */}
-            {[
-                { label: "Receiver's info", description: "Enter the informations", active: false, completed: true },
-                { label: "Receiver's Method", description: "Enter the informations", active: false, completed: true },
-                { label: "Review Details", description: "Enter the informations", active: true, completed: false },
-                { label: "Payment Complete", description: "Enter the informations", active: false, completed: false }
-            ].map((step, index) => (
-                <div key={index} className="relative flex flex-col items-center w-1/4">
-                    <div className=" bg-white rounded-full w-13 h-13 flex items-center justify-center">
-                        <div className={` rounded-full border ${
-                            step.active 
-                            ? 'bg-blue-500 w-10 h-10 p-1 border-4 border-blue-50 text-white' 
-                            : step.completed ? 'bg-blue-500 w-9.5 h-9.5 p-1 text-white' : ' bg-white w-8 h-8 border-gray-200 text-gray-400'
-                        } flex items-center justify-center z-10 mb-2 text-sm font-medium`}>
-                            <div className={step.completed ? '' : `w-4 h-4 rounded-full ${ step.active ? 'bg-white' : 'bg-gray-200'}`}>
-                                {step.completed && <Check size={20} />}
+            <div className="flex max-sm:hidden justify-between relative">
+                {/* Progress Line */}
+                <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
+                    <div className="w-[62%] h-full bg-blue-500" />
+                </div>
+                
+                {/* Steps */}
+                {[
+                    { label: "Receiver's info", description: "Enter the informations", active: false, completed: true },
+                    { label: "Receiver's Method", description: "Enter the informations", active: false, completed: true },
+                    { label: "Review Details", description: "Enter the informations", active: true, completed: false },
+                    { label: "Payment Complete", description: "Enter the informations", active: false, completed: false }
+                ].map((step, index) => (
+                    <div key={index} className="relative flex flex-col items-center w-1/4">
+                        <div className=" bg-white rounded-full w-13 h-13 flex items-center justify-center">
+                            <div className={` rounded-full border ${
+                                step.active 
+                                ? 'bg-blue-500 w-10 h-10 p-1 border-4 border-blue-50 text-white' 
+                                : step.completed ? 'bg-blue-500 w-9.5 h-9.5 p-1 text-white' : ' bg-white w-8 h-8 border-gray-200 text-gray-400'
+                            } flex items-center justify-center z-10 mb-2 text-sm font-medium`}>
+                                <div className={step.completed ? '' : `w-4 h-4 rounded-full ${ step.active ? 'bg-white' : 'bg-gray-200'}`}>
+                                    {step.completed && <Check size={20} />}
+                                </div>
                             </div>
                         </div>
+                    <div className="text-center">
+                        <div className="text-sm font-semibold">{step.label}</div>
+                        <div className="text-[10px] text-gray-500">{step.description}</div>
                     </div>
-                <div className="text-center">
-                    <div className="text-sm font-semibold">{step.label}</div>
-                    <div className="text-[10px] text-gray-500">{step.description}</div>
+                    </div>
+                ))}
+            </div>
+            <div className='hidden max-sm:flex -space-x-4 items-center'>
+                <DonutProgress  size = "w-28 h-28" percentage = {75} />
+                <div className="flex flex-col justify-between items-start">
+                    <span className='text-[#181F30] text-[16px] font-bold'>Review Details</span>
+                    <span className='text-[#6E757D] text-[13px]'>Enter the informations.</span>
                 </div>
-                </div>
-            ))}
             </div>
         </div>
 
         <div className="w-full relative flex justify-center dm-sans">
             <div className="w-full h-[50vh] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
-                <div className="absolute top-0 left-[26%] z-10">
+                <div className="absolute top-0 left-[26%] max-sm:left-1 z-10">
                     <img
                     src={heroBackground}
                     alt=""
-                    className="h-[480px] w-[600px] object-fill"
+                    className="h-[480px] max-sm:h-[320px] w-[600px] object-fill"
                     />
                 </div>
             </div>
@@ -79,9 +87,9 @@ const ReviewDetailsPage = () => {
                 </p>
             </div>
         </div>
-        <div className='w-full min-h-screen pt-16 pb-32 px-32'>
-            <div className='w-full flex gap-9'>
-                <div className="w-[64%] space-y-6 h-full">
+        <div className='w-full min-h-screen pt-16 max-sm:pt-8 pb-32 max-sm:pb-26 px-32 max-lg:px-5'>
+            <div className='w-full flex gap-9 max-lg:gap-3 max-sm:flex-col'>
+                <div className="w-[64%] max-sm:w-full space-y-6 h-full">
                     <div className='w-full'>
                         <div className='py-2 px-3 flex items-center bg-[#F6F6F6] rounded-t-2xl justify-between'>
                             <span className='text-[15px] font-semibold text-[#181F30]'>Sender Details</span>
@@ -176,12 +184,12 @@ const ReviewDetailsPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full flex gap-3">
+                    <div className="w-full max-sm:hidden flex gap-3">
                         <button className='p-2.5 border w-full text-[#6E757D] border-[#D3D8DD] rounded-xl text-[14px]'>Cancel</button>
                         <button className='p-2.5 w-full rounded-xl text-[14px] bg-[#FFC000]'>Confirm</button>
                     </div>
                 </div>
-                <div className="w-[36%] space-y-6 h-full">
+                <div className="w-[36%] max-sm:w-full space-y-6 h-full">
                     <div className='w-full'>
                         <div className='py-2 px-3 flex items-center bg-[#F6F6F6] rounded-t-2xl justify-between'>
                             <span className='text-[15px] font-semibold text-[#181F30]'>Amount</span>
@@ -249,6 +257,10 @@ const ReviewDetailsPage = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="w-full max-sm:flex flex-col-reverse hidden gap-3">
+                    <button className='p-2.5 border w-full text-[#6E757D] border-[#D3D8DD] rounded-xl text-[14px]'>Cancel</button>
+                    <button className='p-2.5 w-full rounded-xl text-[14px] bg-[#FFC000]'>Confirm</button>
                 </div>
             </div>
         </div>

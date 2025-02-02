@@ -65,15 +65,15 @@ const ConfirmCryptoPage = () => {
 
         <div className="w-full relative flex justify-center dm-sans">
             <div className="w-full h-[70vh] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
-                <div className="absolute top-0 left-[26%] z-10">
+                <div className="absolute top-0 left-[26%] max-sm:-left-5 z-10">
                     <img
                     src={heroBackground}
                     alt=""
-                    className="h-[480px] w-[600px] object-fill"
+                    className="h-[480px] max-sm:h-[320px] w-[600px] object-fill"
                     />
                 </div>
             </div>
-            <div className={`w-[800px] min-h-screen max-lg:px-6 space-y-6 max-sm:space-y-4 pt-24 max-sm:pt-8 pb-40 max-sm:pb-12 max-lg:pb-20 relative z-20 flex flex-col items-center justify-center`}>
+            <div className={`w-[800px] min-h-screen max-lg:px-6 space-y-6 max-sm:space-y-4 pt-24 max-sm:pt-12 pb-40 max-sm:pb-12 max-lg:pb-20 relative z-20 flex flex-col items-center justify-center`}>
                 <span className="text-[44px]/10 max-sm:text-[34px] max-sm:text-center dm-sans-medium">
                 Confirm Crypto Address
                 </span>
