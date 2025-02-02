@@ -52,7 +52,7 @@ const SendPage = () => {
           </div>
         </div>
         
-        <div className={`w-[700px] min-h-screen space-y-6 relative z-20 flex flex-col items-center justify-center`}>
+        <div className={`w-[700px] min-h-screen max-sm:pt-12 space-y-6 relative z-20 flex flex-col items-center justify-center`}>
           <span className="text-[44px]/12 dm-sans-medium">
             Send through
           </span>
@@ -64,7 +64,7 @@ const SendPage = () => {
                 <form className="h-full w-full flex flex-col gap-6 justify-between" onSubmit={handleSubmit}>  
                     <div className="flex flex-col gap-3">
                         <h3 className='text-[#273240] dm-sans-semibold text-[15px] text-left'>How would you like to pay ?</h3>
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-4">
                             <button 
                                 className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'cash' && 'bg-blue-500 text-white'} `}
                                 onClick={() => setActivePay('cash')}
@@ -121,7 +121,7 @@ const SendPage = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex max-sm:flex-col-reverse gap-4">
                         <NavLink to={`/send/new-contact`} className='w-full p-3 flex items-center justify-center border rounded-xl text-[14px] border-[#2475FF] text-[#2475FF]'>Add From Contact</NavLink>
                         <button className='w-full p-3 rounded-xl text-[14px] bg-[#FFC000]'>Add New</button>
                     </div>

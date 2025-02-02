@@ -34,7 +34,7 @@ const NewContactPage = () => {
           </div>
         </div>
         
-        <div className={`w-[700px] min-h-screen py-20 space-y-6 relative z-20 flex flex-col items-center justify-center`}>
+        <div className={`w-[700px] min-h-screen py-20 max-sm:px-4 space-y-6 relative z-20 flex flex-col items-center justify-center`}>
           <span className="text-[44px]/12 dm-sans-medium">
             Add New Contact
           </span>
@@ -44,7 +44,7 @@ const NewContactPage = () => {
           <div className="w-full rounded-4xl bg-white shadow-md p-6">
               <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
                 <form className="h-full w-full flex flex-col gap-6 justify-between" onSubmit={handleSubmit}>  
-                  <div className="flex gap-5 w-full">
+                  <div className="flex max-sm:flex-col gap-5 w-full">
                     <div className="flex flex-col gap-2 w-full">
                         <label htmlFor="firstName" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>First name*</label>
                         <input type="text" id='firstName' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter your first name' required />
@@ -74,7 +74,7 @@ const NewContactPage = () => {
                       <label htmlFor="city" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>City*</label>
                       <input type="text" id='city' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter your city' required />
                   </div>
-                  <div className="flex gap-5 w-full">
+                  <div className="flex max-sm:flex-col gap-5 w-full">
                     <div className="flex flex-col gap-2 w-full">
                         <label htmlFor="state" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>State*</label>
                         <input type="text" id='state' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter your state' required />

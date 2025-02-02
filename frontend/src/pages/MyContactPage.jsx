@@ -16,7 +16,7 @@ const MyContactPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-full min-h-[100vh] relative flex justify-center dm-sans">
+      <div className="w-full min-h-[100vh] max-sm:px-4 relative flex justify-center dm-sans">
         <div className="w-full h-[50%] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
           <div className="absolute top-2 -right-20 z-10">
             <img
