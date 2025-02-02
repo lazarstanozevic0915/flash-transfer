@@ -40,12 +40,15 @@ import PaymentReceivedPage from "./pages/PaymentReceivedPage";
 import SendCryptoPage from "./pages/SendCryptoPage";
 
 import { AuthProvider } from "./auth/AuthProvider";
+import ScrollRestoration from "./components/ScrollRestoration";
+import ScrollToTopButton from "./components/ScrollToTopButton";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route>
+      <Route element={<ScrollToTop />}>
             <Route index element = { <Landing /> } />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
@@ -101,6 +104,8 @@ function App() {
 
   return (
     <AuthProvider>
+      {/* <ScrollRestoration />
+      <ScrollToTopButton /> */}
       <RouterProvider router = { router }  />
     </AuthProvider>
   )
