@@ -65,7 +65,7 @@ const Footer = () => {
           <div className="text-center md:text-left w-full">
             <h3 className="font-medium mb-4">Information</h3>
             <ul className="space-y-2 text-sm text-gray-600 dm-sans-light">
-              <li><NavLink to="/download">Download App</NavLink></li>
+              <li><NavLink to="/app-info">Download App</NavLink></li>
               <li><NavLink to="/currency">All currency</NavLink></li>
               <li><NavLink to="/contact-us">Support</NavLink></li>
               <li><NavLink to="/history">Status</NavLink></li>

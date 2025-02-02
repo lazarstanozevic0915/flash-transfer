@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -12,8 +12,24 @@ import metamask from "../assets/image/icons/metamask.svg";
 import phantom from "../assets/phantom.png";
 import ledger from "../assets/ledger.png";
 import QrCode from "../assets/Group 1000002890.png";
+import copy from "../assets/image/icons/copy.svg";
+import walletconnect from "../assets/WalletConnect.svg";
+import DonutProgress from '../components/DonutProgress';
 
 const SendCryptoPage = () => {
+
+  const fullAddress = "1A1zP1eP5QGefi2DMPTfTL5S1A1zP1eP5QGefi2DMPTfTL5S"; // Full address to copy
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(fullAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
 
     const wallets = [
         { 
@@ -46,9 +62,9 @@ const SendCryptoPage = () => {
       {/* Main Content */}
       <main className="">
 
-        <div className='max-w-4xl mx-auto px-4 pt-8 pb-8'>
+        <div className='max-w-4xl mx-auto px-4 pt-8 pb-8 max-md:pb-2'>
             {/* Progress Steps */}
-            <div className="flex justify-between relative">
+            <div className="flex justify-between relative max-sm:hidden">
             {/* Progress Line */}
             <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
                 <div className="w-[35%] h-full bg-blue-500" />
@@ -80,6 +96,13 @@ const SendCryptoPage = () => {
                 </div>
             ))}
             </div>
+            <div className='hidden max-sm:flex -space-x-4 items-center'>
+                <DonutProgress  size = "w-28 h-28" percentage = {50} />
+                <div className="flex flex-col justify-between items-start">
+                    <span className='text-[#181F30] text-[16px] font-bold'>Receiver’s info</span>
+                    <span className='text-[#6E757D] text-[13px]'>Enter the informations.</span>
+                </div>
+            </div>
         </div>
 
         <div className="w-full relative flex justify-center dm-sans">
@@ -92,39 +115,53 @@ const SendCryptoPage = () => {
                     />
                 </div>
             </div>
-            <div className={`w-[800px] min-h-screen space-y-6 pt-24 pb-40 relative z-20 flex flex-col items-center justify-center`}>
-                <span className="text-[44px]/10 dm-sans-medium">
+            <div className={`w-[800px] min-h-screen max-lg:px-6 space-y-6 max-sm:space-y-4 pt-24 max-sm:pt-8 pb-40 max-sm:pb-12  max-lg:pb-20 relative z-20 flex flex-col items-center justify-center`}>
+                <span className="text-[44px]/10 dm-sans-medium max-md:text-[26px]/10">
                 Send Crypto Payment
                 </span>
-                <p className="text-[#6E757D] dm-sans-light text-[14px] -mt-2 text-center">
-                You can see all the details of your transaction, check that you have made no <br /> mistake if necessary you can modify information on this page.                </p>
-                <div className="w-full rounded-4xl bg-white shadow-md p-6">
-                    <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
+                <p className="text-[#6E757D] dm-sans-light text-[14px] -mt-2 text-center max-md:hidden">
+                You can see all the details of your transaction, check that you have made no <br /> mistake if necessary you can modify information on this page.                
+                </p>
+                <p className="text-[#6E757D] dm-sans-light text-[14px] -mt-2 text-center  md:hidden">
+                You can see all the details of your <br /> transaction, check that you have made no <br /> mistake if necessary you can modify <br /> information on this page.                
+                </p>
+            <div className="w-full rounded-3xl bg-white shadow-md p-6 max-md:mx-4 max-md:p-3 max-md:w-full">
+                  <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
                         <form className="h-full w-full flex flex-col gap-6 justify-between" onSubmit={handleSubmit}>
-                            <h3 className='text-black font-semibold -mb-4'>Send Crypto Payment</h3> 
-                            <div className="flex flex-col gap-2 w-full">
-                                <label htmlFor="country" className='text-gray-400 dm-sans-medium text-[12px] text-left'>Send payment to this crypto address:</label>
-                                <div class="flex items-center justify-between w-full border rounded-lg p-1 border-[#D3D8DD]">
-  <div>
-    <p class="text-[#6E757D] dm-sans-medium text-[16px]">
-      0x14D8C9EaF7...805D
-    </p>
-  </div>
-  <button class="border-l border-gray-400 pl-4 text-[14px] font-medium">
-    Copy
-  </button>
-</div>
-                            </div>
-                            <div className="flex justify-between gap-8 bg-gray-100 p-6 rounded-lg">
+                          <h3 className='text-black font-semibold -mb-4 '>Send Crypto Payment</h3> 
+
+                  <div className="flex flex-col gap-2 w-full">
+                                <label htmlFor="country" className='text-gray-400 dm-sans-medium text-[12px] text-left max-md:mb-2'>Send payment to this crypto address:</label>
+                                <div className="flex items-center justify-between w-full max-md:w-[100%] border rounded-lg p-1 border-[#D3D8DD]">
+                                <div>
+                                  <p className="text-[#6E757D] dm-sans-medium text-[16px]">
+                                  {fullAddress.slice(0, 6) + "..." + fullAddress.slice(-4)} {/* Truncate */ }
+                                  </p>
+                                </div>
+                                <button
+                                  onClick={handleCopy}
+                                  className="border-l border-gray-400 text-[#2475FF] pl-4 text-[14px] font-medium flex"
+                                >
+                                  <img src={copy} alt="copy" className='object-contain' />
+                                  {copied ? "Copied!" : "Copy"}
+                                </button>
+                              </div>
+                                <div className='flex justify-center items-center gap-4 my-3'>
+                                  <hr className='border border-[#D3D8DD] w-[43%] max-md:w-[35%]' />
+                                  <p className='font-[14px] text-[#6E757D]'>Or Pay</p>
+                                  <hr className='border border-[#D3D8DD] w-[43%] max-md:w-[35%]'/>
+                                </div>
+                          </div>
+                    <div className="flex items-center justify-between gap-8 bg-gray-100 p-6 rounded-lg max-md:flex-col max-md:p-2 ">
                                     {/* Left side - Wallet List */}
-                                    <div>
-                                      <h2 className="text-xl font-semibold mb-4">Sign in with Wallet</h2>
+                                    <div className='md:w-[55%] max-md:flex max-md:flex-col max-md:justify-start'>
+                                      <h2 className="text-xl font-semibold mb-4">Connect wallet</h2>
                                       <p className="text-sm text-gray-600 mb-6">Connect to discover wallets:</p>
                                       
                                       <div className="space-y-4">
                                         {wallets.map(({ name, imgSrc }) => (
-                                          <div key={name} className="flex items-center gap-3">
-                                            <div className="flex items-center gap-8">
+                                          <div key={name} className="flex items-center justify-between gap-12">
+                                            <div className="flex items-center gap-4">
                                               <img 
                                                 src={imgSrc} 
                                                 alt={`${name} logo`}
@@ -133,7 +170,7 @@ const SendCryptoPage = () => {
                                               <span className="text-sm font-medium text-gray-700 min-w-[80px]">{name}</span>
                                             </div>
                                             <button 
-                                              className="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-500 hover:bg-gray-100"
+                                              className="px-4 py-2 bg-[#D3D8DD] rounded-full text-sm flex justify-end text-gray-500 hover:bg-gray-100"
                                             >
                                               Connect
                                             </button>
@@ -152,9 +189,10 @@ const SendCryptoPage = () => {
                                     </div>
                             
                                     {/* Right side - QR Code */}
-                                    <div className="flex flex-col items-center bg-white px-4 rounded-2xl mr-2 w-[320px]">
+                                    <div className="flex flex-col items-center bg-white px-4 py-12 rounded-2xl mr-2 w-[320px] max-md:w-[98%]">
+                                      <img src={walletconnect} alt="walletconnect" className='object-contain' />
                                       <h3 className="text-base font-medium mb-4">Wallet connect</h3>
-                                      <div className=" rounded-lg p-2 mt-18" >
+                                      <div className=" rounded-lg p-2 -mt-2" >
                                         <img 
                                           src={QrCode}
                                           alt="QR Code"
