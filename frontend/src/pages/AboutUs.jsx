@@ -53,10 +53,11 @@ return (
         <div className="w-full bg-white pt-24 max-md:5 px-12 max-md:px-2 space-y-14" >
             <div className="w-full max-md:px-10 px-20 flex flex-col items-center">
                 <div className='w-full flex flex-col items-center space-y-6'>
-                    <span className='text-[36px] dm-sans-medium'>Why Choose Flash Transfer?</span>
+                    <span className='text-[36px] dm-sans-medium max-sm:hidden'>Why Choose Flash Transfer?</span>
+                    <span className='dm-sans-bold mb-4 md:hidden text-[19px]'>Why Choose Flash Transfer?</span>
                     <div className='flex flex-col items-center space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'>With 24/7 support, secure transfers, and a team of 200+ experts, Flash Transfer ensures crypto</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'> transactions are simple, safe, and fully supported.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:text-center'>With 24/7 support, secure transfers, and a team of 200+ experts, Flash Transfer ensures crypto</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:text-center'> transactions are simple, safe, and fully supported.</span>
                     </div>
                     <div className="grid grid-cols-3 max-md:grid-cols-1 w-full h-[300px] max-md:h-full gap-8">
                         <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 rounded-2xl'>

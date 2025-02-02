@@ -7,6 +7,7 @@ import AuthLayout from '../components/AuthLayout'
 import SocialButtons from '../components/SocialButtons'
 import { MoneyTransferIllustration } from '../components/Illustrations'
 import logo from '../assets/image/logo.svg'
+import { language } from '../assets/image'
 
 export default function SignUp() {
   const navigate = useNavigate()
@@ -58,21 +59,10 @@ export default function SignUp() {
             <label className="block text-sm font-medium text-gray-700">
               Send From
             </label>
-            <select
-              name="location"
-              value={values.location}
-              onChange={handleChange}
-              className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500
-                ${errors.location ? 'border-red-500' : 'border-gray-300'}`}
-            >
-              <option value="">Choose your location</option>
-              <option value="us">United States</option>
-              <option value="uk">United Kingdom</option>
-              <option value="eu">European Union</option>
-            </select>
-            {errors.location && (
-              <p className="mt-1 text-sm text-red-600">{errors.location}</p>
-            )}
+            <div className='relative w-full '>
+                <div className='absolute left-3 top-2.5 border-r  '><img src={language.english} alt="" className='w-6 h-6 mr-2' /> </div>
+                <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='Choose your Location' required />
+              </div>
           </div>
 
           <div>

@@ -19,13 +19,15 @@ export default function ContactUs() {
                 <div className="w-full h-full flex max-lg:grid max-lg:gap-4 justify-between items-center relative z-20">
                     <div className="w-[500px] max-sm:w-[320px] max-lg:w-full h-[400px] flex flex-col space-y-6 max-sm:space-y-4">
                         <span className='text-[54px]/16 max-sm:text-[34px]/10 dm-sans-medium'>Contact Us</span>
-                        <p className='text-[#6E757D] dm-sans-light text-[14px]/6'>Get in touch with us for any questions, support, or feedback.<br /> Our team is ready to assist you every step of the way!</p>
-                        <div className='flex flex-col space-y-2'>
+                        <p className='text-[#6E757D] dm-sans-light text-[14px]/6 max-sm:hidden'>Get in touch with us for any questions, support, or feedback.<br /> Our team is ready to assist you every step of the way!</p>
+                        <p className='text-[#6E757D] dm-sans-light text-[14px]/6 md:hidden'>Get in touch with us for any questions, support, or feedback. Our team is ready to assist you every step of the way!</p>
+                        <div className='flex flex-col space-y-2 max-sm:mt-6 max-sm:space-y-5'>
                             <div className="flex space-x-3 items-center">
                                 <div className='w-10 h-10 flex items-center justify-center rounded-full bg-white'>
                                     <img src={icons.locationPin} alt="" />
                                 </div>
-                                <span className='text-[#6E757D] dm-sans-light text-[14px]'>742 Evergreen Terrace Springfield, OR 12345</span>
+                                <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:hidden'>742 Evergreen Terrace Springfield, OR 12345</span>
+                                <span className='text-[#6E757D] dm-sans-light text-[14px] md:hidden'>742 Evergreen Terrace <br /> Springfield, OR 12345</span>
                             </div>
                             <div className="flex space-x-3 items-center">
                                 <div className='w-10 h-10 flex items-center justify-center rounded-full bg-white'>
@@ -91,7 +93,7 @@ export default function ContactUs() {
                 <div className='w-full flex flex-col items-center space-y-3'>
                     <span className='text-[36px] dm-sans-medium'>Visit us</span>
                     <div className='flex flex-col items-center space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-center text-[14px]/6'>Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-center text-[14px]/6 '>Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.</span>
                     </div>
                     <div className="grid grid-cols-5 max-lg:grid-cols-3 max-sm:grid-cols-1 w-full h-[80px] max-lg:h-full gap-4">
                         <div className='w-full h-full max-sm:h-[100px] py-3 bg-[#F6F6F6] border border-[#D3D8DD] rounded-3xl flex items-center justify-center'>
@@ -117,10 +119,11 @@ export default function ContactUs() {
             </div>
             <div className="w-full px-20 max-lg:px-3 py-16 max-sm:py-4 flex flex-col items-center space-y-8 bg-white">
                 <div className="w-full flex max-sm:flex-col justify-between items-start">
-                    <h2 className="text-[36px] dm-sans-medium">Visit our offices around <br /> the world</h2>
-                    <p className="text-[#6E757D] dm-sans-light text-[14px] max-w-[200px]">
+                    <h2 className="text-[36px] dm-sans-medium max-sm:text-[24px]">Visit our offices around <br /> the world</h2>
+                    <p className="text-[#6E757D] dm-sans-light text-[14px] max-w-[200px] ">
                         A short paragraph describing your team. You may want to describe what they are responsible for
                     </p>
+                    
                 </div>
                 
                 <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-6 max-sm:gap-3 w-full">

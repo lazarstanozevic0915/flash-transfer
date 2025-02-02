@@ -53,11 +53,14 @@ const SendPage = () => {
         </div>
         
         <div className={`w-[700px] min-h-screen max-sm:pt-12 space-y-6 relative z-20 flex flex-col items-center justify-center`}>
-          <span className="text-[44px]/12 dm-sans-medium">
+          <span className="text-[44px]/12 dm-sans-medium max-sm:mb-2">
             Send through
           </span>
-          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
-            Home is behind, the world ahead and there are many paths to tread<br /> through shadows to the edge.
+          <p className="text-[#6E757D] max-sm:hidden dm-sans-light text-[14px] text-center">
+            Home is behind, the world ahead  and there are many paths to tread<br /> through shadows to the edge.
+          </p>
+          <p className="text-[#6E757D] md:hidden dm-sans-light text-[14px] text-center">
+            Home is behind, the world ahead and there<br /> are many paths to tread through shadows to<br /> the edge.
           </p>
           <div className="w-full rounded-4xl bg-white shadow-md p-6">
               <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">

@@ -156,7 +156,7 @@ export default function Landing() {
                                         </div>
                                         <span className='bg-white text-[10px] dm-sans-light text-[#181F30] px-3 py-1 rounded-lg '>Receive</span>
                                     </div>
-                                    <div className=" w-full h-[70%] flex items-center justify-center">
+                                    <div className=" w-full h-[70%] max-sm:h-[70%] flex items-center justify-center">
                                         <div className="flex flex-col items-center gap-1">
                                             <input type="text" className='p-2 outline-none dm-sans-medium text-[#181F30] text-[20px] w-32 text-center' placeholder='0.9382' disabled />
                                             <span className='text-[11px] dm-sans-light text-[#181F30]'>Received Amount</span>
@@ -196,7 +196,7 @@ export default function Landing() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full h-[16%] flex flex-col max-sm:-mt-41 max-sm:space-y-3 space-y-1">
+                            <div className="w-full h-[16%] flex flex-col max-sm:-mt-50 max-sm:space-y-3 space-y-1">
                                 <button className='h-[50%] text-[11px] rounded-lg bg-[#FFC000] dm-sans-medium'>Continue</button>
                                 <button className='h-[50%] text-[11px] rounded-lg border border-[#D3D8DD] dm-sans-medium'>Cancel</button>
                             </div>
@@ -254,7 +254,8 @@ export default function Landing() {
                 <div className='w-full h-[70%] max-md:h-full relative z-20 flex max-md:grid max-md:gap-4 items-center space-x-6'>
                     <div className='flex flex-col space-y-4 w-[30%] max-md:w-full'>
                         <span className='bg-white text-[10px] dm-sans-light text-[#181F30] w-36 px-3 py-1 rounded-lg'>Fast, Secure Exchange</span>
-                        <span className='text-[36px]/12 max-md:text-[32px]/12 dm-sans-medium'>Global Fiat and Crypto  Exchange at Your Fingertips</span>
+                        <span className='text-[36px]/12 max-md:hidden dm-sans-medium'>Global Fiat and Crypto  Exchange at Your Fingertips</span>
+                        <span className='md:hidden text-[20px] dm-sans-medium'>Global Fiat and Crypto <br />  Exchange at Your Fingertips</span>
                         <span className='text-[#6E757D] dm-sans-light text-[14px] max-md:text-[12px]'>
                         Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.
                         </span>
@@ -264,8 +265,11 @@ export default function Landing() {
                             <div className='w-[86%] max-md:w-full max-md:h-full h-[60%] rounded-2xl bg-white p-4 flex flex-col justify-between'>
                                 <span className='text-[36px]/12 dm-sans-medium'>20</span>
                                 <div className='space-y-2 grid pb-6'>
-                                    <span className='text-[#181F30] dm-sans-bold text-[10px]'>
+                                    <span className='text-[#181F30] max-sm:hidden dm-sans-bold text-[10px]'>
                                         Popular cryptocurrencies available !
+                                    </span>
+                                    <span className='text-[#181F30] md:hidden dm-sans-bold text-[12px]'>
+                                        Popular cryptocurrencies <br /> available !
                                     </span>
                                     <span className='text-[#6E757D] dm-sans-medium text-[10px]'>
                                         You can exchange your cryptocurrencies: BTC, ETH, FLASH, USDC, USDT, DAI, BNB, POL, SOL, AVAX, CRO, SUI and more.
