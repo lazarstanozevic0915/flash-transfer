@@ -18,7 +18,10 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('isWalletConnected', connectedWallet);
   }, [isAuthenticated]);
 
-  const login = () => setIsAuthenticated(true);
+  const login = () => {
+    setIsAuthenticated(true);
+    setConnectedWallet('');
+  };
   const connectWallet = (name) => setConnectedWallet(name);
   const disconnectWallet = () => setConnectedWallet('');
   const logout = () => {

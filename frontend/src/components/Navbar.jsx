@@ -9,9 +9,11 @@ import WalletDropdown from './WalletDropdown'
 import CurrencyLanguageDropdown from './CurrencyLanguageDropdown'
 import NFTDropdown from './NFTdropdown'
 import NotificationDropdown from './NotificationDropdown'
+import WalletConnect from './WalletConnect';
+import WalletConnectDropdown from './WalletConnectDropdown';
 
 export default function Navbar() {
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated, connectedWallet } = useAuth()
     const [activeDropdown, setActiveDropdown] = useState('')
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [isWalletDropdownOpen, setIsWalletDropdownOpen] = useState(false)
@@ -87,11 +89,22 @@ export default function Navbar() {
                                             setIsWalletDropdownOpen(!isWalletDropdownOpen)
                                         }}>
                                         <img src={icons.wallet} alt="" className="w-4 h-4" />
-                                        {activeDropdown === 'wallet' && (
-                                            <WalletDropdown 
-                                                isOpen={isWalletDropdownOpen && activeDropdown === 'wallet'}
-                                                onClose={!isWalletDropdownOpen}
-                                            />
+                                        {
+                                            activeDropdown === 'wallet' && connectedWallet === '' ? 
+                                            (
+                                                <WalletConnectDropdown
+                                                isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
+                                                onClose={!isWalletDropdownOpen} 
+                                                />
+                                            )
+                                            :
+                                            (
+                                                <div>
+                                                    <WalletDropdown 
+                                                    isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
+                                                    onClose={!isWalletDropdownOpen} 
+                                                    />
+                                                </div>
                                         )}
                                     </div>
 

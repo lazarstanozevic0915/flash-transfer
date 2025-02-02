@@ -31,8 +31,8 @@ export default function SignIn() {
   const onSubmit = async (formValues) => {
     console.log('Submitting:', formValues)
     await new Promise(resolve => setTimeout(resolve, 1000))
-    login()
-    navigate('/')
+    login();
+    navigate('/');  
   }
 
   return (
