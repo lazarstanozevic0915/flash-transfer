@@ -36,10 +36,10 @@ export default function Navbar() {
                 <div className="flex items-center justify-between">
                     <div className="flex gap-6">
                         {/* Logo */}
-                        <div className="flex items-center space-x-1">
+                        <NavLink to={`/`} className="flex items-center space-x-1">
                             <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px]' />
                             <span className='inter-semibold text-[16px]'>Flash Transfer</span>
-                        </div>
+                        </NavLink>
 
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex space-x-5 mt-1 items-center dm-sans-light text-[#6E757D] text-[12px]">
