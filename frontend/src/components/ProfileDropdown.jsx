@@ -42,42 +42,43 @@ const ProfileDropdown = ({ isOpen }) => {
         </NavLink>
         
         <NavLink to="/history" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <Clock className="w-4 h-4" />
+          {/* <Clock className="w-4 h-4" /> */}
+          <img src={icons.transaction2Icon} alt="" className="w-5 h-5 object-fill" />
           <span>My Transaction</span>
         </NavLink>
         
         <NavLink to="/recipients" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <Users className="w-4 h-4" />
+        <img src={icons.swap2Icon} alt="" className="w-5 h-5 object-fill" />
           <span>My Recipients</span>
         </NavLink>
         
         <NavLink to="/track-order" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <Share2 className="w-4 h-4" />
+          <img src={icons.targetIcon} alt="" className="w-5 h-5 object-fill" />
           <span>Track a Transfer</span>
         </NavLink>
         
         <NavLink to="/nft" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <ImageIcon className="w-4 h-4" />
+          <img src={icons.nftIcon} alt="" className="w-5 h-5 object-fill" />
           <span>NFT</span>
         </NavLink>
         
         <NavLink to="/rank" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <Medal className="w-4 h-4" />
+          <img src={icons.rankIcon} alt="" className="w-5 h-5 object-fill" />
           <span>My Rank</span>
         </NavLink>
         
         <NavLink to="/settings" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <CreditCard className="w-4 h-4" />
+          <img src={icons.cardCreditIcon} alt=""  className="w-5 h-5 object-fill" />
           <span>My Cards</span>
         </NavLink>
         
         <NavLink to="/refer" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <Users className="w-4 h-4" />
+          <img src={icons.usersIcon} alt="" className="w-5 h-5 object-fill"  />
           <span>Refer a Friend</span>
         </NavLink>
         
         <NavLink to="/settings" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-          <Settings className="w-4 h-4" />
+          <img src={icons.setting2Icon} alt="" className="w-5 h-5 object-fill" />
           <span>Setting</span>
         </NavLink>
         
@@ -85,7 +86,7 @@ const ProfileDropdown = ({ isOpen }) => {
           onClick={() => logout()}
           className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
         >
-          <LogOut className="w-4 h-4" />
+          <img src={icons.logout2Icon} alt="" className="w-5 h-5 object-fill" />
           <span>Log out</span>
         </button>
       </div>

@@ -72,6 +72,16 @@ import receiverCard from './image/icons/receiverCard.svg';
 import employees from './image/icons/employees.svg';
 import secureTransferIcon from './image/icons/secureTransfer.svg';
 
+import cardCreditIcon from './image/icons/Credit Card.svg';
+import usersIcon from './image/icons/Group.svg';
+import nftIcon from './image/icons/nft2.svg';
+import rankIcon from './image/icons/rank.svg';
+import targetIcon from './image/icons/target.svg';
+import setting2Icon from './image/icons/setting2.svg';
+import swap2Icon from './image/icons/swap2.svg';
+import transaction2Icon from './image/icons/transaction2.svg';
+import logout2Icon from './image/icons/logout2.svg';
+
 import grade from './image/icons/grade.png';
 
 import arb from './image/icons/currency/arb.svg';
@@ -297,7 +307,16 @@ export const icons = {
   download,
   letter,
   filter,
-  search
+  search,
+  cardCreditIcon,
+  usersIcon,
+  nftIcon,
+  rankIcon,
+  targetIcon,
+  setting2Icon,
+  swap2Icon,
+  transaction2Icon,
+  logout2Icon,
 };
 
 export const currency = {
