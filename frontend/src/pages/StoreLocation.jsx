@@ -78,9 +78,9 @@ const StoreLocation = () => {
         </div>
         
         <div className="flex flex-col items-center w-full">
-          <div className="w-[600px] space-y-6 relative z-20 pt-16 pb-40">
-            <div className="flex flex-col items-center space-y-4">
-              <h1 className="text-[44px] leading-tight dm-sans-medium">
+          <div className="w-[600px] max-sm:w-[320px] space-y-6 relative z-20 pt-16 pb-40">
+            <div className="flex flex-col items-center space-y-4 max-sm:space-y-2">
+              <h1 className="text-[44px] max-sm:text-[22px] leading-tight dm-sans-medium">
                 Our retail stores are available
               </h1>
               <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
@@ -107,7 +107,7 @@ const StoreLocation = () => {
               />
             </div>
 
-            <div className="flex gap-6">
+            <div className="flex max-md:grid gap-6">
               <div className="flex-1 h-[600px] bg-gray-100 rounded-xl overflow-hidden">
                 <div className="flex gap-2 p-2 bg-white">
                   <button
@@ -165,7 +165,7 @@ const StoreLocation = () => {
                 </LoadScript>
               </div>
 
-              <div className="w-[400px] space-y-4 max-h-[600px] overflow-y-auto">
+              <div className="w-[400px] space-y-4 max-h-[600px] max-md:h-full max-md:w-full overflow-y-auto">
                 {locations.map((location) => (
                   <div
                     key={location.id}

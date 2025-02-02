@@ -75,7 +75,7 @@ export default function HelpPage() {
                 </div>
             </div>
             <div className="flex flex-col items-center w-full">
-                <div className="w-[600px] h-[350px] space-y-6 relative z-20 pt-16 pb-40">
+                <div className="w-[600px] max-sm:w-[320px] h-[350px] space-y-6 relative z-20 pt-16 pb-40">
                     <div className="flex flex-col items-center space-y-4">
                         <h1 className="text-[44px] leading-tight dm-sans-medium">
                             Help Center
@@ -86,7 +86,7 @@ export default function HelpPage() {
                     </div>
                 </div>
             </div>
-            <div className='w-full px-32 py-10 bg-white mb-20'>
+            <div className='w-full px-32 max-sm:px-4 py-10 bg-white mb-20'>
                 <div className="flex flex-col  space-y-4">
                     <h1 className="text-[34px] leading-tight dm-sans-medium">
                         Frequently asked questions
@@ -107,7 +107,7 @@ export default function HelpPage() {
                     </div>
                 </div>
 
-                <div className="flex items-center gap-20 justify-between bg-white rounded-xl ">
+                <div className="flex max-md:flex-col items-center gap-20 justify-between bg-white rounded-xl ">
                     <div className="flex-shrink-0 ml-8">
                         <img
                             src={helpBackImg}

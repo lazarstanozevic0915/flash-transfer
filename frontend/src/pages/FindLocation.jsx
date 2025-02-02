@@ -138,8 +138,8 @@ const FindLocation = () => {
                 </div>
             </div>
             
-            <div className="w-full px-20 max-sm:px-4 flex flex-col items-center">
-                <img src={contactBack} alt="" className="w-full h-full rounded-2xl" />
+            <div className="w-full px-20 max-sm:px-2 max-sm:h-[360px] max-md:h-[380px] flex flex-col items-center">
+                <img src={contactBack} alt="" className="w-full h-full rounded-2xl object-fill" />
             </div>
             </div>
         </div>
