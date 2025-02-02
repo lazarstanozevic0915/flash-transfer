@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 import heroBackground from '../assets/image/hero-background.png';
-import { icons } from '../assets/image';
+import { language } from '../assets/image';
 
 const NewContactPage = () => {
   const [error, setError] = useState('');
@@ -64,7 +64,10 @@ const NewContactPage = () => {
                   </div>
                   <div className="flex flex-col gap-2 w-full">
                       <label htmlFor="country" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Country/Region</label>
-                      <input type="text" id='country' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Country' required />
+                      <div className='relative w-full'>
+                        <div className='absolute left-3 top-2.5 '><img src={language.english} alt="" className='w-6 h-6' /> </div>
+                      <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='Choose your Location' required />
+                      </div>
                   </div>
                   <div className="flex flex-col gap-2 w-full">
                       <label htmlFor="streetAddress" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Street address*</label>
