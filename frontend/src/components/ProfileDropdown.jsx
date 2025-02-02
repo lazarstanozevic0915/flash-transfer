@@ -41,7 +41,7 @@ const ProfileDropdown = ({ isOpen }) => {
           <span>My Profile</span>
         </NavLink>
         
-        <NavLink to="/transactions" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+        <NavLink to="/history" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
           <Clock className="w-4 h-4" />
           <span>My Transaction</span>
         </NavLink>
@@ -51,7 +51,7 @@ const ProfileDropdown = ({ isOpen }) => {
           <span>My Recipients</span>
         </NavLink>
         
-        <NavLink to="/track" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+        <NavLink to="/track-order" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
           <Share2 className="w-4 h-4" />
           <span>Track a Transfer</span>
         </NavLink>
@@ -66,7 +66,7 @@ const ProfileDropdown = ({ isOpen }) => {
           <span>My Rank</span>
         </NavLink>
         
-        <NavLink to="/cards" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+        <NavLink to="/settings" className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
           <CreditCard className="w-4 h-4" />
           <span>My Cards</span>
         </NavLink>

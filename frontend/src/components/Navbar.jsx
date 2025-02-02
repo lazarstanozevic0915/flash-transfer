@@ -83,29 +83,35 @@ export default function Navbar() {
                                     </div>
 
                                     {/* Wallet Icon */}
-                                    <div className='relative w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white'
-                                        onClick={() => {
-                                            setActiveDropdown('wallet')
-                                            setIsWalletDropdownOpen(!isWalletDropdownOpen)
-                                        }}>
-                                        <img src={icons.wallet} alt="" className="w-4 h-4" />
-                                        {
-                                            activeDropdown === 'wallet' && connectedWallet === '' ? 
-                                            (
-                                                <WalletConnectDropdown
-                                                isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
-                                                onClose={!isWalletDropdownOpen} 
-                                                />
-                                            )
-                                            :
-                                            (
-                                                <div>
-                                                    <WalletDropdown 
+                                    <div className="relative">
+                                        <div className='w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white'
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setActiveDropdown('wallet');
+                                                setIsWalletDropdownOpen(!isWalletDropdownOpen);
+                                            }}>
+                                            <img src={icons.wallet} alt="" className="w-4 h-4" />
+                                        </div>
+                                        <div>
+                                            {
+                                                activeDropdown === 'wallet' && connectedWallet === '' ? 
+                                                (
+                                                    <WalletConnectDropdown
                                                     isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
                                                     onClose={!isWalletDropdownOpen} 
                                                     />
-                                                </div>
-                                        )}
+                                                )
+                                                :
+                                                (
+                                                    <div>
+                                                        <WalletDropdown 
+                                                        isOpen={ isWalletDropdownOpen && activeDropdown === 'wallet'} 
+                                                        onClose={activeDropdown !== 'wallet'} 
+                                                        />
+                                                    </div>
+                                            )}
+                                        </div>
+
                                     </div>
 
                                     {/* Notification Bell */}
