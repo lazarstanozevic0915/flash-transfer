@@ -17,26 +17,26 @@ export default function TermsAndConditions() {
     <div className="min-h-screen bg-white overflow-x-hidden">
        <Navbar />
       <main className=" mx-auto px-0 ">
-        <div className="text-center mb-28 bg-gray-100  py-38 rounded-b-2xl relative ">
-                <div className="absolute -bottom-10 -left-70 z-10">
+        <div className="text-center mb-28 max-md:mb-16 bg-gray-100  py-38 rounded-b-2xl relative max-md:py-32 max-md:px-2 ">
+                <div className="absolute -bottom-10 -left-70 z-10 max-md:hidden">
                         <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
                     </div>
-                <div className="absolute -bottom-10 -right-70 z-10">
-                        <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
+                <div className="absolute -bottom-10 max-md:right-10 -right-70 z-10">
+                        <img src={heroBackground} alt="" className='h-[500px] max-md:max-w-screen w-[820px] object-fill' />
                     </div>
-                <h1 className="text-5xl font-semibold mb-6">Terms and Conditions</h1>
-                  <p className="text-gray-600">
+                <h1 className="text-5xl font-semibold mb-6 max-md:text-3xl max-md:mb-3">Terms And Conditons</h1>
+                  <p className="text-gray-600 max-md:text-lg">
                     Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
                   </p>
                 </div>
 
-        <div className="grid grid-cols-3 gap-6 mt-1">
-          <div className="col-span-2">
-            <div className="mb-12 px-20">
+        <div className="grid grid-cols-3 gap-6 mt-1 max-md:block">
+          <div className="col-span-2 max-md:block max-md:text-lg">
+            <div className="mb-12 px-20 max-md:px-1">
 
               <div className=" p-6 mb-8">
-                <h3 className="text-3xl font-semibold mb-4">1. Contract Formation and Overview</h3>
-                <p className="text-gray-600 mb-4">
+                <h3 className="text-3xl font-semibold mb-4 max-md:text-2xl max-md:mb-2">1. Contract Formation and Overview</h3>
+                <p className="text-gray-600 mb-4 max-md:text-md">
                 <span className='mr-4'>1.1</span>   These terms and conditions ("Terms and Conditions") govern the terms under which you can use:
                 </p>
                 <p className="text-gray-600 mb-4">
@@ -72,13 +72,13 @@ export default function TermsAndConditions() {
             </div>
           </div>
 
-          <div className="border border-gray-300 rounded-lg p-4 w-full max-w-sm h-max">
+          <div className="border border-gray-300 rounded-lg p-4 w-full max-w-sm h-max max-md:mx-2 max-md:mb-12 max-md:w-[95%] ">
               <h3 className="text-lg font-semibold mb-3">Related</h3>
               <hr className="border-gray-300 mb-3" />
 
               <nav>
                 {relatedLinks.map((link, index) => (
-                  <div key={index}>
+                  <div key={index} className='max-md:text-lg'>
                     <a
                       href={link.href}
                       className="block text-blue-600 hover:text-blue-700 py-2"

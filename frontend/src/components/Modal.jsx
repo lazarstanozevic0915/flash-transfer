@@ -10,7 +10,7 @@ export default function Modal({ isOpen, onClose, children }) {
       />
       
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center px-20 py-8 max-w-full">
+      <div className="flex md:min-h-full min-h-[85%] md:mt-0 mt-29 min-w-screen items-center justify-center px-20 max-md:px-2 py-8 max-md:w-full">
         <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-white p-4 shadow-xl">
           <button
             onClick={onClose}
