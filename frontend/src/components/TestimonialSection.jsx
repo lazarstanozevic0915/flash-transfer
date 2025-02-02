@@ -57,7 +57,7 @@ const TestimonialsSection = () => {
                     <span className='font-bold'>TrustPilot</span>
                     <span className="text-sm max-sm:w-full text-gray-500 max-sm:hidden">Our reviews verified by Trustpilot</span>
                 </div>
-                <h2 className="text-3xl dm-sans-medium">What our customers says</h2>
+                <h2 className="text-3xl dm-sans-medium max-sm:text-[22px]">What our customers says</h2>
             </div>
           <div className="flex gap-2 max-sm:hidden">
             <button 

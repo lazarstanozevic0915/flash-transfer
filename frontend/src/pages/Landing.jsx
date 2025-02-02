@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import heroBackground from '../assets/image/hero-background.png'
 
@@ -46,6 +46,22 @@ import { walletIcons } from '../assets/image'
 export default function Landing() {
 
     const { connectedWallet } = useAuth();
+    const [fromCurrency, setFromCurrency] = useState({ code: 'USDT', logo: usdtLogo, label: 'USDT' });
+    const [toCurrency, setToCurrency] = useState({ code: 'EUR', logo: eurLogo, label: 'EUR' });
+    const [sendAmount, setSendAmount] = useState('');
+    const [receiveAmount, setReceiveAmount] = useState('');
+
+    const handleSwap = () => {
+        // Swap currencies
+        const tempCurrency = fromCurrency;
+        setFromCurrency(toCurrency);
+        setToCurrency(tempCurrency);
+
+        // Swap amounts
+        const tempAmount = sendAmount;
+        setSendAmount(receiveAmount);
+        setReceiveAmount(tempAmount);
+    };
     
     const faqData = [
         {
@@ -77,7 +93,7 @@ export default function Landing() {
   return (
     <div className='w-full dm-sans '>
         <div className="w-full h-screen  max-md:h-[200vh] max-md:w-screen bg-[#F6F6F6] rounded-b-[50px] relative" >
-            <div className="absolute bottom-0 right-0 z-10">
+            <div className="absolute max-sm:hidden bottom-0 right-0 z-10">
                 <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
             </div>
             <Navbar />
@@ -91,7 +107,7 @@ export default function Landing() {
                                 <img src={youtubeIcon} alt="youtube icon" className='w-[26px] h-[26px] object-fill' />
                                 <span>Tutorial</span>
                             </NavLink>
-                            <NavLink to={``} className={` flex max-md:w-full max-md:justify-center max-md:p-2 items-center dm-sans-semibold text-[14px] px-12 py-2 rounded-md bg-[#E7E7E7] space-x-2 `}>
+                            <NavLink to={``} className={` flex max-md:w-full max-sm:-ml-4 max-md:justify-center max-md:p-2 items-center dm-sans-semibold text-[14px] px-12 py-2 rounded-md bg-[#E7E7E7] space-x-2 `}>
                                 <img src={trustIcon} alt="Trust Pilot icon" className='w-[26px] h-[26px] object-fill' />
                                 <span>Trustpilot</span>
                             </NavLink>
@@ -117,11 +133,8 @@ export default function Landing() {
                                     <div className="w-full h-[30%] flex items-center justify-between">
                                         <div>
                                             <CurrencySelect 
-                                                selectedCurrency={{ code: 'USDT', logo: usdtLogo, label: 'USDT' }}
-                                                onSelect={(currency) => {
-                                                    // Handle currency selection
-                                                    console.log('Selected currency:', currency);
-                                                }}
+                                                selectedCurrency={fromCurrency}
+                                                onSelect={(currency) => setFromCurrency(currency)}
                                             />
                                         </div>
                                         <span className='bg-white text-[10px] dm-sans-light text-[#181F30] px-3 py-1 rounded-lg'>Send</span>
@@ -137,11 +150,8 @@ export default function Landing() {
                                     <div className="w-full h-[30%] flex items-center justify-between">
                                         <div>
                                             <CurrencySelect 
-                                                selectedCurrency={{ code: 'EUR', logo: eurLogo, label: 'EUR' }}
-                                                onSelect={(currency) => {
-                                                    // Handle currency selection
-                                                    console.log('Selected currency:', currency);
-                                                }}
+                                                selectedCurrency={toCurrency}
+                                                onSelect={(currency) => setToCurrency(currency)}
                                             />
                                         </div>
                                         <span className='bg-white text-[10px] dm-sans-light text-[#181F30] px-3 py-1 rounded-lg '>Receive</span>
@@ -153,18 +163,18 @@ export default function Landing() {
                                         </div>
                                     </div>
                                 </div>
-                                <button className="w-10 h-10 rounded-full absolute top-[43%] left-[45%] bg-[#FFC40F] border-6 border-white flex items-center justify-center hover:cursor-pointer" title='swap'>
+                                <button className="w-10 h-10 rounded-full absolute top-[43%] left-[45%] bg-[#FFC40F] border-6 border-white flex items-center justify-center hover:cursor-pointer" title='swap' onClick={handleSwap}>
                                     <img src={swapIcon} alt="swap" className='h-[12px] w-[12px] object-center'  />
                                 </button>
                             </div>
-                            <div className="w-full h-[36%] flex flex-col">
+                            <div className="w-full h-[36%] max-sm:h-[45%] flex flex-col">
                                 <div className="flex w-full items-center text-[#000000] justify-center py-2 text-[12px] border-b border-[#D3D8DD]">
-                                    <span className='dm-sans-light'>{`1 USDT = 1 eur`}</span>
+                                    <span className='dm-sans-light'>{`1 USDT = 1 EUR`}</span>
                                 </div>
                                 <div className="flex flex-col w-full items-center text-[#000000] justify-center gap-1 py-3 text-[12px] border-b border-[#D3D8DD]">
                                     <div className='flex w-full items justify-between'>
                                         <span className='text-[#6A6A6A] dm-sans-light'>Exchange Rate</span>
-                                        <span className='dm-sans-medium'>{`1 USDT = 1 eur`}</span>
+                                        <span className='dm-sans-medium'>{`1 USDT = 1 EUR`}</span>
                                     </div>
                                     <div className='flex w-full items justify-between'>
                                         <span className='text-[#6A6A6A] dm-sans-light'>Fee</span>
@@ -198,7 +208,7 @@ export default function Landing() {
         <div className="w-full bg-white pt-24 max-sm:pt-12 px-12 max-sm:px-4 space-y-14" >
             <div className="w-full px-20 max-sm:px-4  flex flex-col items-center">
                 <div className='w-full flex flex-col items-center space-y-6'>
-                    <span className='text-[36px] dm-sans-medium'>Choose from our trusted partners</span>
+                    <span className='text-[36px] text-[#181F30] max-sm:text-[20px]/6 font-semibold max-sm:text-center'>Choose from our trusted partners</span>
                     <div className='flex flex-col items-center max-md:items-start space-y-1'>
                         <span className='text-[#6E757D] dm-sans-light text-[14px] max-md:text-left'>We make sure your money is delivered quickly and easily</span>
                         <span className='text-[#6E757D] dm-sans-light text-[14px]'> Choose payment types from our network: cash collection points, mobile money and bank transfer.</span>
@@ -291,11 +301,11 @@ export default function Landing() {
                 </div>
             </div>
             <div className="w-full px-20 max-md:px-4 flex flex-col items-center">
-                <div className='w-full flex flex-col items-center max-sm:items-start space-y-6'>
-                    <span className='text-[36px] dm-sans-medium'>Why Choose Us</span>
+                <div className='w-full flex flex-col items-center max-sm:items-center space-y-6'>
+                    <span className='text-[36px] text-[#181F30] max-sm:text-[22px]/6 font-semibold max-sm:text-center'>Why Choose Us</span>
                     <div className='flex flex-col items-center space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'>Send & Receive money to your loved ones in minutes with great rates and low fees.</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'> Over 40 countries and +36 currencies supported.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>Send & Receive money to your loved ones in minutes with great rates and low fees.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'> Over 40 countries and +36 currencies supported.</span>
                     </div>
                     <div className="grid grid-cols-3 max-md:grid-cols-1 w-full h-[300px] max-md:h-full gap-8">
                         <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 rounded-2xl'>
@@ -334,9 +344,9 @@ export default function Landing() {
                         <img src={fastBack} alt="" className='w-full h-full' />
                     </div>
                     <div className='flex flex-col space-y-4'>
-                            <span className='text-[#181F30] dm-sans-medium text-[36px]/12'>
-                                Fast, Secure <br />
-                                Money Transfers
+                            <span className='text-[#181F30] text-[36px] max-sm:text-[22px]/7 font-semibold max-sm:text-left'>
+                                Fast, Secure <br className='max-sm:hidden' />
+                                Money <br className='hidden max-sm:flex' /> Transfers
                             </span>
                             <span className='text-[#6E757D] dm-sans-light w-[280px] text-[14px]'>Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.</span>
                             <div className='flex flex-col gap-8'>
@@ -368,7 +378,7 @@ export default function Landing() {
             </div>
             <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-4 max-md:py-4 relative flex items-center max-md:items-start bg-[#F6F6F6] rounded-4xl">
                 <div className='w-full flex flex-col items-center space-y-6 max-md:space-y-4'>
-                    <span className='text-[36px] max-sm:text-[28px] dm-sans-medium'>Just few steps to start</span>
+                    <span className='text-[36px] max-sm:text-[22px] dm-sans-medium'>Just few steps to start</span>
                     <div className='flex flex-col items-center space-y-1'>
                         <span className='text-[#6E757D] dm-sans-light text-[14px]'>Its easiest as you think.Follow 3 easiest step</span>
                     </div>
@@ -406,8 +416,8 @@ export default function Landing() {
             <div className='px-20 max-md:px-3 w-full'>
                 <div className="w-full h-full flex max-md:flex-col-reverse max-md:gap-4 justify-between items-center">
                     <div className='flex flex-col max-md:w-full space-y-4'>
-                            <span className='text-[#181F30] dm-sans-medium text-[36px]/12'>
-                                 Fastest & Most Secure <br /> Way to Send Crypto to <br />Fiat Globally
+                            <span className='text-[#181F30] font-semibold text-[36px]/12 max-sm:text-[24px]/8'>
+                                 Fastest & Most Secure <br className='max-sm:hidden' /> Way to Send Crypto to <br className='max-sm:hidden' />Fiat Globally
                             </span>
                             <span className='text-[#6E757D] dm-sans-light w-[280px] max-md:w-full text-[14px]'>Send crypto to fiat globally with unmatched speed, security, and low fees.</span>
                             <div className='flex flex-col gap-8'>
@@ -429,11 +439,13 @@ export default function Landing() {
                 </div>
             </div>
             <div className="w-full px-20 max-md:px-3 flex flex-col items-center">
-                <div className='w-full flex flex-col items-center max-sm:items-start space-y-4'>
-                    <span className='text-[36px] dm-sans-medium'>Frequently asked questions</span>
+                <div className='w-full flex flex-col items-center max-sm:items-center space-y-4'>
+                    <span className='font-semibold text-[36px]/12 max-sm:text-[24px]/8 max-sm:hidden'>Frequently asked questions</span>
+                    <span className='font-semibold text-[36px]/12 max-sm:text-[24px]/8 hidden max-sm:flex'>Just few steps to start</span>
                     <div className='flex flex-col items-center space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'>Find answers to common inquiries and get the support you need in our</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'>Frequently Asked Questions section.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:hidden'>Find answers to common inquiries and get the support you need in our</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:hidden'>Frequently Asked Questions section.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] hidden max-sm:flex'>Its easiest as you think.Follow 3 easiest step</span>
                     </div>
                     <div className="grid grid-cols-2 max-md:grid-cols-1 w-full gap-x-6 gap-y-4">
                         {
