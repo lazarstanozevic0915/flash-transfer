@@ -57,7 +57,7 @@ const NotificationDropdown = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <div className="absolute right-0 top-6 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-100">
+    <div className="absolute right-0 top-6 max-sm:right-8 max-sm:top-16 max-sm:scale-110 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-100">
       {/* Header */}
       <div className="p-4 border-b border-gray-100">
         <h3 className="text-base font-medium">Notifications</h3>

@@ -26,7 +26,7 @@ const CurrencyLanguageDropdown = ({ onClose, isOpen }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute right-0 top-3 mt-2 w-46 bg-white rounded-xl shadow-lg border border-gray-200">
+    <div className="absolute right-0 max-sm:right-12 max-sm:top-22 max-sm:scale-120 top-3 mt-2 w-46 bg-white rounded-xl shadow-lg border border-gray-200">
       <div className="p-6 space-y-4">
         {/* Language Selection */}
         <div className="mb-6">
