@@ -9,8 +9,8 @@ export default function PaymentCompletePage() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden dm-sans">
       <Navbar />
-      <main className="max-w-7xl flex items-center justify-center mx-auto my-18 px-8 py-12">
-        <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col w-[50%] items-center">
+      <main className="max-w-7xl flex items-center justify-center mx-auto my-18 max-sm:my-2 max-sm:px-1 px-8 py-12">
+        <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col w-[50%] max-lg:w-[90%] max-sm:w-[100%] items-center">
           <div className="mb-8">
             <img src={complete} alt="Pending" className="h-24 w-auto" />
           </div>
@@ -45,7 +45,7 @@ export default function PaymentCompletePage() {
             <img src={track} alt="track" className='object-contain mr-3' />
             <p>Tracking number: {"\u200B"}(+1-771-824-9642)</p>
           </div>
-          <div className="mt-2 grid grid-cols-2 gap-2 w-full">
+          <div className="mt-2 flex max-sm:flex-col-reverse gap-2 w-full">
             <Link
               to="/"
               className="px-6 py-2.5 w-full text-center border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-100 transition-colors"
