@@ -75,8 +75,8 @@ function App() {
             <Route path="/currency" element={<AllCurrencyPage />} />
             <Route path="/send">
               <Route index element={<SendPage />} />
-              <Route path="new-contact" element={<NewContactPage />} /> {/* Relative to /send */}
-              <Route path="my-contact" element={<MyContactPage />} /> {/* Relative to /send */}
+              <Route path="new-contact" element={<NewContactPage />} />
+              <Route path="my-contact" element={<MyContactPage />} />
               <Route path="receiver-info" >
                   <Route index element={<ReceiverInfoPage />} />
                   <Route path="beneficiary" element={<BeneficiaryInfoPage />} />
