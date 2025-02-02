@@ -176,7 +176,14 @@ export default function Navbar() {
                     {/* Mobile Menu Button */}
                     <button
                         className="md:hidden p-2 rounded-lg hover:bg-gray-100"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        onClick={() => {
+                            setIsMobileMenuOpen(!isMobileMenuOpen);
+                            setIsCurrencyDropdownOpen(false);
+                            setIsDropdownOpen(false);
+                            setIsWalletDropdownOpen(false);
+                            setIsNftDropdownOpen(false);
+                            setIsNotificationDropdownOpen(false);
+                        }}
                     >
                         {isMobileMenuOpen ? (
                             <X className="h-6 w-6" />
