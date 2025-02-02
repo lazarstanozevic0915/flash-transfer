@@ -32,20 +32,22 @@ export default function Navbar() {
             <div className="px-4 md:px-32 py-3">
                 {/* Desktop and Mobile Header */}
                 <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <div className="flex items-center space-x-1">
-                        <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px]' />
-                        <span className='inter-semibold text-[16px]'>Flash Transfer</span>
-                    </div>
+                    <div className="flex gap-6">
+                        {/* Logo */}
+                        <div className="flex items-center space-x-1">
+                            <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px]' />
+                            <span className='inter-semibold text-[16px]'>Flash Transfer</span>
+                        </div>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex space-x-5 mt-1 items-center dm-sans-light text-[#6E757D] text-[12px]">
-                        {mobileMenuLinks.map(link => (
-                            <NavLink key={link.to} to={link.to} className="hover:text-[#111] hover:dm-sans-bold">
-                                {link.label}
-                            </NavLink>
-                        ))}
-                    </div>
+                        {/* Desktop Navigation */}
+                        <div className="hidden md:flex space-x-5 mt-1 items-center dm-sans-light text-[#6E757D] text-[12px]">
+                            {mobileMenuLinks.map(link => (
+                                <NavLink key={link.to} to={link.to} className="hover:text-[#111] hover:dm-sans-bold">
+                                    {link.label}
+                                </NavLink>
+                            ))}
+                        </div>
+                    </div>  
 
                     {/* Desktop Auth/Profile Section */}
                     <div className="hidden md:flex">
