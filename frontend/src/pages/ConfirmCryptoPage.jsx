@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import heroBackground from '../assets/image/hero-background.png';
 import { NavLink } from 'react-router-dom';
 import { blogUser1Img, icons, language } from '../assets/image';
+import DonutProgress from '../components/DonutProgress';
 
 const ConfirmCryptoPage = () => {
 
@@ -21,37 +22,44 @@ const ConfirmCryptoPage = () => {
       {/* Main Content */}
       <main className="">
 
-        <div className='max-w-4xl mx-auto px-4 pt-8 pb-8'>
+      <div className='max-w-4xl mx-auto max-sm:py-0 px-4 pt-8 pb-8'>
             {/* Progress Steps */}
-            <div className="flex justify-between relative">
-            {/* Progress Line */}
-            <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
-                <div className="w-[1%] h-full bg-blue-500" />
-            </div>
-            
-            {/* Steps */}
-            {[
-                { label: "Receiver's info", description: "Enter the informations", active: true },
-                { label: "Receiver's Method", description: "Enter the informations", active: false },
-                { label: "Review Details", description: "Enter the informations", active: false },
-                { label: "Payment Complete", description: "Enter the informations", active: false }
-            ].map((step, index) => (
-                <div key={index} className="relative flex flex-col items-center w-1/4">
-                    <div className=" bg-white rounded-full w-13 h-13 flex items-center justify-center">
-                        <div className={` rounded-full border ${
-                            step.active 
-                            ? 'bg-blue-500 w-10 h-10 p-1 border-4 border-blue-50 text-white' 
-                            : ' bg-white w-8 h-8 border-gray-200 text-gray-400'
-                        } flex items-center justify-center z-10 mb-2 text-sm font-medium`}>
-                            <div className={`w-4 h-4 rounded-full ${ step.active ? 'bg-white' : 'bg-gray-200'}`}></div>
+            <div className="flex justify-between max-sm:hidden relative">
+                {/* Progress Line */}
+                <div className="absolute top-5 left-24 w-[78%] h-[2px] bg-gray-200">
+                    <div className="w-1/4 h-full bg-blue-500" />
+                </div>
+                
+                {/* Steps */}
+                {[
+                    { label: "Receiver's info", description: "Enter the informations", active: true },
+                    { label: "Receiver's Method", description: "Enter the informations", active: false },
+                    { label: "Review Details", description: "Enter the informations", active: false },
+                    { label: "Payment Complete", description: "Enter the informations", active: false }
+                ].map((step, index) => (
+                    <div key={index} className="relative flex flex-col items-center w-1/4">
+                        <div className=" bg-white rounded-full w-13 h-13 flex items-center justify-center">
+                            <div className={` rounded-full border ${
+                                step.active 
+                                ? 'bg-blue-500 w-10 h-10 p-1 border-4 border-blue-50 text-white' 
+                                : ' bg-white w-8 h-8 border-gray-200 text-gray-400'
+                            } flex items-center justify-center z-10 mb-2 text-sm font-medium`}>
+                                <div className={`w-4 h-4 rounded-full ${ step.active ? 'bg-white' : 'bg-gray-200'}`}></div>
+                            </div>
                         </div>
+                    <div className="text-center">
+                        <div className="text-sm font-semibold">{step.label}</div>
+                        <div className="text-[10px] text-gray-500">{step.description}</div>
                     </div>
-                <div className="text-center">
-                    <div className="text-sm font-semibold">{step.label}</div>
-                    <div className="text-[10px] text-gray-500">{step.description}</div>
+                    </div>
+                ))}
+            </div>
+            <div className='hidden max-sm:flex -space-x-4 items-center'>
+                <DonutProgress  size = "w-28 h-28" percentage = {25} />
+                <div className="flex flex-col justify-between items-start">
+                    <span className='text-[#181F30] text-[16px] font-bold'>Receiver’s info</span>
+                    <span className='text-[#6E757D] text-[13px]'>Enter the informations.</span>
                 </div>
-                </div>
-            ))}
             </div>
         </div>
 
@@ -65,8 +73,8 @@ const ConfirmCryptoPage = () => {
                     />
                 </div>
             </div>
-            <div className={`w-[800px] min-h-screen space-y-6 pt-24 pb-40 relative z-20 flex flex-col items-center justify-center`}>
-                <span className="text-[44px]/10 dm-sans-medium">
+            <div className={`w-[800px] min-h-screen max-lg:px-6 space-y-6 max-sm:space-y-4 pt-24 max-sm:pt-8 pb-40 max-sm:pb-12 max-lg:pb-20 relative z-20 flex flex-col items-center justify-center`}>
+                <span className="text-[44px]/10 max-sm:text-[34px] max-sm:text-center dm-sans-medium">
                 Confirm Crypto Address
                 </span>
                 <p className="text-[#6E757D] dm-sans-light text-[14px] -mt-2 text-center">

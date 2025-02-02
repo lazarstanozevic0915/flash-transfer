@@ -82,7 +82,7 @@ const CardPage = () => {
                     Enter your card information
                 </span>
                 <p className="text-[#6E757D] dm-sans-light text-[14px] max-sm:text-[12px] text-center">
-                    Home is behind, the world ahead and there are many paths to tread<br /> through shadows to the edge.
+                    Home is behind, the world ahead and there are many paths to tread<br className='max-sm:hidden' /> through shadows to the edge.
                 </p>
                 <div className="w-full rounded-4xl bg-white shadow-md p-6">
                     <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
