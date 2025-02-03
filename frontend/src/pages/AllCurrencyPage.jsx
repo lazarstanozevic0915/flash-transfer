@@ -24,7 +24,7 @@ export default function AllCurrencyPage() {
                 </div>
                 <div className="space-y-6 relative z-20">
                     <div className='flex items-center w-full justify-between'>
-                        <h1 className="text-[44px] leading-tight dm-sans-medium">
+                        <h1 className="text-[44px] leading-tight dm-sans-medium max-sm:text-[34px]">
                             All currency
                         </h1>
                     </div>
@@ -42,11 +42,11 @@ export default function AllCurrencyPage() {
                             </div>
                         </div>
                         <button 
-                            className='px-8 py-2 rounded-md bg-white text-[#6E757D] font-semibold text-[14px] flex items-center justify-center gap-2 border border-[#D3D8DD]'
+                            className='px-8 py-2 max-sm:px-2 rounded-md bg-white text-[#6E757D] font-semibold text-[14px] flex items-center justify-center gap-2 border border-[#D3D8DD]'
                             onClick={() => setFilterType('all')}
                         >
                             <img src={icons.filter} alt="" />
-                            Filter
+                           <p className='max-sm:hidden'> Filter</p>
                         </button>
                     </div>
                 </div>
