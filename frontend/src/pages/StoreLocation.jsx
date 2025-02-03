@@ -132,7 +132,7 @@ const StoreLocation = () => {
                   </button>
                 </div>
                 
-                <LoadScript googleMapsApiKey="AIzaSyBWxce9QzDpqcTRjtKk1K4tWtITRzpCNto">
+                <LoadScript googleMapsApiKey={import.meta.env.googleMapsApiKey}>
                   <GoogleMap
                     mapContainerClassName="w-full h-[calc(100%-48px)]"
                     center={center}
