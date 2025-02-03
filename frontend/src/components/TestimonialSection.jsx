@@ -35,16 +35,26 @@ const TestimonialsSection = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+    // Calculate items to show based on screen size
+    const itemsToShow = {
+      sm: 1,    // Small screens
+      md: 2,    // Medium screens
+      lg: 3,    // Large screens
+      xl: 4     // Extra large screens
+    };
+
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? testimonials.length - 3 : prevIndex - 1
-    );
+    setCurrentIndex((prevIndex) =>{
+      const maxStartIndex = testimonials.length - 1;
+      return prevIndex === 0 ? maxStartIndex : prevIndex - 1;
+    } );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === testimonials.length - 3 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prevIndex) => {
+      const maxStartIndex = testimonials.length - 1;
+      return prevIndex === maxStartIndex ? 0 : prevIndex + 1;
+    });
   };
 
   return (
@@ -57,7 +67,9 @@ const TestimonialsSection = () => {
                     <span className='font-bold'>TrustPilot</span>
                     <span className="text-sm max-sm:w-full text-gray-500 max-sm:hidden">Our reviews verified by Trustpilot</span>
                 </div>
+                <span className="text-sm max-sm:w-full text-gray-500 hidden max-sm:flex">Our reviews verified by Trustpilot</span>
                 <h2 className="text-3xl dm-sans-medium max-sm:text-[22px]">What our customers says</h2>
+                <span className="text-sm max-sm:w-full text-gray-500 hidden max-sm:flex">Send crypto to fiat globally with unmatched speed, security, and low fees.</span>
             </div>
           <div className="flex gap-2 max-sm:hidden">
             <button 
@@ -75,11 +87,23 @@ const TestimonialsSection = () => {
           </div>
         </div>
         
-        <div className="flex gap-6 max-sm:grid">
-          {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial) => (
+        <div className="flex gap-6">
+          {testimonials.map((testimonial, index) => {
+
+              // Show only relevant items based on screen size and current index
+              const isVisible = (
+                // On mobile, show only the current item
+                (index === currentIndex) ||
+                // On larger screens, show more items based on the breakpoint
+                (window.innerWidth >= 768 && index >= currentIndex && index < currentIndex + itemsToShow.md) ||
+                (window.innerWidth >= 1024 && index >= currentIndex && index < currentIndex + itemsToShow.lg) ||
+                (window.innerWidth >= 1280 && index >= currentIndex && index < currentIndex + itemsToShow.xl)
+              );
+
+            return(
             <div 
               key={testimonial.id}
-              className="flex-1 bg-gray-50 rounded-2xl p-6 space-y-4"
+              className={`${ isVisible ? 'flex-1' : 'hidden'} bg-gray-50 rounded-2xl p-6 space-y-4`}
             >
               <div className="flex gap-1">
                 {[...Array(testimonial.rating)].map((_, index) => (
@@ -98,9 +122,23 @@ const TestimonialsSection = () => {
                   <p className="text-gray-500 text-xs">{testimonial.role}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)
+          })}
         </div>
+        <div className="max-sm:flex w-full justify-center my-4 gap-2 hidden">
+            <button 
+              onClick={handlePrevious}
+              className="p-2 rounded-full bg-[#FFC000] hover:bg-[#e6ac00] transition-colors"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button 
+              onClick={handleNext}
+              className="p-2 rounded-full bg-[#FFC000] hover:bg-[#e6ac00] transition-colors"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
       </div>
     </div>
   );
