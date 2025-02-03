@@ -80,7 +80,7 @@ const StoreLocation = () => {
         <div className="flex flex-col items-center w-full">
           <div className="w-[600px] max-sm:w-[320px] space-y-6 relative z-20 pt-16 pb-40">
             <div className="flex flex-col items-center space-y-4 max-sm:space-y-2">
-              <h1 className="text-[44px] max-sm:text-[22px] leading-tight dm-sans-medium">
+              <h1 className="text-[44px] max-sm:text-[30px] text-center leading-tight dm-sans-medium">
                 Our retail stores are available
               </h1>
               <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">

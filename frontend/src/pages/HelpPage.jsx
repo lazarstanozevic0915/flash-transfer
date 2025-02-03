@@ -86,12 +86,12 @@ export default function HelpPage() {
                     </div>
                 </div>
             </div>
-            <div className='w-full px-32 max-sm:px-4 py-10 bg-white mb-20'>
+            <div className='w-full px-32 max-sm:px-4 max-sm:mt-18 py-10 bg-white mb-20'>
                 <div className="flex flex-col  space-y-4">
-                    <h1 className="text-[34px] leading-tight dm-sans-medium">
+                    <h1 className="text-[34px] leading-tight dm-sans-medium max-sm:text-[24px]">
                         Frequently asked questions
                     </h1>
-                    <p className="text-[#6E757D] dm-sans-light text-[14px]">
+                    <p className="text-[#6E757D] dm-sans-light text-[14px] max-sm:text-[15.5px]">
                         Can’t find the answer you’re looking for? Reach out to our customer support team.   
                     </p>
                     <div className="bg-white rounded-xl mb-16">
@@ -116,12 +116,12 @@ export default function HelpPage() {
                         />
                     </div>
                     <div className="flex-1">
-                        <h2 className="text-2xl font-medium mb-4">Still Have Questions?</h2>
-                        <p className="text-gray-600 mb-6 max-w-md">
+                        <h2 className="text-2xl font-medium mb-4 max-sm:text-center max-sm:text-lg">Still Have Questions?</h2>
+                        <p className="text-gray-600 mb-6 max-w-md max-sm:text-center">
                             At tincidunt sapien vehicula est euncer pellentesque rhoncus. Et magna sit morbi lobortis morbus at morbi laoreet.
                         </p>
-                        <button className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
-                            Ask for help
+                        <button className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors max-sm:w-full">
+                            Ask our team
                         </button>
                     </div>
                 </div>
