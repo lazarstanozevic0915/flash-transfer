@@ -80,7 +80,7 @@ const PaymentReceivedPage = () => {
                 <span className="text-[44px]/10 max-sm:text-[32px] dm-sans-medium">
                     Received 
                 </span>
-                <div className="dm-sans-medium flex items-center gap-2 text-[18px] text-center">
+                <div className="dm-sans-medium flex items-center max-sm:hidden gap-2 text-[18px] text-center">
                     You are almost done
                     <div className='w-5 h-5 rounded-full text-white max-sm:hidden bg-[#00C735] flex items-center justify-center'>
                         <Check size={13} />
@@ -97,12 +97,12 @@ const PaymentReceivedPage = () => {
                             
                             <div className="">
                                 <h2 className="text-blue-500 font-semibold">Step 1</h2>
-                                <p>Log in to your bank’s website</p>
+                                <p className='text-[#6E757D]'>log in to your bank’s website</p>
                             </div>
 
                             <div className="">
                                 <h2 className="text-blue-500 font-semibold">Step 2</h2>
-                                <p>Transfer the total amount to "Orange Money" (beneficiary):</p>
+                                <p className=' text-[#6E757D]'>transfer the total amount to "Orange Money" (beneficiary):</p>
                                 <div className=" rounded-lg mt-2">
                                     <div className="flex justify-between py-3 border-b border-[#F6F6F6]">
                                         <span>Beneficiary</span>
@@ -142,7 +142,7 @@ const PaymentReceivedPage = () => {
 
                             <div className="flex items-center bg-gray-200 py-4 px-3 max-sm:text-[13px] rounded-lg mb-6 max-sm:mb-0.5">
                                 <img src={track} alt="track" className="object-contain mr-3" />
-                                <p className="font-semibold">Tracking Number (FTN): <span className="text-gray-800">771 824 9542</span></p>
+                                <p className="font-semibold text-[15px]  text-[#6E757D] ml-2">Tracking Number (FTN): <br className='md:hidden' /> <span className="text-gray-800">771 824 9542</span></p>
                             </div>
 
                             <button className="w-full flex items-center justify-center py-3 max-sm:py-4 bg-yellow-500 text-gray-900 font-bold rounded-lg gap-2 hover:bg-yellow-600 transition-colors">

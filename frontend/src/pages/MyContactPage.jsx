@@ -35,11 +35,11 @@ const MyContactPage = () => {
         </div>
         
         <div className={`w-[700px] min-h-screen py-20 space-y-6 relative z-20 flex flex-col items-center justify-center`}>
-          <span className="text-[44px]/12 dm-sans-medium">
+          <span className="text-[44px]/12 dm-sans-medium max-sm:text-[36px] max-sm:mb-2">
             My Contacts
           </span>
-          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
-            Home is behind, the world ahead and there are many paths to tread<br /> through shadows to the edge.
+          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[15.5px]">
+            Home is behind, the world ahead and there are many paths to tread<br className='max-sm:hidden' /> through shadows to the edge.
           </p>
           <div className="w-full rounded-4xl bg-white shadow-md p-6">
               <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">

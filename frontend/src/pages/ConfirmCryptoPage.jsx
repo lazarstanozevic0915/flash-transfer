@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 import heroBackground from '../assets/image/hero-background.png';
 import { NavLink } from 'react-router-dom';
-import { blogUser1Img, icons, language } from '../assets/image';
+import { blogUser1Img, currency, icons, language } from '../assets/image';
 import DonutProgress from '../components/DonutProgress';
 
 const ConfirmCryptoPage = () => {
@@ -83,16 +83,32 @@ const ConfirmCryptoPage = () => {
                     <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
                         <form className="h-full w-full flex flex-col gap-6 justify-between" onSubmit={handleSubmit}> 
                             <div className="flex flex-col gap-2 w-full">
-                                <label htmlFor="country" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Enter the Crypto Address of an EVM chain: <br /> (ETH, Polygon, Base, Arbitrum, Optimism ...)</label>
+                                <label htmlFor="country" className='text-[#181F30] dm-sans-medium text-[14px] max-sm:text-[12px] text-left'>Enter the Crypto Address of an EVM chain: <br /> (ETH, Polygon, Base, Arbitrum, Optimism ...)</label>
                                 <input type="text" id='country' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='0x.................................' required />
                             </div>
                             <div className="flex flex-col gap-2 w-full">
-                                <label htmlFor="city" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Select the Crypto</label>
-                                <input type="text" id='city' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='USDT' required />
+                                <label htmlFor="city" className='text-[#181F30] dm-sans-medium text-[14px] text-left max-sm:text-[12px]'>Select the Crypto</label>
+                                <div className='relative w-full'>
+                                <div className='absolute left-3 top-2.5  '><img src={currency.usdt} alt="" className='w-6 h-6' /> </div>
+                                <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px]  border-[#D3D8DD] w-full' placeholder='USDT' required />
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                                </div>
                             </div>
                             <div className="flex flex-col gap-2 w-full">
-                                <label htmlFor="city" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Select the Blockchain</label>
-                                <input type="text" id='city' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Base' required />
+                                <label htmlFor="city" className='text-[#181F30] dm-sans-medium text-[14px] text-left max-sm:text-[12px]'>Select the Blockchain</label>
+                                <div className='relative w-full'>
+                                <div className='absolute left-3 top-2.5  '><img src={currency.base} alt="" className='w-6 h-6' /> </div>
+                                <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px]  border-[#D3D8DD] w-full' placeholder='Base' required />
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                                </div>
                             </div>
 
                         

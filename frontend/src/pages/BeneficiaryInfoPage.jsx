@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import heroBackground from '../assets/image/hero-background.png';
 import { NavLink } from 'react-router-dom';
 import DonutProgress from '../components/DonutProgress';
+import { language } from '../assets/image';
 
 const BeneficiaryInfoPage = () => {
 
@@ -77,7 +78,7 @@ const BeneficiaryInfoPage = () => {
                     Receiver’s info
                 </span>
                 <p className="text-[#6E757D] dm-sans-light text-[14px] max-sm:text-[12px] text-center">
-                    Enter the information of your beneficiary who will receive the amount of your transaction. If you want to send <br /> to a beneficiary already registered you can select it in "Select from existing".
+                    Enter the information of your beneficiary who will receive the amount of your transaction. If you want to send <br className='max-sm:hidden' /> to a beneficiary already registered you can select it in "Select from existing".
                 </p>
                 <div className="w-full rounded-4xl bg-white shadow-md p-6">
                     <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
@@ -108,7 +109,15 @@ const BeneficiaryInfoPage = () => {
                             </div>
                             <div className="flex flex-col gap-2 w-full">
                                 <label htmlFor="country" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Country/Region</label>
-                                <input type="text" id='country' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Choose your location' required />
+                                <div className='relative w-full'>
+                                    <div className='absolute left-3 top-2.5 border-r border-gray-400 py-0 '><img src={language.english} alt="" className='w-6 h-6 mr-3' /> </div>
+                                        <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='Choose your Location' required />
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                </div>
+                            </div>
                             </div>
                             <div className="flex flex-col gap-2 w-full">
                                 <label htmlFor="city" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>City*</label>

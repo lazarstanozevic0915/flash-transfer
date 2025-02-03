@@ -78,7 +78,7 @@ const CashPage = () => {
                 </div>
             </div>
             <div className={`w-[800px] min-h-screen max-lg:px-6 space-y-6 max-sm:space-y-2 pt-24 max-sm:pt-8 pb-40 relative z-20 flex flex-col items-center justify-center`}>
-                <span className="text-[44px]/10 max-sm:text-[34px] max-sm:text-center dm-sans-medium">
+                <span className="text-[44px]/10 max-sm:text-[32px] max-sm:text-center dm-sans-medium">
                     Choose delivery method 
                 </span>
                 <p className="text-[#6E757D] dm-sans-light text-[14px] max-sm:text-[12px] text-center">

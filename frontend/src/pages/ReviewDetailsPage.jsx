@@ -82,7 +82,7 @@ const ReviewDetailsPage = () => {
                 <span className="text-[44px]/10 dm-sans-medium">
                     Review Details
                 </span>
-                <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
+                <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[15.5px]">
                     Check the summary of your order before validating.
                 </p>
             </div>

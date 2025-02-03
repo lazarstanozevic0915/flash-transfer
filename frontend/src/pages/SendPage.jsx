@@ -66,53 +66,53 @@ const SendPage = () => {
               <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
                 <form className="h-full w-full flex flex-col gap-6 justify-between" onSubmit={handleSubmit}>  
                     <div className="flex flex-col gap-3">
-                        <h3 className='text-[#273240] dm-sans-semibold text-[15px] text-left'>How would you like to pay ?</h3>
+                        <h3 className='text-[#273240] dm-sans-semibold text-[15px] max-sm:text-[17px] text-left'>How would you like to pay ?</h3>
                         <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-4">
-                            <button 
-                                className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'cash' && 'bg-blue-500 text-white'} `}
-                                onClick={() => setActivePay('cash')}
-                            >
-                                <HandCash />
-                                <h3 className=''>Cash Payment</h3>
-                            </button>
+                      <button 
+                          className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${activePay === 'cash' ? 'bg-blue-500 text-white' : ''}`}
+                          onClick={() => setActivePay('cash')}
+                      >
+                          <HandCash color={activePay === 'cash' ? 'white' : '#2475FF'} />
+                          <h3>Cash Payment</h3>
+                      </button>
                             <button 
                                 className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'wallet' && 'bg-blue-500 text-white'} `}
                                 onClick={() => setActivePay('wallet')}
                             >
-                                <CryptoWallet />
+                                <CryptoWallet color={activePay === 'wallet' ? 'white' : '#2475FF'} />
                                 <h3 className=''>Crypto Wallet</h3>
                             </button>
                             <button 
                                 className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'card' && 'bg-blue-500 text-white'} `}
                                 onClick={() => setActivePay('card')}
                             >
-                                <CreditCard />
+                                <CreditCard color={activePay === 'card' ? 'white' : '#2475FF'} />
                                 <h3 className=''>Credit Card</h3>
                             </button>
                             <button 
                                 className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'bank' && 'bg-blue-500 text-white'} `}
                                 onClick={() => setActivePay('bank')}
                             >
-                                <Bank />
+                                <Bank color={activePay === 'bank' ? 'white' : '#2475FF'} />
                                 <h3 className=''>Bank Transfer</h3>
                             </button>
                         </div>
                     </div>
                     <div className="flex flex-col gap-3">
-                        <h3 className='text-[#273240] dm-sans-semibold text-[15px] text-left'>How does your receiver want money ?</h3>
+                        <h3 className='text-[#273240] dm-sans-semibold text-[15px] max-sm:text-[18px] text-left'>How does your receiver want money ?</h3>
                         <div className="grid grid-cols-3 gap-4">
                             <button 
                                 className={`flex flex-col items-center justify-center text-[14px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activeReceive === 'cash' && 'bg-blue-500 text-white'} `}
                                 onClick={() => setActiveReceive('cash')}
                             >
-                                <CashPick color={activeReceive === 'cash' ? 'blue-500' : ''} />
+                                <CashPick color={activeReceive === 'cash' ? 'blue-500' : 'white'} />
                                 <h3 className=''>Cash Payment</h3>
                             </button>
                             <button 
                                 className={`flex flex-col items-center justify-center text-[14px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activeReceive === 'wallet' && 'bg-blue-500 text-white'} `}
                                 onClick={() => setActiveReceive('wallet')}
                             >
-                                <CashWallet color={activeReceive === 'wallet' ? 'blue-500' : ''} />
+                                <CashWallet color={activeReceive === 'wallet' ? 'blue-500' : 'white'} />
                                 <h3 className=''>Crypto Wallet</h3>
                             </button>
                             <button 

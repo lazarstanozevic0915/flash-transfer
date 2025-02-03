@@ -35,11 +35,11 @@ const NewContactPage = () => {
         </div>
         
         <div className={`w-[700px] min-h-screen py-20 max-sm:px-4 space-y-6 relative z-20 flex flex-col items-center justify-center`}>
-          <span className="text-[44px]/12 dm-sans-medium">
+          <span className="text-[44px]/12 dm-sans-medium max-sm:text-center max-sm:text-[36px] max-sm:mb-2 ">
             Add New Contact
           </span>
-          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
-            Home is behind, the world ahead and there are many paths to tread<br /> through shadows to the edge.
+          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[15.8px]">
+            Home is behind, the world ahead and there are many paths to tread<br className='max-sm:hidden' /> through shadows to the edge.
           </p>
           <div className="w-full rounded-4xl bg-white shadow-md p-6">
               <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
@@ -65,8 +65,13 @@ const NewContactPage = () => {
                   <div className="flex flex-col gap-2 w-full">
                       <label htmlFor="country" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Country/Region</label>
                       <div className='relative w-full'>
-                        <div className='absolute left-3 top-2.5 '><img src={language.english} alt="" className='w-6 h-6' /> </div>
-                      <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='Choose your Location' required />
+                        <div className='absolute left-3 top-2.5 border-r border-gray-400 py-0 '><img src={language.english} alt="" className='w-6 h-6 mr-3' /> </div>
+                      <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#F4F5F7] border-[#D3D8DD] w-full' placeholder='Choose your Location' required />
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                      </div>
                       </div>
                   </div>
                   <div className="flex flex-col gap-2 w-full">
@@ -87,13 +92,23 @@ const NewContactPage = () => {
                         <input type="text" id='zip' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter your ZIP code' required />
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2 w-full">
+                  <div className="flex flex-col gap-2 w-full relative">
                       <label htmlFor="purpose" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Purpose*</label>
-                      <input type="text" id='purpose' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter your Purpose' required />
+                      <input type="text" id='purpose' className='border p-2.5 rounded-md text-[14px] bg-[#F4F5F7] border-[#D3D8DD]' placeholder='Enter your Purpose' required />
+                      <div className="absolute right-3 bottom-1 -translate-y-1/2">
+                            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                      </div>
                   </div>
-                  <div className="flex flex-col gap-2 w-full">
+                  <div className="flex flex-col gap-2 w-full relative">
                       <label htmlFor="funds" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Source of funds*</label>
-                      <input type="text" id='funds' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='Enter your funds' required />
+                      <input type="text" id='funds' className='border p-2.5 rounded-md text-[14px] bg-[#F4F5F7] border-[#D3D8DD]' placeholder='Enter your funds' required />
+                      <div className="absolute right-3 bottom-1 -translate-y-1/2">
+                            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                      </div>
                   </div>
                   <button className='rounded-lg p-2.5 text-[14px] bg-[#FFC000]'>Continue</button>
                 </form>

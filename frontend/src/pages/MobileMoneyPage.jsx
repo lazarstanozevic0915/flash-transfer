@@ -82,10 +82,10 @@ const MobileMoneyPage = () => {
                 <span className="text-[44px]/10 max-sm:text-[34px] max-sm:text-center dm-sans-medium">
                     Select your mobile money
                 </span>
-                <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
+                <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:mb-8">
                     How would you like the money delivered?
                 </p>
-                <div className="w-full rounded-4xl bg-white shadow-md p-6">
+                <div className="w-full rounded-4xl bg-white shadow-md p-6 max-sm:p-3">
                     <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
                         <form className="h-full w-full flex flex-col gap-6 justify-between" onSubmit={handleSubmit}> 
                             <div className="flex gap-3 border w-full p-2.5 border-[#FF3E24] rounded-xl text-[12px] text-[#FF3E24] bg-red-100 items-center">
@@ -105,7 +105,7 @@ const MobileMoneyPage = () => {
                                         <span className="text-[#29304D] dm-sans-semibold text-[14px] text-left">
                                             Orange Money
                                         </span>
-                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left">
+                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left max-sm:text-[12px]">
                                             Payment Mobile Money account
                                         </span>
                                     </div>
@@ -121,7 +121,7 @@ const MobileMoneyPage = () => {
                                         <span className="text-[#29304D] dm-sans-semibold text-[14px] text-left">
                                             Wave
                                         </span>
-                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left">
+                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left max-sm:text-[12px]">
                                             Payment Mobile Money account
                                         </span>
                                     </div>
@@ -137,7 +137,7 @@ const MobileMoneyPage = () => {
                                         <span className="text-[#29304D] dm-sans-semibold text-[14px] text-left">
                                             MTN
                                         </span>
-                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left">
+                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left max-sm:text-[12px]">
                                             Payment Mobile Money account
                                         </span>
                                     </div>
@@ -153,14 +153,14 @@ const MobileMoneyPage = () => {
                                         <span className="text-[#29304D] dm-sans-semibold text-[14px] text-left">
                                             Moov Money
                                         </span>
-                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left">
+                                        <span className="text-[#6E757D] dm-sans-light text-[14px] text-left max-sm:text-[12px]">
                                             Payment Mobile Money account
                                         </span>
                                     </div>
                                 </button>
                             </div>
 
-                            <div className="flex gap-3">
+                            <div className="flex gap-3 max-sm:flex-col-reverse">
                                 <NavLink to={``} className='w-full p-2.5 flex items-center justify-center border rounded-xl text-[14px] border-[#D3D8DD] font-medium text-[#6E757D]'>Back</NavLink>
                                 <button className='w-full p-2.5 rounded-xl text-[14px] bg-[#FFC000]'>Continue</button>
                             </div> 

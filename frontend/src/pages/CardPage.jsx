@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 // import { blogUser1Img, icons } from '../assets/image';
 import { Check } from 'lucide-react';
 import DonutProgress from '../components/DonutProgress';
+import mastercard from '../assets/mastercard.svg';
 
 const CardPage = () => {
 
@@ -78,10 +79,10 @@ const CardPage = () => {
                 </div>
             </div>
             <div className={`w-[800px] max-sm:w-[340px] min-h-screen max-lg:px-6 max-sm:px-1 space-y-6 max-sm:space-y-2 pt-24 max-sm:pt-8 pb-40 relative z-20 flex flex-col items-center justify-center`}>
-                <span className="text-[44px]/10 max-sm:text-[34px] max-sm:text-center dm-sans-medium">
+                <span className="text-[44px]/10 max-sm:text-[34px] max-sm:text-center dm-sans-medium max-sm:mb-2 ">
                     Enter your card information
                 </span>
-                <p className="text-[#6E757D] dm-sans-light text-[14px] max-sm:text-[12px] text-center">
+                <p className="text-[#6E757D] dm-sans-light text-[14px] max-sm:text-[15.5px] text-center max-sm:mb-4">
                     Home is behind, the world ahead and there are many paths to tread<br className='max-sm:hidden' /> through shadows to the edge.
                 </p>
                 <div className="w-full rounded-4xl bg-white shadow-md p-6">
@@ -98,7 +99,13 @@ const CardPage = () => {
                             </div>
                             <div className="flex flex-col gap-2 w-full">
                                 <label htmlFor="card" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>Card Number</label>
-                                <input type="text" id='card' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='1234 0000 0000 0000' required />
+                                <div className='relative w-full'>
+                                <input type="text" id='card' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='1234 0000 0000 0000' required />
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                                    <img src={mastercard} alt="" />
+                                </div>
+                                </div>
+                                
                             </div>
                             <div className="flex gap-5 max-sm:gap-1 w-full items-center">
                                 <div className="flex flex-col gap-2 w-full">
