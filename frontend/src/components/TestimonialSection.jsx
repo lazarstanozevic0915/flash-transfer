@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import trustIcon from '../assets/image/icons/trustpilot.svg'
 import user1 from '../assets/image/users/user1.png'
@@ -17,16 +17,16 @@ const TestimonialsSection = () => {
     },
     {
       id: 2,
-      author: "Bertram Jensen",
-      role: "Author at Panepply Store",
+      author: "Sarah Williams",
+      role: "Marketing Director",
       content: "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
       rating: 5,
       avatar: user2
     },
     {
       id: 3,
-      author: "Bertram Jensen",
-      role: "Author at Panepply Store",
+      author: "Michael Chen",
+      role: "Senior Developer",
       content: "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
       rating: 5,
       avatar: user3
@@ -34,111 +34,122 @@ const TestimonialsSection = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(1);
 
-    // Calculate items to show based on screen size
-    const itemsToShow = {
-      sm: 1,    // Small screens
-      md: 2,    // Medium screens
-      lg: 3,    // Large screens
-      xl: 4     // Extra large screens
+  // Handle responsive layout
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) setItemsPerView(4);
+      else if (window.innerWidth >= 1024) setItemsPerView(3);
+      else if (window.innerWidth >= 768) setItemsPerView(2);
+      else setItemsPerView(1);
     };
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>{
-      const maxStartIndex = testimonials.length - 1;
-      return prevIndex === 0 ? maxStartIndex : prevIndex - 1;
-    } );
-  };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => {
-      const maxStartIndex = testimonials.length - 1;
-      return prevIndex === maxStartIndex ? 0 : prevIndex + 1;
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => {
+      const newIndex = prev - 1;
+      return newIndex < 0 ? testimonials.length - itemsPerView : newIndex;
     });
   };
 
+  const handleNext = () => {
+    setCurrentIndex((prev) => {
+      const newIndex = prev + 1;
+      return newIndex > testimonials.length - itemsPerView ? 0 : newIndex;
+    });
+  };
+
+  const TestimonialCard = ({ testimonial }) => (
+    <div className="flex-1 bg-gray-50 rounded-2xl p-6 space-y-4">
+      <div className="flex gap-1">
+        {[...Array(testimonial.rating)].map((_, index) => (
+          <Star 
+            key={index} 
+            className="h-5 w-5 fill-yellow-400 text-yellow-400" 
+          />
+        ))}
+      </div>
+      <p className="text-gray-600 text-sm">{testimonial.content}</p>
+      <div className="flex items-center gap-3">
+        <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+          <span className="text-lg font-medium text-gray-600">
+            <img 
+              src={testimonial.avatar} 
+              alt={testimonial.author}
+              className="w-12 h-12 rounded-full object-cover"
+            />
+          </span>
+        </div>
+        <div className="space-y-1">
+          <h4 className="font-medium text-sm">{testimonial.author}</h4>
+          <p className="text-gray-500 text-xs">{testimonial.role}</p>
+        </div>
+      </div>
+    </div>
+  );
+
+  const NavigationButton = ({ onClick, direction }) => (
+    <button 
+      onClick={onClick}
+      className="p-2 rounded-full bg-yellow-400 hover:bg-yellow-500 transition-colors"
+      aria-label={`${direction} testimonial`}
+    >
+      {direction === 'previous' ? (
+        <ChevronLeft className="h-5 w-5" />
+      ) : (
+        <ChevronRight className="h-5 w-5" />
+      )}
+    </button>
+  );
+
   return (
-    <div className="w-full px-20 py-16 max-md:px-8 max-md:py-8 flex flex-col dm-sans items-center bg-white">
+    <div className="w-full px-4 md:px-8 lg:px-20 py-8 lg:py-16 flex flex-col items-center bg-white">
       <div className="w-full max-w-7xl">
-        <div className="flex items-center justify-between mb-8">
-            <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 max-sm:gap-3">
-                    <img src={trustIcon} alt="Trustpilot logo" className="h-6" />
-                    <span className='font-bold'>TrustPilot</span>
-                    <span className="text-sm max-sm:w-full text-gray-500 max-sm:hidden">Our reviews verified by Trustpilot</span>
-                </div>
-                <span className="text-sm max-sm:w-full text-gray-500 hidden max-sm:flex">Our reviews verified by Trustpilot</span>
-                <h2 className="text-3xl dm-sans-medium max-sm:text-[22px]">What our customers says</h2>
-                <span className="text-sm max-sm:w-full text-gray-500 hidden max-sm:flex">Send crypto to fiat globally with unmatched speed, security, and low fees.</span>
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <svg className="h-6 w-6 text-green-700" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <span className="font-bold">TrustPilot</span>
+              <span className="text-sm text-gray-500 hidden md:inline">
+                Our reviews verified by Trustpilot
+              </span>
             </div>
-          <div className="flex gap-2 max-sm:hidden">
-            <button 
-              onClick={handlePrevious}
-              className="p-2 rounded-full bg-[#FFC000] hover:bg-[#e6ac00] transition-colors"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button 
-              onClick={handleNext}
-              className="p-2 rounded-full bg-[#FFC000] hover:bg-[#e6ac00] transition-colors"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+            <span className="text-sm text-gray-500 md:hidden">
+              Our reviews verified by Trustpilot
+            </span>
+            <h2 className="text-2xl md:text-3xl font-medium">
+              What our customers say
+            </h2>
+          </div>
+          <div className="hidden md:flex gap-2">
+            <NavigationButton onClick={handlePrevious} direction="previous" />
+            <NavigationButton onClick={handleNext} direction="next" />
           </div>
         </div>
         
-        <div className="flex gap-6">
+        <div className="flex gap-6 overflow-hidden">
           {testimonials.map((testimonial, index) => {
-
-              // Show only relevant items based on screen size and current index
-              const isVisible = (
-                // On mobile, show only the current item
-                (index === currentIndex) ||
-                // On larger screens, show more items based on the breakpoint
-                (window.innerWidth >= 768 && index >= currentIndex && index < currentIndex + itemsToShow.md) ||
-                (window.innerWidth >= 1024 && index >= currentIndex && index < currentIndex + itemsToShow.lg) ||
-                (window.innerWidth >= 1280 && index >= currentIndex && index < currentIndex + itemsToShow.xl)
-              );
-
-            return(
-            <div 
-              key={testimonial.id}
-              className={`${ isVisible ? 'flex-1' : 'hidden'} bg-gray-50 rounded-2xl p-6 space-y-4`}
-            >
-              <div className="flex gap-1">
-                {[...Array(testimonial.rating)].map((_, index) => (
-                  <Star key={index} className="h-5 w-5 fill-[#FFC000] text-[#FFC000]" />
-                ))}
-              </div>
-              <p className="text-gray-600 text-sm">{testimonial.content}</p>
-              <div className="flex items-center gap-3">
-                <img 
-                  src={testimonial.avatar} 
-                  alt={testimonial.author}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div className='sapce-y-2'>
-                  <h4 className="font-medium text-sm">{testimonial.author}</h4>
-                  <p className="text-gray-500 text-xs">{testimonial.role}</p>
-                </div>
-              </div>
-            </div>)
+            const isVisible = index >= currentIndex && index < currentIndex + itemsPerView;
+            return isVisible && (
+              <TestimonialCard 
+                key={testimonial.id} 
+                testimonial={testimonial} 
+              />
+            );
           })}
         </div>
-        <div className="max-sm:flex w-full justify-center my-4 gap-2 hidden">
-            <button 
-              onClick={handlePrevious}
-              className="p-2 rounded-full bg-[#FFC000] hover:bg-[#e6ac00] transition-colors"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button 
-              onClick={handleNext}
-              className="p-2 rounded-full bg-[#FFC000] hover:bg-[#e6ac00] transition-colors"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
+
+        <div className="flex md:hidden justify-center mt-6 gap-2">
+          <NavigationButton onClick={handlePrevious} direction="previous" />
+          <NavigationButton onClick={handleNext} direction="next" />
+        </div>
       </div>
     </div>
   );

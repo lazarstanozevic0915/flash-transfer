@@ -9,11 +9,11 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start md:grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4 text-center md:text-left w-full">
-            <div className="flex items-center justify-center md:justify-start space-x-2">
-              <img src={logo} alt="Flash Transfer logo" className="h-8 w-8" />
-              <span className="inter-semibold text-base">Flash Transfer</span>
+            <div className="flex max-sm:flex-col items-center justify-center md:justify-start space-x-2">
+              <img src={logo} alt="Flash Transfer logo" className="h-8 max-sm:h-[50px] w-8 max-sm:w-[50px] object-fill" />
+              <span className="inter-semibold text-base max-sm:text-[#181F30] max-sm:text-[23px]">Flash Transfer</span>
             </div>
-            <p className="text-sm text-gray-600 dm-sans-light">
+            <p className="text-sm text-gray-600 dm-sans-light max-sm:text-[16px]">
               Easily send, buy, and sell crypto worldwide with Flash Transfer.
             </p>
             <div className="flex justify-center md:justify-start space-x-3">
@@ -75,9 +75,11 @@ const Footer = () => {
           {/* Newsletter Signup */}
           <div className="text-center md:text-left w-full">
             <h3 className="font-medium mb-4">Stay Up to Date</h3>
-            <p className="text-sm text-gray-600 dm-sans-light mb-4">
-              Subscribe to our weekly newsletter for updates
-            </p>
+            <div className="flex max-sm:w-full justify-center">
+              <p className="text-sm text-gray-600 dm-sans-light max-sm:text-center max-sm:w-[260px] max-sm:text-[16px] mb-4">
+                Subscribe to our weekly newsletter for updates
+              </p>
+            </div>
             <div className="flex max-w-md mx-auto md:mx-0">
               <input
                 type="email"

@@ -342,7 +342,7 @@ export default function Landing() {
             </div>
             <div className='px-20 max-md:px-4 w-full'>
                 <div className="w-full h-full flex max-md:grid gap-20 max-md:gap-12 max-sm:gap-6 items-center">
-                    <div className='bg-[#F6F6F6] rounded-4xl w-[600px] max-sm:w-full h-[500px] max-sm:h-[350px]'>
+                    <div className='bg-[#F6F6F6] rounded-4xl max-sm:mt-10 w-[600px] max-sm:w-full h-[500px] max-sm:h-[350px]'>
                         <img src={fastBack} alt="" className='w-full h-full object-fill' />
                     </div>
                     <div className='flex flex-col max-sm:w-full space-y-4'>
@@ -357,10 +357,10 @@ export default function Landing() {
                                         <img src={usersLogo} alt="" />
                                     </div>
                                     <div className='flex flex-col gap-1'>
-                                        <span className='text-[#181F30] dm-sans-medium text-[14px]'>
+                                        <span className='text-[#181F30] font-semibold text-[14px] max-sm:text-[18px]'>
                                             100% Decentralized
                                         </span>
-                                        <span className='text-[#6E757D] dm-sans-light text-[12px] max-sm:w-[250px] w-[280px] text-left'>Keep control of your private keys, send your crypto, or connect your wallet via WalletConnect.</span>
+                                        <span className='text-[#6E757D] dm-sans-light text-[12px] max-sm:w-[240px] w-[280px] max-sm:text-[14px] text-left max-sm:mt-1'>Keep control of your private keys, send your crypto, or connect your wallet via WalletConnect.</span>
                                     </div>
                                 </div>
                                 <div className="flex gap-4 w-full">
@@ -368,17 +368,17 @@ export default function Landing() {
                                         <img src={timerLogo} alt="" />
                                     </div>
                                     <div className='flex flex-col gap-1'>
-                                        <span className='text-[#181F30] dm-sans-medium text-[14px]'>
+                                        <span className='text-[#181F30] font-semibold text-[14px] max-sm:text-[18px]'>
                                             Convert Fiat & Crypto
                                         </span>
-                                        <span className='text-[#6E757D] dm-sans-light text-[12px] max-sm:w-[250px] w-[280px] text-left'>Convert between fiat and crypto seamlessly with +36 currencies available.</span>
+                                        <span className='text-[#6E757D] dm-sans-light text-[12px] max-sm:w-[240px] w-[280px] max-sm:text-[14px] text-left max-sm:mt-1'>Convert between fiat and crypto seamlessly with +36 currencies available.</span>
                                     </div>
                                 </div>
                             </div>
                     </div>
                 </div>
             </div>
-            <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-4 max-md:py-4 relative flex items-center max-md:items-start bg-[#F6F6F6] rounded-4xl">
+            <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-4 max-md:py-4 relative flex items-center max-md:items-start bg-[#F6F6F6] rounded-4xl max-sm:rounded-2xl">
                 <div className='w-full flex flex-col items-center space-y-6 max-md:space-y-4'>
                     <span className='text-[36px] max-sm:text-[22px] dm-sans-medium'>Just few steps to start</span>
                     <div className='flex flex-col items-center space-y-1'>
@@ -401,7 +401,7 @@ export default function Landing() {
                             <span className='text-[#181F30] dm-sans-bold text-[18px]'>
                                 Send your crypto
                             </span>
-                            <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</span>
+                            <span className='text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:w-[250px] max-sm:-mt-3'>Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</span>
                         </div>
                         <div className='w-full h-full flex flex-col items-center p-6 bg-[#FFFFFF] space-y-6 rounded-2xl'>
                             <div className='p-3 rounded-full bg-[rgba(36,117,255,0.1)] flex items-center justify-center w-[90px] h-[90px]'>
@@ -410,7 +410,7 @@ export default function Landing() {
                             <span className='text-[#181F30] dm-sans-bold text-[18px]'>
                                 Go withdraw your cash
                             </span>
-                            <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</span>
+                            <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:-mt-3 text-center'>Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</span>
                         </div>
                     </div>
                 </div>
@@ -424,12 +424,12 @@ export default function Landing() {
                             <span className='text-[#6E757D] dm-sans-light w-[280px] max-md:w-full text-[14px] max-sm:pr-6 max-sm:pb-4'>Send crypto to fiat globally with unmatched speed, security, and low fees.</span>
                             <div className='flex flex-col gap-8'>
                                 <div className="flex max-md:grid max-md:gap-3 items-center max-md:items-start space-x-4">
-                                    <NavLink to={``} className={` w-full flex max-md:py-3 items-center dm-sans-medium text-[14px] justify-center  py-2 rounded-md bg-[#222222] text-white space-x-2 `}>
-                                        <img src={apple} alt="apple icon" className='w-[24px] h-[24px] object-fill' />
+                                    <NavLink to={``} className={` w-full flex max-md:py-4 items-center dm-sans-medium text-[14px] max-sm:text-[20px] justify-center  py-2 rounded-md max-sm:rounded-xl bg-[#222222] text-white space-x-2 max-sm:space-x-3 `}>
+                                        <img src={apple} alt="apple icon" className='w-[24px] max-sm:w-[28px] h-[24px] max-sm:h-[28px] object-fill' />
                                         <span>Apple Store</span>
                                     </NavLink>
-                                    <NavLink to={``} className={` w-full flex max-md:py-3 items-center justify-center dm-sans-medium text-[14px] py-2 rounded-md bg-[#222222] text-white space-x-2 `}>
-                                        <img src={googlePlay} alt="google play icon" className='w-[24px] h-[24px] object-fill' />
+                                    <NavLink to={``} className={` w-full flex max-md:py-4 items-center justify-center dm-sans-medium text-[14px] max-sm:text-[20px] py-2 rounded-md max-sm:rounded-xl bg-[#222222] text-white space-x-2 max-sm:space-x-3 `}>
+                                        <img src={googlePlay} alt="google play icon" className='w-[24px] max-sm:w-[28px] h-[24px] max-sm:h-[28px] object-fill' />
                                         <span>Play Store</span>
                                     </NavLink>
                                 </div>
