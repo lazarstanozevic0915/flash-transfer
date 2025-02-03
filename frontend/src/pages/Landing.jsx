@@ -246,7 +246,7 @@ export default function Landing() {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-4 max-sm:py-12 max-md:py-5 relative flex max-sm:grid items-center bg-[#F6F6F6] rounded-4xl max-sm:rounded-2xl">
+            <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-6 max-sm:py-12 max-md:py-5 relative flex max-sm:grid items-center bg-[#F6F6F6] rounded-4xl max-sm:rounded-2xl">
                 <div className="absolute bottom-2 right-32">
                     <img src={heroBackground} alt="" className='w-[700px]' />
                 </div>
@@ -259,7 +259,7 @@ export default function Landing() {
                         Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.
                         </span>
                     </div>
-                    <div className='w-[60%] max-md:w-full h-full flex max-md:grid space-x-6'>
+                    <div className='w-[60%] max-md:w-full h-full max-sm:mt-4 flex max-md:grid space-x-6'>
                         <div className='w-[46%] max-md:w-full h-full flex space-y-6 flex-col items-end'>
                             <div className='w-[86%] max-md:w-full max-md:h-full h-[60%] rounded-2xl bg-white p-4 flex flex-col justify-between'>
                                 <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px] max-md:pb-5 '>20</span>
