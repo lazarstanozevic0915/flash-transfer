@@ -48,7 +48,7 @@ const TransferOrder = () => {
           <span className="text-[44px]/12 dm-sans-medium max-sm:text-[32px] max-sm:mb-2">
             Track a {activePage === 'form' ? 'Transfer' : 'Status'}
           </span>
-          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[16px]">
+          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[15.8px]">
             {activePage === 'form'
               ? 'Home is behind, the world ahead and there are many paths to tread through shadows to the edge.'
               : 'Stay updated on your transfers with real-time status tracking. Know exactly when your transaction is initiated, processed, and completed for complete peace of mind.'}
@@ -110,8 +110,8 @@ const TransferOrder = () => {
             <div className="w-full bg-white rounded-4xl shadow-md p-6">
               <div className="space-y-6">
                 <div className="bg-blue-50 p-3 rounded-md">
-                  <p className="text-sm text-gray-600">
-                    Flash Tracking Number (FTN): 456-789-321
+                  <p className="text-sm text-gray-600 text-center max-sm:text-[12px]">
+                    Flash Tracking Number (FTN) <span className='text-black ml-2 font-bold'>456-789-321</span>
                   </p>
                 </div>
 
