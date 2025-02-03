@@ -304,36 +304,35 @@ export default function Landing() {
                 </div>
             </div>
             <div className="w-full px-20 max-md:px-4 flex flex-col items-center">
-                <div className='w-full flex flex-col items-center max-sm:items-center space-y-6'>
-                    <span className='text-[36px] text-[#181F30] max-sm:text-[22px]/6 font-semibold max-sm:text-center'>Why Choose Us</span>
+                <div className='w-full flex flex-col items-center max-sm:mt-5 max-sm:items-center space-y-6 max-sm:space-y-4'>
+                    <span className='text-[36px] text-[#181F30] max-sm:text-[24px]/6 font-semibold max-sm:text-center'>Why Choose Us</span>
                     <div className='flex flex-col items-center space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>Send & Receive money to your loved ones in minutes with great rates and low fees.</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'> Over 40 countries and +36 currencies supported.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>Send & Receive money to your loved ones in minutes with great rates and low fees. <br className='max-sm:hidden' /> Over 40 countries and +36 currencies supported.</span>
                     </div>
-                    <div className="grid grid-cols-3 max-md:grid-cols-1 w-full h-[300px] max-md:h-full gap-8">
-                        <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 rounded-2xl'>
+                    <div className="grid grid-cols-3 max-md:grid-cols-1 max-sm:mt-4 w-full h-[300px] max-md:h-full gap-8">
+                        <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 max-sm:space-y-4 rounded-2xl'>
                             <div className='p-3 rounded-full bg-[#2475FF] flex items-center justify-center w-[90px] h-[90px]'>
                                 <img src={fastLogo} alt="" className='w-full h-full object-fill' />
                             </div>
-                            <span className='text-[#181F30] dm-sans-bold text-[18px]'>
+                            <span className='text-[#181F30] dm-sans-bold text-[18px] max-sm:text-[22px] max-sm:mt-2'>
                                 Fast Transaction
                             </span>
                             <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>The transaction is instant with cryptocurrency in seconds.</span>
                         </div>
-                        <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 rounded-2xl'>
+                        <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 max-sm:space-y-4 rounded-2xl'>
                             <div className='p-3 rounded-full bg-[#2475FF] flex items-center justify-center w-[90px] h-[90px]'>
                                 <img src={security} alt="" />
                             </div>
-                            <span className='text-[#181F30] dm-sans-bold text-[18px]'>
+                            <span className='text-[#181F30] dm-sans-bold text-[18px] max-sm:text-[22px] max-sm:mt-2'>
                                 Security
                             </span>
                             <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>The blockchain is tamper-proof,<br />transparent and secure.</span>
                         </div>
-                        <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 rounded-2xl'>
+                        <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 max-sm:space-y-4 rounded-2xl'>
                             <div className='p-3 rounded-full bg-[#2475FF] flex items-center justify-center w-[90px] h-[90px]'>
                                 <img src={easyTransfer} alt="" />
                             </div>
-                            <span className='text-[#181F30] dm-sans-bold text-[18px]'>
+                            <span className='text-[#181F30] dm-sans-bold text-[18px] max-sm:text-[22px] max-sm:mt-2'>
                                 Easy Transfer
                             </span>
                             <span className='text-[#6E757D] dm-sans-light text-[14px] text-center'>Send money and easily convert your cryptocurrency to cash and vice versa.</span>
@@ -342,17 +341,17 @@ export default function Landing() {
                 </div>
             </div>
             <div className='px-20 max-md:px-4 w-full'>
-                <div className="w-full h-full flex max-md:grid gap-20 max-md:gap-12 items-center">
+                <div className="w-full h-full flex max-md:grid gap-20 max-md:gap-12 max-sm:gap-6 items-center">
                     <div className='bg-[#F6F6F6] rounded-4xl w-[600px] max-sm:w-full h-[500px] max-sm:h-[350px]'>
                         <img src={fastBack} alt="" className='w-full h-full object-fill' />
                     </div>
-                    <div className='flex flex-col space-y-4'>
-                            <span className='text-[#181F30] text-[36px] max-sm:text-[22px]/7 font-semibold max-sm:text-left'>
+                    <div className='flex flex-col max-sm:w-full space-y-4'>
+                            <span className='text-[#181F30] text-[36px] max-sm:text-[24px]/7 font-semibold max-sm:text-left max-sm:mt-3'>
                                 Fast, Secure <br className='max-sm:hidden' />
                                 Money <br className='hidden max-sm:flex' /> Transfers
                             </span>
-                            <span className='text-[#6E757D] dm-sans-light w-[280px] text-[14px]'>Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.</span>
-                            <div className='flex flex-col gap-8'>
+                            <span className='text-[#6E757D] dm-sans-light w-[280px] max-sm:w-[94%] text-[14px]'>Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.</span>
+                            <div className='flex flex-col mt-4 gap-8'>
                                 <div className="flex gap-4 w-full">
                                     <div className='p-3 rounded-full bg-[#2475FF] flex items-center justify-center w-[60px] h-[60px]'>
                                         <img src={usersLogo} alt="" />
