@@ -3,7 +3,9 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 import heroBackground from '../assets/image/hero-background.png';
-import { icons, socialIcons } from '../assets/image';
+import send from '../assets/send.svg';
+import recieve from '../assets/recieve.svg';
+import { icons, language, socialIcons } from '../assets/image';
 import contactBack from '../assets/image/contactBack.png';
 
 const FindLocation = () => {
@@ -32,37 +34,36 @@ const FindLocation = () => {
         <div className='flex flex-col items-center'>
             <div className="w-[600px] max-sm:w-[320px] space-y-6 relative z-20 pt-16">
             <div className="flex flex-col items-center space-y-4">
-                <h1 className="text-[44px] leading-tight dm-sans-medium">
+                <h1 className="text-[44px] leading-tight dm-sans-medium max-sm:text-[32px]">
                 Find locations
                 </h1>
-                <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
+                <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[15px]">
                 Home is behind, the world ahead and there are many paths to tread through shadows to the edge.
                 </p>
             </div>
 
             <div className="bg-white rounded-2xl relative z-20 shadow-md p-6 space-y-6">
-                <div className="bg-red-50 rounded-md p-3 text-red-600 text-sm flex items-center gap-2">
-                <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">!</span>
+                <div className="bg-[#FFE1E1] rounded-md p-3 text-[#FF3E24] text-sm font-medium max-sm:text-[12px] flex justify-center items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-red-100 border flex items-center  justify-center text-xs">!</span>
                 To continue, please enter the address.
                 </div>
 
                 <div className="space-y-4">
                 <div className="flex max-sm:grid gap-4">
                     <div className="flex-1">
-                    <label className="text-sm text-gray-600 mb-1 block">Send From</label>
-                    <div className="relative">
-                        <select className="w-full p-3 border border-gray-200 rounded-md appearance-none bg-white pr-10">
-                        <option>USA</option>
-                        </select>
-                        <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                        </div>
+                    <label className="text-sm text-gray-600 mb-1 font-semibold block">Send From</label>
+                    <div className='relative w-full '>
+                            <div className='absolute left-3 top-2.5 '><img src={language.english} alt="" className='w-6 h-6 mr-2' /> </div>
+                            <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='USA' required />
+                            <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                            </div>
                     </div>
                     </div>
                     <div className="flex-1">
-                    <label className="text-sm text-gray-600 mb-1 block">Enter ZIP/Postal Code</label>
+                    <label className="text-sm text-gray-600 mb-1 block font-semibold">Enter ZIP/Postal Code</label>
                     <input
                         type="text"
                         placeholder="Address/State or Zip"
@@ -83,17 +84,15 @@ const FindLocation = () => {
 
                 <div>
                     <h2 className="text-lg font-medium mb-3">What are you trying to do?</h2>
-                        <div className="rounded-md shadow-sm p-1 h-[50px] flex w-full bg-[#F6F6F6]">
+                        <div className="rounded-md shadow-sm p-1 h-[50px] flex w-full gap-2 bg-[#F6F6F6]">
                             <button
                             className={`flex items-center gap-1 w-[50%] justify-center text-[14px] font-light text-[#6E757D] ${
                                 sendMode && 'font-medium bg-[#2475FF] text-white rounded-md shadow-md'
                             }`}
                             onClick={() => setSendMode(true)}
                             >
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                </svg>
-                                Send
+                                <img src={send} alt="" />
+                                Send Money
                             </button>
                             <button
                             className={`flex items-center gap-1 w-[50%] justify-center text-[14px] font-light text-[#6E757D] ${
@@ -101,10 +100,8 @@ const FindLocation = () => {
                             }`}
                             onClick={() => setSendMode(false)}
                             >
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                                </svg>
-                            Receive
+                                <img src={recieve} alt="" />
+                            Receive Money
                             </button>
                         </div>
                 </div>
@@ -119,10 +116,10 @@ const FindLocation = () => {
             <div className="w-full bg-white py-24 max-sm:py-8 px-12 max-sm:px-2 space-y-14 relative z-20">
             <div className="w-full px-20 max-sm:px-2 flex flex-col items-center">
                 <div className="w-full flex flex-col items-center space-y-3">
-                <span className="text-[36px] dm-sans-medium">Visit us</span>
+                <span className="text-[36px] dm-sans-medium max-sm:text-[28px]">Visit us</span>
                 <div className="flex flex-col items-center space-y-1">
-                    <span className="text-[#6E757D] dm-sans-light text-center text-[14px] leading-6">
-                    Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
+                    <span className="text-[#6E757D] dm-sans-light text-center text-[14px]  leading-6">
+                    Home is behind, the world ahead and there are many paths to tread <br className='max-sm:hidden' /> through shadows to the edge.
                     </span>
                 </div>
                 <div className="grid grid-cols-5 max-sm:grid-cols-1 w-full h-[80px] max-sm:h-full  gap-4">

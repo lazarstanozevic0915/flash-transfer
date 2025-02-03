@@ -62,6 +62,11 @@ export default function SignUp() {
             <div className='relative w-full '>
                 <div className='absolute left-3 top-2.5 border-r  '><img src={language.english} alt="" className='w-6 h-6 mr-2' /> </div>
                 <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='Choose your Location' required />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+                </div>
               </div>
           </div>
 
