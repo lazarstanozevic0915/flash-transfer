@@ -92,7 +92,7 @@ export default function Landing() {
 
   return (
     <div className='w-full dm-sans '>
-        <div className="w-full h-screen  max-md:h-[200vh] max-sm:h-[1120px] max-md:w-screen bg-[#F6F6F6] rounded-b-[50px] relative" >
+        <div className="w-full h-screen  max-md:h-[200vh] max-sm:h-[1120px] max-md:w-screen bg-[#F6F6F6] rounded-b-[50px] max-sm:rounded-b-xl relative" >
             <div className="absolute max-sm:hidden bottom-0 right-0 z-10">
                 <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
             </div>
@@ -205,10 +205,10 @@ export default function Landing() {
                 </div>
             </main>
         </div>
-        <div className="w-full bg-white pt-24 max-sm:pt-12 px-12 max-sm:px-0 space-y-14" >
+        <div className="w-full bg-white pt-24 max-sm:pt-20 px-12 max-sm:px-0 space-y-14" >
             <div className="w-full px-20 max-sm:px-4  flex flex-col items-center">
-                <div className='w-full flex flex-col items-center space-y-6'>
-                    <span className='text-[36px] text-[#181F30] max-sm:text-[20px]/6 font-semibold max-sm:text-center'>Choose from our trusted partners</span>
+                <div className='w-full flex flex-col items-center max-sm:px-2 space-y-6'>
+                    <span className='text-[36px] text-[#181F30] max-sm:text-[24px]/6 font-semibold max-sm:text-center'>Choose from our trusted partners</span>
                     <div className='flex flex-col items-center max-md:items-start space-y-1'>
                         <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:text-center max-md:text-left'>We make sure your money is delivered quickly and easily <br className='max-sm:hidden' /> Choose payment types from our network: cash collection points, mobile money and bank transfer.</span>
                     </div>
@@ -415,13 +415,13 @@ export default function Landing() {
                     </div>
                 </div>
             </div>
-            <div className='px-20 max-md:px-3 w-full'>
+            <div className='px-20 max-md:px-5 w-full'>
                 <div className="w-full h-full flex max-md:flex-col-reverse max-md:gap-4 justify-between items-center">
-                    <div className='flex flex-col max-md:w-full space-y-4'>
-                            <span className='text-[#181F30] font-semibold text-[36px]/12 max-sm:text-[24px]/8'>
+                    <div className='flex flex-col max-sm:pt-4 max-md:w-full space-y-4'>
+                            <span className='text-[#181F30] font-semibold text-[36px]/12 max-sm:text-[24px]/8 max-sm:pr-6'>
                                  Fastest & Most Secure <br className='max-sm:hidden' /> Way to Send Crypto to <br className='max-sm:hidden' />Fiat Globally
                             </span>
-                            <span className='text-[#6E757D] dm-sans-light w-[280px] max-md:w-full text-[14px]'>Send crypto to fiat globally with unmatched speed, security, and low fees.</span>
+                            <span className='text-[#6E757D] dm-sans-light w-[280px] max-md:w-full text-[14px] max-sm:pr-6 max-sm:pb-4'>Send crypto to fiat globally with unmatched speed, security, and low fees.</span>
                             <div className='flex flex-col gap-8'>
                                 <div className="flex max-md:grid max-md:gap-3 items-center max-md:items-start space-x-4">
                                     <NavLink to={``} className={` w-full flex max-md:py-3 items-center dm-sans-medium text-[14px] justify-center  py-2 rounded-md bg-[#222222] text-white space-x-2 `}>
@@ -443,7 +443,7 @@ export default function Landing() {
             <div className="w-full px-20 max-md:px-3 flex flex-col items-center">
                 <div className='w-full flex flex-col items-center max-sm:items-center space-y-4'>
                     <span className='font-semibold text-[36px]/12 max-sm:text-[24px]/8 max-sm:hidden'>Frequently asked questions</span>
-                    <span className='font-semibold text-[36px]/12 max-sm:text-[24px]/8 hidden max-sm:flex'>Just few steps to start</span>
+                    <span className='font-semibold text-[36px]/12 max-sm:text-[24px]/8 hidden max-sm:flex max-sm:mt-6'>Just few steps to start</span>
                     <div className='flex flex-col items-center space-y-1'>
                         <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:hidden'>Find answers to common inquiries and get the support you need in our</span>
                         <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:hidden'>Frequently Asked Questions section.</span>
