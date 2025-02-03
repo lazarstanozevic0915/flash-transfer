@@ -106,7 +106,7 @@ const TransactionTable = ({ searchQuery, filterType }) => {
     <div className="w-full dm-sans">
       <div className="flex justify-end mb-4 relative">
         <button 
-          className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+          className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 max-sm:hidden bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
           onClick={(e) => {
             e.stopPropagation();
             setShowFilterMenu(!showFilterMenu);

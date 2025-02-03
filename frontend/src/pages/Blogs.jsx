@@ -59,7 +59,7 @@ export default function Blogs() {
                         </button>
                     </div>
                 </div>
-                <div className="flex flex-col space-y-3 items-center w-full">
+                <div className="flex flex-col space-y-3 items-center w-full max-sm:mt-20">
                     <h1 className="text-[34px] text-[#181F30] leading-tight dm-sans-medium">
                         More Blog
                     </h1>

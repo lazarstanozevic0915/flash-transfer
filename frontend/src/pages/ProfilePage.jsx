@@ -14,13 +14,13 @@ export default function ProfilePage() {
             <div className="px-32 max-lg:px-4 w-full">
                 <form className='w-full h-full'>
                     <div className="flex justify-between items-start py-3">
-                        <div className='flex gap-4'>
+                        <div className='flex gap-4 max-sm:gap-1'>
                             <div className='rounded-full -mt-20'>
                                 <img src={profileUserImg} alt="" className='w-46 h-46 object-cover' />
                             </div>
                             <div className="flex flex-col">
-                                <h3 className='text-[#181F30] dm-sans-medium text-[16px] max-sm:text-[16px] text-left'>Jane Cooper</h3>
-                                <h3 className='text-[#6E757D] dm-sans-light text-[16px] max-sm:text-[16px] text-left'>Customer ID :FT121212</h3>
+                                <h3 className='text-[#181F30] dm-sans-medium text-[16px] max-sm:text-[16px] font-semibold mb-2 text-left'>Jane Cooper</h3>
+                                <h3 className='text-[#6E757D] dm-sans-light text-[16px] max-sm:text-[12.6px] text-left'>Customer ID :FT121212</h3>
                             </div>
                         </div>
                         <button className='px-12 py-3 max-sm:hidden rounded-md bg-[#2475FF] text-white text-[14px]'>Save</button>

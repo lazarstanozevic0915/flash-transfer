@@ -24,12 +24,13 @@ export default function HistoryPage() {
                 </div>
                 <div className="space-y-6 relative z-20">
                     <div className='flex max-sm:grid max-sm:gap-2 items-center w-full justify-between'>
-                        <h1 className="text-[44px] leading-tight dm-sans-medium">
+                        <h1 className="text-[44px] leading-tight dm-sans-medium max-sm:text-[36px]">
                             History
                         </h1>
+                        <p className='md:hidden text-gray-500 text-[15.8px] mb-6'>Home is behind, the world ahead and there are many paths to tread through shadows to the edge.</p>
                         <button className='px-8 py-2 rounded-md bg-[#2475FF] text-white text-[14px]'>Start New Transfer</button>
                     </div>
-                    <div className="w-full h-[1px] bg-[#D3D8DD]"></div>
+                    <div className="w-full h-[1px] bg-[#D3D8DD] max-sm:hidden"></div>
                     <div className="flex gap-4">
                         <div className="relative w-full">
                             <input 
