@@ -33,13 +33,13 @@ export default function Blogs() {
                         <h1 className="text-[44px] leading-tight dm-sans-medium">
                             Our Blogs
                         </h1>
-                        <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
+                        <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[15.5px]">
                             Home is behind, the world ahead and there are many paths to tread through shadows to the edge.  
                         </p>
                     </div>
                 </div>
             </div>
-            <div className='w-full px-32 max-sm:px-4 max-md:px-6 py-10 space-y-24 max-sm:space-y-12 bg-white mb-20'>
+            <div className='w-full px-32 max-sm:px-4 max-md:px-6 py-10 space-y-24 max-sm:space-y-12 bg-white mb-20 max-sm:mt-10'>
                 <div className="flex max-sm:flex-col items-center w-full pr-10 max-sm:pr-0 gap-16 max-md:gap-2 shadow-sm justify-between bg-[#F6F6F6] rounded-xl ">
                     <div className="">
                         <img
@@ -49,13 +49,13 @@ export default function Blogs() {
                         />
                     </div>
                     <div className="max-sm:p-4">
-                        <h3 className='text-gray-600 text-[14px] mb-6 max-w-md'><span className='text-[#2475FF]'>Banking</span> . March 14th, 2019</h3>
-                        <h2 className="text-xl font-medium mb-4">User our Flash Transfer to send, buy or sell your crypto vs cash money in the world.</h2>
+                        <h3 className='text-gray-600 text-[14px] mb-6 max-w-md '><span className='text-[#2475FF]'>Banking</span> . March 14th, 2019</h3>
+                        <h2 className="text-xl font-medium mb-4 max-sm:text-[17px]">User our Flash Transfer to send, buy or sell your crypto vs cash money in the world.</h2>
                         <p className="text-gray-600 mb-6 max-w-md">
                              Exchange your  cryptocurrency vs cash or buy cryptocurrency with cash form our approved partners. You can also send your cryptocurrency vs fiat worldwide using a Binance account or using your no-custodial wallet ( Flash wallet, Metamask, Binance wallet, Trust wallet ...)
                         </p>
-                        <button className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
-                            Ask for help
+                        <button className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors max-sm:w-full max-sm:text-[13px]">
+                            Read More
                         </button>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ export default function Blogs() {
                         More Blog
                     </h1>
                     <p className="text-[#6E757D] dm-sans-light mb-8 text-[14px] text-center">
-                        Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
+                        Home is behind, the world ahead and there are many paths to tread <br className='max-sm:hidden' /> through shadows to the edge.
                     </p>
                     <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-5">
                         <div className="flex flex-col">
@@ -96,14 +96,14 @@ export default function Blogs() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col space-y-3 items-start w-full">
-                    <h1 className="text-[34px] text-[#181F30] leading-tight dm-sans-medium">
+                <div className="flex flex-col space-y-3 items-start w-full max-sm:mt-25">
+                    <h1 className="text-[34px] text-[#181F30] leading-tight dm-sans-medium max-sm:text-[24px]">
                         Blog Journal
                     </h1>
                     <p className="text-[#6E757D] dm-sans-light mb-8 text-[14px] text-left">
-                        Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
+                        Home is behind, the world ahead and there are many paths to tread <br className='max-sm:hidden' /> through shadows to the edge.
                     </p>
-                    <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-5">
+                    <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-5 ">
                         <div className="flex flex-col">
                             <img src={blogImage5Img} alt="" />
                             <div className='flex flex-col space-y-3 p-5 rounded-b-lg bg-[#F6F6F6]'>
@@ -151,23 +151,23 @@ export default function Blogs() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col space-y-3 items-center w-full">
-                    <h1 className="text-[34px] text-[#181F30] leading-tight dm-sans-medium">
+                <div className="flex flex-col space-y-3 items-center w-full max-sm:mt-30">
+                    <h1 className="text-[34px] text-[#181F30] leading-tight dm-sans-medium max-sm:text-[24px]">
                         Latest Blog Posts
                     </h1>
-                    <p className="text-[#6E757D] dm-sans-light mb-8 text-[14px] text-center">
-                        Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.
+                    <p className="text-[#6E757D] dm-sans-light mb-8 text-[14px] text-center max-sm:text-[15.2px]">
+                        Home is behind, the world ahead and there are many paths to tread <br className='max-sm:hidden' /> through shadows to the edge.
                     </p>
                     <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8">
-                        <div className="flex items-center w-full shadow-sm gap-4 justify-between bg-[#F6F6F6] rounded-xl ">
-                            <div className="w-[380px] rounded-md h-[300px]">
+                        <div className="flex items-center w-full shadow-sm gap-4 max-sm:flex-col justify-between bg-[#F6F6F6] rounded-xl ">
+                            <div className="w-[380px] max-sm:w-[325px] rounded-md h-[300px]">
                                 <img
                                     src={blogImage8Img}
                                     alt="People with questions"
-                                    className=" object-cover w-full rounded-2xl h-full "
+                                    className=" object-cover w-full  rounded-2xl h-full "
                                 />
                             </div>
-                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 rounded-b-lg bg-[#F6F6F6]'>
+                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 max-sm:w-75 rounded-b-lg bg-[#F6F6F6]'>
                                 <h3 className='text-[#6E757D] dm-sans-light text-[11px] text-left'>March 14th, 2019</h3>
                                 <h2 className='text-[#181F30] dm-sans-medium text-[14px] text-left'>User our Flash Transfer to send, buy</h2>
                                 <p className='text-[#6E757D] dm-sans-light text-[11px] text-left'>Exchange your  cryptocurrency vs cash or buy cryptocurrency with cash form our approved partners. You can also send your cryptocurrency...</p>
@@ -180,15 +180,15 @@ export default function Blogs() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center w-full shadow-sm gap-4 justify-between bg-[#F6F6F6] rounded-xl ">
-                            <div className="w-[380px] rounded-md h-[300px]">
+                        <div className="flex items-center w-full shadow-sm gap-4 max-sm:flex-col justify-between bg-[#F6F6F6] rounded-xl ">
+                            <div className="w-[380px] max-sm:w-[325px] rounded-md h-[300px]">
                                 <img
                                     src={blogImage9Img}
                                     alt="People with questions"
                                     className=" object-cover w-full rounded-2xl h-full "
                                 />
                             </div>
-                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 rounded-b-lg bg-[#F6F6F6]'>
+                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 max-sm:w-75 rounded-b-lg bg-[#F6F6F6]'>
                                 <h3 className='text-[#6E757D] dm-sans-light text-[11px] text-left'>March 14th, 2019</h3>
                                 <h2 className='text-[#181F30] dm-sans-medium text-[14px] text-left'>User our Flash Transfer to send, buy</h2>
                                 <p className='text-[#6E757D] dm-sans-light text-[11px] text-left'>Exchange your  cryptocurrency vs cash or buy cryptocurrency with cash form our approved partners. You can also send your cryptocurrency...</p>
@@ -201,15 +201,15 @@ export default function Blogs() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center w-full shadow-sm gap-4 justify-between bg-[#F6F6F6] rounded-xl ">
-                            <div className="w-[380px] rounded-md h-[300px]">
+                        <div className="flex items-center w-full shadow-sm max-sm:flex-col gap-4 justify-between bg-[#F6F6F6] rounded-xl ">
+                            <div className="w-[380px] max-sm:w-[325px] rounded-md h-[300px]">
                                 <img
                                     src={blogImage10Img}
                                     alt="People with questions"
                                     className=" object-cover w-full rounded-2xl h-full "
                                 />
                             </div>
-                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 rounded-b-lg bg-[#F6F6F6]'>
+                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 max-sm:w-75 rounded-b-lg bg-[#F6F6F6]'>
                                 <h3 className='text-[#6E757D] dm-sans-light text-[11px] text-left'>March 14th, 2019</h3>
                                 <h2 className='text-[#181F30] dm-sans-medium text-[14px] text-left'>User our Flash Transfer to send, buy</h2>
                                 <p className='text-[#6E757D] dm-sans-light text-[11px] text-left'>Exchange your  cryptocurrency vs cash or buy cryptocurrency with cash form our approved partners. You can also send your cryptocurrency...</p>
@@ -222,15 +222,15 @@ export default function Blogs() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center w-full shadow-sm gap-4 justify-between bg-[#F6F6F6] rounded-xl ">
-                            <div className="w-[380px] rounded-md h-[300px]">
+                        <div className="flex items-center w-full shadow-sm gap-4 max-sm:flex-col justify-between bg-[#F6F6F6] rounded-xl ">
+                            <div className="w-[380px] max-sm:w-[325px] rounded-md h-[300px]">
                                 <img
                                     src={blogImage11Img}
                                     alt="People with questions"
                                     className=" object-cover w-full rounded-2xl h-full "
                                 />
                             </div>
-                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 rounded-b-lg bg-[#F6F6F6]'>
+                            <div className='flex flex-col space-y-3 py-5 px-0 w-100 max-sm:w-75 rounded-b-lg bg-[#F6F6F6]'>
                                 <h3 className='text-[#6E757D] dm-sans-light text-[11px] text-left'>March 14th, 2019</h3>
                                 <h2 className='text-[#181F30] dm-sans-medium text-[14px] text-left'>User our Flash Transfer to send, buy</h2>
                                 <p className='text-[#6E757D] dm-sans-light text-[11px] text-left'>Exchange your  cryptocurrency vs cash or buy cryptocurrency with cash form our approved partners. You can also send your cryptocurrency...</p>
