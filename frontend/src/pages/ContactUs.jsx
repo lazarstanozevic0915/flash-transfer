@@ -93,7 +93,7 @@ export default function ContactUs() {
                 <div className='w-full flex flex-col items-center space-y-3'>
                     <span className='text-[36px] dm-sans-medium'>Visit us</span>
                     <div className='flex flex-col items-center space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-center text-[14px]/6 '>Home is behind, the world ahead and there are many paths to tread <br /> through shadows to the edge.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-center text-[14px] max-sm:text-[15.5px] '>Home is behind, the world ahead and there are many paths to tread <br className='max-sm:hidden' /> through shadows to the edge.</span>
                     </div>
                     <div className="grid grid-cols-5 max-lg:grid-cols-3 max-sm:grid-cols-1 w-full h-[80px] max-lg:h-full gap-4">
                         <div className='w-full h-full max-sm:h-[100px] py-3 bg-[#F6F6F6] border border-[#D3D8DD] rounded-3xl flex items-center justify-center'>
