@@ -26,8 +26,8 @@ const TransferOrder = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-full h-screen max-sm:px-3 relative flex justify-center dm-sans">
-        <div className="w-full h-[50%] bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
+      <div className="w-full min-h-screen max-sm:h-auto max-sm:px-3 relative flex justify-center dm-sans">
+        <div className="w-full h-[50%] max-sm:h-[400px]  max-sm:py-2 bg-[#F6F6F6] rounded-b-[50px] absolute overflow-hidden">
           <div className="absolute top-2 -right-20 z-10">
             <img
               src={heroBackground}
@@ -44,18 +44,18 @@ const TransferOrder = () => {
           </div>
         </div>
         
-        <div className={`w-[600px] ${activePage === 'form' ? 'h-[500px]' : 'h-[650px]'} space-y-6 relative z-20 flex flex-col items-center max-sm:pt-6 justify-center`}>
-          <span className="text-[44px]/12 dm-sans-medium">
+        <div className={`w-[600px] ${activePage === 'form' ? 'h-[500px]' : 'h-[650px]'} space-y-6 relative z-20 flex flex-col items-center max-sm:h-auto max-sm:py-2 max-sm:-mt-28 justify-center`}>
+          <span className="text-[44px]/12 dm-sans-medium max-sm:text-[32px] max-sm:mb-2">
             Track a {activePage === 'form' ? 'Transfer' : 'Status'}
           </span>
-          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center">
+          <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[16px]">
             {activePage === 'form'
               ? 'Home is behind, the world ahead and there are many paths to tread through shadows to the edge.'
               : 'Stay updated on your transfers with real-time status tracking. Know exactly when your transaction is initiated, processed, and completed for complete peace of mind.'}
           </p>
 
           {activePage === 'form' ? (
-            <div className="w-full h-[260px] rounded-4xl bg-white shadow-md p-6">
+            <div className="w-full h-[260px] rounded-4xl bg-white shadow-md p-6 max-sm:mt-8">
               <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
                 <div className="rounded-md shadow-sm p-1 h-[32%] flex w-full bg-[#F6F6F6]">
                   <button
