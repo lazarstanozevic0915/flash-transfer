@@ -92,12 +92,12 @@ export default function Landing() {
 
   return (
     <div className='w-full dm-sans '>
-        <div className="w-full h-screen  max-md:h-[200vh] max-md:w-screen bg-[#F6F6F6] rounded-b-[50px] relative" >
+        <div className="w-full h-screen  max-md:h-[200vh] max-sm:h-[1120px] max-md:w-screen bg-[#F6F6F6] rounded-b-[50px] relative" >
             <div className="absolute max-sm:hidden bottom-0 right-0 z-10">
                 <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
             </div>
             <Navbar />
-            <main className='w-full h-[88%] px-32 max-sm:px-2 py-6'>
+            <main className='w-full h-[88%] px-32 max-sm:px-2 py-6 max-sm:h-[1000px]'>
                 <div className="w-full h-full flex max-md:flex-col max-md:gap-5 justify-between items-center relative z-20">
                     <div className="w-[500px] max-sm:w-[300px] md:h-[400px] flex flex-col space-y-4">
                         <span className='text-[54px]/16 max-sm:text-[28px]/9 dm-sans-medium'>Send, buy, or sell crypto globally with Flash Transfer</span>
@@ -113,7 +113,7 @@ export default function Landing() {
                             </NavLink>
                         </div>
                     </div>
-                    <div className="w-[440px] max-sm:w-[350px] h-full max-sm:h-[76%] max-sm:pb-0 p-4 rounded-2xl shadow-2xl bg-white">
+                    <div className="w-[440px] max-sm:w-[350px] h-full max-sm:h-[550px] max-sm:pb-0 p-4 rounded-2xl shadow-2xl bg-white">
                         <div className="w-full h-full flex flex-col space-y-1">
                             {
                                 connectedWallet !== '' && connectedWallet !== null  && (
@@ -196,7 +196,7 @@ export default function Landing() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full h-[16%] flex flex-col max-sm:-mt-50 max-sm:space-y-3 space-y-1">
+                            <div className="w-full h-[16%] flex flex-col max-sm:-mt-24 max-sm:space-y-2 space-y-1">
                                 <button className='h-[50%] text-[11px] rounded-lg bg-[#FFC000] dm-sans-medium'>Continue</button>
                                 <button className='h-[50%] text-[11px] rounded-lg border border-[#D3D8DD] dm-sans-medium'>Cancel</button>
                             </div>
@@ -210,8 +210,7 @@ export default function Landing() {
                 <div className='w-full flex flex-col items-center space-y-6'>
                     <span className='text-[36px] text-[#181F30] max-sm:text-[20px]/6 font-semibold max-sm:text-center'>Choose from our trusted partners</span>
                     <div className='flex flex-col items-center max-md:items-start space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-md:text-left'>We make sure your money is delivered quickly and easily</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px]'> Choose payment types from our network: cash collection points, mobile money and bank transfer.</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:text-center max-md:text-left'>We make sure your money is delivered quickly and easily <br className='max-sm:hidden' /> Choose payment types from our network: cash collection points, mobile money and bank transfer.</span>
                     </div>
                     <div className="grid grid-cols-5 max-sm:grid-cols-2 max-md:grid-cols-3 max-md:h-full max-sm:h-full w-full h-[200px] gap-4 grid-rows-2">
                         <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
