@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import usdtLogo from '../assets/image/icons/currency/usdt.svg'
 import eurLogo from '../assets/image/icons/currency/eur.svg'
 import solanaLogo from '../assets/image/icons/currency/solana.svg'
+import { currency } from '../assets/image';
 
 const CurrencySelect = ({ selectedCurrency, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,21 @@ const CurrencySelect = ({ selectedCurrency, onSelect }) => {
   const currencies = [
     { code: 'EUR', logo: eurLogo, label: 'EUR' },
     { code: 'USDT', logo: usdtLogo, label: 'USDT' },
-    { code: 'SOL', logo: solanaLogo, label: 'SOL' }
+    { code: 'USDC', logo: currency.usdc, label: 'USDC' },
+    { code: 'BTC', logo: currency.btc, label: 'BTC' },
+    { code: 'ETH', logo: currency.eth, label: 'ETH' },
+    { code: 'BNB', logo: currency.bnb, label: 'BNB' },
+    { code: 'SOL', logo: solanaLogo, label: 'SOL' },
+    { code: 'TON', logo: currency.ton, label: 'TON' },
+    { code: 'MATIC', logo: currency.polygon, label: 'MATIC' },
+    { code: 'BASE', logo: currency.base, label: 'BASE' },
+    { code: 'AVAX', logo: currency.avax , label: 'AVAX' },
+    { code: 'FTM', logo: currency.fantom, label: 'FTM' },
+    { code: 'COM', logo: currency.comoros, label: 'COM' },
+    { code: 'ARB', logo: currency.arb, label: 'ARB' },
+    { code: 'DAI', logo: currency.dai, label: 'DAI' },
+    { code: 'FLASH', logo: currency.flash, label: 'FLASH' },
+    { code: 'CRN', logo: currency.cronos, label: 'CRN' },
   ];
 
   return (

@@ -114,13 +114,13 @@ export default function ContactUs() {
                     </div>
                 </div>
             </div>
-            <div className="w-full px-20 max-lg:px-3 max-sm:h-[300px] flex flex-col items-center">
+            <div className="w-full px-20 max-lg:px-3 max-sm:h-[200px] flex flex-col items-center">
                 <img src={contactBack} alt="" className='w-full h-full' />
             </div>
             <div className="w-full px-20 max-lg:px-3 py-16 max-sm:py-4 flex flex-col items-center space-y-8 bg-white">
                 <div className="w-full flex max-sm:flex-col justify-between items-start">
-                    <h2 className="text-[36px] dm-sans-medium max-sm:text-[24px]">Visit our offices around <br /> the world</h2>
-                    <p className="text-[#6E757D] dm-sans-light text-[14px] max-w-[200px] ">
+                    <h2 className="text-[36px] dm-sans-medium max-sm:text-[24px] ">Visit our offices around <br className='max-sm:hidden' /> the world</h2>
+                    <p className="text-[#6E757D] dm-sans-light text-[14px] max-w-[200px] max-sm:max-w-full ">
                         A short paragraph describing your team. You may want to describe what they are responsible for
                     </p>
                     
