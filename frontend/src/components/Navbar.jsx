@@ -40,7 +40,7 @@ export default function Navbar() {
                         {/* Logo */}
                         <NavLink to={`/`} className="flex items-center space-x-1">
                             <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px] max-sm:h-[48px]' />
-                            <span className='inter-semibold text-[16px] max-sm:hidden'>Flash Transfer</span>
+                            <span className='inter-semibold text-[16px] text-[#181F30] max-sm:hidden'>Flash Transfer</span>
                         </NavLink>
 
                         {/* Desktop Navigation */}

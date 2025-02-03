@@ -159,7 +159,7 @@ export default function Landing() {
                                     <div className=" w-full h-[70%] max-sm:h-[70%] flex items-center justify-center">
                                         <div className="flex flex-col items-center gap-1">
                                             <input type="text" className='p-2 outline-none dm-sans-medium text-[#181F30] text-[20px] w-32 text-center' placeholder='0.9382' disabled />
-                                            <span className='text-[11px] dm-sans-light text-[#181F30]'>Received Amount</span>
+                                            <span className='text-[11px] dm-sans-light text-[#181F30]'>Receive Amount</span>
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +205,7 @@ export default function Landing() {
                 </div>
             </main>
         </div>
-        <div className="w-full bg-white pt-24 max-sm:pt-12 px-12 max-sm:px-4 space-y-14" >
+        <div className="w-full bg-white pt-24 max-sm:pt-12 px-12 max-sm:px-0 space-y-14" >
             <div className="w-full px-20 max-sm:px-4  flex flex-col items-center">
                 <div className='w-full flex flex-col items-center space-y-6'>
                     <span className='text-[36px] text-[#181F30] max-sm:text-[20px]/6 font-semibold max-sm:text-center'>Choose from our trusted partners</span>
@@ -246,42 +246,42 @@ export default function Landing() {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-4 max-md:py-5 relative flex max-sm:grid items-center bg-[#F6F6F6] rounded-4xl">
+            <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-4 max-sm:py-12 max-md:py-5 relative flex max-sm:grid items-center bg-[#F6F6F6] rounded-4xl max-sm:rounded-2xl">
                 <div className="absolute bottom-2 right-32">
                     <img src={heroBackground} alt="" className='w-[700px]' />
                 </div>
                 <div className='w-full h-[70%] max-md:h-full relative z-20 flex max-md:grid max-md:gap-4 items-center space-x-6'>
                     <div className='flex flex-col space-y-4 w-[30%] max-md:w-full'>
-                        <span className='bg-white text-[10px] dm-sans-light text-[#181F30] w-36 px-3 py-1 rounded-lg'>Fast, Secure Exchange</span>
+                        <span className='bg-white text-[10px] dm-sans-light max-sm:text-[13px] text-[#181F30] w-36 max-sm:w-fit border-[#D3D8DD] border px-3 py-1 rounded-2xl'>Fast, Secure Exchange</span>
                         <span className='text-[36px]/12 max-md:hidden dm-sans-medium'>Global Fiat and Crypto  Exchange at Your Fingertips</span>
-                        <span className='md:hidden text-[20px] dm-sans-medium'>Global Fiat and Crypto <br />  Exchange at Your Fingertips</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-md:text-[12px]'>
+                        <span className='md:hidden text-[22px]/7 dm-sans-medium'>Global Fiat and Crypto <br />  Exchange at Your Fingertips</span>
+                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:w-[92%] max-md:text-[13px]'>
                         Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.
                         </span>
                     </div>
                     <div className='w-[60%] max-md:w-full h-full flex max-md:grid space-x-6'>
                         <div className='w-[46%] max-md:w-full h-full flex space-y-6 flex-col items-end'>
                             <div className='w-[86%] max-md:w-full max-md:h-full h-[60%] rounded-2xl bg-white p-4 flex flex-col justify-between'>
-                                <span className='text-[36px]/12 dm-sans-medium'>20</span>
+                                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px] max-md:pb-5 '>20</span>
                                 <div className='space-y-2 grid pb-6'>
-                                    <span className='text-[#181F30] max-sm:hidden dm-sans-bold text-[10px]'>
+                                    <span className='text-[#181F30] max-sm:hidden dm-sans-bold text-[10px] max-sm:text-[16px]'>
                                         Popular cryptocurrencies available !
                                     </span>
-                                    <span className='text-[#181F30] md:hidden dm-sans-bold text-[12px]'>
+                                    <span className='text-[#181F30] md:hidden dm-sans-bold text-[12px] max-sm:text-[16px]'>
                                         Popular cryptocurrencies <br /> available !
                                     </span>
-                                    <span className='text-[#6E757D] dm-sans-medium text-[10px]'>
+                                    <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
                                         You can exchange your cryptocurrencies: BTC, ETH, FLASH, USDC, USDT, DAI, BNB, POL, SOL, AVAX, CRO, SUI and more.
                                     </span>
                                 </div>
                             </div>
                             <div className='w-full h-[40%] max-md:h-full rounded-2xl bg-white p-4 flex flex-col max-md:grid max-md:space-y-6 justify-between'>
-                                <span className='text-[36px]/12 dm-sans-medium'>200+</span>
+                                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px]'>200+</span>
                                 <div className='space-y-2 grid'>
-                                    <span className='text-[#181F30] dm-sans-bold text-[10px]'>
+                                    <span className='text-[#181F30] dm-sans-bold text-[10px] max-sm:text-[16px]'>
                                         Fiat Currencies Support
                                     </span>
-                                    <span className='text-[#6E757D] dm-sans-medium text-[10px]'>
+                                    <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
                                         We support all Fiat currencies in the world!
                                     </span>
                                 </div>
@@ -289,12 +289,12 @@ export default function Landing() {
                         </div>
                         <div className='w-[50%] max-md:w-full h-full flex items-center'>
                             <div className='h-[50%] w-[90%] max-md:w-full max-md:h-full mt-6 rounded-2xl bg-white p-4 flex flex-col justify-between'>
-                                <span className='text-[36px]/12 max-md:text-[36px]/6 dm-sans-medium'>5k</span>
+                                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px]'>5k</span>
                                 <div className='space-y-2 grid pb-6'>
-                                    <span className='text-[#181F30] dm-sans-bold text-[10px]'>
+                                    <span className='text-[#181F30] dm-sans-bold text-[10px] max-sm:text-[16px]'>
                                         Active Users
                                     </span>
-                                    <span className='text-[#6E757D] dm-sans-medium text-[10px]'>
+                                    <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
                                         Our users are satisfied with the speed, low fees and support !
                                     </span>
                                 </div>
@@ -313,7 +313,7 @@ export default function Landing() {
                     <div className="grid grid-cols-3 max-md:grid-cols-1 w-full h-[300px] max-md:h-full gap-8">
                         <div className='w-full h-full flex flex-col items-center p-6 bg-[#F6F6F6] space-y-6 rounded-2xl'>
                             <div className='p-3 rounded-full bg-[#2475FF] flex items-center justify-center w-[90px] h-[90px]'>
-                                <img src={fastLogo} alt="" />
+                                <img src={fastLogo} alt="" className='w-full h-full object-fill' />
                             </div>
                             <span className='text-[#181F30] dm-sans-bold text-[18px]'>
                                 Fast Transaction
@@ -341,10 +341,10 @@ export default function Landing() {
                     </div>
                 </div>
             </div>
-            <div className='px-20 max-md:px-2 w-full'>
+            <div className='px-20 max-md:px-4 w-full'>
                 <div className="w-full h-full flex max-md:grid gap-20 max-md:gap-12 items-center">
-                    <div className='bg-[#F6F6F6] rounded-4xl w-[600px] max-sm:w-[330px] h-[500px] max-sm:h-[350px]'>
-                        <img src={fastBack} alt="" className='w-full h-full' />
+                    <div className='bg-[#F6F6F6] rounded-4xl w-[600px] max-sm:w-full h-[500px] max-sm:h-[350px]'>
+                        <img src={fastBack} alt="" className='w-full h-full object-fill' />
                     </div>
                     <div className='flex flex-col space-y-4'>
                             <span className='text-[#181F30] text-[36px] max-sm:text-[22px]/7 font-semibold max-sm:text-left'>
