@@ -42,6 +42,7 @@ export default function SignUp() {
               </View>
               <TextInput
                 placeholder='Choose your Location'
+                placeholderTextColor="#6E757D"
                 className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
                 required
               />
@@ -60,6 +61,7 @@ export default function SignUp() {
             <Text className='font-semibold text-[14px] mb-2'>Enter Your Mail</Text>
             <TextInput
               placeholder="Enter your email"
+              placeholderTextColor="#6E757D"
               value={password}
               onChangeText={setPassword}
               className=" border border-[#EBECED] p-4 rounded-lg mb-2"
@@ -68,6 +70,7 @@ export default function SignUp() {
             <Text className='font-semibold text-[14px] mb-2'>Set Password</Text>
             <TextInput
               placeholder="Set your Password"
+              placeholderTextColor="#6E757D"
               value={password}
               onChangeText={setPassword}
               className=" border border-[#EBECED] p-4 rounded-lg mb-2"
@@ -76,6 +79,7 @@ export default function SignUp() {
             <Text className='font-semibold text-[14px] mb-2'>Confirm Password</Text>
             <TextInput
               placeholder="Re-enter Password"
+              placeholderTextColor="#6E757D"
               value={password}
               onChangeText={setPassword}
               className=" border border-[#EBECED] p-4 rounded-lg mb-2"
