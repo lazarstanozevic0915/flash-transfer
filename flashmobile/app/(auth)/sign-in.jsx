@@ -16,7 +16,7 @@ export default function SignIn() {
   };
 
   return (
-    <View className="flex-1 bg-white py-28 px-10">
+    <View className="flex-1 bg-white py-28 px-10 font-aeonikBold">
       <View className="mb-8 items-center">
         <Image
           source={logo}
@@ -64,7 +64,6 @@ export default function SignIn() {
           Don't have an account? 
           <TouchableOpacity onPress={() => router.push('/sign-up')}><Text className='text-blue-500'> Register now</Text></TouchableOpacity>
         </Text>
-    
     </View>
   );
 }
