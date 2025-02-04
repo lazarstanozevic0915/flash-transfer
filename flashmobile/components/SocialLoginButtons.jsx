@@ -45,34 +45,42 @@ export default function SocialLoginButtons() {
       </View>
       <View className="flex-row flex-wrap justify-between gap-4">
         <TouchableOpacity 
-          className="flex flex-row items-center justify-center px-8 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
+          className="flex flex-row items-center justify-center w-40 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100"
         >
           {/* <Image source={google} className="h-6 w-6 mr-2" /> */}
-          <GoogleIcon />
+          <View className='mr-2'>
+            <GoogleIcon />
+          </View>
           <Text className="text-sm text-[#6E757D]">Google</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
-          className="flex flex-row items-center justify-center px-8 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
+          className="flex flex-row items-center justify-center w-40 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100"
         >
           {/* <Image source={facebook} className="h-6 w-6 mr-2" /> */}
-          <FacebookIcon />
+          <View className='mr-2'>
+            <FacebookIcon />
+          </View>
           <Text className="text-sm text-[#6E757D]">Facebook</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
-          className="flex flex-row items-center justify-center px-8 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
+          className="flex flex-row items-center justify-center w-40 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100"
         >
           {/* <Image source={apple} className="h-6 w-6 mr-2" /> */}
-          <AppleIcon />;
+          <View className='mr-2'>
+            <AppleIcon />;
+          </View>
           <Text className="text-sm text-[#6E757D]">Apple</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
-          className="flex flex-row items-center justify-center px-8 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
+          className="flex flex-row items-center justify-center w-40 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100"
         >
           {/* <Image source={wallet} className="h-6 w-6 mr-2" /> */}
-          <WalletIcon />
+          <View className='mr-2'>
+            <WalletIcon />
+          </View>
           <Text className="text-sm text-[#6E757D]">Wallet</Text>
         </TouchableOpacity>
       </View>
