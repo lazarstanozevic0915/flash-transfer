@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Text } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import logo from '../../assets/images/logo.png';
@@ -11,42 +11,51 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
+    if (!email || !password) {
+      alert('Please fill in all fields');
+      return;
+    }
+  
     // Add your login logic here
-    router.push('');
+    router.push('/'); // Redirect to the home page or dashboard after login
   };
 
   return (
-    <View className="flex-1 bg-white py-28 px-10 font-aeonikBold">
-      <View className="mb-8 items-center">
+    <View className="flex-1 bg-white pt-[12vh] px-8 pb-8">
+      <View className="mb-4 items-center">
         <Image
           source={logo}
-          className="w-24 h-24"
+          className="w-[110px] h-[110px]"
         />
       </View>
       
-      <Text className="font-bold text-gray-800 mb-2 text-center text-[32px]">Flash Transfer</Text>
-      <Text className="text-xl font-normal text-gray-800 mb-8 text-center">Welcome Back 👋</Text>
+      <Text className="font-semibold text-[#181F30] mb-4 text-center text-[32px]">Flash Transfer</Text>
+      <Text className="text-[20px] font-medium text-[#192031] mb-8 text-center">Welcome Back 👋</Text>
       
       <View className="space-y-4">
-      <Text className='font-semibold text-[12px]'>Email or Phone</Text>
+      <Text className='font-medium text-[14px]'>Email or Phone</Text>
         <TextInput
           placeholder="Enter your email or phone"
+          placeholderTextColor="#6E757D"
           value={email}
           onChangeText={setEmail}
-          className="border border-[#EBECED] p-4 rounded-lg mb-4"
+          className="border border-[#EBECED] p-4 rounded-lg mt-2 mb-4 text-[14px] font-normal"
           keyboardType="email-address"
+          accessibilityLabel="Email or Phone Input"
+          accessibilityHint="Enter your email or phone number"
         />
-        <Text className='font-semibold text-[12px]'>Password</Text>
+        <Text className='font-medium text-[14px]'>Password</Text>
         <TextInput
-          placeholder="Password"
+          placeholder="Enter your password"
+          placeholderTextColor="#6E757D"
           value={password}
           onChangeText={setPassword}
-          className=" border border-[#EBECED] p-4 rounded-lg"
+          className=" border border-[#EBECED] p-4 mt-2 rounded-lg text-[14px] font-normal"
           secureTextEntry
         />
         
-        <TouchableOpacity className="items-end mt-2">
-          <Text className="text-blue-600 text-[14px]">Forgot Password?</Text>
+        <TouchableOpacity className="items-end mt-4">
+          <Text className="text-[#2475FF] font-medium text-[14px]">Forgot Password?</Text>
         </TouchableOpacity>
       </View>
       
@@ -54,7 +63,7 @@ export default function SignIn() {
         className=" p-4 rounded-lg mt-8 bg-[#FFC000]"
         onPress={handleLogin}
       >
-        <Text className="text-gray-900 text-center font-bold">Login</Text>
+        <Text className="text-[#181F30] text-center font-medium">Log in</Text>
       </TouchableOpacity>
 
       
