@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { Text } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import logo from '../../assets/images/logo.png';
@@ -21,7 +21,8 @@ export default function SignIn() {
   };
 
   return (
-    <View className="flex-1 bg-white pt-24 px-10 pb-4">
+    <ScrollView>
+    <View className="flex-1 bg-white  px-10 py-28 pb-8">
       <View className="mb-4 items-center">
         <Image
           source={logo}
@@ -74,5 +75,6 @@ export default function SignIn() {
           <TouchableOpacity onPress={() => router.push('/sign-up')}><Text className='text-blue-500'> Register now</Text></TouchableOpacity>
         </Text>
     </View>
+    </ScrollView>
   );
 }
