@@ -21,7 +21,7 @@ export default function SignIn() {
   };
 
   return (
-    <View className="flex-1 bg-white pt-20 px-8 pb-8">
+    <View className="flex-1 bg-white pt-24 px-10 pb-4">
       <View className="mb-4 items-center">
         <Image
           source={logo}
