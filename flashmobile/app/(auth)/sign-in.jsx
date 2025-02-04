@@ -3,6 +3,7 @@ import { View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Text } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import logo from '../../assets/images/logo.png';
+import SocialLoginButtons from '../../components/SocialLoginButtons';
 
 export default function SignIn() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function SignIn() {
       </View>
       
       <Text className="font-bold text-gray-800 mb-2 text-center text-[32px]">Flash Transfer</Text>
-      <Text className="text-xl font-normal text-gray-800 mb-8 text-center">Welcome Back</Text>
+      <Text className="text-xl font-normal text-gray-800 mb-8 text-center">Welcome Back 👋</Text>
       
       <View className="space-y-4">
       <Text className='font-semibold text-[12px]'>Email or Phone</Text>
@@ -44,22 +45,24 @@ export default function SignIn() {
           secureTextEntry
         />
         
-        <TouchableOpacity className="items-end">
-          <Text className="text-blue-600">Forgot Password?</Text>
+        <TouchableOpacity className="items-end mt-2">
+          <Text className="text-blue-600 text-[14px]">Forgot Password?</Text>
         </TouchableOpacity>
       </View>
       
       <TouchableOpacity 
-        className="bg-blue-500 p-4 rounded-lg mt-8"
+        className=" p-4 rounded-lg mt-8 bg-[#FFC000]"
         onPress={handleLogin}
       >
-        <Text className="text-white text-center font-bold">Login</Text>
+        <Text className="text-gray-900 text-center font-bold">Login</Text>
       </TouchableOpacity>
+
       
+      <SocialLoginButtons />
       
-        <Text className="text-center">
+        <Text className="text-center mt-16">
           Don't have an account? 
-        <Link className='text-blue-500' href="/(auth)/sign-up">Sign up</Link>
+          <TouchableOpacity onPress={() => router.push('/sign-up')}><Text className='text-blue-500'> Register now</Text></TouchableOpacity>
         </Text>
     
     </View>
