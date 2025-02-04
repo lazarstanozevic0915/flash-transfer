@@ -70,10 +70,13 @@ export default function SignIn() {
       
       <SocialLoginButtons />
       
-        <Text className="text-center mt-16">
-          Don't have an account? 
-          <TouchableOpacity onPress={() => router.push('/sign-up')}><Text className='text-blue-500'> Register now</Text></TouchableOpacity>
-        </Text>
+      <View className="flex-row justify-center mt-16">
+        <Text className="text-center">Don't have an account?</Text>
+          <TouchableOpacity onPress={() => router.push('/sign-up')}>
+          <Text className="text-blue-500"> Register now</Text>
+          </TouchableOpacity>
+      </View>
+
     </View>
     </ScrollView>
   );

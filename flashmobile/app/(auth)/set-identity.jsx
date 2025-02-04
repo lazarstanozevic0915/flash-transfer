@@ -29,104 +29,108 @@ export default function SetIdentity() {
   };
 
   return (
-    <ScrollView>
-        <View className="flex-1 bg-white py-20 px-10 font-aeonikBold">
-          <View className="flex-1 flex-row items-start mb-8" >
-            <TouchableOpacity onPress={() => router.push('/sign-up')} className="flex-row items-center">
-              <Image
-                  source={back}
-                  className="w-[30px] h-[30px] object-fill"
-              />
-              <Text className="text-gray-800 font-semibold text-[16px] ml-3" >Back</Text>
-            </TouchableOpacity>
-          </View>
-          
-          <View className="mb-8">
-            <Text className="text-[24px] font-bold mb-2">Set your Identity</Text>
-            <Text className="text-[#6E757D] text-[16px]/7 mb-2">Input your personal information and {'\n'}register  your account!</Text>
-          </View>
-          <View className="space-y-4">
-            <Text className='font-semibold text-[14px] mb-2'>First Name</Text>
-            <TextInput
-              placeholder="Enter your first name"
-              placeholderTextColor="#6E757D"
-              value={firstName}
-              onChangeText={setFirstName}
-              className=" border border-[#EBECED] p-4 rounded-lg mb-2"        
-            />
-            
+<ScrollView>
+  <View className="flex-1 bg-white py-20 px-10 font-aeonikBold">
+    {/* Back Button */}
+    <View className="flex-1 flex-row items-start mb-8">
+      <TouchableOpacity onPress={() => router.push('/sign-up')} className="flex-row items-center">
+        <Image source={back} className="w-[30px] h-[30px] object-fill" />
+        <Text className="text-gray-800 font-semibold text-[16px] ml-3">Back</Text>
+      </TouchableOpacity>
+    </View>
 
-            <Text className='font-semibold text-[14px] mb-2'>Last Name</Text>
-            <TextInput
-              placeholder="Enter your last name"
-              placeholderTextColor="#6E757D"
-              value={lastName}
-              onChangeText={setLastName}
-              className=" border border-[#EBECED] p-4 rounded-lg mb-2"
-            />
+    {/* Title Section */}
+    <View className="mb-8">
+      <Text className="text-[24px] font-bold mb-2">Set your Identity</Text>
+      <Text className="text-[#6E757D] text-[16px] leading-7">
+        Input your personal information and {"\n"}register your account!
+      </Text>
+    </View>
+
+    {/* Form Fields */}
+    <View className="space-y-4">
+      {/* First Name */}
+      <Text className="font-semibold text-[14px] mb-2">First Name</Text>
+      <TextInput
+        placeholder="Enter your first name"
+        placeholderTextColor="#6E757D"
+        value={firstName}
+        onChangeText={setFirstName}
+        className="border border-[#EBECED] p-4 rounded-lg mb-2"
+      />
+
+      {/* Last Name */}
+      <Text className="font-semibold text-[14px] mb-2">Last Name</Text>
+      <TextInput
+        placeholder="Enter your last name"
+        placeholderTextColor="#6E757D"
+        value={lastName}
+        onChangeText={setLastName}
+        className="border border-[#EBECED] p-4 rounded-lg mb-2"
+      />
+
       {/* Gender Selection */}
       <Text className="mt-4 text-sm font-semibold">Gender</Text>
-            <View className="flex-row mt-2">
-              {["Male", "Female"].map((item) => (
-                <Pressable
-                  key={item}
-                  onPress={() => setGender(item)}
-                  className={`flex-row items-center px-4 py-2 border rounded-md mr-4 w-[45%] ${
-                    gender === item ? "border-gray-300" : "border-gray-300"
-                  }`}
-                >
-                  <View
-                    className={`w-4 h-4 rounded-full border p ${
-                      gender === item ? "border-white bg-[#FFC000]" : "border-gray-400"
-                    } mr-2`}
-                  />
-                  <Text>{item}</Text>
-                </Pressable>
-              ))}
-            </View>
-            <View className='mt-5 mb-3'>
-              <DateSelection />
-            </View>
-
-            {/* Date of Birth */}
-            {/* <Text className="mt-4 text-sm font-semibold">Date of Birth</Text>
-            <TouchableOpacity onPress={() => setOpen(true)} className="border p-2 rounded-md mt-1">
-              <Text>{date.toDateString()}</Text>
-            </TouchableOpacity>
-            <DatePicker modal open={open} date={date} onConfirm={(d) => { setOpen(false); setDate(d); }} onCancel={() => setOpen(false)} mode="date" /> */}
-
-            {/* Terms & Conditions with Checkbox */}
-            <View className="flex-row items-center mt-4">
-              <Pressable
-                onPress={() => setIsChecked(!isChecked)}
-                className={`w-5 h-5 rounded-sm border-2 ${
-                  isChecked ? "bg-blue-500 border-blue-500" : "border-gray-400"
-                } flex items-center justify-center mr-2`}
-              >
-                {isChecked && <Text className="text-white">✔</Text>}
-              </Pressable>
-              <Text>
-                I agree with <Text className="text-blue-500">Terms of use</Text>
-              </Text>
-            </View>
-
-            
-          </View>
-          
-          <TouchableOpacity 
-            className=" p-4 rounded-lg mt-8 bg-[#FFC000]"
-            onPress={() => router.push('/verification')}
+      <View className="flex-row mt-2">
+        {["Male", "Female"].map((item) => (
+          <Pressable
+            key={item}
+            onPress={() => setGender(item)}
+            className={`flex-row items-center px-4 py-2 border rounded-md mr-4 w-[45%] ${
+              gender === item ? "border-[#FFC000]" : "border-gray-300"
+            }`}
           >
-            <Text className="text-gray-900 text-center font-bold text-[14px]">Get Registered</Text>
-          </TouchableOpacity>
-          
-            <SocialLoginButtons />
+            <View
+              className={`w-4 h-4 rounded-full border ${
+                gender === item ? "border-[#FFC000] bg-[#FFC000]" : "border-gray-400"
+              } mr-2`}
+            />
+            <Text>{item}</Text>
+          </Pressable>
+        ))}
+      </View>
 
-            <Text className="text-center mt-16 text-[14px]">
-                Already have an account?
-                <TouchableOpacity onPress={() => router.push('/sign-in')}><Text className='text-blue-500'> Login</Text></TouchableOpacity>
-              </Text>
-        </View>
-    </ScrollView>
+      {/* Date Selection */}
+      <View className="mt-5 mb-3">
+        <DateSelection />
+      </View>
+
+      {/* Checkbox Agreement */}
+      <View className="flex-row items-center mt-4">
+        <Pressable
+          onPress={() => setIsChecked(!isChecked)}
+          className={`w-5 h-5 rounded-sm border-2 ${
+            isChecked ? "bg-blue-500 border-blue-500" : "border-gray-400"
+          } flex items-center justify-center`}
+        >
+          {isChecked && <Text className="text-white text-xs">✔</Text>}
+        </Pressable>
+        <Text className="ml-2">
+          I agree with <Text className="text-blue-500">Terms of use</Text>
+        </Text>
+      </View>
+    </View>
+
+    {/* Get Registered Button */}
+    <TouchableOpacity
+      className="p-4 rounded-lg mt-8 bg-[#FFC000]"
+      onPress={() => router.push('/verification')}
+    >
+      <Text className="text-gray-900 text-center font-bold text-[14px]">Get Registered</Text>
+    </TouchableOpacity>
+
+    {/* Social Login Buttons */}
+    <SocialLoginButtons />
+
+    {/* Already Have an Account Section (Fixed) */}
+    <View className="flex-row justify-center mt-16">
+      <Text className="text-[14px]">Already have an account?</Text>
+      <TouchableOpacity onPress={() => router.push('/sign-in')}>
+        <Text className="text-blue-500 text-[14px]"> Login</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</ScrollView>
+
   );
 }

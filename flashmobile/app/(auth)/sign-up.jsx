@@ -95,10 +95,13 @@ export default function SignUp() {
           
             <SocialLoginButtons />
 
-            <Text className="text-center mt-16 text-[14px]">
-                      Already have an account?
-                      <TouchableOpacity onPress={() => router.push('/sign-in')}><Text className='text-blue-500'> Login</Text></TouchableOpacity>
-                    </Text>
+            <View className="flex-row justify-center mt-16">
+                <Text className="text-[14px] text-center">Already have an account?</Text>
+              <TouchableOpacity onPress={() => router.push('/sign-in')}>
+                 <Text className="text-blue-500 text-[14px]"> Login</Text>
+              </TouchableOpacity>
+            </View>
+
         </View>
         </ScrollView>
   );
