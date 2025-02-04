@@ -5,6 +5,8 @@ import { useRouter } from 'expo-router';
 import logo from '../../assets/images/logo.png';
 import Svg, { Path } from 'react-native-svg';
 import { language } from '../../assets/image';
+import UM from '../../assets/image/icons/UM.png'
+import downArrow from '../../assets/image/icons/arrow-short-down.png'
 import SocialLoginButtons from '../../components/SocialLoginButtons';
 
 export default function SignUp() {
@@ -36,8 +38,8 @@ export default function SignUp() {
           <View className='relative w-full'>
               <View className='absolute left-3 top-2.5  z-50'>
                 <Image 
-                  source={language.english} 
-                  className='w-6 h-6 mr-2 object-contain' 
+                  source={UM} 
+                  className='w-7 h-5 mr-2 object-fill' 
                 />
               </View>
               <TextInput
@@ -47,14 +49,10 @@ export default function SignUp() {
                 required
               />
               <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                <Svg className="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <Path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth="2" 
-                    d="M19 9l-7 7-7-7" 
-                  />
-                </Svg>
+                <Image
+                    source={downArrow}
+                    className="w-[12px] h-[6px]"
+                />
               </View>
             </View>
 

@@ -4,7 +4,9 @@ import { Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import logo from '../../assets/images/logo.png';
 import SocialLoginButtons from '../../components/SocialLoginButtons';
+import back from '../../assets/image/icons/backButton.png'
 import DatePicker from "react-native-date-picker";
+import DateSelection from '../../components/DateSelection';
 
 export default function SetIdentity() {
   const router = useRouter();
@@ -31,12 +33,12 @@ export default function SetIdentity() {
         <View className="flex-1 bg-white py-20 px-10 font-aeonikBold">
           <View className="flex-1 flex-row items-start mb-8" >
             <TouchableOpacity onPress={() => router.push('/sign-up')} className="flex-row items-center">
-            <Image
-                source={logo}
-                className="w-[40px] h-[30px]"
-            />
+              <Image
+                  source={back}
+                  className="w-[30px] h-[30px] object-fill"
+              />
+              <Text className="text-gray-800 font-semibold text-[16px] ml-3" >Back</Text>
             </TouchableOpacity>
-            <Text className="text-gray-800 font-semibold text-[16px] ml-2 mt-2" >Back</Text>
           </View>
           
           <View className="mb-8">
@@ -47,16 +49,17 @@ export default function SetIdentity() {
             <Text className='font-semibold text-[14px] mb-2'>First Name</Text>
             <TextInput
               placeholder="Enter your first name"
+              placeholderTextColor="#6E757D"
               value={firstName}
               onChangeText={setFirstName}
-              className=" border border-[#EBECED] p-4 rounded-lg mb-2"
-            
+              className=" border border-[#EBECED] p-4 rounded-lg mb-2"        
             />
             
 
             <Text className='font-semibold text-[14px] mb-2'>Last Name</Text>
             <TextInput
               placeholder="Enter your last name"
+              placeholderTextColor="#6E757D"
               value={lastName}
               onChangeText={setLastName}
               className=" border border-[#EBECED] p-4 rounded-lg mb-2"
@@ -80,6 +83,9 @@ export default function SetIdentity() {
                   <Text>{item}</Text>
                 </Pressable>
               ))}
+            </View>
+            <View className='mt-5 mb-3'>
+              <DateSelection />
             </View>
 
             {/* Date of Birth */}
@@ -109,7 +115,7 @@ export default function SetIdentity() {
           
           <TouchableOpacity 
             className=" p-4 rounded-lg mt-8 bg-[#FFC000]"
-            onPress={() => router.push('/set-identity')}
+            onPress={() => router.push('/verification')}
           >
             <Text className="text-gray-900 text-center font-bold text-[14px]">Get Registered</Text>
           </TouchableOpacity>
@@ -117,10 +123,10 @@ export default function SetIdentity() {
             <SocialLoginButtons />
 
             <Text className="text-center mt-16 text-[14px]">
-                      Already have an account?
-                      <TouchableOpacity onPress={() => router.push('/sign-in')}><Text className='text-blue-500'> Login</Text></TouchableOpacity>
-                    </Text>
+                Already have an account?
+                <TouchableOpacity onPress={() => router.push('/sign-in')}><Text className='text-blue-500'> Login</Text></TouchableOpacity>
+              </Text>
         </View>
-        </ScrollView>
+    </ScrollView>
   );
 }
