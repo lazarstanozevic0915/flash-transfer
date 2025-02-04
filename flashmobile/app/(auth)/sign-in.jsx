@@ -31,7 +31,7 @@ export default function SignIn() {
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
-          className="bg-gray-100 p-4 rounded-lg mb-4"
+          className="border border-[#EBECED] p-4 rounded-lg mb-4"
           keyboardType="email-address"
         />
         
@@ -39,7 +39,7 @@ export default function SignIn() {
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
-          className="bg-gray-100 p-4 rounded-lg"
+          className=" border border-[#EBECED] p-4 rounded-lg"
           secureTextEntry
         />
         
