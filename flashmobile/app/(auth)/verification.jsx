@@ -34,6 +34,7 @@ const Verification = () => {
   const handleSubmit = () => {
     // Handle verification logic here
     console.log('Submitting code:', code.join(''));
+    router.push('/success');
     // You can add your API call or navigation logic here
   };
 

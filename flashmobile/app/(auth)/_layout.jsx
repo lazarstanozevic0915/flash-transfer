@@ -12,7 +12,7 @@ const AuthLayout = () => {
       <Stack.Screen name="sign-up" />
       <Stack.Screen name="set-identity" />
       <Stack.Screen name="verification" />
-      {/*<Stack.Screen name="success" /> */}
+      <Stack.Screen name="success" />
     </Stack>
     <StatusBar backgroundColor='#161622' style='light' />
     </>
