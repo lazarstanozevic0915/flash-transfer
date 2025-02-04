@@ -19,7 +19,7 @@ export default function SignUp() {
 
   return (
     <ScrollView>
-        <View className="flex-1 bg-white py-28 px-10 font-aeonikBold">
+        <View className="flex-1 bg-white py-20 px-10 font-aeonikBold">
           <View className="mb-8 items-center">
             <Image
               source={logo}
