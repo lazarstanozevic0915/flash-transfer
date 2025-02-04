@@ -86,7 +86,7 @@ export default function SignUp() {
           
           <TouchableOpacity 
             className=" p-4 rounded-lg mt-8 bg-[#FFC000]"
-            onPress={handleLogin}
+            onPress={() => router.push('/set-identity')}
           >
             <Text className="text-gray-900 text-center font-bold text-[14px]">Continue</Text>
           </TouchableOpacity>
