@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Text } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import logo from '../../assets/images/logo.png';
@@ -11,8 +11,13 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
+    if (!email || !password) {
+      alert('Please fill in all fields');
+      return;
+    }
+  
     // Add your login logic here
-    router.push('');
+    router.push('/'); // Redirect to the home page or dashboard after login
   };
 
   return (
@@ -31,14 +36,18 @@ export default function SignIn() {
       <Text className='font-semibold text-[12px]'>Email or Phone</Text>
         <TextInput
           placeholder="Enter your email or phone"
+          placeholderTextColor="#6E757D"
           value={email}
           onChangeText={setEmail}
           className="border border-[#EBECED] p-4 rounded-lg mb-4"
           keyboardType="email-address"
+          accessibilityLabel="Email or Phone Input"
+          accessibilityHint="Enter your email or phone number"
         />
         <Text className='font-semibold text-[12px]'>Password</Text>
         <TextInput
           placeholder="Password"
+          placeholderTextColor="#6E757D"
           value={password}
           onChangeText={setPassword}
           className=" border border-[#EBECED] p-4 rounded-lg"
