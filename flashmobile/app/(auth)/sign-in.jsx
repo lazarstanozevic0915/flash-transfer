@@ -15,7 +15,7 @@ export default function SignIn() {
   };
 
   return (
-    <View className="flex-1 bg-white py-32 px-10">
+    <View className="flex-1 bg-white py-28 px-10">
       <View className="mb-8 items-center">
         <Image
           source={logo}
@@ -27,14 +27,15 @@ export default function SignIn() {
       <Text className="text-xl font-normal text-gray-800 mb-8 text-center">Welcome Back</Text>
       
       <View className="space-y-4">
+      <Text className='font-semibold text-[12px]'>Email or Phone</Text>
         <TextInput
-          placeholder="Email"
+          placeholder="Enter your email or phone"
           value={email}
           onChangeText={setEmail}
           className="border border-[#EBECED] p-4 rounded-lg mb-4"
           keyboardType="email-address"
         />
-        
+        <Text className='font-semibold text-[12px]'>Password</Text>
         <TextInput
           placeholder="Password"
           value={password}
