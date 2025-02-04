@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import logo from '../../assets/images/logo.png';
+import Svg, { Path } from 'react-native-svg';
+import { language } from '../../assets/image';
+import SocialLoginButtons from '../../components/SocialLoginButtons';
 
 export default function SignUp() {
   const router = useRouter();
@@ -15,53 +18,86 @@ export default function SignUp() {
   };
 
   return (
-    <View className="flex-1 bg-white p-6">
-      <View className="mb-12 items-center">
-        <Image
-          source={logo}
-          className="w-24 h-24"
-        />
-      </View>
-      
-      <Text className="text-2xl font-bold text-gray-800 mb-8 text-center">Welcome Back</Text>
-      
-      <View className="space-y-4">
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          className="bg-gray-100 p-4 rounded-lg"
-          keyboardType="email-address"
-        />
-        
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          className="bg-gray-100 p-4 rounded-lg"
-          secureTextEntry
-        />
-        
-        <TouchableOpacity className="items-end">
-          <Text className="text-blue-600">Forgot Password?</Text>
-        </TouchableOpacity>
-      </View>
-      
-      <TouchableOpacity 
-        className="bg-blue-500 p-4 rounded-lg mt-8"
-        onPress={handleLogin}
-      >
-        <Text className="text-white text-center font-bold">Login</Text>
-      </TouchableOpacity>
-      
-      <TouchableOpacity 
-        className="mt-4"
-        onPress={() => router.push('')}
-      >
-        <Text className="text-center">
-          Don't have an account? <Text className="text-blue-600">Sign Up</Text>
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <ScrollView>
+        <View className="flex-1 bg-white py-28 px-10 font-aeonikBold">
+          <View className="mb-8 items-center">
+            <Image
+              source={logo}
+              className="w-24 h-24"
+            />
+          </View>
+          
+          <Text className="font-bold text-gray-800 mb-2 text-center text-[32px]">Flash Transfer</Text>
+          <Text className="text-[16px] font-medium text-gray-800 mb-8 text-center">Register Your Account ✍️</Text>
+          
+          <View className="space-y-4">
+          <Text className='font-semibold text-[14px]'>Send From</Text>
+
+          <View className='relative w-full'>
+              <View className='absolute left-3 top-2.5  z-50'>
+                <Image 
+                  source={language.english} 
+                  className='w-6 h-6 mr-2 object-contain' 
+                />
+              </View>
+              <TextInput
+                placeholder='Choose your Location'
+                className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
+                required
+              />
+              <View className="absolute right-3 top-1/2 -translate-y-1/2">
+                <Svg className="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <Path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth="2" 
+                    d="M19 9l-7 7-7-7" 
+                  />
+                </Svg>
+              </View>
+            </View>
+
+            <Text className='font-semibold text-[14px] mb-2'>Enter Your Mail</Text>
+            <TextInput
+              placeholder="Enter your email"
+              value={password}
+              onChangeText={setPassword}
+              className=" border border-[#EBECED] p-4 rounded-lg mb-2"
+            
+            />
+            <Text className='font-semibold text-[14px] mb-2'>Set Password</Text>
+            <TextInput
+              placeholder="Set your Password"
+              value={password}
+              onChangeText={setPassword}
+              className=" border border-[#EBECED] p-4 rounded-lg mb-2"
+              secureTextEntry
+            />
+            <Text className='font-semibold text-[14px] mb-2'>Confirm Password</Text>
+            <TextInput
+              placeholder="Re-enter Password"
+              value={password}
+              onChangeText={setPassword}
+              className=" border border-[#EBECED] p-4 rounded-lg mb-2"
+              secureTextEntry
+            />
+
+          </View>
+          
+          <TouchableOpacity 
+            className=" p-4 rounded-lg mt-8 bg-[#FFC000]"
+            onPress={handleLogin}
+          >
+            <Text className="text-gray-900 text-center font-bold text-[14px]">Continue</Text>
+          </TouchableOpacity>
+          
+            <SocialLoginButtons />
+
+            <Text className="text-center mt-16 text-[14px]">
+                      Already have an account?
+                      <TouchableOpacity onPress={() => router.push('/sign-in')}><Text className='text-blue-500'> Login</Text></TouchableOpacity>
+                    </Text>
+        </View>
+        </ScrollView>
   );
 }

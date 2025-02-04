@@ -73,7 +73,6 @@ export default function SignIn() {
           Don't have an account? 
           <TouchableOpacity onPress={() => router.push('/sign-up')}><Text className='text-blue-500'> Register now</Text></TouchableOpacity>
         </Text>
-    
     </View>
   );
 }
