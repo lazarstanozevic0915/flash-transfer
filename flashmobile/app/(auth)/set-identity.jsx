@@ -76,7 +76,7 @@ export default function SetIdentity() {
           <Pressable
             key={item}
             onPress={() => setGender(item)}
-            className={`flex-row items-center px-4 py-2 border rounded-md mr-4 w-[45%] ${
+            className={`flex-row items-center px-4 py-4 border rounded-md mr-4 w-[45%] ${
               gender === item ? "border-[#FFC000]" : "border-gray-300"
             }`}
           >
@@ -103,7 +103,7 @@ export default function SetIdentity() {
             isChecked ? "bg-blue-500 border-blue-500" : "border-gray-400"
           } flex items-center justify-center`}
         >
-          {isChecked && <Text className="text-white text-xs">✔</Text>}
+          {isChecked && <Text className="text-white text-[8px]">✔</Text>}
         </Pressable>
         <Text className="ml-2">
           I agree with <Text className="text-blue-500">Terms of use</Text>
