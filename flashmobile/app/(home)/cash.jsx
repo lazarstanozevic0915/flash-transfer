@@ -5,6 +5,7 @@ import menu from '../../assets/image/menu-fries.png'
 import back from '../../assets/image/back2.png'
 import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg';
 import ReceiptsSection from '../../components/ReceiptsSection';
+import bell from '../../assets/image/icons/notification-bell.png';
 
 const CashIcon = () => (
     <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
@@ -108,7 +109,7 @@ const Cash = () => {
              </TouchableOpacity>
              
              <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
-               <Image source={menu} className='w-6 h-6 object-fill'  />
+               <Image source={bell} className='w-6 h-6 object-fill'  />
              </TouchableOpacity>
            </View>
            {/* Back Button */}
@@ -172,12 +173,12 @@ const Cash = () => {
         
         <TouchableOpacity 
             className=" p-4 rounded-lg mt-8 bg-[#FFC000] w-full"
-            onPress={() => router.push('/cash')}
+            onPress={() => router.push('/add-new')}
         >  
             <Text className="text-[#181F30] text-center font-semibold text-[14px]">Add New</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-            className=" p-4 rounded-lg mt-2 border border-[#2475FF] w-full"
+            className=" p-4 rounded-lg mt-4 border border-[#2475FF] w-full"
             onPress={() => router.push('')}
         >  
             <Text className="text-[#2475FF] text-center font-semibold text-[14px]">Add From Contact</Text>

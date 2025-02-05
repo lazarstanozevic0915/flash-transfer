@@ -30,7 +30,7 @@ export default function SignUp() {
           </View>
           
           <Text className="font-bold text-gray-800 mb-2 text-center text-[32px]">Flash Transfer</Text>
-          <Text className="text-[16px] font-medium text-gray-800 mb-8 text-center">Register Your Account ✍️</Text>
+          <Text className="text-[18px] font-medium text-gray-800 mb-8 text-center">Register Your Account ✍️</Text>
           
           <View className="space-y-4">
           <Text className='font-semibold text-[14px]'>Send From</Text>
@@ -60,8 +60,8 @@ export default function SignUp() {
             <TextInput
               placeholder="Enter your email"
               placeholderTextColor="#6E757D"
-              value={password}
-              onChangeText={setPassword}
+              value={email}
+              onChangeText={setEmail}
               className=" border border-[#EBECED] p-4 rounded-lg mb-2"
             
             />
