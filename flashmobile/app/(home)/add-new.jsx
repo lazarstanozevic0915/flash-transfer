@@ -63,7 +63,7 @@ const AddNew = () => {
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">Email Address</Text>
                   <TextInput
-                    placeholder="Enter your last name"
+                    placeholder="Enter your email"
                     placeholderTextColor="#6E757D"
                     value={email}
                     onChangeText={setEmail}
@@ -72,7 +72,7 @@ const AddNew = () => {
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">Mobile money</Text>
                   <TextInput
-                    placeholder="Enter your last name"
+                    placeholder="Enter Mobile Money"
                     placeholderTextColor="#6E757D"
                     value={mobile}
                     onChangeText={setMobile}
@@ -105,7 +105,7 @@ const AddNew = () => {
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">Street Address*</Text>
                   <TextInput
-                    placeholder="Enter your last name"
+                    placeholder="Enter your Street address"
                     placeholderTextColor="#6E757D"
                     value={address}
                     onChangeText={setAddress}
@@ -114,7 +114,7 @@ const AddNew = () => {
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">City*</Text>
                   <TextInput
-                    placeholder="Enter your last name"
+                    placeholder="Enter your Cit"
                     placeholderTextColor="#6E757D"
                     value={city}
                     onChangeText={setCity}
