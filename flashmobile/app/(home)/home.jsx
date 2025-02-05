@@ -165,7 +165,7 @@ export default function home() {
                         <Text className="text-[#6E757D] flex items-center">X</Text>
                       </TouchableOpacity>
                     </View>
-                    <ScrollView className='max-h-[600px]'>
+                    <ScrollView className='max-h-[450px]'>
                       {notifications.map((item, index) => (
                         <TouchableOpacity
                           key={index}
