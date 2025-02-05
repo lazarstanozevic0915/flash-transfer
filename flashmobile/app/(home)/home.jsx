@@ -5,6 +5,7 @@ import { useRouter } from 'expo-router';
 import menu from '../../assets/image/menu-fries.png';
 import usdt from '../../assets/image/icons/currency/usdt.png';
 import fra from '../../assets/image/icons/currency/fra.png';
+import bell from '../../assets/image/icons/notification-bell.png';
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
 import swap from '../../assets/image/icons/exchange-vertical.png'
 import user1 from '../../assets/image/users/homeUser1.png'
@@ -55,7 +56,7 @@ export default function home() {
           </TouchableOpacity>
           <Text className='text-[18px] text-[#181F30] font-bold'>Flash Transfer</Text>
           <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
-            <Image source={menu} className='w-6 h-6 object-fill'  />
+            <Image source={bell} className='w-6 h-6 object-fill'  />
           </TouchableOpacity>
         </View>
 
