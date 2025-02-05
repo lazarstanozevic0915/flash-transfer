@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Image, ScrollView, RadioButton, Pressable } from 'react-native';
 import { Text } from 'react-native';
 import { useRouter } from 'expo-router';
-import logo from '../../assets/images/logo.png';
 import SocialLoginButtons from '../../components/SocialLoginButtons';
 import back from '../../assets/image/icons/backButton.png'
-import DatePicker from "react-native-date-picker";
 import DateSelection from '../../components/DateSelection';
 
 export default function SetIdentity() {
