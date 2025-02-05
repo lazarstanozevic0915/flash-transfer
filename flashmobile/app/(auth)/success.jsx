@@ -13,7 +13,7 @@ const Success = () => {
       <Text className='text-[16px] font-normal text-[#6E757D] text-center mt-3'>You Have Successfully top up the wallet</Text>
         <TouchableOpacity 
             className=" p-4 rounded-lg mt-8 bg-[#FFC000] w-full"
-            onPress={() => router.push('')}
+            onPress={() => router.push('/home')}
         >
             <Text className="text-[#181F30] text-center font-semibold text-[14px]">Get Started</Text>
         </TouchableOpacity>
