@@ -17,7 +17,7 @@ export default function SignIn() {
     }
   
     // Add your login logic here
-    router.push('/'); // Redirect to the home page or dashboard after login
+    router.push('/home'); // Redirect to the home page or dashboard after login
   };
 
   return (

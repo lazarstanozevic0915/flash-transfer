@@ -20,4 +20,4 @@ const HomeLayout = () => {
   )
 }
 
-export default AuthLayout
+export default HomeLayout

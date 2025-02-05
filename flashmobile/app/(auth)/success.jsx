@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import success from '../../assets/images/success.png';
+import { router } from 'expo-router';
 
 const Success = () => {
   return (
