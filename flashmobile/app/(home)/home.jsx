@@ -7,14 +7,48 @@ import usdt from '../../assets/image/icons/currency/usdt.png';
 import fra from '../../assets/image/icons/currency/fra.png';
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
 import swap from '../../assets/image/icons/exchange-vertical.png'
+import user1 from '../../assets/image/users/homeUser1.png'
+import user2 from '../../assets/image/users/homeUser2.png'
+import user3 from '../../assets/image/users/homeUser3.png'
+import user4 from '../../assets/image/users/homeUser4.png'
 
 export default function home() {
   const router = useRouter();
   
+  const transactions = [
+    {
+      name: 'Jane Cooper',
+      date: '24 May, 2020',
+      action: 'Send',
+      amount: '$396.84',
+      avatar: user4
+    },
+    {
+      name: 'Marvin McKinney',
+      date: '24 May, 2020',
+      action: 'Receive',
+      amount: '$396.84',
+      avatar: user1
+    },
+    {
+      name: 'Esther Howard',
+      date: '24 May, 2020',
+      action: 'Receive',
+      amount: '$396.84',
+      avatar: user2
+    },
+    {
+      name: 'Ralph Edwards',
+      date: '24 May, 2020',
+      action: 'Send',
+      amount: '$396.84',
+      avatar: user3
+    },
+  ]
 
   return (
   <ScrollView>
-    <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold h-screen">
+    <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold">
         <View className="flex-row justify-between items-center">
           <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
             <Image source={menu} className='w-6 h-6 object-fill'  />
@@ -111,11 +145,28 @@ export default function home() {
 
         <View className='flex-col gap-4'>
           <View className='flex-row justify-between items-center'>
-            <Text className='text-[#273240] text-[18px]font-semibold'>Recent transactions</Text>
-            <TouchableOpacity className=' py-1.5 px-3 bg-[#2475FF] rounded-lg border'>
-              <Text className='text-[#FFFFFF] text-[14px] font-medium'>See all</Text>
+            <Text className='text-[#273240] text-[18px] font-semibold'>Recent transactions</Text>
+            <TouchableOpacity className=' py-1.5 px-3 bg-[#2475FF] rounded-lg'>
+              <Text className='text-white text-[14px] font-medium'>See all</Text>
             </TouchableOpacity>
           </View>
+            {
+              transactions.map(user => (
+                <View className='rounded-2xl bg-white px-3.5 py-3.5 flex-row justify-between items-center' key={user.name} >
+                    <View className='flex-row gap-2'>
+                      <Image source={user.avatar} />
+                      <View className='flex-col gap-2 items-start'>
+                        <Text className='text-[#181F30] text-[16px] font-semibold'>{user.name}</Text>
+                        <Text className='text-[12px] text-[#6E757D] font-normal'>{user.date}</Text>
+                      </View>
+                    </View>
+                    <View className='flex-col gap-2 items-end'>
+                        <Text className={`text-[12px] font-medium ${user.action === 'Send' ? 'text-[#FF3E24]' : 'text-[#00C735]'}`}>{user.action}</Text>
+                        <Text className='text-[14px] text-[#181F30] font-medium'>{user.amount}</Text>
+                    </View>
+                </View>
+              ))
+            }
         </View>
     </View>
   </ScrollView>
