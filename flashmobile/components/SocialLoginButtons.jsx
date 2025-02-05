@@ -50,7 +50,9 @@ export default function SocialLoginButtons() {
         >
           {/* <Image source={google} className="h-6 w-6 mr-2" /> */}
           <View className='mr-2'>
-            <GoogleIcon />
+            <Text>
+              <GoogleIcon />
+            </Text>
           </View>
           <Text className="text-sm text-[#6E757D]">Google</Text>
         </TouchableOpacity>
@@ -60,7 +62,9 @@ export default function SocialLoginButtons() {
         >
           {/* <Image source={facebook} className="h-6 w-6 mr-2" /> */}
           <View className='mr-2'>
-            <FacebookIcon />
+            <Text>
+              <FacebookIcon />
+            </Text>
           </View>
           <Text className="text-sm text-[#6E757D]">Facebook</Text>
         </TouchableOpacity>
@@ -70,7 +74,9 @@ export default function SocialLoginButtons() {
         >
           {/* <Image source={apple} className="h-6 w-6 mr-2" /> */}
           <View className='mr-2'>
-            <AppleIcon />;
+            <Text>
+              <AppleIcon />
+            </Text>
           </View>
           <Text className="text-sm text-[#6E757D]">Apple</Text>
         </TouchableOpacity>
@@ -80,7 +86,9 @@ export default function SocialLoginButtons() {
         >
           {/* <Image source={wallet} className="h-6 w-6 mr-2" /> */}
           <View className='mr-2'>
-            <WalletIcon />
+            <Text>
+              <WalletIcon />
+            </Text>
           </View>
           <Text className="text-sm text-[#6E757D]">Wallet</Text>
         </TouchableOpacity>
