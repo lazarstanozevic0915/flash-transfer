@@ -15,6 +15,7 @@ import user4 from '../../assets/image/users/homeUser4.png'
 
 export default function home() {
   const router = useRouter();
+    const [activeDropdown, setActiveDropdown] = useState(null);
   
   const transactions = [
     {
