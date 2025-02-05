@@ -162,10 +162,10 @@ export default function home() {
                     <View className="border-b border-gray-200 mb-5 flex-row justify-between items-center">
                       <Text className="font-bold text-[16px]">Notifications</Text>
                       <TouchableOpacity onPress={() => setActiveDropdown(null)}>
-                        <Text className="text-[#6E757D] w-2.5 h-2.5">X</Text>
+                        <Text className="text-[#6E757D] flex items-center">X</Text>
                       </TouchableOpacity>
                     </View>
-                    <ScrollView className='max-h-[600px]'>
+                    <ScrollView className='max-h-[450px]'>
                       {notifications.map((item, index) => (
                         <TouchableOpacity
                           key={index}
