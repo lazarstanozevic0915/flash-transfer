@@ -6,68 +6,47 @@ import done from '../../assets/image/icons/done.png'
 import clear from '../../assets/image/icons/clear.png'
 import group from '../../assets/image/icons/group.png'
 import trash from '../../assets/image/icons/trashIcon.png'
-import nftImage1 from '../../assets/image/nftImage1.png'
-import nftImage2 from '../../assets/image/nftImage2.png'
 
 const notification = () => {
     const router = useRouter(); 
 
-    const nfts = [
-        {
-            image: nftImage1,
-            desc: 'Discount on transaction fees - Bronze #44'
-        },
-        {
-            image: nftImage2,
-            desc: 'Discount on transaction fees - Silver #30'
-        },
-        {
-            image: nftImage2,
-            desc: 'Discount on transaction fees - Silver #30'
-        },
-        {
-            image: nftImage1,
-            desc: 'Discount on transaction fees - Bronze #44'
-        },
+    const notifications = [
+    {
+        action: 'Payment sent!',
+        desc: 'your payment #1234 has been send',
+        icon: done
+    },
+    {
+        action: 'Payment Failed!',
+        desc: 'your payment #1234 has been send',
+        icon: clear
+    },
+    {
+        action: 'Payment sent!',
+        desc: 'your payment #1234 has been send',
+        icon: done
+    },
+    {
+        action: 'Payment Failed!',
+        desc: 'your payment #1234 has been send',
+        icon: clear
+    },
+    {
+        action: 'Payment sent!',
+        desc: 'your payment #1234 has been send',
+        icon: done
+    },
+    {
+        action: 'Invite friend',
+        desc: 'Registration confirmed via affiliate link',
+        icon: group
+    },
+    {
+        action: 'Payment sent!',
+        desc: 'your payment #1234 has been send',
+        icon: done
+    },
     ]
-
-      const notifications = [
-        {
-          action: 'Payment sent!',
-          desc: 'your payment #1234 has been send',
-          icon: done
-        },
-        {
-          action: 'Payment Failed!',
-          desc: 'your payment #1234 has been send',
-          icon: clear
-        },
-        {
-          action: 'Payment sent!',
-          desc: 'your payment #1234 has been send',
-          icon: done
-        },
-        {
-          action: 'Payment Failed!',
-          desc: 'your payment #1234 has been send',
-          icon: clear
-        },
-        {
-          action: 'Payment sent!',
-          desc: 'your payment #1234 has been send',
-          icon: done
-        },
-        {
-          action: 'Invite friend',
-          desc: 'Registration confirmed via affiliate link',
-          icon: group
-        },
-        {
-          action: 'Payment sent!',
-          desc: 'your payment #1234 has been send',
-          icon: done
-        },
-      ]
       
 
   return (
@@ -81,7 +60,7 @@ const notification = () => {
             </View>
         </View>
         <View>
-            <View className='flex-row items-center w-full justify-center mb-5'>
+            <View className='flex-row items-center w-full justify-between mb-5'>
                 <Text className='text-[#181F30] text-[20px] font-semibold'>Notifications</Text>
                 <TouchableOpacity className='rounded-full p-2.5 flex items-center bg-[#2475FF] justify-center'>
                     <Image source={trash} className='w-6 h-6 object-fill' />

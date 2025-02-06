@@ -57,7 +57,7 @@ const options = [
     {
         icon: profileIcons.transaction2,
         title: 'My Transaction',
-        link: ''
+        link: '/transaction'
     },
     {
         icon: profileIcons.horizontalSwap,
