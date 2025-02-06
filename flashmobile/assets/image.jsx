@@ -78,6 +78,8 @@ import target from './image/icons/profile/target.png'
 import transaction2 from './image/icons/profile/transaction.png'
 import web from './image/icons/profile/web.png'
 import arrowLeft from './image/icons/profile/arrow-short-left.png'
+import camera from './image/icons/profile/camera.png'
+import usaFlag from './image/icons/profile/UM.png'
 
 import flashIcon from './image/icons/flashLogo.svg';
 import metamaskIcon from './image/icons/metamask-icon.svg';
@@ -145,6 +147,7 @@ import usdt from './image/icons/currency/usdt.svg';
 import usdt2 from './image/icons/currency/usdt.png';
 
 import arabic from './image/icons/language/arabic.svg';
+import arabic2 from './image/icons/language/arabic.png';
 import belgium from './image/icons/language/belgium.svg';
 import belgium2 from './image/icons/language/belgium.png';
 import benin from './image/icons/language/benin.svg';
@@ -160,6 +163,7 @@ import congoK2 from './image/icons/language/congo-k.png';
 import congoR from './image/icons/language/congo-r.svg';
 import congoR2 from './image/icons/language/congo-r.png';
 import english from './image/icons/language/english.svg';
+import english2 from './image/icons/language/english.png';
 import french from './image/icons/language/french.svg';
 import french2 from './image/icons/language/french.png';
 import gabon from './image/icons/language/gabon.svg';
@@ -443,6 +447,7 @@ export const currency = {
 
 export const language = {
   arabic,
+  arabic2,
   belgium,
   belgium2,
   benin,
@@ -458,6 +463,7 @@ export const language = {
   congoR,
   congoR2,
   english,
+  english2,
   french,
   french2,
   gabon,
@@ -563,6 +569,7 @@ export const walletIcons = {
 
 export const profileIcons = {
   arrowLeft,
+  camera,
   card,
   contact,
   group,
@@ -578,5 +585,6 @@ export const profileIcons = {
   setting2,
   target,
   transaction2,
-  web
+  web,
+  usaFlag
 }

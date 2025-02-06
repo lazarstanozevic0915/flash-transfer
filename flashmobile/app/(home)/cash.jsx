@@ -112,7 +112,7 @@ const Cash = () => {
              </TouchableOpacity>
            </View>
            {/* Back Button */}
-           <View className=" flex-row items-start mb-2">
+                <View className=" flex-row items-start mb-2">
                  <TouchableOpacity onPress={() => router.push('/home')} className="flex-row items-center">
                    <Image source={back} className="w-[40px] h-[40px] object-fill mt-2" />
                    <Text className="text-gray-800 font-semibold  items-center text-[16px] ml-3">Back</Text>

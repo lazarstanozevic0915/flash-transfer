@@ -6,7 +6,6 @@ import bell from '../../assets/image/icons/notification-bell.png';
 import done from '../../assets/image/icons/done.png'
 import clear from '../../assets/image/icons/clear.png'
 import group from '../../assets/image/icons/group.png'
-import downArrow from '../../assets/image/icons/arrow-short-down.png'
 import { profileIcons } from '../../assets/image';
 import { useRouter } from 'expo-router';
 
@@ -53,7 +52,7 @@ const options = [
     {
         icon: profileIcons.profileUser2,
         title: 'My Profile',
-        link: ''
+        link: '/edit-profile'
     },
     {
         icon: profileIcons.transaction2,
@@ -73,7 +72,7 @@ const options = [
     {
         icon: profileIcons.nft2,
         title: 'NFT',
-        link: ''
+        link: '/nft'
     },
     {
         icon: profileIcons.rank,
@@ -112,8 +111,8 @@ const options = [
     },
     {
         icon: profileIcons.web,
-        title: 'Languages',
-        link: ''
+        title: 'Language',
+        link: '/language'
     },
     {
         icon: profileIcons.logout2,
@@ -132,7 +131,7 @@ const profile = () => {
             <View className="flex-row justify-between items-center">
                 <View>
                     <TouchableOpacity onPress={() => router.push('/home')} className="flex-row items-center">
-                        <Image source={back} className="w-16 h-16 object-fill" />
+                        <Image source={back} className="w-16 h-16 mt-3 object-fill" />
                     </TouchableOpacity>
                 </View>
                 <Text className='text-[18px] text-[#181F30] font-bold'>Profile</Text>
@@ -191,10 +190,10 @@ const profile = () => {
             <View className='flex-col gap-3'>
                 {
                     options.map((item, index) => (
-                        <TouchableOpacity className='bg-white rounded-2xl p-3 w-full flex-row justify-between items-center' key={index}>
+                        <TouchableOpacity onPress={() => router.push(item.link)} className='bg-white rounded-2xl p-3 w-full flex-row justify-between items-center' key={index}>
                             <View className='flex-row gap-3 items-center'>
                                 <View className='p-3.5 flex items-center justify-center bg-[#F4F5F7] rounded-full'>
-                                    <Image source={item.icon} className='w-6 h-6 object-fill' />
+                                    <Image source={item.icon} className='w-6 h-6 object-contain' />
                                 </View>
                                 <Text className='text-[#181F30] text-[16px] font-medium'>{item.title}</Text>
                             </View>
