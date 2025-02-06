@@ -72,7 +72,7 @@ const options = [
     {
         icon: profileIcons.nft2,
         title: 'NFT',
-        link: ''
+        link: '/nft'
     },
     {
         icon: profileIcons.rank,
