@@ -7,8 +7,9 @@ import back from '../../assets/image/back2.png';
 import mastercard from '../../assets/images/mastercard.png';
 import visa from '../../assets/images/Visa.png';
 import add from '../../assets/images/add.png';
+// import wallet from '../../assets/images/Wallet Default.png';
 
-const EnterCard = () => {
+const AddNewCard = () => {
   const router = useRouter();
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
@@ -33,6 +34,13 @@ const EnterCard = () => {
 
       <View className="my-4">
         <Text className="text-[18px] font-bold">Enter your card information</Text>
+      </View>
+
+      <View className='rounded-xl border-4 border-[#FFFFFF]'>
+        <Image 
+          source={wallet}
+          className='object-fill'
+        />
       </View>
 
       {/* Form Fields */}
@@ -98,4 +106,4 @@ const EnterCard = () => {
   );
 };
 
-export default EnterCard;
+export default AddNewCard;

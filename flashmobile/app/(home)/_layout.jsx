@@ -14,6 +14,10 @@ const HomeLayout = () => {
       <Stack.Screen name="review-details" />
       <Stack.Screen name="payment-done" />
       <Stack.Screen name="enter-card" />
+      <Stack.Screen name="addnew-card" />
+      <Stack.Screen name="scan-card" />
+      <Stack.Screen name="confirm-card" /> 
+      <Stack.Screen name="card-added" />
       <Stack.Screen name="profile" />
       <Stack.Screen name="edit-profile" />
       <Stack.Screen name="language" />
