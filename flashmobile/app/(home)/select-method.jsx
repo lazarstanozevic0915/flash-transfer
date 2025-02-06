@@ -35,13 +35,15 @@ const SelectMethod = () => {
     <View className="flex flex-col bg-[#EFF0F1] py-4 pt-16 px-4 font-aeonikBold h-full">
       {/* Progress Header */}
       <View className="mb-6">
-        <View className="flex-row items-center mb-1">
+        <View className="flex-row items-center p-2">
           <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
             <Text className="text-white font-medium">2/4</Text>
           </View>
-          <Text className="ml-3 font-bold text-lg">Payment Method</Text>
+          <View className='flex flex-col ml-3'>
+          <Text className=" font-bold text-[18px] mb-2">Payment Method</Text>
+          <Text className="text-[#6E757D] text-[14px]">Enter the informations.</Text>
+          </View>
         </View>
-        <Text className="text-gray-500 ml-11">Enter the informations.</Text>
       </View>
 
       {/* Title Section */}
@@ -95,7 +97,7 @@ const SelectMethod = () => {
       <View className="mt-auto mb-6">
         <TouchableOpacity
           className="bg-[#FFC000] rounded-xl py-4 mb-3"
-          onPress={() => router.push('')}
+          onPress={() => router.push('/review-details')}
         >
           <Text className="text-center font-semibold">Continue</Text>
         </TouchableOpacity>
