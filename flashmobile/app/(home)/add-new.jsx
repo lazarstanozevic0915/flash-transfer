@@ -17,6 +17,7 @@ const AddNew = () => {
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
 
+
   return (
     <ScrollView>
     <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold">
