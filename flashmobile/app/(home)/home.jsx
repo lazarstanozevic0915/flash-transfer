@@ -175,18 +175,26 @@ export default function home() {
     { network: 'VND', logo: language.vietnam, label: 'Vietnam' },
   ];
 
-    // Filter and search logic
-    const filteredData = useMemo(() => {
-      return currencies.filter(item => {
-        // Search filter
-        const searchMatch = (
-          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.code.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+// Filter and search logic
+const filteredData = useMemo(() => {
+  // If currencies or searchQuery is null/undefined, return empty array
+  if (!currencies) return [];
   
-        return searchMatch;
-      });
-    }, [searchQuery]);
+  return currencies.filter(item => {
+    // Null checks for item properties
+    const name = item.label?.toLowerCase() || '';
+    const network = item.network?.toLowerCase() || '';
+    const query = searchQuery.toLowerCase();
+
+    // Search filter
+    const searchMatch = (
+      name.includes(query) ||
+      network.includes(query)
+    );
+
+    return searchMatch;
+  });
+}, [currencies, searchQuery]);
 
   return (
   <ScrollView>
@@ -248,7 +256,7 @@ export default function home() {
                         <Text className="text-[#6E757D] flex items-center">X</Text>
                       </TouchableOpacity>
                     </View>
-                    <ScrollView className='max-h-[450px]'>
+                    <ScrollView className='max-h-[450px] min-h-[400px]'>
                       {notifications.map((item, index) => (
                         <TouchableOpacity
                           key={index}
@@ -302,15 +310,16 @@ export default function home() {
                             type="text" 
                             className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg px-4 py-3 pl-12 '
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)} 
+                            onChangeText={setSearchQuery} 
                             placeholder='Search' 
+                            placeholderTextColor="#6E757D"
                         />
                         <View className="absolute left-3 bottom-3">
                             <Image source={icons.search2} alt="" className='h-4 w-4 object-fill' />
                         </View>
                       </View>
                        
-                      <ScrollView className='max-h-[450px]'>
+                      <ScrollView className='max-h-[450px]  min-h-[400px]'>
                         {filteredData.map((item, index) => (
                           <TouchableOpacity
                             key={index}
@@ -380,8 +389,9 @@ export default function home() {
                               type="text" 
                               className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg px-4 py-3 pl-12 '
                               value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)} 
+                              onChange={setSearchQuery} 
                               placeholder='Search' 
+                              placeholderTextColor="#6E757D"
                           />
                           <View className="absolute left-3 bottom-3">
                               <Image source={icons.search2} alt="" className='h-4 w-4 object-fill' />
