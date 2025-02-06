@@ -25,6 +25,7 @@ export default function home() {
     const [sendAmount, setSendAmount] = useState('');
     const [receiveAmount, setReceiveAmount] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery2, setSearchQuery2] = useState('');
 
     const handleSwap = () => {
       // Swap currencies
@@ -195,6 +196,27 @@ const filteredData = useMemo(() => {
     return searchMatch;
   });
 }, [currencies, searchQuery]);
+// Filter and search logic
+
+const filteredData2 = useMemo(() => {
+  // If currencies or searchQuery is null/undefined, return empty array
+  if (!currencies) return [];
+  
+  return currencies.filter(item => {
+    // Null checks for item properties
+    const name = item.label?.toLowerCase() || '';
+    const network = item.network?.toLowerCase() || '';
+    const query = searchQuery2.toLowerCase();
+
+    // Search filter
+    const searchMatch = (
+      name.includes(query) ||
+      network.includes(query)
+    );
+
+    return searchMatch;
+  });
+}, [currencies, searchQuery2]);
 
   return (
   <ScrollView>
@@ -388,8 +410,8 @@ const filteredData = useMemo(() => {
                           <TextInput 
                               type="text" 
                               className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg px-4 py-3 pl-12 '
-                              value={searchQuery}
-                              onChange={setSearchQuery} 
+                              value={searchQuery2}
+                              onChange={setSearchQuery2} 
                               placeholder='Search' 
                               placeholderTextColor="#6E757D"
                           />
@@ -398,7 +420,7 @@ const filteredData = useMemo(() => {
                           </View>
                         </View>
                       <ScrollView className='max-h-[450px]'>
-                        {filteredData.map((item, index) => (
+                        {filteredData2.map((item, index) => (
                           <TouchableOpacity
                             key={index}
                             onPress={() => {
