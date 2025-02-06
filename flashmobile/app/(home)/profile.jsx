@@ -8,6 +8,7 @@ import clear from '../../assets/image/icons/clear.png'
 import group from '../../assets/image/icons/group.png'
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
 import { profileIcons } from '../../assets/image';
+import { useRouter } from 'expo-router';
 
 
 const notifications = [
@@ -122,6 +123,7 @@ const options = [
 ]
 
 const profile = () => {
+    const router = useRouter();
     const [activeDropdown, setActiveDropdown] = useState(null);
 
   return (
@@ -189,7 +191,7 @@ const profile = () => {
             <View className='flex-col gap-3'>
                 {
                     options.map((item, index) => (
-                        <TouchableOpacity className='bg-white rounded-2xl p-3 w-full flex-row justify-between items-center '>
+                        <TouchableOpacity className='bg-white rounded-2xl p-3 w-full flex-row justify-between items-center' key={index}>
                             <View className='flex-row gap-3 items-center'>
                                 <View className='p-3.5 flex items-center justify-center bg-[#F4F5F7] rounded-full'>
                                     <Image source={item.icon} className='w-6 h-6 object-fill' />
