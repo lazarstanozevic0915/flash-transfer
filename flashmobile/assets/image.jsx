@@ -226,6 +226,7 @@ import tanzania2 from './image/icons/language/tanzania.png';
 import togo from './image/icons/language/togo.png';
 import uganda from './image/icons/language/uganda.svg';
 import uganda2 from './image/icons/language/uganda.png';
+import usa from './image/icons/language/usa.png'; 
 import vietnamese from './image/icons/language/vietnamese.svg';
 import vietnam from './image/icons/language/vietnam.png';
 
@@ -526,6 +527,7 @@ export const language = {
   togo,
   uganda,
   uganda2,
+  usa,
   vietnamese,
   vietnam,
 };
