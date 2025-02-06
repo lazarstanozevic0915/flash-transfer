@@ -117,10 +117,9 @@ const recipients = () => {
                                     <Text className='text-[12px] text-[#6E757D] font-normal'>{user.date}</Text>
                                 </View>
                                 </View>
-                                <View className='flex-col gap-2 items-end'>
-                                    <Text className={`text-[12px] font-medium ${user.action === 'Send' ? 'text-[#FF3E24]' : 'text-[#00C735]'}`}>{user.action}</Text>
-                                    <Text className='text-[14px] text-[#181F30] font-medium'>{user.amount}</Text>
-                                </View>
+                                <TouchableOpacity className='bg-[#2475FF] rounded-md py-1.5 px-3'>
+                                    <Text className='text-white text-[14px]'>Send</Text>
+                                </TouchableOpacity>
                             </View>
                         ))
                     }
