@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import micheal from '../../assets/images/micheal.png';
 import Billy from '../../assets/images/Billy.png';
 import dollar from '../../assets/images/dollar.png';
+import run from '../../assets/images/run.png';
 import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg';
 
 const Bank = ({ color = "black" }) => (
@@ -151,7 +152,15 @@ const ReviewDetails = () => {
             <Text className="text-[#181F30] font-semibold text-[16px]">100.00 EUR</Text>
           </View>
           <View className="flex-row justify-between mb-2 mt-4">
+            <View className=" flex-row gap-3 items-center">
+              <View className="rounded-full p-2 bg-[#F4F5F7]">
+              <Image 
+                source={run}
+                className=" object-fill"
+              />
+              </View>
             <Text className="text-[#181F30] text-[15px] font-bold">Avalability</Text>
+            </View>
         <TouchableOpacity className='rounded-full bg-[#00C735] py-3 px-4'>
             <Text className='text-white text-[13px] font-normal'>Immediate</Text>
           </TouchableOpacity>
@@ -166,7 +175,7 @@ const ReviewDetails = () => {
       <View className="mt-20 mb-2 justify-end">
         <TouchableOpacity
           className="bg-[#FFC000] rounded-xl py-4 mb-3"
-          onPress={() => router.push('/review-details')}
+          onPress={() => router.push('/payment-done')}
         >
           <Text className="text-center font-semibold">Confirm</Text>
         </TouchableOpacity>

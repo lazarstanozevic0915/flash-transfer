@@ -15,6 +15,8 @@ const HomeLayout = () => {
       <Stack.Screen name="select-method" />
       <Stack.Screen name="review-details" />
       <Stack.Screen name="payment-done" />
+      <Stack.Screen name="payment-complete" />
+      <Stack.Screen name="enter-card" />
     </Stack>
     <StatusBar backgroundColor='#161622' style='light' />
     </>

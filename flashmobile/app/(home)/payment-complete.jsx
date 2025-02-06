@@ -5,11 +5,11 @@ import bell from '../../assets/image/icons/notification-bell.png';
 import done from '../../assets/image/icons/done.png'
 import clear from '../../assets/image/icons/clear.png'
 import group from '../../assets/image/icons/group.png'
-import pending from '../../assets/images/pending.png'
+import check from '../../assets/images/check.png'
 import code from '../../assets/images/code.png'
 import { useRouter } from 'expo-router';
 
-const PaymentDone = () => {
+const PaymentComplete= () => {
     const router = useRouter();
     const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -111,9 +111,9 @@ const PaymentDone = () => {
               </View>
               <View className="flex flex-col items-center justify-center mt-8 gap-2">
                 <Image 
-                  source={pending}
+                  source={check}
                 />
-                <Text className='text-center text-[24px] font-bold text-[#181F30]'>Payment Pending</Text>
+                <Text className='text-center text-[24px] font-bold text-[#181F30]'>Payment Complete</Text>
               </View>
               <View className='p-4 border rounded-2xl border-[#D3D8DD] flex-col gap-3 my-8'>
                        
@@ -171,7 +171,7 @@ const PaymentDone = () => {
               <View className="mt-auto mb-2 justify-end">
                       <TouchableOpacity
                         className="bg-[#FFC000] rounded-xl py-4 mb-3"
-                        onPress={() => router.push('/payment-complete')}
+                        onPress={() => router.push('/enter-card')}
                       >
                         <Text className="text-center font-semibold">Track Order</Text>
                       </TouchableOpacity>
@@ -183,10 +183,13 @@ const PaymentDone = () => {
                         <Text className="text-center text-[#2475FF] font-semibold">Back to Home</Text>
                       </TouchableOpacity>
               </View>
+              <View className='my-4 flex items-center '>
+                <Text className='text-[18px] text-[#6E757D] font-normal text-center'>Don’t miss out on the benefits of the my wu{"\n"}  SM problem ! you can earn point on future{'\n'} transactions. register today!</Text>
+              </View>
 
     </View>
     </ScrollView>
   )
 }
 
-export default PaymentDone
+export default PaymentComplete
