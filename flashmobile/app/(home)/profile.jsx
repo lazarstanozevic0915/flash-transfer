@@ -82,7 +82,7 @@ const options = [
     {
         icon: profileIcons.notificationBell,
         title: 'Notifications',
-        link: ''
+        link: '/notification'
     },
     {
         icon: profileIcons.card,
