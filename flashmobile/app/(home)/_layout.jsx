@@ -16,6 +16,7 @@ const HomeLayout = () => {
       <Stack.Screen name="profile" />
       <Stack.Screen name="edit-profile" />
       <Stack.Screen name="language" />
+      <Stack.Screen name="nft" />
     </Stack>
     <StatusBar backgroundColor='#161622' style='light' />
     </>
