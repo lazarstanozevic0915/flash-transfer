@@ -411,7 +411,7 @@ const filteredData2 = useMemo(() => {
                               type="text" 
                               className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg px-4 py-3 pl-12 '
                               value={searchQuery2}
-                              onChange={setSearchQuery2} 
+                              onChangeText={setSearchQuery2} 
                               placeholder='Search' 
                               placeholderTextColor="#6E757D"
                           />
