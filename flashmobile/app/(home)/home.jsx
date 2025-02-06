@@ -419,7 +419,7 @@ const filteredData2 = useMemo(() => {
                               <Image source={icons.search2} alt="" className='h-4 w-4 object-fill' />
                           </View>
                         </View>
-                      <ScrollView className='max-h-[450px]'>
+                      <ScrollView className='max-h-[450px] min-h-[400px]'>
                         {filteredData2.map((item, index) => (
                           <TouchableOpacity
                             key={index}
