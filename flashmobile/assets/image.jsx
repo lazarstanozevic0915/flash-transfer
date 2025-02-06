@@ -58,6 +58,7 @@ import phone from './image/icons/phone.svg';
 import download from './image/icons/Download.svg';
 import letter from './image/icons/letter-send.svg';
 import search from './image/icons/search.svg';
+import search2 from './image/icons/search.png';
 import filter from './image/icons/filter.svg';
 
 import flashIcon from './image/icons/flashLogo.svg';
@@ -85,67 +86,126 @@ import logout2Icon from './image/icons/logout2.svg';
 import grade from './image/icons/grade.png';
 
 import arb from './image/icons/currency/arb.svg';
+import arb2 from './image/icons/currency/arb.png';
 import avax from './image/icons/currency/avax.svg';
+import avax2 from './image/icons/currency/avax.png';
 import base from './image/icons/currency/base.svg';
+import base2 from './image/icons/currency/base.png';
 import blast from './image/icons/currency/blast.svg';
+import blast2 from './image/icons/currency/blast.png';
 import bnb from './image/icons/currency/bnb.svg';
+import bnb2 from './image/icons/currency/bnb.png';
 import btc from './image/icons/currency/btc.svg';
+import btc2 from './image/icons/currency/btc.png';
 import comoros from './image/icons/currency/comoros.svg';
+import comoros2 from './image/icons/currency/comoros.png';
 import cronos from './image/icons/currency/cronos.svg';
+import cronos2 from './image/icons/currency/cronos.png';
 import dai from './image/icons/currency/dai.svg';
+import dai2 from './image/icons/currency/dai.png';
 import eth from './image/icons/currency/eth.svg';
+import eth2 from './image/icons/currency/eth.png';
 import eur from './image/icons/currency/eur.svg';
 import fantom from './image/icons/currency/fantom.svg';
+import fantom2 from './image/icons/currency/fantom.png';
 import flash from './image/icons/currency/flash.svg';
+import flash2 from './image/icons/currency/flash.png';
 import optimism from './image/icons/currency/optimism.svg';
+import optimism2 from './image/icons/currency/optimism.png';
 import polygon from './image/icons/currency/polygon.svg';
+import polygon2 from './image/icons/currency/polygon.png';
+import peaq from './image/icons/currency/peaq.png';
 import solanaIcon from './image/icons/currency/solana.svg';
+import solanaIcon2 from './image/icons/currency/solana.png';
 import sui from './image/icons/currency/sui.svg';
+import sui2 from './image/icons/currency/sui.png';
 import ton from './image/icons/currency/ton.svg';
+import ton2 from './image/icons/currency/ton.png';
 import usdc from './image/icons/currency/usdc.svg';
+import usdc2 from './image/icons/currency/usdc.png';
 import usdt from './image/icons/currency/usdt.svg';
+import usdt2 from './image/icons/currency/usdt.png';
 
 import arabic from './image/icons/language/arabic.svg';
 import belgium from './image/icons/language/belgium.svg';
+import belgium2 from './image/icons/language/belgium.png';
 import benin from './image/icons/language/benin.svg';
+import benin2 from './image/icons/language/benin.png';
 import burkina from './image/icons/language/burkina.svg';
+import burkina2 from './image/icons/language/burkina.png';
 import cameroon from './image/icons/language/cameroon.svg';
+import cameroon2 from './image/icons/language/cameroon.png';
 import chad from './image/icons/language/chad.svg';
+import chad2 from './image/icons/language/chad.png';
 import congoK from './image/icons/language/congo-k.svg';
+import congoK2 from './image/icons/language/congo-k.png';
 import congoR from './image/icons/language/congo-r.svg';
+import congoR2 from './image/icons/language/congo-r.png';
 import english from './image/icons/language/english.svg';
 import french from './image/icons/language/french.svg';
+import french2 from './image/icons/language/french.png';
 import gabon from './image/icons/language/gabon.svg';
+import gabon2 from './image/icons/language/gabon.png';
 import gambia from './image/icons/language/gambia.svg';
+import gambia3 from './image/icons/language/gambia.png';
 import gambia2 from './image/icons/language/gambia-2.svg';
 import germany from './image/icons/language/germany.svg';
+import germany2 from './image/icons/language/germany.png';
 import ghana from './image/icons/language/ghana.svg';
+import ghana2 from './image/icons/language/ghana.png';
 import guinea from './image/icons/language/guinea.svg';
+import guinea2 from './image/icons/language/guinea.png';
 import guineaB from './image/icons/language/guinea-b.svg';
+import guineaB2 from './image/icons/language/guinea-b.png';
 import haiti from './image/icons/language/haiti.svg';
+import haiti2 from './image/icons/language/haiti.png';
 import indian from './image/icons/language/indian.svg';
+import india from './image/icons/language/india.png';
 import ireland from './image/icons/language/ireland.svg';
+import ireland2 from './image/icons/language/ireland.png';
 import italy from './image/icons/language/italy.svg';
+import italy2 from './image/icons/language/italy.png';
 import ivory from './image/icons/language/ivory.svg';
+import ivory2 from './image/icons/language/ivory.png';
 import kenya from './image/icons/language/kenya.svg';
+import kenya2 from './image/icons/language/kenya.png';
 import liberia from './image/icons/language/liberia.svg';
+import liberia2 from './image/icons/language/liberia.png';
 import luxem from './image/icons/language/luxem.svg';
+import luxem2 from './image/icons/language/luxem.png';
 import mada from './image/icons/language/mada.svg';
+import mada2 from './image/icons/language/mada.png';
 import mali from './image/icons/language/mali.svg';
+import mali2 from './image/icons/language/mali.png';
 import mauri from './image/icons/language/mauri.svg';
+import mauri2 from './image/icons/language/mauri.png';
 import morocco from './image/icons/language/morocco.svg';
+import morocco2 from './image/icons/language/morocco.png';
 import netherlands from './image/icons/language/netherlands.svg';
+import netherlands2 from './image/icons/language/netherlands.png';
 import niger from './image/icons/language/niger.svg';
+import niger2 from './image/icons/language/niger.png';
 import nigeria from './image/icons/language/nigeria.svg';
+import nigeria2 from './image/icons/language/nigeria.png';
 import portuguese from './image/icons/language/portuguese.svg';
+import portuguese2 from './image/icons/language/portugal.png';
 import rwanda from './image/icons/language/rwanda.svg';
+import rwanda2 from './image/icons/language/rwanda.png';
 import senegal from './image/icons/language/senegal.svg';
+import senegal2 from './image/icons/language/senegal.png';
 import sierra from './image/icons/language/sierra.svg';
+import sierra2 from './image/icons/language/sierra.png';
 import spanish from './image/icons/language/spanish.svg';
+import spanish2 from './image/icons/language/spanish.png';
 import tunisia from './image/icons/language/tunisia.svg';
+import tunisia2 from './image/icons/language/tunisia.png';
 import tanzania from './image/icons/language/tanzania.svg';
+import tanzania2 from './image/icons/language/tanzania.png';
+import togo from './image/icons/language/togo.png';
 import uganda from './image/icons/language/uganda.svg';
+import uganda2 from './image/icons/language/uganda.png';
 import vietnamese from './image/icons/language/vietnamese.svg';
+import vietnam from './image/icons/language/vietnam.png';
 
 import binance from './image/partners/binance.svg';
 import blockmate from './image/partners/blockmate.svg';
@@ -308,6 +368,7 @@ export const icons = {
   letter,
   filter,
   search,
+  search2,
   cardCreditIcon,
   usersIcon,
   nftIcon,
@@ -321,69 +382,128 @@ export const icons = {
 
 export const currency = {
   arb,
+  arb2,
   avax,
+  avax2,
   base,
+  base2,
   blast,
+  blast2,
   bnb,
+  bnb2,
   btc,
+  btc2,
   comoros,
+  comoros2,
   cronos,
+  cronos2,
   dai,
+  dai2,
   eth,
+  eth2,
   eur,
   fantom,
+  fantom2,
   flash,
+  flash2,
   optimism,
+  optimism2,
   polygon,
+  polygon2,
+  peaq,
   solanaIcon,
+  solanaIcon2,
   sui,
+  sui2,
   ton,
+  ton2,
   usdc,
+  usdc2,
   usdt,
+  usdt2,
 };
 
 export const language = {
   arabic,
   belgium,
+  belgium2,
   benin,
+  benin2,
   burkina,
+  burkina2,
   cameroon,
+  cameroon2,
   chad,
+  chad2,
   congoK,
+  congoK2,
   congoR,
+  congoR2,
   english,
   french,
+  french2,
   gabon,
+  gabon2,
   gambia,
   gambia2,
+  gambia3,
   germany,
+  germany2,
   ghana,
+  ghana2,
   guinea,
+  guinea2,
   guineaB,
+  guineaB2,
   haiti,
+  haiti2,
   indian,
+  india,
   ireland,
+  ireland2,
   italy,
+  italy2,
   ivory,
+  ivory2,
   kenya,
+  kenya2,
   liberia,
+  liberia2,
   luxem,
+  luxem2,
   mada,
+  mada2,
   mali,
+  mali2,
   mauri,
+  mauri2,
   morocco,
+  morocco2,
   netherlands,
+  netherlands2,
   niger,
+  niger2,
   nigeria,
+  nigeria2,
   portuguese,
+  portuguese2,
   rwanda,
+  rwanda2,
   senegal,
+  senegal2,
   sierra,
+  sierra2,
   spanish,
+  spanish2,
   tunisia,
+  tunisia2,
   tanzania,
+  tanzania2,
+  togo,
   uganda,
+  uganda2,
   vietnamese,
+  vietnam,
 };
 
 export const nftIcons = {

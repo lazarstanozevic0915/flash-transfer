@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, TextInput, TouchableOpacity, Image, ScrollView, Modal, } from 'react-native';
 import { Text } from 'react-native';
 import { useRouter } from 'expo-router';
@@ -15,14 +15,16 @@ import user1 from '../../assets/image/users/homeUser1.png'
 import user2 from '../../assets/image/users/homeUser2.png'
 import user3 from '../../assets/image/users/homeUser3.png'
 import user4 from '../../assets/image/users/homeUser4.png'
+import { currency, icons, language } from '../../assets/image';
 
 export default function home() {
   const router = useRouter();
     const [activeDropdown, setActiveDropdown] = useState(null);
-    const [fromCurrency, setFromCurrency] = useState({ code: 'USDT', logo: usdt, label: 'USDT' });
-    const [toCurrency, setToCurrency] = useState({ code: 'EUR', logo: fra, label: 'EUR' });
+    const [fromCurrency, setFromCurrency] = useState({ network: 'USDT', logo: usdt, label: 'USDT' });
+    const [toCurrency, setToCurrency] = useState({ network: 'EUR', logo: fra, label: 'EUR' });
     const [sendAmount, setSendAmount] = useState('');
     const [receiveAmount, setReceiveAmount] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     const handleSwap = () => {
       // Swap currencies
@@ -105,6 +107,87 @@ export default function home() {
     },
   ]
 
+  const currencies = [
+    { network: 'EUR', logo: fra, label: 'EUR' },
+    { network: 'USDT', logo: usdt, label: 'USDT' },
+    { network: 'ETH', logo: currency.arb2, label: 'Arbitrum' },
+    { network: 'Avax', logo: currency.avax2 , label: 'Avalanche' },
+    { network: 'ETH', logo: currency.base2, label: 'Base' },
+    { network: 'EUR', logo: language.belgium2, label: 'Belgium' },
+    { network: 'XOF', logo: language.benin2, label: 'Benin' },
+    { network: 'BNB', logo: currency.bnb2, label: 'Binance Smart Chain' },
+    { network: 'BTC', logo: currency.btc2, label: 'Bitcoin' },
+    { network: 'ETH', logo: currency.btc2, label: 'Blast' },
+    { network: 'XOF', logo: language.burkina2, label: 'Burkina Faso' },
+    { network: 'XAF', logo: language.chad2, label: 'Chad' },
+    { network: 'XAF', logo: language.cameroon2, label: 'Cameroon' },
+    { network: 'KMF', logo: currency.comoros2, label: 'Comoros' },
+    { network: 'CRO', logo: currency.cronos2, label: 'Cronos' },
+    { network: 'XAF', logo: language.congoR2, label: 'Congo Brazzaville' },
+    { network: 'CDF', logo: language.congoK2, label: 'Congo Kinshasa' },
+    { network: 'EVM', logo: currency.dai2, label: 'DAI' },
+    { network: 'ETH', logo: currency.eth2, label: 'Ethereum' },
+    { network: 'EVM', logo: currency.usdc2, label: 'EURC' },
+    { network: 'EVM', logo: usdt, label: 'EURt' },
+    { network: 'FTM', logo: currency.fantom2, label: 'Fantom' },
+    { network: 'SOL', logo: currency.flash2, label: 'Flash' },
+    { network: 'EUR', logo: fra, label: 'France' },
+    { network: 'XAF', logo: language.gabon2, label: 'Gabon' },
+    { network: 'GMD', logo: language.gambia3, label: 'Gambia' },
+    { network: 'EUR', logo: language.germany2, label: 'Germany' },
+    { network: 'GHS', logo: language.ghana2, label: 'Ghana' },
+    { network: 'GMD', logo: language.gambia3, label: 'Gambia' },
+    { network: 'XOF', logo: language.guineaB2, label: 'Guniea Bissau' },
+    { network: 'GNF', logo: language.guinea2, label: 'Guniea' },
+    { network: 'HTG', logo: language.haiti2, label: 'Haiti' },
+    { network: 'INR', logo: language.india, label: 'India' },
+    { network: 'EUR', logo: language.ireland2, label: 'Ireland' },
+    { network: 'EUR', logo: language.italy2, label: 'Italy' },
+    { network: 'XOF', logo: language.ivory2, label: 'Ivory Coast' },
+    { network: 'KES', logo: language.kenya2, label: 'Kenya' },
+    { network: 'LRD', logo: language.liberia2, label: 'Liberia' },
+    { network: 'EUR', logo: language.luxem2, label: 'Luxembourg' },
+    { network: 'MGA', logo: language.mada2, label: 'Madagascar' },
+    { network: 'XOF', logo: language.mali2, label: 'Mali' },
+    { network: 'MRU', logo: language.mauri2, label: 'Mauritania' },
+    { network: 'MAD', logo: language.morocco2, label: 'Morocco' },
+    { network: 'NGN', logo: language.nigeria2, label: 'Nigeria' },
+    { network: 'XOF', logo: language.niger2, label: 'Niger' },
+    { network: 'ETH', logo: currency.optimism2, label: 'Optimism' },
+    { network: 'Peaq', logo: currency.peaq, label: 'Peaq' },
+    { network: 'POL', logo: currency.polygon2, label: 'Polygon' },
+    { network: 'EUR', logo: language.portuguese2, label: 'Portugal' },
+    { network: 'RWF', logo: language.rwanda2, label: 'Rwanda' },
+    { network: 'XOF', logo: language.senegal2, label: 'Senegal' },
+    { network: 'SLL', logo: language.sierra2, label: 'Sierra Leone' },
+    { network: 'SOL', logo: currency.solanaIcon22, label: 'Solana' },
+    { network: 'EUR', logo: language.spanish2, label: 'Spain' },
+    { network: 'SUI', logo: currency.sui2, label: 'Sui' },
+    { network: 'EUR', logo: language.netherlands2, label: 'The Netherlands' },
+    { network: 'TND', logo: language.tunisia2, label: 'Tunisia' },
+    { network: 'TZS', logo: language.tanzania2, label: 'Tanzanie' },
+    { network: 'TZS', logo: language.togo, label: 'Togo' },
+    { network: 'TZS', logo: language.tanzania2, label: 'Tanzania' },
+    { network: 'TON', logo: currency.ton2, label: 'Ton' },
+    { network: 'EVM', logo: currency.usdc2, label: 'USDC' },
+    { network: 'EVM', logo: usdt, label: 'USDT' },
+    { network: 'UGX', logo: language.uganda2, label: 'Uganda' },
+    { network: 'VND', logo: language.vietnam, label: 'Vietnam' },
+  ];
+
+    // Filter and search logic
+    const filteredData = useMemo(() => {
+      return currencies.filter(item => {
+        // Search filter
+        const searchMatch = (
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.code.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+  
+        return searchMatch;
+      });
+    }, [searchQuery]);
+
   return (
   <ScrollView>
     <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold">
@@ -184,18 +267,73 @@ export default function home() {
                     </ScrollView>
                   </View>
                 </TouchableOpacity>
-              </Modal>
+            </Modal>
           </View>
         </View>
 
         <View className='flex-col relative gap-3.5'>
           <View className='bg-white flex-col items-center gap-3.5 rounded-2xl p-4 pb-12'>
             <View className='flex-row justify-between w-full items-center'>
-              <TouchableOpacity className='flex-row items-center gap-2'>
-                <Image source={fromCurrency.logo} className='w-9 h-9 object-fill ' />
-                <Text className='text-[20px] text-[#181F30] font-normal'>{fromCurrency.code}</Text>
-                <Image source={downArrow} className='w-[12px] h-[6px] object-fill ' />
-              </TouchableOpacity>
+              <View>
+                <TouchableOpacity onPress={() => setActiveDropdown('fromCurrency')} className='flex-row items-center gap-2'>
+                  <Image source={fromCurrency.logo} className='w-9 h-9 object-fill ' />
+                  <Text className='text-[20px] text-[#181F30] font-normal'>{fromCurrency.label}</Text>
+                  <Image source={downArrow} className='w-[12px] h-[6px] object-fill ' />
+                </TouchableOpacity>
+                <Modal
+                  visible={activeDropdown === 'fromCurrency'}
+                  transparent={true}
+                  animationType="slide"
+                >
+                  <TouchableOpacity 
+                    className="flex-1 bg-black/50"
+                    onPress={() => setActiveDropdown(null)}
+                  >
+                    <View className="bg-[#EFF0F1] p-5 mt-auto rounded-t-xl">
+                      <View className="border-b border-gray-200 mb-5 flex-row justify-between items-center">
+                        <Text className="font-bold text-[16px]">Choose Currency</Text>
+                        <TouchableOpacity onPress={() => setActiveDropdown(null)}>
+                          <Text className="text-[#6E757D] flex items-center">X</Text>
+                        </TouchableOpacity>
+                      </View>
+                      <Text className='text-[#6E757D] text-[12px] '>The EVM blockchain represents all blockchains compatible with Ethereum (address starting with 0x).If you want to pay with a non-evm crypto like Solana, Ton or other please click on "change". When you send volatile crypto it is automatically converted into stablecoin.</Text>
+                      <View className="relative my-3 w-full">
+                        <TextInput 
+                            type="text" 
+                            className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg px-4 py-3 pl-12 '
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)} 
+                            placeholder='Search' 
+                        />
+                        <View className="absolute left-3 bottom-3">
+                            <Image source={icons.search2} alt="" className='h-4 w-4 object-fill' />
+                        </View>
+                      </View>
+                       
+                      <ScrollView className='max-h-[450px]'>
+                        {filteredData.map((item, index) => (
+                          <TouchableOpacity
+                            key={index}
+                            onPress={() => {
+                              setFromCurrency(item);
+                              setActiveDropdown(null);
+                            }}
+                            className="p-3 border-b border-[#D3D8DD] flex-row items-center rounded-2xl gap-3 mb-3"
+                          >
+                            <View className='h-6 w-6 rounded-full bg-[#F4F5F7] flex items-center justify-center'>
+                              <Image source={item.logo} className='w-full h-full object-fill' />
+                            </View>
+                            <View className='flex-row items-start gap-2'>
+                              <Text className='text-[16px] text-[#181F30] font-medium' >{item.label} -</Text>
+                              <Text className='text-[16px] text-[#181F30] font-medium'>{item.network}</Text>
+                            </View>
+                          </TouchableOpacity>
+                        ))}
+                      </ScrollView>
+                    </View>
+                  </TouchableOpacity>
+                </Modal>
+              </View>
               <TouchableOpacity className='flex items-center justify-between py-1.5 px-3 border border-[#EBECED] rounded-3xl gap-2'>
                 <Text className='text-[14px] text-[#181F30] font-normal'>Send</Text>
               </TouchableOpacity>
@@ -214,11 +352,65 @@ export default function home() {
           </View>
           <View className='bg-white flex-col items-center gap-3.5 rounded-2xl p-4 pb-12'>
             <View className='flex-row justify-between w-full items-center'>
-              <TouchableOpacity className='flex-row items-center gap-2'>
-                <Image source={toCurrency.logo} className='w-9 h-9 object-fill ' />
-                <Text className='text-[20px] text-[#181F30] font-normal'>{toCurrency.code}</Text>
-                <Image source={downArrow} className='w-[12px] h-[6px] object-fill ' />
-              </TouchableOpacity>
+              <View>
+                <TouchableOpacity onPress={() => setActiveDropdown('toCurrency')} className='flex-row items-center gap-2'>
+                  <Image source={toCurrency.logo} className='w-9 h-9 object-fill ' />
+                  <Text className='text-[20px] text-[#181F30] font-normal'>{toCurrency.label}</Text>
+                  <Image source={downArrow} className='w-[12px] h-[6px] object-fill ' />
+                </TouchableOpacity>
+                <Modal
+                  visible={activeDropdown === 'toCurrency'}
+                  transparent={true}
+                  animationType="slide"
+                >
+                  <TouchableOpacity 
+                    className="flex-1 bg-black/50"
+                    onPress={() => setActiveDropdown(null)}
+                  >
+                    <View className="bg-[#EFF0F1] p-5 mt-auto rounded-t-xl">
+                        <View className="border-b border-gray-200 mb-5 flex-row justify-between items-center">
+                          <Text className="font-bold text-[16px]">Choose Currency</Text>
+                          <TouchableOpacity onPress={() => setActiveDropdown(null)}>
+                            <Text className="text-[#6E757D] flex items-center">X</Text>
+                          </TouchableOpacity>
+                        </View>
+                        <Text className='text-[#6E757D] text-[12px] '>The EVM blockchain represents all blockchains compatible with Ethereum (address starting with 0x).If you want to pay with a non-evm crypto like Solana, Ton or other please click on "change". When you send volatile crypto it is automatically converted into stablecoin.</Text>
+                        <View className="relative my-3 w-full">
+                          <TextInput 
+                              type="text" 
+                              className='w-full border border-[#D3D8DD] text-[14px] bg-white rounded-lg px-4 py-3 pl-12 '
+                              value={searchQuery}
+                              onChange={(e) => setSearchQuery(e.target.value)} 
+                              placeholder='Search' 
+                          />
+                          <View className="absolute left-3 bottom-3">
+                              <Image source={icons.search2} alt="" className='h-4 w-4 object-fill' />
+                          </View>
+                        </View>
+                      <ScrollView className='max-h-[450px]'>
+                        {filteredData.map((item, index) => (
+                          <TouchableOpacity
+                            key={index}
+                            onPress={() => {
+                              setToCurrency(item);
+                              setActiveDropdown(null);
+                            }}
+                            className="p-3 border-b border-[#D3D8DD] flex-row items-center rounded-2xl gap-3 mb-3"
+                          >
+                            <View className='h-6 w-6 rounded-full bg-[#F4F5F7] flex items-center justify-center'>
+                              <Image source={item.logo} className='w-full h-full object-fill' />
+                            </View>
+                            <View className='flex-row items-start gap-2'>
+                              <Text className='text-[16px] text-[#181F30] font-medium' >{item.label} -</Text>
+                              <Text className='text-[16px] text-[#181F30] font-medium'>{item.network}</Text>
+                            </View>
+                          </TouchableOpacity>
+                        ))}
+                      </ScrollView>
+                    </View>
+                  </TouchableOpacity>
+                </Modal>
+              </View>
               <TouchableOpacity className='flex items-center justify-between py-1.5 px-3 border border-[#EBECED] rounded-3xl gap-2'>
                 <Text className='text-[14px] text-[#181F30] font-normal'>Receive</Text>
               </TouchableOpacity>
