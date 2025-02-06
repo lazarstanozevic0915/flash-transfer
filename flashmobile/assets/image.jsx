@@ -78,6 +78,8 @@ import target from './image/icons/profile/target.png'
 import transaction2 from './image/icons/profile/transaction.png'
 import web from './image/icons/profile/web.png'
 import arrowLeft from './image/icons/profile/arrow-short-left.png'
+import camera from './image/icons/profile/camera.png'
+import usaFlag from './image/icons/profile/UM.png'
 
 import flashIcon from './image/icons/flashLogo.svg';
 import metamaskIcon from './image/icons/metamask-icon.svg';
@@ -563,6 +565,7 @@ export const walletIcons = {
 
 export const profileIcons = {
   arrowLeft,
+  camera,
   card,
   contact,
   group,
@@ -578,5 +581,6 @@ export const profileIcons = {
   setting2,
   target,
   transaction2,
-  web
+  web,
+  usaFlag
 }

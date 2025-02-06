@@ -63,7 +63,6 @@ export default function SignUp() {
               value={email}
               onChangeText={setEmail}
               className=" border border-[#EBECED] p-4 rounded-lg mb-2"
-            
             />
             <Text className='font-semibold text-[14px] mb-2'>Set Password</Text>
             <TextInput
