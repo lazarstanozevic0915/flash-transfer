@@ -62,7 +62,7 @@ const options = [
     {
         icon: profileIcons.horizontalSwap,
         title: 'My Recipients',
-        link: ''
+        link: '/recipients'
     },
     {
         icon: profileIcons.target,
