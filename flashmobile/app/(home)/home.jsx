@@ -3,14 +3,14 @@ import { View, TextInput, TouchableOpacity, Image, ScrollView, Modal, } from 're
 import { Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import menu from '../../assets/image/menu-fries.png';
-import usdt from '../../assets/image/icons/currency/usdt.png';
-import fra from '../../assets/image/icons/currency/fra.png';
 import bell from '../../assets/image/icons/notification-bell.png';
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
 import done from '../../assets/image/icons/done.png'
 import clear from '../../assets/image/icons/clear.png'
 import group from '../../assets/image/icons/group.png'
 import swap from '../../assets/image/icons/exchange-vertical.png'
+import usdt from '../../assets/image/icons/currency/usdt.png';
+import fra from '../../assets/image/icons/currency/fra.png';
 import user1 from '../../assets/image/users/homeUser1.png'
 import user2 from '../../assets/image/users/homeUser2.png'
 import user3 from '../../assets/image/users/homeUser3.png'
@@ -19,24 +19,24 @@ import { currency, icons, language } from '../../assets/image';
 
 export default function home() {
   const router = useRouter();
-    const [activeDropdown, setActiveDropdown] = useState(null);
-    const [fromCurrency, setFromCurrency] = useState({ network: 'USDT', logo: usdt, label: 'USDT' });
-    const [toCurrency, setToCurrency] = useState({ network: 'EUR', logo: fra, label: 'EUR' });
-    const [sendAmount, setSendAmount] = useState('');
-    const [receiveAmount, setReceiveAmount] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
-    const [searchQuery2, setSearchQuery2] = useState('');
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [fromCurrency, setFromCurrency] = useState({ network: 'USDT', logo: usdt, label: 'USDT' });
+  const [toCurrency, setToCurrency] = useState({ network: 'EUR', logo: fra, label: 'EUR' });
+  const [sendAmount, setSendAmount] = useState('');
+  const [receiveAmount, setReceiveAmount] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery2, setSearchQuery2] = useState('');
 
-    const handleSwap = () => {
-      // Swap currencies
-      const tempCurrency = fromCurrency;
-      setFromCurrency(toCurrency);
-      setToCurrency(tempCurrency);
+  const handleSwap = () => {
+    // Swap currencies
+    const tempCurrency = fromCurrency;
+    setFromCurrency(toCurrency);
+    setToCurrency(tempCurrency);
 
-      // Swap amounts
-      const tempAmount = sendAmount;
-      setSendAmount(receiveAmount);
-      setReceiveAmount(tempAmount);
+    // Swap amounts
+    const tempAmount = sendAmount;
+    setSendAmount(receiveAmount);
+    setReceiveAmount(tempAmount);
   };
 
   const notifications = [
@@ -196,7 +196,6 @@ const filteredData = useMemo(() => {
     return searchMatch;
   });
 }, [currencies, searchQuery]);
-// Filter and search logic
 
 const filteredData2 = useMemo(() => {
   // If currencies or searchQuery is null/undefined, return empty array
@@ -223,39 +222,9 @@ const filteredData2 = useMemo(() => {
     <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold">
         <View className="flex-row justify-between items-center">
           <View>
-            <TouchableOpacity onPress={() => setActiveDropdown('menu')} className='flex items-center justify-center p-3 rounded-full bg-white'>
+            <TouchableOpacity onPress={() => router.push('/profile')} className='flex items-center justify-center p-3 rounded-full bg-white'>
               <Image source={menu} className='w-6 h-6 object-fill'  />
             </TouchableOpacity>
-              <Modal
-                visible={activeDropdown === 'menu'}
-                transparent={true}
-                animationType="slide"
-              >
-                <TouchableOpacity 
-                  className="flex-1 bg-black/50"
-                  onPress={() => setActiveDropdown(null)}
-                >
-                  <View className="bg-white mt-auto rounded-t-xl">
-                    <View className="p-4 border-b border-gray-200 flex-row justify-between items-center">
-                      <Text className="font-semibold text-lg">Select </Text>
-                      <TouchableOpacity onPress={() => setActiveDropdown(null)}>
-                        <Text className="text-blue-500">Done</Text>
-                      </TouchableOpacity>
-                    </View>
-                    <ScrollView className="max-h-72">
-                      {transactions.map((item) => (
-                        <TouchableOpacity
-                          key={item.name}
-                          // onPress={() => handleSelect(item, type)}
-                          className="p-4 border-b border-gray-100"
-                        >
-                          <Text>{item.name}</Text>
-                        </TouchableOpacity>
-                      ))}
-                    </ScrollView>
-                  </View>
-                </TouchableOpacity>
-              </Modal>
           </View>
           <Text className='text-[18px] text-[#181F30] font-bold'>Flash Transfer</Text>
           <View>

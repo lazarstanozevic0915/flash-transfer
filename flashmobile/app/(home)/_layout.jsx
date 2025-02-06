@@ -8,6 +8,7 @@ const HomeLayout = () => {
     <>
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="home" />
+      <Stack.Screen name="profile" />
       <Stack.Screen name="cash" />
       <Stack.Screen name="add-new" />
       <Stack.Screen name="select-payment" />

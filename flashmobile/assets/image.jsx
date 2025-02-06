@@ -61,6 +61,24 @@ import search from './image/icons/search.svg';
 import search2 from './image/icons/search.png';
 import filter from './image/icons/filter.svg';
 
+import card from './image/icons/profile/card.png'
+import contact from './image/icons/profile/contact.png'
+import group from './image/icons/profile/group.png'
+import horizontalSwap from './image/icons/profile/horizontal-swap.png'
+import logout2 from './image/icons/profile/logout.png'
+import nft2 from './image/icons/profile/nft.png'
+import notificationBell from './image/icons/profile/notification-bell.png'
+import privacy from './image/icons/profile/privacy.png'
+import profileImage from './image/icons/profile/profile-image.png'
+import profileRank from './image/icons/profile/profile-rank.png'
+import profileUser2 from './image/icons/profile/profile-user.png'
+import rank from './image/icons/profile/rank.png'
+import setting2 from './image/icons/profile/setting.png'
+import target from './image/icons/profile/target.png'
+import transaction2 from './image/icons/profile/transaction.png'
+import web from './image/icons/profile/web.png'
+import arrowLeft from './image/icons/profile/arrow-short-left.png'
+
 import flashIcon from './image/icons/flashLogo.svg';
 import metamaskIcon from './image/icons/metamask-icon.svg';
 import phantomIcon from './image/icons/phantom.svg';
@@ -541,4 +559,24 @@ export const walletIcons = {
   metamaskIcon,
   ledgerIcon,
   phantomIcon
+}
+
+export const profileIcons = {
+  arrowLeft,
+  card,
+  contact,
+  group,
+  horizontalSwap,
+  logout2,
+  nft2,
+  notificationBell,
+  privacy,
+  profileImage,
+  profileRank,
+  profileUser2,
+  rank,
+  setting2,
+  target,
+  transaction2,
+  web
 }

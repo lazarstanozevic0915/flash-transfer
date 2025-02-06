@@ -61,8 +61,6 @@ const Wallet = ({ color = '#2475FF' }) => (
       <Path d="M5.5781 19.697C5.11872 20.011 5.04841 20.6063 5.41872 20.9813C5.94372 21.5016 6.82029 21.1266 6.81091 20.386C6.80623 20.072 6.64216 19.8048 6.3656 19.6595C6.16404 19.5563 5.76091 19.5751 5.5781 19.697Z" fill={color}/>
     </Svg>
   );
-
-
 const CreditCard = ({ color = '#2475FF' }) => (
     <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_498_21215)">
@@ -97,14 +95,13 @@ const CreditCard = ({ color = '#2475FF' }) => (
 
 
 const Cash = () => {
-    const router = useRouter();
-        const [activePay, setActivePay] = useState('cash');
-        const [activeReceive, setActiveReceive] = useState('cash');
+  const router = useRouter();
+  const [activePay, setActivePay] = useState('cash');
+  const [activeReceive, setActiveReceive] = useState('cash');
 
   return (
    <ScrollView>
        <View className="flex flex-col bg-[#EFF0F1] py-4 pt-16 px-4  font-aeonikBold h-full">
-
            <View className="flex-row justify-between items-center mb-4">
              <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
                <Image source={menu} className='w-6 h-6 object-fill'  />
