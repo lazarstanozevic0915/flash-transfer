@@ -115,7 +115,7 @@ const AddNew = () => {
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">City*</Text>
                   <TextInput
-                    placeholder="Enter your Cit"
+                    placeholder="Enter your City"
                     placeholderTextColor="#6E757D"
                     value={city}
                     onChangeText={setCity}
