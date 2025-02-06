@@ -117,15 +117,15 @@ export default function ReceiptsSection() {
       ))}
       <TouchableOpacity 
                   className=" p-4 rounded-lg mt-8 bg-[#FFC000] w-full"
-                  onPress={() => router.push('/add-new')}
+                  onPress={() => router.push('/select-payment')}
               >  
                   <Text className="text-[#181F30] text-center font-semibold text-[14px]">Confirm</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                  className=" p-4 rounded-lg mt-4 border border-[#D3D8DD] w-full"
+                  className=" p-4 rounded-lg mt-4 border border-[#6E757D] w-full"
                   onPress={() => router.push('')}
               >  
-                  <Text className="text-[#D3D8DD] text-center font-semibold text-[14px]">Cancel</Text>
+                  <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>
               </TouchableOpacity>
     </View>
   );

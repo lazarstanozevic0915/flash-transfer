@@ -127,14 +127,14 @@ const Cash = () => {
                     <View className="flex gap-4">
                         <View className="flex-row gap-4">
                             <TouchableOpacity 
-                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[45%] justify-center items-center ${activePay === 'cash' ? 'bg-[#2475FF]' : 'bg-white'}`}
+                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[50%] justify-center items-center ${activePay === 'cash' ? 'bg-[#2475FF]' : 'bg-white'}`}
                                 onPress={() => setActivePay('cash')}
                             >
                                 <CashIcon color={activePay === 'cash' ? '#FFFFFF' : '#2475FF'} />
                                 <Text className={`text-[14px] font-semibold ${activePay === 'cash' ? 'text-white' : 'text-[#273240]'}`}>Cash Payment</Text>
                             </TouchableOpacity>
                             <TouchableOpacity 
-                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[45%] justify-center items-center ${activePay === 'wallet' ? 'bg-[#2475FF]' : 'bg-white'}`}
+                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[50%] justify-center items-center ${activePay === 'wallet' ? 'bg-[#2475FF]' : 'bg-white'}`}
                                 onPress={() => setActivePay('wallet')}
                             >
                                 <Wallet color={activePay === 'wallet' ? '#FFFFFF' : '#2475FF'} />
@@ -143,14 +143,14 @@ const Cash = () => {
                         </View>
                         <View className="flex-row gap-4">
                             <TouchableOpacity 
-                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[45%] justify-center items-center ${activePay === 'card' ? 'bg-[#2475FF]' : 'bg-white'}`}
+                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[50%] justify-center items-center ${activePay === 'card' ? 'bg-[#2475FF]' : 'bg-white'}`}
                                 onPress={() => setActivePay('card')}
                             >
                                 <CreditCard color={activePay === 'card' ? '#FFFFFF' : '#2475FF'} />
                                 <Text className={`text-[14px] font-semibold ${activePay === 'card' ? 'text-white' : 'text-[#273240]'}`}>Credit Card</Text>
                             </TouchableOpacity>
                             <TouchableOpacity 
-                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[45%] justify-center items-center ${activePay === 'bank' ? 'bg-[#2475FF]' : 'bg-white'}`}
+                                className={`rounded-2xl flex-row px-2 py-4 gap-2 w-[50%] justify-center items-center ${activePay === 'bank' ? 'bg-[#2475FF]' : 'bg-white'}`}
                                 onPress={() => setActivePay('bank')}
                             >
                                 <Bank color={activePay === 'bank' ? '#FFFFFF' : '#2475FF'} />
