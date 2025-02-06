@@ -112,7 +112,7 @@ const options = [
     {
         icon: profileIcons.web,
         title: 'Language',
-        link: ''
+        link: '/language'
     },
     {
         icon: profileIcons.logout2,

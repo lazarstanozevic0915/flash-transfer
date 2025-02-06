@@ -147,6 +147,7 @@ import usdt from './image/icons/currency/usdt.svg';
 import usdt2 from './image/icons/currency/usdt.png';
 
 import arabic from './image/icons/language/arabic.svg';
+import arabic2 from './image/icons/language/arabic.png';
 import belgium from './image/icons/language/belgium.svg';
 import belgium2 from './image/icons/language/belgium.png';
 import benin from './image/icons/language/benin.svg';
@@ -162,6 +163,7 @@ import congoK2 from './image/icons/language/congo-k.png';
 import congoR from './image/icons/language/congo-r.svg';
 import congoR2 from './image/icons/language/congo-r.png';
 import english from './image/icons/language/english.svg';
+import english2 from './image/icons/language/english.png';
 import french from './image/icons/language/french.svg';
 import french2 from './image/icons/language/french.png';
 import gabon from './image/icons/language/gabon.svg';
@@ -445,6 +447,7 @@ export const currency = {
 
 export const language = {
   arabic,
+  arabic2,
   belgium,
   belgium2,
   benin,
@@ -460,6 +463,7 @@ export const language = {
   congoR,
   congoR2,
   english,
+  english2,
   french,
   french2,
   gabon,
