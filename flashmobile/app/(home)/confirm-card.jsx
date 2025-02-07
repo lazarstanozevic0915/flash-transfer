@@ -6,7 +6,6 @@ import downArrow from '../../assets/image/icons/arrow-short-down.png';
 import back from '../../assets/image/back2.png';
 import mastercard from '../../assets/images/mastercard.png';
 import visa from '../../assets/images/Visa.png';
-import add from '../../assets/images/add.png';
 import atm from '../../assets/images/ATM.png';
 
 const ConfirmCard = () => {
@@ -39,7 +38,7 @@ const ConfirmCard = () => {
       <View className='rounded-2xl flex items-center border-white'>
         <Image 
           source={atm}
-          className='object-fill w-[460px]'
+          className='object-fill '
         />
       </View>
 
@@ -97,7 +96,7 @@ const ConfirmCard = () => {
 
       {/* Add New Card Button */}
       <View className="mt-auto mb-2 ">
-        <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 flex-row items-center justify-center" onPress={() => router.push('')}>
+        <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 flex-row items-center justify-center" onPress={() => router.push('/card-added')}>
           <Text className="text-center text-black font-semibold">Continue</Text>
         </TouchableOpacity>
       </View>
