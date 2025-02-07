@@ -87,7 +87,7 @@ const options = [
     {
         icon: profileIcons.card,
         title: 'My Cards',
-        link: ''
+        link: '/my-card'
     },
     {
         icon: profileIcons.group,
