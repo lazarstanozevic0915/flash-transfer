@@ -117,10 +117,10 @@ const EditReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={city}
                     onChangeText={setCity}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                   />
 
-                    <View className="flex-row space-x-4 gap-2 mb-2">
+                    <View className="flex-row space-x-4 gap-2 mb-4">
                     {/* State Input */}
                     <View className="flex-1">
                         <Text className="font-semibold text-[14px] mb-2">State*</Text>
@@ -148,13 +148,13 @@ const EditReceiverInfo = () => {
 
             </View> 
             <TouchableOpacity 
-                className=" p-4 rounded-lg mt-2 bg-[#FFC000] w-full"
+                className=" p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
                 onPress={() => router.push('')}
             >  
                     <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
             </TouchableOpacity>
              <TouchableOpacity 
-                className=" p-4 rounded-lg mt-4 border border-[#6E757D] w-full"
+                className=" p-4 rounded-lg border border-[#6E757D] w-full"
                 onPress={() => router.push('/receiver-info')}
               >  
                 <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>

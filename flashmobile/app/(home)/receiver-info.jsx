@@ -51,7 +51,7 @@ const ReceiverInfo = () => {
                   You can see all the details of your transaction,{"\n"}check that you have made no mistake if necessary{"\n"}you can modify information on this page.
                 </Text>
         </View>
-        <View className='flex-row rounded-lg bg-blue-500 px-6 py-3 w-[50%] mb-6 items-center gap-2'>
+        <View className='flex-row rounded-lg bg-blue-500 px-6 py-3 w-[50%] mb-8 items-center gap-2'>
             <Image 
                 source={benefit}
                 className="object-fill"
@@ -71,7 +71,7 @@ const ReceiverInfo = () => {
                 <TextInput
                     placeholder='Choose your Location'
                     placeholderTextColor="#6E757D"
-                    className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
+                    className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-4'
                     required
                 />
                 <View className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -88,7 +88,7 @@ const ReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={address}
                     onChangeText={setAddress}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                     />
 
                 <Text className="font-semibold text-[14px] mb-2">The beneficiary receives</Text>
@@ -97,7 +97,7 @@ const ReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={city}
                     onChangeText={setCity}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl "
                     />
 
     <View className="px-2 py-4 bg-gray-100">
@@ -108,7 +108,7 @@ const ReceiverInfo = () => {
     <View className="flex-row items-center bg-white px-4 py-2 rounded-lg border border-gray-200">
         <Image 
         source={search}
-        className='h-8 w-8 object-fill'
+        className='h-6 w-6 object-fill'
         />
         <TextInput
         placeholder="Search"
