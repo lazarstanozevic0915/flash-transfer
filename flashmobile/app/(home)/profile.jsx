@@ -92,7 +92,7 @@ const options = [
     {
         icon: profileIcons.group,
         title: 'Refer a Friend',
-        link: ''
+        link: '/invite'
     },
     {
         icon: profileIcons.setting2,

@@ -24,6 +24,7 @@ const HomeLayout = () => {
       <Stack.Screen name="nft" />
       <Stack.Screen name="notification" />
       <Stack.Screen name="transaction" />
+      <Stack.Screen name="invite" />
     </Stack>
     <StatusBar backgroundColor='#161622' style='light' />
     </>
