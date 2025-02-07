@@ -83,7 +83,7 @@ const AddNewCard = () => {
 
       {/* Add New Card Button */}
       <View className="mt-auto mb-2 ">
-        <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 flex-row items-center justify-center" onPress={() => router.push('/confirm-card')}>
+        <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 flex-row items-center justify-center" onPress={() => router.push('/scan-card')}>
           <Text className="text-center text-black font-semibold">Continue</Text>
         </TouchableOpacity>
       </View>
