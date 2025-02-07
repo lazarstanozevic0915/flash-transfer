@@ -27,8 +27,8 @@ const SenderDetails = () => {
                     </TouchableOpacity>
             </View>
             <View className="">
-                  <Text className="text-[18px] font-bold">Senders Details</Text>
-                  <Text>Check all details information</Text>
+                  <Text className="text-[18px] font-bold mb-2">Senders Details</Text>
+                  <Text className="text-[#6E757D] text-[16px]">Check all details information</Text>
             </View>
             {/* Form Fields */}
                 <View className="space-y-4">
@@ -171,13 +171,13 @@ const SenderDetails = () => {
                         </View>
             </View> 
             <TouchableOpacity 
-                className=" p-4 rounded-lg mt-2 bg-[#FFC000] w-full"
+                className=" p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
                 onPress={() => router.push('')}
             >  
                     <Text className="text-[#181F30] text-center font-semibold text-[14px]">Save</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-                className=" p-4 rounded-lg mt-4 border border-[#6E757D] w-full"
+                className=" p-4 rounded-lg border border-[#6E757D] w-full"
                 onPress={() => router.back()}
             >  
                     <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>

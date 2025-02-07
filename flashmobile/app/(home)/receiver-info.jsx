@@ -1,21 +1,31 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import { useRouter } from 'expo-router';
-import UM from '../../assets/image/icons/UM.png'
-import robert from '../assets/images/robert.png';
-import theresa from '../assets/images/theresa.png';
-import courtney from '../assets/images/courtney.png';
-import search from '../assets/images/search.png';
+import UM from '../../assets/image/icons/UM.png';
+import downArrow from '../../assets/image/icons/arrow-short-down.png';
+import robert from '../../assets/images/robert.png';
+import theresa from '../../assets/images/theresa.png';
+import courtney from '../../assets/images/courtney.png';
+import search from '../../assets/images/search.png';
+import benefit from '../../assets/images/benefit.png';
 
 const ReceiverInfo = () => {
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
+        const [firstName, setFirstName] = useState('');
+        const [lastName, setLastName] = useState('');
+        const [email, setEmail] = useState('');
+        const [mobile, setMobile] = useState('');
+        const [address, setAddress] = useState('');
+        const [city, setCity] = useState('');
+        const [state, setState] = useState('');
+        const [zip, setZip] = useState('');
 
     const recentReceipts = [
         { id: 1, name: "Theresa Webb", country: "USA", flag: "🇺🇸", image: theresa },
         { id: 2, name: "Courtney Henry", country: "France", flag: "🇫🇷", image: courtney },
         { id: 3, name: "Robert Fox", country: "USA", flag: "🇺🇸", image: robert },
-        { id: 3, name: "Devone Lane", country: "France", flag: "🇫🇷", image: robert },
+        { id: 4, name: "Devone Lane", country: "France", flag: "🇫🇷", image: robert },
       ];
 
       const filteredReceipts = recentReceipts.filter(receipt =>
@@ -37,12 +47,16 @@ const ReceiverInfo = () => {
                 <Text className="text-[#181F30] text-[20px] font-bold mb-2">
                   Receiver's info
                 </Text>
-                <Text className="text-[#6E757D] text-[18px]">
+                <Text className="text-[#6E757D] text-[16px]">
                   You can see all the details of your transaction,{"\n"}check that you have made no mistake if necessary{"\n"}you can modify information on this page.
                 </Text>
         </View>
-        <View className='flex-row rounded-lg px-4 py-2 w-[60%]'>
-            <Text>I'm the benefit</Text>
+        <View className='flex-row rounded-lg bg-blue-500 px-6 py-3 w-[50%] mb-6 items-center gap-2'>
+            <Image 
+                source={benefit}
+                className="object-fill"
+            />
+            <Text className="text-white text-[15px] font-medium">I'm the benefit</Text>
         </View>
 
         <Text className='font-semibold text-[14px] mb-2'>Recieving country - Currency</Text>
@@ -88,16 +102,16 @@ const ReceiverInfo = () => {
 
     <View className="px-2 py-4 bg-gray-100">
 
-    <Text className="text-[18px] font-bold text-gray-800 mt-8 mb-2">Already added</Text>
+    <Text className="text-[18px] font-bold text-gray-800 mt-8">Already added</Text>
 
-    <View className="mt-8 mb-4">
+    <View className="mt-6 mb-4">
     <View className="flex-row items-center bg-white px-4 py-2 rounded-lg border border-gray-200">
         <Image 
         source={search}
         className='h-8 w-8 object-fill'
         />
         <TextInput
-        placeholder="Search receipts"
+        placeholder="Search"
         value={searchQuery}
         onChangeText={setSearchQuery}
         className="flex-1 ml-2 text-[16px] text-gray-800"
@@ -134,7 +148,7 @@ const ReceiverInfo = () => {
       ))}
       <TouchableOpacity 
                   className=" p-4 rounded-lg mt-8 bg-[#FFC000] w-full"
-                  onPress={() => router.push('/select-payment')}
+                  onPress={() => router.push('/edit-receiver-info')}
               >  
                   <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
               </TouchableOpacity>

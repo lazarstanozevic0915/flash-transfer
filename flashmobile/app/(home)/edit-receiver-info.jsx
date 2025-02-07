@@ -30,12 +30,12 @@ const EditReceiverInfo = () => {
                   </View>
                 </View>
             <View className="">
-                  <Text className="text-[20px] font-bold">Receiver's info</Text>
-                  <Text className="text-[#6E757D] text-[18px]">Enter the information of your beneficiary who will{"\n"}recieve the amount of your transaction. If you{"\n"}want to send to a beneficiary already registered{"\n"}you can select in "Select from existing".</Text>
+                  <Text className="text-[20px] font-bold mb-2">Receiver's info</Text>
+                  <Text className="text-[#6E757D] text-[16px]">Enter the information of your beneficiary who will{"\n"}recieve the amount of your transaction. If you{"\n"}want to send to a beneficiary already registered{"\n"}you can select in "Select from existing".</Text>
             </View>
 
-            <TouchableOpacity className="bg-red-100 rounded-xl p-4 mb-4 border border-[#FF3E24]">
-                        <Text className="text-[#FF3E24] text-[14px]">
+            <TouchableOpacity className="bg-red-100 rounded-xl py-2 px-4 mb-4 border border-[#FF3E24]">
+                        <Text className="text-[#FF3E24] text-[15px]">
                           <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Enter your receiver name exactly as it{"\n"}appears on their ID
                         </Text>
                       </TouchableOpacity>
@@ -48,7 +48,7 @@ const EditReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={firstName}
                     onChangeText={setFirstName}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                   />
             
                   {/* Last Name */}
@@ -58,7 +58,7 @@ const EditReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={lastName}
                     onChangeText={setLastName}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                   />
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">Email Address</Text>
@@ -67,7 +67,7 @@ const EditReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={email}
                     onChangeText={setEmail}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                   />
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">Mobile money</Text>
@@ -76,7 +76,7 @@ const EditReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={mobile}
                     onChangeText={setMobile}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                   />
 
                   <Text className='font-semibold text-[14px] mb-2'>Country/Region</Text>
@@ -91,7 +91,7 @@ const EditReceiverInfo = () => {
                         <TextInput
                             placeholder='Choose your Location'
                             placeholderTextColor="#6E757D"
-                            className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
+                            className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-4'
                             required
                         />
                         <View className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -108,7 +108,7 @@ const EditReceiverInfo = () => {
                     placeholderTextColor="#6E757D"
                     value={address}
                     onChangeText={setAddress}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                   />
 
                   <Text className="font-semibold text-[14px] mb-2">City*</Text>

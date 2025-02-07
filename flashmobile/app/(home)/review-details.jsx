@@ -100,7 +100,7 @@ const ReviewDetails = () => {
         <View className='flex flex-row items-center justify-between p-1'>
 
         <Text className="text-[#273240] text-[16px] font-semibold mb-3">Receiver details</Text>
-        <TouchableOpacity onPress={() => router.push('/reciever-info')}>
+        <TouchableOpacity onPress={() => router.push('/receiver-info')}>
         <Text className="text-[#2475FF] text-[14px] font-normal mb-3">Edit</Text>
         </TouchableOpacity>
         </View>
