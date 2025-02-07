@@ -67,7 +67,7 @@ const options = [
     {
         icon: profileIcons.target,
         title: 'Track a Transfer',
-        link: ''
+        link: '/track-transfer'
     },
     {
         icon: profileIcons.nft2,
@@ -193,7 +193,7 @@ const profile = () => {
                         <TouchableOpacity onPress={() => router.push(item.link)} className='bg-white rounded-2xl p-3 w-full flex-row justify-between items-center' key={index}>
                             <View className='flex-row gap-3 items-center'>
                                 <View className='p-3.5 flex items-center justify-center bg-[#F4F5F7] rounded-full'>
-                                    <Image source={item.icon} className='w-6 h-6 object-contain' />
+                                    <Image source={item.icon} className='w-6 h-6 object-fill' />
                                 </View>
                                 <Text className='text-[#181F30] text-[16px] font-medium'>{item.title}</Text>
                             </View>
