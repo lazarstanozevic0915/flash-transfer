@@ -77,7 +77,7 @@ const options = [
     {
         icon: profileIcons.rank,
         title: 'My Rank',
-        link: ''
+        link: '/rank'
     },
     {
         icon: profileIcons.notificationBell,

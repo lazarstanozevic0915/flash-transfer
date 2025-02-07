@@ -230,6 +230,17 @@ import usa from './image/icons/language/usa.png';
 import vietnamese from './image/icons/language/vietnamese.svg';
 import vietnam from './image/icons/language/vietnam.png';
 
+import grade1 from './image/icons/rank/Grade1 2.png'
+import grade2 from './image/icons/rank/Grade2 2.png'
+import grade3 from './image/icons/rank/Grade3 2.png'
+import grade4 from './image/icons/rank/Grade4 2.png'
+import grade5 from './image/icons/rank/Grade5 2.png'
+import grade6 from './image/icons/rank/Grade7 3.png'
+import grade7 from './image/icons/rank/Grade8 3.png'
+import grade8 from './image/icons/rank/Grade9 3.png'
+import grade9 from './image/icons/rank/Grade10 3.png'
+import grade10 from './image/icons/rank/Grade6 2.png'
+
 import binance from './image/partners/binance.svg';
 import blockmate from './image/partners/blockmate.svg';
 import coinbase from './image/partners/coinbase.svg';
@@ -589,4 +600,17 @@ export const profileIcons = {
   transaction2,
   web,
   usaFlag
+}
+
+export const rankIcons = {
+  grade1,
+  grade2,
+  grade3,
+  grade4,
+  grade5,
+  grade6,
+  grade7,
+  grade8,
+  grade9,
+  grade10,
 }
