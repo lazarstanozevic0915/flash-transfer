@@ -97,7 +97,7 @@ const options = [
     {
         icon: profileIcons.setting2,
         title: 'Setting',
-        link: ''
+        link: '/settings'
     },
     {
         icon: profileIcons.privacy,
