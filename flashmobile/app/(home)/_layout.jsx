@@ -30,6 +30,8 @@ const HomeLayout = () => {
       <Stack.Screen name="transaction" />
       <Stack.Screen name="invite" />
       <Stack.Screen name="rank" />
+      <Stack.Screen name="contact-us" />
+      <Stack.Screen name="privacy" />
     </Stack>
     <StatusBar backgroundColor='#161622' style='light' />
     </>

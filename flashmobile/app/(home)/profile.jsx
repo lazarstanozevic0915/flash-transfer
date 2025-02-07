@@ -102,12 +102,12 @@ const options = [
     {
         icon: profileIcons.privacy,
         title: 'Privacy Policy',
-        link: ''
+        link: '/privacy'
     },
     {
         icon: profileIcons.contact,
         title: 'Contact Us',
-        link: ''
+        link: 'contact-us'
     },
     {
         icon: profileIcons.web,
