@@ -37,13 +37,13 @@ const trackTransfer = () => {
             </View>
             <View className='flex-col gap-3'>
                 <Text className='text-[#181F30] text-[24px] font-semibold'>Track a Transfer</Text>
-                <Text className='text-[#6E757D] text-[16px] max-w-[335px] pr-2'>Home is behind, the world ahead and there are many paths to tread through shadows {`\n`} to the edge.</Text>
+                <Text className='text-[#6E757D] text-[16px] max-w-[335px] leading-8 pr-2'>Home is behind, the world ahead and there are many paths to tread through shadows {`\n`} to the edge.</Text>
                 <View className='flex-row p-1 rounded-xl bg-white'>
-                    <TouchableOpacity onPress={() => setActivePage('Send')} className={`flex-row items-center justify-center rounded-[10px] gap-2 w-[164px] py-1.5 ${activePage === 'Send' && 'bg-[#FFC000]'}`}>
+                    <TouchableOpacity onPress={() => setActivePage('Send')} className={`flex-row items-center justify-center rounded-[10px] gap-2 w-[164px] py-2 ${activePage === 'Send' && 'bg-[#FFC000]'}`}>
                         <Image source={plane} className='w-6 h-6 object-fill' />
                         <Text>Send</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setActivePage('Receive')} className={`flex-row items-center justify-center rounded-[10px] gap-2 w-[164px] py-1.5 ${activePage === 'Receive' && 'bg-[#FFC000]'}`}>
+                    <TouchableOpacity onPress={() => setActivePage('Receive')} className={`flex-row items-center justify-center rounded-[10px] gap-2 w-[164px] py-2 ${activePage === 'Receive' && 'bg-[#FFC000]'}`}>
                         <Image source={download} className='w-6 h-6 object-fill' />
                         <Text>Receive</Text>
                     </TouchableOpacity>
