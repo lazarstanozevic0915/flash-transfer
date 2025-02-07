@@ -1,13 +1,10 @@
 import { View, Text, ScrollView, TouchableOpacity, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
-import bell from '../../assets/image/icons/notification-bell.png';
-import menu from '../../assets/image/menu-fries.png';
-import back from '../../assets/image/back2.png'
 import { router } from 'expo-router';
 import UM from '../../assets/image/icons/UM.png'
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
 
-const AddNew = () => {
+const EditReceiverInfo = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -21,29 +18,31 @@ const AddNew = () => {
   return (
     <ScrollView>
     <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold">
-            <View className="flex-row justify-between items-center">
-                  <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
-                    <Image source={menu} className='w-6 h-6 object-fill'  />
-                  </TouchableOpacity>
-
-                  <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
-                    <Image source={bell} className='w-6 h-6 object-fill'  />
-                  </TouchableOpacity>
-            </View>
-            {/* Back Button */}
-            <View className=" flex-row items-start mb-2">
-                    <TouchableOpacity onPress={() => router.push('/cash')} className="flex-row items-center">
-                    <Image source={back} className="w-[40px] h-[40px] object-fill mt-2" />
-                    <Text className="text-gray-800 font-semibold  items-center text-[16px] ml-3">Back</Text>
-                    </TouchableOpacity>
-            </View>
+          <View className="mb-6">
+                  <View className="flex-row items-center p-2">
+                    <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
+                      <Text className="text-white font-medium">2/4</Text>
+                    </View>
+                    <View className='flex flex-col ml-3'>
+                    <Text className=" font-bold text-[18px] mb-2">Receiver's info</Text>
+                    <Text className="text-[#6E757D] text-[14px]">Enter the informations.</Text>
+                    </View>
+                  </View>
+                </View>
             <View className="">
-                  <Text className="text-[18px] font-bold">Add New Contact</Text>
+                  <Text className="text-[20px] font-bold">Receiver's info</Text>
+                  <Text className="text-[#6E757D] text-[18px]">Enter the information of your beneficiary who will{"\n"}recieve the amount of your transaction. If you{"\n"}want to send to a beneficiary already registered{"\n"}you can select in "Select from existing".</Text>
             </View>
+
+            <TouchableOpacity className="bg-red-100 rounded-xl p-4 mb-4 border border-[#FF3E24]">
+                        <Text className="text-[#FF3E24] text-[14px]">
+                          <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Enter your receiver name exactly as it{"\n"}appears on their ID
+                        </Text>
+                      </TouchableOpacity>
             {/* Form Fields */}
                 <View className="space-y-4">
                   {/* First Name */}
-                  <Text className="font-semibold text-[14px] mb-2">First Name*</Text>
+                  <Text className="font-semibold text-[14px] mb-2">First Name</Text>
                   <TextInput
                     placeholder="Enter your first name"
                     placeholderTextColor="#6E757D"
@@ -53,7 +52,7 @@ const AddNew = () => {
                   />
             
                   {/* Last Name */}
-                  <Text className="font-semibold text-[14px] mb-2">Last Name*</Text>
+                  <Text className="font-semibold text-[14px] mb-2">Last Name</Text>
                   <TextInput
                     placeholder="Enter your last name"
                     placeholderTextColor="#6E757D"
@@ -80,7 +79,7 @@ const AddNew = () => {
                     className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
                   />
 
-                  <Text className='font-semibold text-[14px] mb-2'>Country/Region*</Text>
+                  <Text className='font-semibold text-[14px] mb-2'>Country/Region</Text>
                   
                     <View className='relative w-full'>
                         <View className='absolute left-3 top-2.5  z-50'>
@@ -103,7 +102,7 @@ const AddNew = () => {
                         </View>
                         </View>
 
-                  <Text className="font-semibold text-[14px] mb-2">Street Address*</Text>
+                  <Text className="font-semibold text-[14px] mb-2">Street Address</Text>
                   <TextInput
                     placeholder="Enter your Street address"
                     placeholderTextColor="#6E757D"
@@ -147,38 +146,6 @@ const AddNew = () => {
                     </View>
                     </View>
 
-                <Text className='font-semibold text-[14px] mb-2'>Purpose</Text>
-                  <View className='relative w-full'>
-                    
-                      <TextInput
-                          placeholder='Choose'
-                          placeholderTextColor="#6E757D"
-                          className='border p-2.5 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2 '
-                          required
-                      />
-                      <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                          <Image
-                              source={downArrow}
-                              className="w-[12px] h-[6px]"
-                          />
-                      </View>
-                      </View>
-
-                      <Text className='font-semibold text-[14px] mb-2'>Source of funds</Text>
-                    <View className='relative w-full'>
-                        <TextInput
-                            placeholder='Choose'
-                            placeholderTextColor="#6E757D"
-                            className='border p-2.5 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
-                            required
-                        />
-                        <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                            <Image
-                                source={downArrow}
-                                className="w-[12px] h-[6px]"
-                            />
-                        </View>
-                        </View>
             </View> 
             <TouchableOpacity 
                 className=" p-4 rounded-lg mt-2 bg-[#FFC000] w-full"
@@ -186,9 +153,15 @@ const AddNew = () => {
             >  
                     <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
             </TouchableOpacity>
+             <TouchableOpacity 
+                className=" p-4 rounded-lg mt-4 border border-[#6E757D] w-full"
+                onPress={() => router.push('/receiver-info')}
+              >  
+                <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>
+              </TouchableOpacity>
     </View>
     </ScrollView>
   )
 }
 
-export default AddNew
+export default EditReceiverInfo

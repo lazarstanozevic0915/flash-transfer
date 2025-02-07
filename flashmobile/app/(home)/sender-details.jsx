@@ -1,13 +1,11 @@
 import { View, Text, ScrollView, TouchableOpacity, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
-import bell from '../../assets/image/icons/notification-bell.png';
-import menu from '../../assets/image/menu-fries.png';
 import back from '../../assets/image/back2.png'
 import { router } from 'expo-router';
 import UM from '../../assets/image/icons/UM.png'
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
 
-const AddNew = () => {
+const SenderDetails = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -21,31 +19,23 @@ const AddNew = () => {
   return (
     <ScrollView>
     <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold">
-            <View className="flex-row justify-between items-center">
-                  <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
-                    <Image source={menu} className='w-6 h-6 object-fill'  />
-                  </TouchableOpacity>
-
-                  <TouchableOpacity className='flex items-center justify-center p-3 rounded-full bg-white'>
-                    <Image source={bell} className='w-6 h-6 object-fill'  />
-                  </TouchableOpacity>
-            </View>
             {/* Back Button */}
             <View className=" flex-row items-start mb-2">
-                    <TouchableOpacity onPress={() => router.push('/cash')} className="flex-row items-center">
+                    <TouchableOpacity onPress={() => router.push('/review-details')} className="flex-row items-center">
                     <Image source={back} className="w-[40px] h-[40px] object-fill mt-2" />
                     <Text className="text-gray-800 font-semibold  items-center text-[16px] ml-3">Back</Text>
                     </TouchableOpacity>
             </View>
             <View className="">
-                  <Text className="text-[18px] font-bold">Add New Contact</Text>
+                  <Text className="text-[18px] font-bold">Senders Details</Text>
+                  <Text>Check all details information</Text>
             </View>
             {/* Form Fields */}
                 <View className="space-y-4">
                   {/* First Name */}
                   <Text className="font-semibold text-[14px] mb-2">First Name*</Text>
                   <TextInput
-                    placeholder="Enter your first name"
+                    placeholder="Numan"
                     placeholderTextColor="#6E757D"
                     value={firstName}
                     onChangeText={setFirstName}
@@ -55,7 +45,7 @@ const AddNew = () => {
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">Last Name*</Text>
                   <TextInput
-                    placeholder="Enter your last name"
+                    placeholder="Xaffar"
                     placeholderTextColor="#6E757D"
                     value={lastName}
                     onChangeText={setLastName}
@@ -64,7 +54,7 @@ const AddNew = () => {
                   {/* Last Name */}
                   <Text className="font-semibold text-[14px] mb-2">Email Address</Text>
                   <TextInput
-                    placeholder="Enter your email"
+                    placeholder="numanxaffar@gmail.com"
                     placeholderTextColor="#6E757D"
                     value={email}
                     onChangeText={setEmail}
@@ -90,7 +80,7 @@ const AddNew = () => {
                             />
                         </View>
                         <TextInput
-                            placeholder='Choose your Location'
+                            placeholder='USA'
                             placeholderTextColor="#6E757D"
                             className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
                             required
@@ -105,7 +95,7 @@ const AddNew = () => {
 
                   <Text className="font-semibold text-[14px] mb-2">Street Address*</Text>
                   <TextInput
-                    placeholder="Enter your Street address"
+                    placeholder="Kaligoni"
                     placeholderTextColor="#6E757D"
                     value={address}
                     onChangeText={setAddress}
@@ -114,7 +104,7 @@ const AddNew = () => {
 
                   <Text className="font-semibold text-[14px] mb-2">City*</Text>
                   <TextInput
-                    placeholder="Enter your City"
+                    placeholder="Satkhira"
                     placeholderTextColor="#6E757D"
                     value={city}
                     onChangeText={setCity}
@@ -126,7 +116,7 @@ const AddNew = () => {
                     <View className="flex-1">
                         <Text className="font-semibold text-[14px] mb-2">State*</Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="Futola"
                         placeholderTextColor="#6E757D"
                         value={state}
                         onChangeText={setState}
@@ -138,7 +128,7 @@ const AddNew = () => {
                     <View className="flex-1">
                         <Text className="font-semibold text-[14px] mb-2">ZIP*</Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="3453"
                         placeholderTextColor="#6E757D"
                         value={zip}
                         onChangeText={setZip}
@@ -151,7 +141,7 @@ const AddNew = () => {
                   <View className='relative w-full'>
                     
                       <TextInput
-                          placeholder='Choose'
+                          placeholder='Saving'
                           placeholderTextColor="#6E757D"
                           className='border p-2.5 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2 '
                           required
@@ -167,7 +157,7 @@ const AddNew = () => {
                       <Text className='font-semibold text-[14px] mb-2'>Source of funds</Text>
                     <View className='relative w-full'>
                         <TextInput
-                            placeholder='Choose'
+                            placeholder='Saving'
                             placeholderTextColor="#6E757D"
                             className='border p-2.5 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
                             required
@@ -184,11 +174,17 @@ const AddNew = () => {
                 className=" p-4 rounded-lg mt-2 bg-[#FFC000] w-full"
                 onPress={() => router.push('')}
             >  
-                    <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
+                    <Text className="text-[#181F30] text-center font-semibold text-[14px]">Save</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+                className=" p-4 rounded-lg mt-4 border border-[#6E757D] w-full"
+                onPress={() => router.back()}
+            >  
+                    <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>
             </TouchableOpacity>
     </View>
     </ScrollView>
   )
 }
 
-export default AddNew
+export default SenderDetails
