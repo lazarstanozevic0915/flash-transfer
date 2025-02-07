@@ -13,155 +13,163 @@ const EditReceiverInfo = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
+    const [error, setError] = useState(false);
 
+    const validateForm = () => {
+        if (!firstName || !lastName || !email || !mobile || !address || !city || !state || !zip) {
+            setError(true);
+        } else {
+            setError(false);
+            router.push('/enter-card');  // Change route as needed
+        }
+    };
 
-  return (
-    <ScrollView>
-    <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5  font-aeonikBold">
-          <View className="mb-6">
-                  <View className="flex-row items-center p-2">
-                    <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
-                      <Text className="text-white font-medium">2/4</Text>
+    return (
+        <ScrollView>
+            <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5 font-aeonikBold">
+                {/* Header */}
+                <View className="mb-6">
+                    <View className="flex-row items-center p-2">
+                        <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
+                            <Text className="text-white font-medium">2/4</Text>
+                        </View>
+                        <View className='flex flex-col ml-3'>
+                            <Text className=" font-bold text-[18px] mb-2">Receiver's info</Text>
+                            <Text className="text-[#6E757D] text-[14px]">Enter the informations.</Text>
+                        </View>
                     </View>
-                    <View className='flex flex-col ml-3'>
-                    <Text className=" font-bold text-[18px] mb-2">Receiver's info</Text>
-                    <Text className="text-[#6E757D] text-[14px]">Enter the informations.</Text>
-                    </View>
-                  </View>
                 </View>
-            <View className="">
-                  <Text className="text-[20px] font-bold mb-2">Receiver's info</Text>
-                  <Text className="text-[#6E757D] text-[16px]">Enter the information of your beneficiary who will{"\n"}recieve the amount of your transaction. If you{"\n"}want to send to a beneficiary already registered{"\n"}you can select in "Select from existing".</Text>
-            </View>
 
-            <TouchableOpacity className="bg-red-100 rounded-xl py-2 px-4 mb-4 border border-[#FF3E24]">
+                {/* Error Message - Only shows when error is true */}
+                {error && (
+                    <TouchableOpacity className="bg-red-100 rounded-xl py-2 px-4 mb-4 border border-[#FF3E24]">
                         <Text className="text-[#FF3E24] text-[15px]">
-                          <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Enter your receiver name exactly as it{"\n"}appears on their ID
+                            <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Enter your receiver name exactly as it{"\n"}appears on their ID
                         </Text>
-                      </TouchableOpacity>
-            {/* Form Fields */}
-                <View className="space-y-4">
-                  {/* First Name */}
-                  <Text className="font-semibold text-[14px] mb-2">First Name</Text>
-                  <TextInput
-                    placeholder="Enter your first name"
-                    placeholderTextColor="#6E757D"
-                    value={firstName}
-                    onChangeText={setFirstName}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
-                  />
-            
-                  {/* Last Name */}
-                  <Text className="font-semibold text-[14px] mb-2">Last Name</Text>
-                  <TextInput
-                    placeholder="Enter your last name"
-                    placeholderTextColor="#6E757D"
-                    value={lastName}
-                    onChangeText={setLastName}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
-                  />
-                  {/* Last Name */}
-                  <Text className="font-semibold text-[14px] mb-2">Email Address</Text>
-                  <TextInput
-                    placeholder="Enter your email"
-                    placeholderTextColor="#6E757D"
-                    value={email}
-                    onChangeText={setEmail}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
-                  />
-                  {/* Last Name */}
-                  <Text className="font-semibold text-[14px] mb-2">Mobile money</Text>
-                  <TextInput
-                    placeholder="Enter Mobile Money"
-                    placeholderTextColor="#6E757D"
-                    value={mobile}
-                    onChangeText={setMobile}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
-                  />
+                    </TouchableOpacity>
+                )}
 
-                  <Text className='font-semibold text-[14px] mb-2'>Country/Region</Text>
-                  
+                {/* Form Fields */}
+                <View className="space-y-4">
+                    {/* First Name */}
+                    <Text className="font-semibold text-[14px] mb-2">First Name</Text>
+                    <TextInput
+                        placeholder="Enter your first name"
+                        placeholderTextColor="#6E757D"
+                        value={firstName}
+                        onChangeText={setFirstName}
+                        className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
+                    />
+
+                    {/* Last Name */}
+                    <Text className="font-semibold text-[14px] mb-2">Last Name</Text>
+                    <TextInput
+                        placeholder="Enter your last name"
+                        placeholderTextColor="#6E757D"
+                        value={lastName}
+                        onChangeText={setLastName}
+                        className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
+                    />
+
+                    {/* Email */}
+                    <Text className="font-semibold text-[14px] mb-2">Email Address</Text>
+                    <TextInput
+                        placeholder="Enter your email"
+                        placeholderTextColor="#6E757D"
+                        value={email}
+                        onChangeText={setEmail}
+                        className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
+                    />
+
+                    {/* Mobile */}
+                    <Text className="font-semibold text-[14px] mb-2">Mobile money</Text>
+                    <TextInput
+                        placeholder="Enter Mobile Money"
+                        placeholderTextColor="#6E757D"
+                        value={mobile}
+                        onChangeText={setMobile}
+                        className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
+                    />
+
+                    {/* Country/Region */}
+                    <Text className='font-semibold text-[14px] mb-2'>Country/Region</Text>
                     <View className='relative w-full'>
-                        <View className='absolute left-3 top-2.5  z-50'>
-                            <Image 
-                            source={UM} 
-                            className='w-7 h-5 mr-2 object-fill' 
-                            />
+                        <View className='absolute left-3 top-2.5 z-50'>
+                            <Image source={UM} className='w-7 h-5 mr-2 object-fill' />
                         </View>
                         <TextInput
                             placeholder='Choose your Location'
                             placeholderTextColor="#6E757D"
                             className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-4'
-                            required
                         />
                         <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                            <Image
-                                source={downArrow}
-                                className="w-[12px] h-[6px]"
+                            <Image source={downArrow} className="w-[12px] h-[6px]" />
+                        </View>
+                    </View>
+
+                    {/* Address */}
+                    <Text className="font-semibold text-[14px] mb-2">Street Address</Text>
+                    <TextInput
+                        placeholder="Enter your Street address"
+                        placeholderTextColor="#6E757D"
+                        value={address}
+                        onChangeText={setAddress}
+                        className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
+                    />
+
+                    {/* City */}
+                    <Text className="font-semibold text-[14px] mb-2">City*</Text>
+                    <TextInput
+                        placeholder="Enter your City"
+                        placeholderTextColor="#6E757D"
+                        value={city}
+                        onChangeText={setCity}
+                        className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
+                    />
+
+                    {/* State and ZIP */}
+                    <View className="flex-row space-x-4 gap-2 mb-4">
+                        <View className="flex-1">
+                            <Text className="font-semibold text-[14px] mb-2">State*</Text>
+                            <TextInput
+                                placeholder=""
+                                placeholderTextColor="#6E757D"
+                                value={state}
+                                onChangeText={setState}
+                                className="border bg-white border-[#EBECED] p-4 rounded-2xl"
                             />
                         </View>
+                        <View className="flex-1">
+                            <Text className="font-semibold text-[14px] mb-2">ZIP*</Text>
+                            <TextInput
+                                placeholder=""
+                                placeholderTextColor="#6E757D"
+                                value={zip}
+                                onChangeText={setZip}
+                                className="border bg-white border-[#EBECED] p-4 rounded-2xl"
+                            />
                         </View>
-
-                  <Text className="font-semibold text-[14px] mb-2">Street Address</Text>
-                  <TextInput
-                    placeholder="Enter your Street address"
-                    placeholderTextColor="#6E757D"
-                    value={address}
-                    onChangeText={setAddress}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
-                  />
-
-                  <Text className="font-semibold text-[14px] mb-2">City*</Text>
-                  <TextInput
-                    placeholder="Enter your City"
-                    placeholderTextColor="#6E757D"
-                    value={city}
-                    onChangeText={setCity}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
-                  />
-
-                    <View className="flex-row space-x-4 gap-2 mb-4">
-                    {/* State Input */}
-                    <View className="flex-1">
-                        <Text className="font-semibold text-[14px] mb-2">State*</Text>
-                        <TextInput
-                        placeholder=""
-                        placeholderTextColor="#6E757D"
-                        value={state}
-                        onChangeText={setState}
-                        className="border bg-white border-[#EBECED] p-4 rounded-2xl"
-                        />
                     </View>
+                </View>
 
-                    {/* ZIP Input */}
-                    <View className="flex-1">
-                        <Text className="font-semibold text-[14px] mb-2">ZIP*</Text>
-                        <TextInput
-                        placeholder=""
-                        placeholderTextColor="#6E757D"
-                        value={zip}
-                        onChangeText={setZip}
-                        className="border bg-white border-[#EBECED] p-4 rounded-2xl"
-                        />
-                    </View>
-                    </View>
-
-            </View> 
-            <TouchableOpacity 
-                className=" p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
-                onPress={() => router.push('')}
-            >  
+                {/* Continue Button */}
+                <TouchableOpacity
+                    className="p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
+                    onPress={validateForm}
+                >
                     <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
-            </TouchableOpacity>
-             <TouchableOpacity 
-                className=" p-4 rounded-lg border border-[#6E757D] w-full"
-                onPress={() => router.push('/receiver-info')}
-              >  
-                <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>
-              </TouchableOpacity>
-    </View>
-    </ScrollView>
-  )
+                </TouchableOpacity>
+
+                {/* Cancel Button */}
+                <TouchableOpacity
+                    className="p-4 rounded-lg border border-[#6E757D] w-full"
+                    onPress={() => router.push('/receiver-info')}
+                >
+                    <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
+    );
 }
 
-export default EditReceiverInfo
+export default EditReceiverInfo;

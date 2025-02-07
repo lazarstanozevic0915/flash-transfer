@@ -175,7 +175,7 @@ const ReviewDetails = () => {
       <View className="mt-20 mb-2 justify-end">
         <TouchableOpacity
           className="bg-[#FFC000] rounded-xl py-4 mb-3"
-          onPress={() => router.push('/payment-done')}
+          onPress={() => router.push('/reciept')}
         >
           <Text className="text-center font-semibold">Confirm</Text>
         </TouchableOpacity>
