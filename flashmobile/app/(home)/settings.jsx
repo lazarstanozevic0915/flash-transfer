@@ -6,9 +6,14 @@ import arrowUp from '../../assets/image/icons/arrow-up.png'
 import telegram from '../../assets/image/socials/telegram.png'
 import X from '../../assets/image/socials/X.png'
 import discord from '../../assets/image/socials/discord.png'
+import user1 from '../../assets/image/users/homeUser13.png'
+import user2 from '../../assets/image/users/homeUser11.png'
+import user3 from '../../assets/image/users/profileUser.png'
+import user4 from '../../assets/image/users/homeUser14.png'
+import user5 from '../../assets/image/users/homeUser1.png'
 import * as Clipboard from 'expo-clipboard';
-import { icons } from '../../assets/image';
-import { Check } from 'lucide-react-native';
+import { icons, rankIcons } from '../../assets/image';
+import { Check, ChevronUp } from 'lucide-react-native';
 import { cn } from "nativewind";
 
 const settings = () => {
@@ -26,30 +31,40 @@ const settings = () => {
     };
 
     const LeaderboardItem = ({ user }) => (
-        <View className="flex-row items-center py-2 px-4">
-          <Image
-            source={{ uri: "/api/placeholder/40/40" }}
-            className="w-10 h-10 rounded-full"
-          />
-          <View className="flex-1 ml-3">
-            <Text className="text-base font-medium">{user.name}</Text>
-          </View>
-          <Check size={16} className="text-blue-500 mx-2" />
-          <View className="flex-row items-center">
-            <Text className="text-sm text-gray-600">▲</Text>
+        <View className="flex-row items-center border-b border-[#D3D8DD] justify-between gap-2.5 py-2 px-4">
+            <View className='flex-row w-[47.6%] gap-2 items-center'>
+                <Image
+                    source={user.image}
+                    className="w-[38px] h-[38px] rounded-full"
+                />
+                <View >
+                    <Text className="text-[#181F30] text-[14px] font-medium">{user.name}</Text>
+                </View>
+            </View>
+            <View className='w-[22.3%] items-center'>
+                {
+                    user.rank === 1 && (
+                        <Image source={rankIcons.grade1} className='w-8 h-8 object-fill' />
+                    )
+                }
+            </View>
+          <View className="flex-row w-[17.2%] items-center justify-center">
+            <View className="p-1 rounded-full items-center justify-center bg-[#D9D9D9]">
+                <ChevronUp color={`#000000`} size={12} />
+            </View>
             <Text className="ml-1 text-base">{user.points}</Text>
           </View>
         </View>
     );
 
     const users = [
-        { id: 1, name: 'Darrell Steward', points: 987 },
-        { id: 2, name: 'Robert Fox', points: 987 },
-        { id: 3, name: 'Albert Flores', points: 987 },
-        { id: 4, name: 'Marvin McKinney', points: 987 },
-        { id: 5, name: 'Cody Fisher', points: 987 },
-        { id: 6, name: 'Cody Fisher', points: 987 },
-        { id: 7, name: 'Cody Fisher', points: 987 },
+        { id: 1, name: 'Darrell Steward', points: 987, image: user1, rank: 1 },
+        { id: 2, name: 'Robert Fox', points: 987, image: user2, rank: 1 },
+        { id: 3, name: 'Albert Flores', points: 987, image: user3, rank: 1 },
+        { id: 4, name: 'Marvin McKinney', points: 987, image: user4, rank: 1 },
+        { id: 5, name: 'Cody Fisher', points: 987, image: user5, rank: 1 },
+        { id: 6, name: 'Cody Fisher', points: 987, image: user5, rank: 1 },
+        { id: 7, name: 'Cody Fisher', points: 987, image: user5, rank: 1 },
     ];
 
     const history = [
@@ -213,24 +228,28 @@ const settings = () => {
                 }
                 {
                     activePage === 'leaderboard' && (
-                    <View className="flex-1 bg-white">
-                        <View className="flex-row px-4 py-3 border-b border-gray-200">
-                          <Text className="flex-1 text-gray-600">User name</Text>
-                          <Text className="w-16 text-right text-gray-600">Rank</Text>
-                          <Text className="w-16 text-right text-gray-600">Points</Text>
+                    <View className="flex-col gap-4">
+                        <Text className='text-[#181F30] text-[16px] font-semibold'>Ranking</Text>
+                        <View>
+                            <View className="flex-row px-4 justify-between py-3 border-b border-gray-200">
+                            <Text className="text-gray-600  w-[47.6%]">User name</Text>
+                            <Text className="w-[22.3%] text-center text-gray-600">Rank</Text>
+                            <Text className="w-[17.2%] text-right text-gray-600">Points</Text>
+                            </View>
+                            
+                            <ScrollView>
+                                <View className='gap-5'>
+                                    {users.map(user => (
+                                        <LeaderboardItem key={user.id} user={user} />
+                                    ))}
+                                </View>  
+                            </ScrollView>
                         </View>
-                        
-                        <ScrollView>
-                          {users.map(user => (
-                            <LeaderboardItem key={user.id} user={user} />
-                          ))}
-                          
                           <TouchableOpacity 
-                            className="m-4 py-3 rounded-lg bg-blue-50 items-center"
+                            className="m-4 py-3 rounded-xl border border-[#2475FF] items-center"
                           >
-                            <Text className="text-blue-500">Show more</Text>
+                            <Text className="text-[#2475FF]">Show more</Text>
                           </TouchableOpacity>
-                        </ScrollView>
                     </View>
                     )
                 }
