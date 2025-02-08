@@ -60,6 +60,7 @@ import letter from './image/icons/letter-send.svg';
 import search from './image/icons/search.svg';
 import search2 from './image/icons/search.png';
 import filter from './image/icons/filter.svg';
+import copy from './image/icons/copy.png';
 
 import card from './image/icons/profile/card.png'
 import contact from './image/icons/profile/contact.png'
@@ -368,7 +369,8 @@ export const icons = {
   decentralized,
   fiatCrypto,
   register,
-  crypto,
+  crypto, 
+  copy,
   withdraw,
   apple,
   googlePlay,
