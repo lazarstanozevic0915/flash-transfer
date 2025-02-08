@@ -8,11 +8,14 @@ import { language } from '../../assets/image';
 import UM from '../../assets/image/icons/UM.png'
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
 import SocialLoginButtons from '../../components/SocialLoginButtons';
+import CountryPicker from 'react-native-country-picker-modal';
 
 export default function SignUp() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
+  const [country, setCountry] = useState(null);
 
   const handleLogin = () => {
     // Add your login logic here
@@ -33,28 +36,25 @@ export default function SignUp() {
           <Text className="text-[18px] font-medium text-gray-800 mb-8 text-center">Register Your Account ✍️</Text>
           
           <View className="space-y-4">
-          <Text className='font-semibold text-[14px]'>Send From</Text>
-
-          <View className='relative w-full'>
-              <View className='absolute left-3 top-2.5  z-50'>
-                <Image 
-                  source={UM} 
-                  className='w-7 h-5 mr-2 object-fill' 
-                />
-              </View>
-              <TextInput
-                placeholder='Choose your Location'
-                placeholderTextColor="#6E757D"
-                className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
-                required
-              />
-              <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                <Image
-                    source={downArrow}
-                    className="w-[12px] h-[6px]"
-                />
-              </View>
-            </View>
+          {/* Country/Region Selector */}
+          <Text className='font-semibold text-[14px] mb-2'>Send From</Text>
+                    <View className='relative w-full flex-row items-center border p-2 rounded-lg bg-[#F4F5F7] border-[#EBECED] mb-2'>
+                        {country && (
+                            <Image source={{ uri: country.flag }} className='w-6 h-4' />
+                        )}
+                        <CountryPicker
+                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            withFilter={true}
+                            withFlag={true}
+                            withCountryNameButton={true}
+                            withAlphaFilter={true}
+                            onSelect={(country) => {
+                            setCountryCode(country.cca2);
+                            setCountry(country);
+                            }}
+                            />
+                        <Image source={downArrow} className="w-[12px] h-[6px] ml-auto" />
+                    </View>
 
             <Text className='font-semibold text-[14px] mb-2'>Enter Your Mail</Text>
             <TextInput
