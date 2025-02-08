@@ -8,18 +8,15 @@ import theresa from '../../assets/images/theresa.png';
 import courtney from '../../assets/images/courtney.png';
 import search from '../../assets/images/search.png';
 import benefit from '../../assets/images/benefit.png';
+import CountryPicker from 'react-native-country-picker-modal';
 
 const ReceiverInfo = () => {
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
-        const [firstName, setFirstName] = useState('');
-        const [lastName, setLastName] = useState('');
-        const [email, setEmail] = useState('');
-        const [mobile, setMobile] = useState('');
-        const [address, setAddress] = useState('');
-        const [city, setCity] = useState('');
-        const [state, setState] = useState('');
-        const [zip, setZip] = useState('');
+    const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
+    const [country, setCountry] = useState(null);
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
 
     const recentReceipts = [
         { id: 1, name: "Theresa Webb", country: "USA", flag: "🇺🇸", image: theresa },
@@ -59,28 +56,26 @@ const ReceiverInfo = () => {
             <Text className="text-white text-[15px] font-medium">I'm the benefit</Text>
         </View>
 
-        <Text className='font-semibold text-[14px] mb-2'>Recieving country - Currency</Text>
-                          
-            <View className='relative w-full'>
-                <View className='absolute left-3 top-2.5  z-50'>
-                    <Image 
-                    source={UM} 
-                    className='w-7 h-5 mr-2 object-fill' 
-                    />
-                </View>
-                <TextInput
-                    placeholder='Choose your Location'
-                    placeholderTextColor="#6E757D"
-                    className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-4'
-                    required
-                />
-                <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                    <Image
-                        source={downArrow}
-                        className="w-[12px] h-[6px]"
-                    />
-                </View>
-                </View>
+       {/* Country/Region Selector */}
+       <Text className='font-semibold text-[14px] mb-2'>Receiving country - Currency</Text>
+                    <View className='relative w-full flex-row items-center border p-2 rounded-lg bg-[#F4F5F7] border-[#EBECED]'>
+                        {country && (
+                            <Image source={{ uri: country.flag }} className='w-6 h-4' />
+                        )}
+                        <CountryPicker
+                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            withFilter={true}
+                            withFlag={true}
+                            withCountryNameButton={true}
+                            withAlphaFilter={true}
+                            onSelect={(country) => {
+                            setCountryCode(country.cca2);
+                            setCountry(country);
+                            }}
+                            />
+                        <Image source={downArrow} className="w-[12px] h-[6px] ml-auto" />
+                    </View>
+
 
                 <Text className="font-semibold text-[14px] mb-2">Amount sent</Text>
                     <TextInput

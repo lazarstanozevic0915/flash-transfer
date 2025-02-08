@@ -1,8 +1,8 @@
-import { View, Text, ScrollView, TouchableOpacity, Image, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, ScrollView, TouchableOpacity, Image, TextInput } from 'react-native';
+import React, { useState } from 'react';
 import { router } from 'expo-router';
-import UM from '../../assets/image/icons/UM.png'
-import downArrow from '../../assets/image/icons/arrow-short-down.png'
+import CountryPicker from 'react-native-country-picker-modal';
+import downArrow from '../../assets/image/icons/arrow-short-down.png';
 
 const EditReceiverInfo = () => {
     const [firstName, setFirstName] = useState('');
@@ -13,14 +13,16 @@ const EditReceiverInfo = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
+    const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
+    const [country, setCountry] = useState(null);
     const [error, setError] = useState(false);
 
     const validateForm = () => {
-        if (!firstName || !lastName || !email || !mobile || !address || !city || !state || !zip) {
+        if (!firstName || !lastName || !email || !mobile || !address || !city || !state || !zip || !country) {
             setError(true);
         } else {
             setError(false);
-            router.push('/enter-card');  // Change route as needed
+            router.push('/enter-card'); // Change route as needed
         }
     };
 
@@ -35,16 +37,16 @@ const EditReceiverInfo = () => {
                         </View>
                         <View className='flex flex-col ml-3'>
                             <Text className=" font-bold text-[18px] mb-2">Receiver's info</Text>
-                            <Text className="text-[#6E757D] text-[14px]">Enter the informations.</Text>
+                            <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
                         </View>
                     </View>
                 </View>
 
-                {/* Error Message - Only shows when error is true */}
+                {/* Error Message */}
                 {error && (
                     <TouchableOpacity className="bg-red-100 rounded-xl py-2 px-4 mb-4 border border-[#FF3E24]">
                         <Text className="text-[#FF3E24] text-[15px]">
-                            <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Enter your receiver name exactly as it{"\n"}appears on their ID
+                            <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Enter your receiver's name exactly as it appears on their ID
                         </Text>
                     </TouchableOpacity>
                 )}
@@ -91,20 +93,24 @@ const EditReceiverInfo = () => {
                         className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
                     />
 
-                    {/* Country/Region */}
+                    {/* Country/Region Selector */}
                     <Text className='font-semibold text-[14px] mb-2'>Country/Region</Text>
-                    <View className='relative w-full'>
-                        <View className='absolute left-3 top-2.5 z-50'>
-                            <Image source={UM} className='w-7 h-5 mr-2 object-fill' />
-                        </View>
-                        <TextInput
-                            placeholder='Choose your Location'
-                            placeholderTextColor="#6E757D"
-                            className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-4'
-                        />
-                        <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                            <Image source={downArrow} className="w-[12px] h-[6px]" />
-                        </View>
+                    <View className='relative w-full flex-row items-center border p-2 rounded-lg bg-[#F4F5F7] border-[#EBECED]'>
+                        {country && (
+                            <Image source={{ uri: country.flag }} className='w-6 h-4' />
+                        )}
+                        <CountryPicker
+                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            withFilter={true}
+                            withFlag={true}
+                            withCountryNameButton={true}
+                            withAlphaFilter={true}
+                            onSelect={(country) => {
+                            setCountryCode(country.cca2);
+                            setCountry(country);
+                            }}
+                            />
+                        <Image source={downArrow} className="w-[12px] h-[6px] ml-auto" />
                     </View>
 
                     {/* Address */}
@@ -170,6 +176,6 @@ const EditReceiverInfo = () => {
             </View>
         </ScrollView>
     );
-}
+};
 
 export default EditReceiverInfo;
