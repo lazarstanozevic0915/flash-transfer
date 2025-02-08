@@ -19,8 +19,10 @@ const AddNew = () => {
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
     const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
-    const [country, setCountry] = useState(null);
-
+    const [country, setCountry] = useState({
+      cca2: 'US', 
+      name: { common: 'United States' },
+    });
 
   return (
     <ScrollView>

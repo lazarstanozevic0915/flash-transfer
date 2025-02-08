@@ -15,8 +15,10 @@ const EditReceiverInfo = () => {
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
     const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
-    const [country, setCountry] = useState(null);
-    const [error, setError] = useState(false);
+    const [country, setCountry] = useState({
+      cca2: 'US', 
+      name: { common: 'United States' },
+    });    const [error, setError] = useState(false);
 
     const validateForm = () => {
         if (!firstName || !lastName || !email || !mobile || !address || !city || !state || !zip || !country) {
@@ -115,7 +117,7 @@ const EditReceiverInfo = () => {
                             <Image source={{ uri: country.flag }} className='w-6 h-4' />
                         )}
                         <CountryPicker
-                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            countryCode={countryCode} // Default to 'US' if countryCode is null
                             withFilter={true}
                             withFlag={true}
                             withCountryNameButton={true}
@@ -177,7 +179,7 @@ const EditReceiverInfo = () => {
                 {/* Continue Button */}
                 <TouchableOpacity
                     className="p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
-                    onPress={validateForm}
+                    onPress={() => router.push('/receiver-info-crypto')}
                 >
                     <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
                 </TouchableOpacity>

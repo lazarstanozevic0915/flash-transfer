@@ -13,6 +13,7 @@ const HomeLayout = () => {
       <Stack.Screen name="select-method" />
       <Stack.Screen name="receiver-info" />
       <Stack.Screen name="edit-receiver-info" />
+      <Stack.Screen name="receiver-info-crypto" />
       <Stack.Screen name="review-details" />
       <Stack.Screen name="sender-details" />
       <Stack.Screen name="crypto-payment" />

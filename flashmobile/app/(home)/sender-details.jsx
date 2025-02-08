@@ -16,7 +16,10 @@ const SenderDetails = () => {
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
     const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
-    const [country, setCountry] = useState(null);
+    const [country, setCountry] = useState({
+      cca2: 'US', 
+      name: { common: 'United States' },
+    });
 
 
   return (
@@ -74,13 +77,13 @@ const SenderDetails = () => {
                   />
 
                   {/* Country/Region Selector */}
-                  <Text className='font-semibold text-[14px] mb-2 mx-4'>Country/Region*</Text>
-                    <View className='relative w-full flex-row items-center border p-2 rounded-lg mx-4 bg-[#F4F5F7] border-[#EBECED]'>
+                  <Text className='font-semibold text-[14px] mb-2 mx-2'>Country/Region*</Text>
+                    <View className='relative w-full flex-row items-center border p-2 rounded-lg bg-[#F4F5F7] border-[#EBECED]'>
                         {country && (
                             <Image source={{ uri: country.flag }} className='w-6 h-4' />
                         )}
                         <CountryPicker
-                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            countryCode={countryCode} // Default to 'US' if countryCode is null
                             withFilter={true}
                             withFlag={true}
                             withCountryNameButton={true}
@@ -172,7 +175,7 @@ const SenderDetails = () => {
             </View> 
             <TouchableOpacity 
                 className=" p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
-                onPress={() => router.push('')}
+                onPress={() => router.push('/crypto-payment')}
             >  
                     <Text className="text-[#181F30] text-center font-semibold text-[14px]">Save</Text>
             </TouchableOpacity>

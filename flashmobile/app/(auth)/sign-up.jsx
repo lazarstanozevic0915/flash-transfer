@@ -15,8 +15,10 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
-  const [country, setCountry] = useState(null);
-
+  const [country, setCountry] = useState({
+      cca2: 'US', 
+      name: { common: 'United States' },
+    });
   const handleLogin = () => {
     // Add your login logic here
     router.push('');
@@ -43,7 +45,7 @@ export default function SignUp() {
                             <Image source={{ uri: country.flag }} className='w-6 h-4' />
                         )}
                         <CountryPicker
-                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            countryCode={countryCode} // Default to 'US' if countryCode is null
                             withFilter={true}
                             withFlag={true}
                             withCountryNameButton={true}

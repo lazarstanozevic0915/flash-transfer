@@ -15,7 +15,10 @@ const ReceiverInfo = () => {
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
     const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
-    const [country, setCountry] = useState(null);
+    const [country, setCountry] = useState({
+      cca2: 'US', 
+      name: { common: 'United States' },
+    });
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
 
@@ -76,12 +79,12 @@ const ReceiverInfo = () => {
 
        {/* Country/Region Selector */}
        <Text className='font-semibold text-[14px] mb-2 mx-4'>Receiving country - Currency</Text>
-                    <View className='relative w-full flex-row items-center border p-2 rounded-lg mx-4 bg-[#F4F5F7] border-[#EBECED]'>
+                    <View className='relative  flex-row items-center border p-2 rounded-lg mx-4  bg-[#F4F5F7] border-[#EBECED]'>
                         {country && (
                             <Image source={{ uri: country.flag }} className='w-6 h-4' />
                         )}
                         <CountryPicker
-                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            countryCode={countryCode} // Default to 'US' if countryCode is null
                             withFilter={true}
                             withFlag={true}
                             withCountryNameButton={true}
