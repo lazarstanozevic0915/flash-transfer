@@ -5,7 +5,7 @@ import micheal from '../../assets/images/micheal.png';
 import Billy from '../../assets/images/Billy.png';
 import dollar from '../../assets/images/dollar.png';
 import run from '../../assets/images/run.png';
-import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg';
+import Svg, { ClipPath, Defs, G, Path, Rect,Circle } from 'react-native-svg';
 
 const Bank = ({ color = "black" }) => (
     <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,22 +27,36 @@ const ReviewDetails = () => {
 
   return (
     <ScrollView>
-    <View className="flex flex-col bg-[#EFF0F1] py-4 pt-16 px-4 font-aeonikBold">
+    <View className="flex flex-col bg-[#EFF0F1] py-4 font-aeonikBold">
       {/* Progress Header */}
-      <View className="mb-6">
-        <View className="flex-row items-center p-2">
-          <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
-            <Text className="text-white font-medium">3/4</Text>
-          </View>
-          <View className='flex flex-col ml-3'>
-          <Text className=" font-bold text-[18px] mb-2">Review Details</Text>
-          <Text className="text-[#6E757D] text-[14px]">Enter the informations.</Text>
-          </View>
-        </View>
-      </View>
+                    <View className="mb-6 flex-row items-center space-x-3 bg-white w-full px-4 pb-8 pt-16">
+                      {/* Half Blue - Half Gray Circle */}
+                      <View className="relative w-10 h-10 mr-4">
+                        <Svg height="40" width="40" viewBox="0 0 40 40">
+                          {/* Gray Background Circle */}
+                          <Circle cx="20" cy="20" r="18" stroke="#E0E0E0" strokeWidth="4" fill="none" />
+                          {/* Blue Half Circle */}
+                          <Circle cx="20" cy="20" r="18" stroke="#005CEE" strokeWidth="4" fill="none"
+                            strokeDasharray="85 113" 
+                            strokeLinecap="round"
+                            transform="rotate(-90 20 20)" 
+                          />
+                        </Svg>
+                        {/* Centered Text Inside Circle */}
+                        <View className="absolute inset-0 flex items-center justify-center">
+                          <Text className="text-[#181F30] font-bold text-[14px]">3/4</Text>
+                        </View>
+                      </View>
+              
+                      {/* Text Section */}
+                      <View className="flex flex-col">
+                        <Text className="text-[#181F30] text-[18px] font-bold">Receiver's info</Text>
+                        <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
+                      </View>
+                    </View>
 
       {/* Title Section */}
-      <View className="mb-4 p-2">
+      <View className="mb-4 p-2 px-4 rounded-t-2xl">
         <Text className="text-[#181F30] text-[20px] font-bold mb-2">
         Review Details
         </Text>
@@ -52,7 +66,7 @@ const ReviewDetails = () => {
       </View>
 
       {/* White Box with Details */}
-      <View className="bg-white p-5 rounded-xl shadow-lg">
+      <View className="bg-white p-5 rounded-xl shadow-lg mx-4">
         <View className='flex flex-row items-center justify-between p-1'>
 
         <Text className="text-[#273240] text-[16px] font-semibold mb-3">Sender Details</Text>
@@ -96,7 +110,7 @@ const ReviewDetails = () => {
         </View>
       </View>
 
-      <View className="bg-white p-5 rounded-xl shadow-lg mt-8 mb-8">
+      <View className="bg-white p-5 rounded-xl shadow-lg mt-8 mb-8 mx-4">
         <View className='flex flex-row items-center justify-between p-1'>
 
         <Text className="text-[#273240] text-[16px] font-semibold mb-3">Receiver details</Text>
@@ -172,7 +186,7 @@ const ReviewDetails = () => {
       
 
       {/* Bottom Buttons */}
-      <View className="mt-20 mb-2 justify-end">
+      <View className="mt-20 mb-2 mx-4 justify-end">
         <TouchableOpacity
           className="bg-[#FFC000] rounded-xl py-4 mb-3"
           onPress={() => router.push('/reciept')}

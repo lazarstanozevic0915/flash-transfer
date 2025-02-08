@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { router } from 'expo-router';
 import CountryPicker from 'react-native-country-picker-modal';
 import downArrow from '../../assets/image/icons/arrow-short-down.png';
+import Svg, { Circle } from "react-native-svg";
 
 const EditReceiverInfo = () => {
     const [firstName, setFirstName] = useState('');
@@ -28,19 +29,33 @@ const EditReceiverInfo = () => {
 
     return (
         <ScrollView>
-            <View className="flex-col gap-6 bg-[#EFF0F1] py-14 px-5 font-aeonikBold">
-                {/* Header */}
-                <View className="mb-6">
-                    <View className="flex-row items-center p-2">
-                        <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
-                            <Text className="text-white font-medium">2/4</Text>
-                        </View>
-                        <View className='flex flex-col ml-3'>
-                            <Text className=" font-bold text-[18px] mb-2">Receiver's info</Text>
-                            <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
+            <View className="flex-col gap-6 bg-[#EFF0F1] pb-8  font-aeonikBold">
+                {/* Progress Header */}
+                    <View className="mb-6 flex-row items-center space-x-3 bg-white w-full px-4 pb-8 pt-16">
+                    {/* Half Blue - Half Gray Circle */}
+                    <View className="relative w-10 h-10 mr-4">
+                        <Svg height="40" width="40" viewBox="0 0 40 40">
+                        {/* Gray Background Circle */}
+                        <Circle cx="20" cy="20" r="18" stroke="#E0E0E0" strokeWidth="4" fill="none" />
+                        {/* Blue Half Circle */}
+                        <Circle cx="20" cy="20" r="18" stroke="#005CEE" strokeWidth="4" fill="none"
+                            strokeDasharray="28 113" 
+                            strokeLinecap="round"
+                            transform="rotate(-90 20 20)" 
+                        />
+                        </Svg>
+                        {/* Centered Text Inside Circle */}
+                        <View className="absolute inset-0 flex items-center justify-center">
+                        <Text className="text-[#181F30] font-bold text-[14px]">1/4</Text>
                         </View>
                     </View>
-                </View>
+            
+                    {/* Text Section */}
+                    <View className="flex flex-col">
+                        <Text className="text-[#181F30] text-[18px] font-bold">Receiver's info</Text>
+                        <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
+                    </View>
+                    </View>
 
                 {/* Error Message */}
                 {error && (
@@ -52,7 +67,7 @@ const EditReceiverInfo = () => {
                 )}
 
                 {/* Form Fields */}
-                <View className="space-y-4">
+                <View className="space-y-4 px-4">
                     {/* First Name */}
                     <Text className="font-semibold text-[14px] mb-2">First Name</Text>
                     <TextInput
@@ -158,6 +173,7 @@ const EditReceiverInfo = () => {
                     </View>
                 </View>
 
+                <View className="px-4">
                 {/* Continue Button */}
                 <TouchableOpacity
                     className="p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
@@ -168,11 +184,13 @@ const EditReceiverInfo = () => {
 
                 {/* Cancel Button */}
                 <TouchableOpacity
-                    className="p-4 rounded-lg border border-[#6E757D] w-full"
+                    className="p-4 rounded-lg border border-[#6E757D] w-full mt-4
+                    "
                     onPress={() => router.push('/receiver-info')}
                 >
                     <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>
                 </TouchableOpacity>
+                </View>
             </View>
         </ScrollView>
     );

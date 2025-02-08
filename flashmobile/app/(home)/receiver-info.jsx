@@ -9,6 +9,7 @@ import courtney from '../../assets/images/courtney.png';
 import search from '../../assets/images/search.png';
 import benefit from '../../assets/images/benefit.png';
 import CountryPicker from 'react-native-country-picker-modal';
+import Svg, { Circle } from "react-native-svg";
 
 const ReceiverInfo = () => {
     const router = useRouter();
@@ -30,17 +31,34 @@ const ReceiverInfo = () => {
       );
   return (
 <ScrollView>
-       <View className="flex flex-col bg-[#EFF0F1] py-4 pt-16 px-4  font-aeonikBold h-full">
-        <View className="flex-row items-center p-2">
-                  <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
-                    <Text className="text-white font-medium">1/4</Text>
+       <View className="flex flex-col bg-[#EFF0F1] py-4   font-aeonikBold h-full">
+        {/* Progress Header */}
+              <View className="mb-6 flex-row items-center space-x-3 bg-white w-full px-4 pb-8 pt-16">
+                {/* Half Blue - Half Gray Circle */}
+                <View className="relative w-10 h-10 mr-4">
+                  <Svg height="40" width="40" viewBox="0 0 40 40">
+                    {/* Gray Background Circle */}
+                    <Circle cx="20" cy="20" r="18" stroke="#E0E0E0" strokeWidth="4" fill="none" />
+                    {/* Blue Half Circle */}
+                    <Circle cx="20" cy="20" r="18" stroke="#005CEE" strokeWidth="4" fill="none"
+                      strokeDasharray="28 113" 
+                      strokeLinecap="round"
+                      transform="rotate(-90 20 20)" 
+                    />
+                  </Svg>
+                  {/* Centered Text Inside Circle */}
+                  <View className="absolute inset-0 flex items-center justify-center">
+                    <Text className="text-[#181F30] font-bold text-[14px]">1/4</Text>
                   </View>
-                  <View className='flex flex-col ml-3'>
-                  <Text className=" font-bold text-[18px] mb-2">Receiver's info</Text>
-                  <Text className="text-[#6E757D] text-[14px]">Enter the informations.</Text>
-                  </View>
-        </View>
-        <View className="mb-4 p-2">
+                </View>
+        
+                {/* Text Section */}
+                <View className="flex flex-col">
+                  <Text className="text-[#181F30] text-[18px] font-bold">Receiver's info</Text>
+                  <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
+                </View>
+              </View>
+        <View className="mb-4 p-2 px-4">
                 <Text className="text-[#181F30] text-[20px] font-bold mb-2">
                   Receiver's info
                 </Text>
@@ -48,7 +66,7 @@ const ReceiverInfo = () => {
                   You can see all the details of your transaction,{"\n"}check that you have made no mistake if necessary{"\n"}you can modify information on this page.
                 </Text>
         </View>
-        <View className='flex-row rounded-lg bg-blue-500 px-6 py-3 w-[50%] mb-8 items-center gap-2'>
+        <View className='flex-row rounded-lg bg-blue-500 px-6 py-3 w-[50%] mx-4 mb-8 items-center gap-2'>
             <Image 
                 source={benefit}
                 className="object-fill"
@@ -57,8 +75,8 @@ const ReceiverInfo = () => {
         </View>
 
        {/* Country/Region Selector */}
-       <Text className='font-semibold text-[14px] mb-2'>Receiving country - Currency</Text>
-                    <View className='relative w-full flex-row items-center border p-2 rounded-lg bg-[#F4F5F7] border-[#EBECED]'>
+       <Text className='font-semibold text-[14px] mb-2 mx-4'>Receiving country - Currency</Text>
+                    <View className='relative w-full flex-row items-center border p-2 rounded-lg mx-4 bg-[#F4F5F7] border-[#EBECED]'>
                         {country && (
                             <Image source={{ uri: country.flag }} className='w-6 h-4' />
                         )}
@@ -77,25 +95,25 @@ const ReceiverInfo = () => {
                     </View>
 
 
-                <Text className="font-semibold text-[14px] mb-2">Amount sent</Text>
+                <Text className="font-semibold text-[14px] mb-2 mx-4">Amount sent</Text>
                     <TextInput
                     placeholder="Enter your amount"
                     placeholderTextColor="#6E757D"
                     value={address}
                     onChangeText={setAddress}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4"
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-4 mx-4"
                     />
 
-                <Text className="font-semibold text-[14px] mb-2">The beneficiary receives</Text>
+                <Text className="font-semibold text-[14px] mb-2 mx-4">The beneficiary receives</Text>
                     <TextInput
                     placeholder="Enter the beneficiary recieves"
                     placeholderTextColor="#6E757D"
                     value={city}
                     onChangeText={setCity}
-                    className="border bg-white border-[#EBECED] p-4 rounded-2xl "
+                    className="border bg-white border-[#EBECED] p-4 rounded-2xl mx-4 "
                     />
 
-    <View className="px-2 py-4 bg-gray-100">
+    <View className="py-4 bg-gray-100 px-4">
 
     <Text className="text-[18px] font-bold text-gray-800 mt-8">Already added</Text>
 
@@ -149,7 +167,7 @@ const ReceiverInfo = () => {
               </TouchableOpacity>
               <TouchableOpacity 
                   className=" p-4 rounded-lg mt-4 border border-[#6E757D] w-full"
-                  onPress={() => router.push('')}
+                  onPress={() => router.back()}
               >  
                   <Text className="text-[#6E757D] text-center font-semibold text-[14px]">Cancel</Text>
               </TouchableOpacity>

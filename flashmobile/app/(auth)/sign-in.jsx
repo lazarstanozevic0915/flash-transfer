@@ -22,7 +22,7 @@ export default function SignIn() {
 
   return (
     <ScrollView>
-    <View className="flex-1 bg-white  px-10 py-28 pb-8">
+    <View className="flex-1 bg-white  px-8 py-28 pb-8">
       <View className="mb-4 items-center">
         <Image
           source={logo}

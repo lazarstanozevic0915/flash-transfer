@@ -4,6 +4,7 @@ import back from '../../assets/image/back2.png'
 import { router } from 'expo-router';
 import UM from '../../assets/image/icons/UM.png'
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
+import CountryPicker from 'react-native-country-picker-modal';
 
 const SenderDetails = () => {
     const [firstName, setFirstName] = useState('');
@@ -14,6 +15,8 @@ const SenderDetails = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
+    const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
+    const [country, setCountry] = useState(null);
 
 
   return (
@@ -27,7 +30,7 @@ const SenderDetails = () => {
                     </TouchableOpacity>
             </View>
             <View className="">
-                  <Text className="text-[18px] font-bold mb-2">Senders Details</Text>
+                  <Text className="text-[18px] font-bold mb-2">Sender Details</Text>
                   <Text className="text-[#6E757D] text-[16px]">Check all details information</Text>
             </View>
             {/* Form Fields */}
@@ -70,28 +73,25 @@ const SenderDetails = () => {
                     className="border bg-white border-[#EBECED] p-4 rounded-2xl mb-2"
                   />
 
-                  <Text className='font-semibold text-[14px] mb-2'>Country/Region*</Text>
-                  
-                    <View className='relative w-full'>
-                        <View className='absolute left-3 top-2.5  z-50'>
-                            <Image 
-                            source={UM} 
-                            className='w-7 h-5 mr-2 object-fill' 
+                  {/* Country/Region Selector */}
+                  <Text className='font-semibold text-[14px] mb-2 mx-4'>Country/Region*</Text>
+                    <View className='relative w-full flex-row items-center border p-2 rounded-lg mx-4 bg-[#F4F5F7] border-[#EBECED]'>
+                        {country && (
+                            <Image source={{ uri: country.flag }} className='w-6 h-4' />
+                        )}
+                        <CountryPicker
+                            countryCode={countryCode ?? 'US'} // Default to 'US' if countryCode is null
+                            withFilter={true}
+                            withFlag={true}
+                            withCountryNameButton={true}
+                            withAlphaFilter={true}
+                            onSelect={(country) => {
+                            setCountryCode(country.cca2);
+                            setCountry(country);
+                            }}
                             />
-                        </View>
-                        <TextInput
-                            placeholder='USA'
-                            placeholderTextColor="#6E757D"
-                            className='border p-2.5 pl-14 rounded-md text-[14px] bg-[#EBECED] border-[#D3D8DD] w-full mb-2'
-                            required
-                        />
-                        <View className="absolute right-3 top-1/2 -translate-y-1/2">
-                            <Image
-                                source={downArrow}
-                                className="w-[12px] h-[6px]"
-                            />
-                        </View>
-                        </View>
+                        <Image source={downArrow} className="w-[12px] h-[6px] ml-auto" />
+                    </View>
 
                   <Text className="font-semibold text-[14px] mb-2">Street Address*</Text>
                   <TextInput

@@ -1,38 +1,53 @@
-import { View, Text, TouchableOpacity, Image, FlatList, Modal } from 'react-native';
-import React, { useState } from 'react';
-import { useRouter } from 'expo-router';
+import { View, Text, TouchableOpacity, Image, FlatList, Modal } from "react-native";
+import React, { useState } from "react";
+import { useRouter } from "expo-router";
+import Svg, { Circle } from "react-native-svg";
 
 const SelectMethod = () => {
   const router = useRouter();
-  const [selectedMethod, setSelectedMethod] = useState('cash');
+  const [selectedMethod, setSelectedMethod] = useState("cash");
   const [modalVisible, setModalVisible] = useState(false);
 
   const methods = [
-    { id: 'cash', name: 'Cash', icon: require('../../assets/images/orange.png') },
-    { id: 'wave', name: 'Wave', icon: require('../../assets/images/wave.png') },
-    { id: 'mtn', name: 'MTN', icon: require('../../assets/images/mtn.png') },
-    { id: 'moov', name: 'Moov Money', icon: require('../../assets/images/moov.png') },
+    { id: "cash", name: "Cash", icon: require("../../assets/images/orange.png") },
+    { id: "wave", name: "Wave", icon: require("../../assets/images/wave.png") },
+    { id: "mtn", name: "MTN", icon: require("../../assets/images/mtn.png") },
+    { id: "moov", name: "Moov Money", icon: require("../../assets/images/moov.png") },
   ];
 
   const selected = methods.find((method) => method.id === selectedMethod);
 
   return (
-    <View className="flex flex-col bg-[#EFF0F1] py-4 pt-16 px-4 font-aeonikBold h-full">
+    <View className="flex flex-col bg-[#EFF0F1] py-4  font-aeonikBold h-full">
       {/* Progress Header */}
-      <View className="mb-6">
-        <View className="flex-row items-center p-2">
-          <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
-            <Text className="text-white font-medium">2/4</Text>
+      <View className="mb-6 flex-row items-center space-x-3 bg-white w-full px-4 pb-8 pt-16">
+        {/* Half Blue - Half Gray Circle */}
+        <View className="relative w-10 h-10 mr-4">
+          <Svg height="40" width="40" viewBox="0 0 40 40">
+            {/* Gray Background Circle */}
+            <Circle cx="20" cy="20" r="18" stroke="#E0E0E0" strokeWidth="4" fill="none" />
+            {/* Blue Half Circle */}
+            <Circle cx="20" cy="20" r="18" stroke="#005CEE" strokeWidth="4" fill="none"
+              strokeDasharray="56.5 113" 
+              strokeLinecap="round"
+              transform="rotate(-90 20 20)" 
+            />
+          </Svg>
+          {/* Centered Text Inside Circle */}
+          <View className="absolute inset-0 flex items-center justify-center">
+            <Text className="text-[#181F30] font-bold text-[14px]">2/4</Text>
           </View>
-          <View className="flex flex-col ml-3">
-            <Text className="font-bold text-[18px] mb-2">Payment Method</Text>
-            <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
-          </View>
+        </View>
+
+        {/* Text Section */}
+        <View className="flex flex-col">
+          <Text className="text-[#181F30] text-[18px] font-bold">Payment Method</Text>
+          <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
         </View>
       </View>
 
       {/* Title Section */}
-      <View className="mb-4 p-2">
+      <View className="mb-4 p-2 rounded-t-3xl px-4 ">
         <Text className="text-[#181F30] text-[20px] font-bold mb-2">Choose delivery method</Text>
         <Text className="text-[#6E757D] text-[18px]">
           Choose delivery method in mobile money,{"\n"}bank deposit, cash pickup.
@@ -40,7 +55,7 @@ const SelectMethod = () => {
       </View>
 
       {/* White Box with Details */}
-      <View className="bg-white p-5 rounded-xl shadow-lg">
+      <View className="bg-white p-5 rounded-xl shadow-lg mx-4 ">
         <Text className="text-[#273240] text-[14px] font-semibold mb-3">Receiving Method</Text>
 
         {/* Dropdown Trigger */}
@@ -53,8 +68,8 @@ const SelectMethod = () => {
         </TouchableOpacity>
 
         {/* Modal for Selecting Method */}
-        <Modal transparent={true} visible={modalVisible} animationType="slide">
-          <View className="flex-1 justify-center items-center bg-transparent bg-opacity-10">
+        <Modal transparent={true} visible={modalVisible} animationType="fade">
+          <View className="flex-1 justify-center items-center bg-transparent bg-opacity-50">
             <View className="bg-white p-5 rounded-lg w-4/5">
               <Text className="text-[16px] font-bold mb-3">Select Payment Method</Text>
 
@@ -104,7 +119,7 @@ const SelectMethod = () => {
       </View>
 
       {/* Bottom Buttons */}
-      <View className="mt-auto mb-6">
+      <View className="mt-auto mb-6 px-4">
         <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 mb-3" onPress={() => router.push('/review-details')}>
           <Text className="text-center font-semibold">Continue</Text>
         </TouchableOpacity>
