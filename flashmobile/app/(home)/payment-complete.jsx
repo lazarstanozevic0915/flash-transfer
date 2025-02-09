@@ -171,7 +171,7 @@ const PaymentComplete= () => {
               <View className="mt-auto mb-2 justify-end">
                       <TouchableOpacity
                         className="bg-[#FFC000] rounded-xl py-4 mb-3"
-                        onPress={() => router.push('/enter-card')}
+                        onPress={() => router.push('/track-transfer')}
                       >
                         <Text className="text-center font-semibold">Track Order</Text>
                       </TouchableOpacity>
