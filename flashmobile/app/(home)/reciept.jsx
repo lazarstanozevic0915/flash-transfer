@@ -86,7 +86,9 @@ const Receipt = () => {
         <Text className="text-black text-[16px] font-semibold mt-2 ml-2">771 824 9542</Text></Text>
       </View>
       
-      <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 flex-row items-center justify-center mt-4">
+      <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 flex-row items-center justify-center mt-4"
+        onPress={() => (router.push('/payment-done'))}
+      >
         <Image source={printIcon} className="w-6 h-6 mr-2" />
         <Text className="text-center font-semibold">Print</Text>
       </TouchableOpacity>

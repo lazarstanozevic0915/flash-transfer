@@ -44,7 +44,7 @@ const SelectPayment = () => {
                 setError(false);
                 if(activePay === 'cash' && activeReceive === 'mobile') {
                     router.push('/review-details-mobile');
-                } else if ( activePay === 'wallet' && activeReceive === 'crypto') {
+                } else if ( activePay === 'wallet' && activeReceive === 'mobile') {
                     router.push('/review-details-cryptosm');
                     
                 }

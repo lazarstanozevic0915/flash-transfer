@@ -199,7 +199,7 @@ const Cash = () => {
         </TouchableOpacity>
         <TouchableOpacity 
             className=" p-4 rounded-lg mt-4 border border-[#2475FF] w-full"
-            onPress={() => router.push('')}
+            onPress={() => router.push('/cash')}
         >  
             <Text className="text-[#2475FF] text-center font-semibold text-[14px]">Add From Contact</Text>
         </TouchableOpacity>

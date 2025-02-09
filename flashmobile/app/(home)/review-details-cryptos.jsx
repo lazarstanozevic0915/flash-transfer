@@ -186,7 +186,7 @@ const ReviewDetailsCrypto = () => {
       <View className="mt-20 mb-2 mx-4 justify-end">
         <TouchableOpacity
           className="bg-[#FFC000] rounded-xl py-4 mb-3"
-          onPress={() => router.push('/reciept')}
+          onPress={() => router.push('/crypto-payment')}
         >
           <Text className="text-center font-semibold">Confirm</Text>
         </TouchableOpacity>

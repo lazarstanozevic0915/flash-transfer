@@ -78,7 +78,7 @@ const ReviewDetailsCard = () => {
         {/* Transfer Details */}
         <View className=" pt-4 space-y-3">
           <View className="flex-row justify-between mb-4">
-            <Text className="text-[#6E757D] text-[14px] font-medium">Cash Payment</Text>
+            <Text className="text-[#6E757D] text-[14px] font-medium">Credit Card</Text>
             <Image
               source={card}
               className="object-fill"
@@ -166,7 +166,7 @@ const ReviewDetailsCard = () => {
       <View className="mt-20 mb-2 mx-4 justify-end">
         <TouchableOpacity
           className="bg-[#FFC000] rounded-xl py-4 mb-3"
-          onPress={() => router.push('/reciept')}
+          onPress={() => router.push('/payment-done')}
         >
           <Text className="text-center font-semibold">Confirm</Text>
         </TouchableOpacity>

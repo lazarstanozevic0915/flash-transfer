@@ -2,11 +2,15 @@ import { View, Text, TouchableOpacity, Image, FlatList, Modal } from "react-nati
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import Svg, { Circle } from "react-native-svg";
+import { useUser } from "../../context/UserContext";
 
 const SelectMethod = () => {
   const router = useRouter();
+  const { activePay, activeReceive } = useUser();
   const [selectedMethod, setSelectedMethod] = useState("cash");
   const [modalVisible, setModalVisible] = useState(false);
+  const [error, setError] = useState(false);
+  
 
   const methods = [
     { id: "cash", name: "Cash", icon: require("../../assets/images/orange.png") },
@@ -16,6 +20,26 @@ const SelectMethod = () => {
   ];
 
   const selected = methods.find((method) => method.id === selectedMethod);
+
+  const handleSubmit = () => {
+    if (!selectedProvider ) {
+      setError(true);
+    } else {
+        setError(false);
+        if(activePay === 'cash' && activeReceive === 'cash') {
+            router.push('/review-details-cash');
+        } else if ( activePay === 'card' && activeReceive === 'cash') {
+            router.push('/review-details-card');   
+        }
+        else if ( activePay === 'wallet' && activeReceive === 'cash') {
+          router.push('/review-details-cryptos');   
+        }
+        else{
+            router.push('/review-details-bank');
+
+        }
+    }
+};
 
   return (
     <View className="flex flex-col bg-[#EFF0F1] py-4  font-aeonikBold h-full">

@@ -124,7 +124,7 @@ const CryptoPayment = () => {
                     <Image source={item.icon} className="w-8 h-8" resizeMode="contain" />
                     <Text className="text-gray-900 font-medium">{item.name}</Text>
                 </View>
-                <Text className="text-[#181F30] font-normal rounded-2xl bg-[#D3D8DD] py-2 px-4">Connect</Text>
+                <Text className="text-[#181F30] font-normal rounded-2xl bg-[#D3D8DD] py-2 px-4" onPress={()=> (router.push('/payment-done'))}>Connect</Text>
                 </TouchableOpacity>
             )}
             />

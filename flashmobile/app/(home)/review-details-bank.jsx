@@ -133,7 +133,7 @@ const ReviewDetailsBank = () => {
         {/* Transfer Details */}
         <View className=" pt-4 space-y-3">
           <View className="flex-row justify-between mb-3">
-            <Text className="text-[#6E757D] text-[14px] font-medium">Bank Transfer</Text>
+            <Text className="text-[#6E757D] text-[14px] font-medium">Cash Pickup</Text>
             <Image
               source={dollar}
               className="object-fill"
