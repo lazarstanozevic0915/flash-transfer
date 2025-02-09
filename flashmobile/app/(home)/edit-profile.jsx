@@ -5,6 +5,7 @@ import back from '../../assets/image/back2.png'
 import { profileIcons } from '../../assets/image';
 import DateSelection2 from '../../components/DateSelection2';
 import downArrow from '../../assets/image/icons/arrow-short-down.png'
+import CountryPicker from 'react-native-country-picker-modal';
 
 
 const editProfile = () => {
@@ -20,6 +21,11 @@ const editProfile = () => {
   const [ city, setCity] = useState('');
   const [ state, setState] = useState('');
   const [ zip, setZip] = useState('');
+  const [countryCode, setCountryCode] = useState('US'); // Default country (United States)
+  const [country, setCountry] = useState({
+      cca2: 'US', 
+      name: { common: 'United States' },
+    });
 
   return (
     <ScrollView>
@@ -116,16 +122,24 @@ const editProfile = () => {
                   />               
               </View>
               <View className='flex-col gap-2'>
-                <Text className='text-[#181F30] text-[14px] font-medium'>Country/Region</Text>
-                <TouchableOpacity className='flex-row items-center'>
-                  <View className='py-3 px-4 border border-[#D3D8DD] rounded-s-xl'>
-                    <Image source={profileIcons.usaFlag} className='w-6 h-4 object-fill' />
-                  </View>
-                  <View className='py-3 px-4 border flex-row items-center justify-between w-[84%] border-[#D3D8DD] rounded-e-xl'>
-                    <Text className='text-[#6E757D] text-[14px]'>Choose your location</Text>
-                    <Image source={downArrow} className='w-[12px] h-[6px] object-fill' />
-                  </View>
-                </TouchableOpacity>              
+              <Text className='font-semibold text-[14px] mb-2'>Country/Region</Text>
+                    <View className='relative w-full flex-row items-center border p-2 rounded-lg bg-[#F4F5F7] border-[#EBECED] mb-2'>
+                        {country && (
+                            <Image source={{ uri: country.flag }} className='w-6 h-4' />
+                        )}
+                        <CountryPicker
+                            countryCode={countryCode} // Default to 'US' if countryCode is null
+                            withFilter={true}
+                            withFlag={true}
+                            withCountryNameButton={true}
+                            withAlphaFilter={true}
+                            onSelect={(country) => {
+                            setCountryCode(country.cca2);
+                            setCountry(country);
+                            }}
+                            />
+                        <Image source={downArrow} className="w-[12px] h-[6px] ml-auto" />
+                    </View>              
               </View>
               <View className='flex-row w-full items-center gap-4'>
                 <View className='flex-col gap-2 w-[48%]'>
