@@ -338,16 +338,16 @@ const filteredData2 = useMemo(() => {
                 <Text className='text-[14px] text-[#181F30] font-normal'>Send</Text>
               </TouchableOpacity>
             </View>
-            <Text>
+            <View className="w-[112px] h-[48px] pl-2.5">
               <TextInput 
                 placeholder="0.9382"
                 placeholderTextColor="#6E757D"
                 value={sendAmount}
                 onChangeText={setSendAmount}
-                className='text-[32px] font-semibold text-[#181F30]'
+                className='text-[32px] font-semibold text-[#181F30] h-full w-full'
                 keyboardType="numeric"
               />
-            </Text>
+            </View>
             <Text className='text-[#181F30] text-[14px] font-normal'>Amount Send</Text>
           </View>
           <View className='bg-white flex-col items-center gap-3.5 rounded-2xl p-4 pb-12'>
@@ -416,17 +416,17 @@ const filteredData2 = useMemo(() => {
                 <Text className='text-[14px] text-[#181F30] font-normal'>Receive</Text>
               </TouchableOpacity>
             </View>
-            <Text>
+            <View className="w-[112px] h-[48px] pl-2.5">
               <TextInput 
                 placeholder="0.9382"
                 placeholderTextColor="#6E757D"
                 value={receiveAmount}
                 onChangeText={setReceiveAmount}
-                className='text-[32px] font-semibold text-[#181F30]'
+                className='text-[32px] font-semibold text-[#181F30] h-full w-full'
                 keyboardType="numeric"
                 aria-disabled={true}
               />
-            </Text>
+            </View>
             <Text className='text-[#181F30] text-[14px] font-normal'>Received Amount</Text>
           </View>
           <TouchableOpacity onPress={handleSwap} className='bg-white p-3 rounded-full border-[6px] border-[#EFF0F1] items-center justify-center absolute top-[42%] left-[142px] ' >

@@ -4,24 +4,43 @@ import { useRouter } from 'expo-router';
 import checkIcon from '../../assets/images/Subtract.png';
 import printIcon from '../../assets/images/Print.png';
 import trackingIcon from '../../assets/images/eye-tracking.png';
+import Svg, { Circle } from "react-native-svg";
 
 const Receipt = () => {
   const router = useRouter();
 
   return (
     <ScrollView>
-    <View className="flex flex-col bg-[#EFF0F1] py-16 pt-16 px-4 font-aeonikBold">
-      <View className="mb-6">
-        <View className="flex-row items-center mb-1">
-          <View className="h-8 w-8 rounded-full bg-blue-500 items-center justify-center">
-            <Text className="text-white font-medium">3/4</Text>
-          </View>
-          <Text className="ml-3 font-bold text-lg">Receipt</Text>
-        </View>
-        <Text className="text-gray-500 ml-11">Enter the informations.</Text>
-      </View>
+    <View className="flex flex-col bg-[#EFF0F1] pb-16 font-aeonikBold">
+      {/* Progress Header */}
+            <View className="mb-6 flex-row items-center space-x-3 bg-white w-full px-4 pb-8 pt-16">
+              {/* Half Blue - Half Gray Circle */}
+              <View className="relative w-10 h-10 mr-4">
+                <Svg height="40" width="40" viewBox="0 0 40 40">
+                  {/* Gray Background Circle */}
+                  <Circle cx="20" cy="20" r="18" stroke="#E0E0E0" strokeWidth="4" fill="none" />
+                  {/* Blue Half Circle */}
+                  <Circle cx="20" cy="20" r="18" stroke="#005CEE" strokeWidth="4" fill="none"
+                    strokeDasharray="85 113" 
+                    strokeLinecap="round"
+                    transform="rotate(-90 20 20)" 
+                  />
+                </Svg>
+                {/* Centered Text Inside Circle */}
+                <View className="absolute inset-0 flex items-center justify-center">
+                  <Text className="text-[#181F30] font-bold text-[14px]">3/4</Text>
+                </View>
+              </View>
       
-      <View className="bg-white p-4 rounded-xl shadow w-full mb-4">
+              {/* Text Section */}
+              <View className="flex flex-col">
+                <Text className="text-[#181F30] text-[18px] font-bold">Received</Text>
+                <Text className="text-[#6E757D] text-[14px]">Enter the information.</Text>
+              </View>
+            </View>
+            <View className="px-4">
+
+      <View className="bg-white p-4 rounded-xl shadow w-full mb-4 ">
         <Text className="text-[#181F30] text-[20px] font-bold mb-2">Received</Text>
         <View className="flex-row items-center mb-2">
           <Text className="text-[#181F30] text-[16px] font-semibold">You are almost done</Text>
@@ -92,6 +111,8 @@ const Receipt = () => {
         <Image source={printIcon} className="w-6 h-6 mr-2" />
         <Text className="text-center font-semibold">Print</Text>
       </TouchableOpacity>
+            </View>
+      
     </View>
     </ScrollView>
   );
