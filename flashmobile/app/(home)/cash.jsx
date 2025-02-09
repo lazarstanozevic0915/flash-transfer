@@ -6,6 +6,7 @@ import back from '../../assets/image/back2.png'
 import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg';
 import ReceiptsSection from '../../components/ReceiptsSection';
 import bell from '../../assets/image/icons/notification-bell.png';
+import { useUser } from '../../context/UserContext';
 
 const CashIcon = ({ color = '#2475FF' }) => (
     <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
@@ -96,8 +97,7 @@ const CreditCard = ({ color = '#2475FF' }) => (
 
 const Cash = () => {
   const router = useRouter();
-  const [activePay, setActivePay] = useState('cash');
-  const [activeReceive, setActiveReceive] = useState('cash');
+  const { activePay, activeReceive, setActivePay, setActiveReceive } = useUser();
 
   return (
    <ScrollView>

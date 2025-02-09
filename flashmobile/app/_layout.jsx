@@ -3,7 +3,8 @@ import { useFonts } from "expo-font";
 import { useEffect, useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { View, ActivityIndicator } from "react-native";
-import "./global.css"; // Ensure global styles are included
+import { UserProvider } from '../context/UserContext';
+import "./global.css";
 
 // Prevent splash screen from hiding automatically
 SplashScreen.preventAutoHideAsync();
@@ -18,7 +19,6 @@ export default function RootLayout() {
     aeonikRegularItalic: require("../assets/fonts/Aeonik/AeonikTRIAL-RegularItalic.otf"),
   });
 
-  // Ensure splash screen hides only once after fonts load
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -38,9 +38,11 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-      <Stack.Screen name="(home)" options={{ headerShown: false }} />
-    </Stack>
+    <UserProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="(home)" options={{ headerShown: false }} />
+      </Stack>
+    </UserProvider>
   );
 }
