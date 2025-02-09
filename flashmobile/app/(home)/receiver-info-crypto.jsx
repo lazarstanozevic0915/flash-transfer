@@ -3,8 +3,10 @@ import { View, Text, TouchableOpacity, Modal, FlatList, TextInput, Image, Scroll
 import { router } from "expo-router";
 import Svg, { Circle } from "react-native-svg";
 import { currency, icons } from "../../assets/image";
+import { useUser } from "../../context/UserContext";
 
 const ReceiverInfoCrypto = () => {
+  const { activePay, activeReceive } = useUser();
   const [cryptoAddress, setCryptoAddress] = useState("");
 
   const currencies = [
@@ -37,6 +39,26 @@ const ReceiverInfoCrypto = () => {
   const [selectedCrypto, setSelectedCrypto] = useState(defaultCrypto);
   const [selectedBlockchain, setSelectedBlockchain] = useState(defaultBlockchain);
   const [modalVisible, setModalVisible] = useState(false);
+  const [error, setError] = useState(false);
+
+  const handleSubmit = () => {
+          if (!cryptoAddress ) {
+              setError(true);
+          } else {
+              setError(false);
+              if(activePay === 'cash' && activeReceive === 'crypto') {
+                  router.push('/review-details-crytor');
+              } else if ( activePay === 'wallet' && activeReceive === 'crypto') {
+                  router.push('/review-details-crytos');
+                  
+              }
+              else{
+                  router.push('/review-details-cryptor');
+  
+              }
+          }
+      };
+  
 
   return (
     
@@ -53,13 +75,13 @@ const ReceiverInfoCrypto = () => {
                 stroke="#005CEE"
                 strokeWidth="4"
                 fill="none"
-                strokeDasharray="28 113"
+                strokeDasharray="56.5 113"
                 strokeLinecap="round"
                 transform="rotate(-90 20 20)"
               />
             </Svg>
             <View className="absolute inset-0 flex items-center justify-center">
-              <Text className="text-[#181F30] font-bold text-[14px]">1/4</Text>
+              <Text className="text-[#181F30] font-bold text-[14px]">2/4</Text>
             </View>
           </View>
           <View className="flex flex-col">
@@ -72,6 +94,13 @@ const ReceiverInfoCrypto = () => {
         <View className="bg-[#EFF0F1] rounded-lg p-4 shadow w-full rounded-t-xl h-[89%]">
           <Text className="text-[22px] font-bold mb-2">Confirm Crypto Address</Text>
           
+            {error && (
+                      <TouchableOpacity className="bg-red-100 rounded-xl py-2 px-4 mb-4 border border-[#FF3E24]">
+                        <Text className="text-[#FF3E24] text-[15px]">
+                            <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Enter your receiver's address
+                        </Text>
+                    </TouchableOpacity>
+                )}
 
 
           <Text className="text-black text-[16px] mb-2">
@@ -140,7 +169,7 @@ const ReceiverInfoCrypto = () => {
 
           {/* Continue and Back Buttons */}
           <View className="mt-auto  px-4">
-            <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 mb-3" onPress={() => router.push("/review-details")}>
+            <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 mb-3" onPress={handleSubmit}>
               <Text className="text-center font-semibold">Continue</Text>
             </TouchableOpacity>
             <TouchableOpacity className="bg-transparent rounded-xl py-4 border border-[#6E757D]" onPress={() => router.back()}>

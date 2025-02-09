@@ -4,8 +4,10 @@ import { router } from 'expo-router';
 import CountryPicker from 'react-native-country-picker-modal';
 import downArrow from '../../assets/image/icons/arrow-short-down.png';
 import Svg, { Circle } from "react-native-svg";
+import { useUser } from '../../context/UserContext';
 
 const EditReceiverInfo = () => {
+    const { activePay, activeReceive } = useUser();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -26,7 +28,16 @@ const EditReceiverInfo = () => {
             setError(true);
         } else {
             setError(false);
-            router.push('/enter-card'); // Change route as needed
+            if(activeReceive === 'cash') {
+                router.push('/select-method');
+            } else if ( activeReceive === 'mobile') {
+                router.push('/select-payment');
+                
+            }
+            else{
+                router.push('/receiver-info-crypto');
+
+            }
         }
     };
 
@@ -180,7 +191,7 @@ const EditReceiverInfo = () => {
                 {/* Continue Button */}
                 <TouchableOpacity
                     className="p-4 rounded-lg mt-4 bg-[#FFC000] w-full"
-                    onPress={() => router.push('/receiver-info-crypto')}
+                    onPress={validateForm}
                 >
                     <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
                 </TouchableOpacity>
