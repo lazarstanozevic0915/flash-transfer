@@ -18,7 +18,8 @@ const EditReceiverInfo = () => {
     const [country, setCountry] = useState({
       cca2: 'US', 
       name: { common: 'United States' },
-    });    const [error, setError] = useState(false);
+    });    
+    const [error, setError] = useState(false);
 
     const validateForm = () => {
         if (!firstName || !lastName || !email || !mobile || !address || !city || !state || !zip || !country) {

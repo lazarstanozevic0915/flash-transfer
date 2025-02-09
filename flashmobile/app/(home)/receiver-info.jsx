@@ -80,7 +80,7 @@ const ReceiverInfo = () => {
        {/* Country/Region Selector */}
        <Text className='font-semibold text-[14px] mb-2 mx-4'>Receiving country - Currency</Text>
                     <View className='relative  flex-row items-center border p-2 rounded-lg mx-4  bg-[#F4F5F7] border-[#EBECED]'>
-                        {country && (
+                    {country && (
                             <Image source={{ uri: country.flag }} className='w-6 h-4' />
                         )}
                         <CountryPicker
@@ -164,7 +164,7 @@ const ReceiverInfo = () => {
       ))}
       <TouchableOpacity 
                   className=" p-4 rounded-lg mt-8 bg-[#FFC000] w-full"
-                  onPress={() => router.push('/edit-receiver-info')}
+                  onPress={() => router.push('/receiver-info-crypto')}
               >  
                   <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
               </TouchableOpacity>
