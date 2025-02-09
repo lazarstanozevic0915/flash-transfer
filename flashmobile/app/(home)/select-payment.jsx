@@ -2,10 +2,13 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import Svg, { Circle } from "react-native-svg";
+import { useUser } from '../../context/UserContext';
 
 const SelectPayment = () => {
+  const { activePay, activeReceive } = useUser();
   const router = useRouter();
   const [selectedProvider, setSelectedProvider] = useState(null);
+  const [error, setError] = useState(false);
 
   const providers = [
     {
@@ -33,6 +36,24 @@ const SelectPayment = () => {
       icon: require('../../assets/images/moov.png'),
     },
   ];
+
+   const handleSubmit = () => {
+            if (!selectedProvider ) {
+              setError(true);
+            } else {
+                setError(false);
+                if(activePay === 'cash' && activeReceive === 'mobile') {
+                    router.push('/review-details-mobile');
+                } else if ( activePay === 'wallet' && activeReceive === 'crypto') {
+                    router.push('/review-details-cryptosm');
+                    
+                }
+                else{
+                    router.push('/review-details-mobile');
+    
+                }
+            }
+        };
 
   return (
     <View className="flex flex-col bg-[#EFF0F1] py-4 font-aeonikBold h-full">
@@ -70,7 +91,7 @@ const SelectPayment = () => {
         </Text>
 
         {/* Show warning only when no provider is selected */}
-        {!selectedProvider && (
+        { !selectedProvider && (
           <TouchableOpacity className="bg-red-100 rounded-xl p-4 mb-4 border border-[#FF3E24]">
             <Text className="text-[#FF3E24] text-[14px]">
               <Text className="rounded-full border border-[#FF3E24] p-2">!</Text> Select Mobile Money First
@@ -100,7 +121,7 @@ const SelectPayment = () => {
       <View className="mt-auto mb-6 px-4">
         <TouchableOpacity
           className="bg-[#FFC000] rounded-xl py-4 mb-3"
-          onPress={() => selectedProvider && router.push('/select-method')}
+          onPress={handleSubmit}
           disabled={!selectedProvider}
         >
           <Text className="text-center font-semibold">Continue</Text>

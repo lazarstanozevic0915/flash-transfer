@@ -4,11 +4,11 @@ import { useRouter } from 'expo-router';
 import micheal from '../../assets/images/micheal.png';
 import Billy from '../../assets/images/Billy.png';
 import bitcoin from '../../assets/images/bitcoin.png';
-import dollar from '../../assets/images/dollar.png';
+import omoney from '../../assets/images/omoney.png';
 import run from '../../assets/images/run.png';
 import Svg, { ClipPath, Defs, G, Path, Rect,Circle } from 'react-native-svg';
 
-const ReviewDetailsCrypto = () => {
+const ReviewDetailsCryptoSM = () => {
   const router = useRouter();
 
   return (
@@ -130,9 +130,9 @@ const ReviewDetailsCrypto = () => {
         {/* Transfer Details */}
         <View className=" pt-4 space-y-3">
           <View className="flex-row justify-between mb-3">
-            <Text className="text-[#6E757D] text-[14px] font-medium">Bank Transfer</Text>
+            <Text className="text-[#6E757D] text-[14px] font-medium">Mobile</Text>
             <Image
-              source={dollar}
+              source={omoney}
               className="object-fill"
             />
           </View>
@@ -203,4 +203,4 @@ const ReviewDetailsCrypto = () => {
   );
 };
 
-export default ReviewDetailsCrypto;
+export default ReviewDetailsCryptoSM;
