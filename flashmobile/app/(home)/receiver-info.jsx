@@ -164,7 +164,7 @@ const ReceiverInfo = () => {
       ))}
       <TouchableOpacity 
                   className=" p-4 rounded-lg mt-8 bg-[#FFC000] w-full"
-                  onPress={() => router.push('/receiver-info-crypto')}
+                  onPress={() => router.push('/edit-receiver-info')}
               >  
                   <Text className="text-[#181F30] text-center font-semibold text-[14px]">Continue</Text>
               </TouchableOpacity>

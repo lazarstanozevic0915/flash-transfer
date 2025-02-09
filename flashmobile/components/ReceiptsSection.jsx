@@ -117,7 +117,7 @@ export default function ReceiptsSection() {
       ))}
       <TouchableOpacity 
                   className=" p-4 rounded-lg mt-8 bg-[#FFC000] w-full"
-                  onPress={() => router.push('/select-payment')}
+                  onPress={() => router.push('/receiver-info')}
               >  
                   <Text className="text-[#181F30] text-center font-semibold text-[14px]">Confirm</Text>
               </TouchableOpacity>
