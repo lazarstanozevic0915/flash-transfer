@@ -69,7 +69,7 @@ const ReceiverInfoCrypto = () => {
         </View>
 
         {/* Input Section */}
-        <View className="bg-[#EFF0F1] rounded-lg p-4 shadow w-full rounded-t-xl">
+        <View className="bg-[#EFF0F1] rounded-lg p-4 shadow w-full rounded-t-xl h-[89%]">
           <Text className="text-[22px] font-bold mb-2">Confirm Crypto Address</Text>
           
 
@@ -139,7 +139,7 @@ const ReceiverInfoCrypto = () => {
           </Modal>
 
           {/* Continue and Back Buttons */}
-          <View className="mt-auto mb-6 px-4">
+          <View className="mt-auto  px-4">
             <TouchableOpacity className="bg-[#FFC000] rounded-xl py-4 mb-3" onPress={() => router.push("/review-details")}>
               <Text className="text-center font-semibold">Continue</Text>
             </TouchableOpacity>
