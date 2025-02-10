@@ -9,7 +9,7 @@ import CryptoWallet from '../icons/CryptoWallet';
 import CreditCard from '../icons/CreditCard';
 import Bank from '../icons/Bank';
 import CashPick from '../icons/CashPick';
-import CashWallet from '../icons/cashWallet';
+import CashWallet from '../icons/CashWallet';
 import MobileMoney from '../icons/MobileMoney';
 import { NavLink } from 'react-router-dom';
 

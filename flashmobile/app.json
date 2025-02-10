@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mrlad01.flashtransfer",
+      "bundleIdentifier": "com.transfer.flash",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mrlad01.flashtransfer"
+      "package": "com.transfer.flash"
     },
     "web": {
       "bundler": "metro",
