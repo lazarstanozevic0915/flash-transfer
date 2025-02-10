@@ -7,7 +7,7 @@ import logo from '../assets/image/logo.svg'
 import ProfileDropdown from './ProfileDropdown'
 import WalletDropdown from './WalletDropdown'
 import CurrencyLanguageDropdown from './CurrencyLanguageDropdown'
-import NFTDropdown from './NFTdropdown'
+import NFTDropdown from './NFTDropdown'
 import NotificationDropdown from './NotificationDropdown'
 import WalletConnect from './WalletConnect';
 import WalletConnectDropdown from './WalletConnectDropdown';
