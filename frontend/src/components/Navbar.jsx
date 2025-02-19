@@ -12,6 +12,8 @@ import NFTDropdown from './NFTDropdown';
 import NotificationDropdown from './NotificationDropdown';
 import WalletConnect from './WalletConnect';
 import WalletConnectDropdown from './WalletConnectDropdown';
+import { ActionButtonList } from './ActionButtonList'
+import { InfoList } from './InfoList'
 
 export default function Navbar() {
   const { isAuthenticated, connectedWallet } = useAuth();
@@ -168,9 +170,11 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="flex items-center space-x-1 text-[12px] dm-sans-medium">
+                  <appkit-button />
+                  {/* <ActionButtonList /> */}
+                  {/* <InfoList /> */}
                 <NavLink to="/signin" className="py-4 px-6 hover:scale-105">Login</NavLink>
                 <NavLink to="/signup" className="py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105">Sign up</NavLink>
-                <WalletConnect />
               </div>
             )}
           </div>
