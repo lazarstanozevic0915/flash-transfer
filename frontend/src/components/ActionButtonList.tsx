@@ -6,6 +6,10 @@ export const ActionButtonList = () => {
     const { open } = useAppKit();
     const { switchNetwork } = useAppKitNetwork();
 
+    const openModal = () => {
+      open()
+    }
+
     const handleDisconnect = async () => {
       try {
         await disconnect();
@@ -15,9 +19,9 @@ export const ActionButtonList = () => {
     };
   return (
     <div >
-        <button onClick={() => open()}>Open</button>
-        <button onClick={handleDisconnect}>Disconnect</button>
-        <button onClick={() => switchNetwork(networks[1]) }>Switch</button>
+        <button onClick={() => openModal()}>Connect Wallet</button>
+        {/* <button onClick={handleDisconnect}>Disconnect</button> */}
+        {/* <button onClick={() => switchNetwork(networks[1]) }>Switch</button> */}
     </div>
   )
 }
