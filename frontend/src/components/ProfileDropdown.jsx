@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { 
-  LogOut,
-  CreditCard,
-  Users,
-  User,
-  Clock,
-  Share2,
-  Medal,
-  ImageIcon,
-  Settings
-} from 'lucide-react';
 import { blogUser1Img, icons } from '../assets/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/authSlice';
 import { useAuth } from '../auth/AuthProvider';
 
 const ProfileDropdown = ({ isOpen }) => {
   if (!isOpen) return null;
-  const { logout } = useAuth();
+  const dispatch = useDispatch();
+  // const { logout } = useAuth();
 
   return (
     <div className="absolute right-0 max-sm:right-12 max-sm:top-22 max-sm:scale-120 top-4 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 border border-gray-100 ">
@@ -83,7 +75,7 @@ const ProfileDropdown = ({ isOpen }) => {
         </NavLink>
         
         <button 
-          onClick={() => logout()}
+          onClick={() => dispatch(logout())}
           className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
         >
           <img src={icons.logout2Icon} alt="" className="w-5 h-5 object-fill" />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff } from 'lucide-react'
 import { useForm } from '../hooks/useForm'
@@ -8,11 +8,15 @@ import SocialButtons from '../components/SocialButtons'
 import { MoneyTransferIllustration } from '../components/Illustrations'
 import logo from '../assets/image/logo.svg'
 import { language } from '../assets/image'
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser, clearError, signUpUser } from '../store/authSlice';
 
 export default function SignUp() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [ error, setError ] = useState('')
   
   const {
     values,
@@ -31,14 +35,26 @@ export default function SignUp() {
     validateSignUp
   )
 
+  useEffect(() => {
+    dispatch(clearError());
+  }, [dispatch]);
+
   const onSubmit = async (formValues) => {
-    // Here you would typically make an API call to register
-    console.log('Submitting:', formValues)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    // Navigate on success
-    navigate('/signIn')
-  }
+    try {
+  
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const resultAction = await dispatch(signUpUser(formValues));
+      
+      if (signUpUser.fulfilled.match(resultAction)) {
+        navigate('/signIn');
+      } else {
+        setError('User already exists. Please check again!');
+      }
+    } catch (error) {
+      setError('Something went wrong. Please try again.');
+    }
+  };
 
   return (
     <AuthLayout illustration={<MoneyTransferIllustration />}>
@@ -61,7 +77,7 @@ export default function SignUp() {
             </label>
             <div className='relative w-full '>
                 <div className='absolute left-3 top-2.5 border-r  '><img src={language.english} alt="" className='w-6 h-6 mr-2' /> </div>
-                <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' placeholder='Choose your Location' required />
+                <input type="text" id='country' name='location' className='border p-2.5 pl-14 rounded-md text-[14px] border-[#D3D8DD] w-full' value={values.location} onChange={handleChange} placeholder='Choose your Location' required />
                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
                 <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -81,7 +97,7 @@ export default function SignUp() {
               onChange={handleChange}
               placeholder="Enter your email"
               className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 
-                ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                ${errors.email ? 'border-red-500' : 'border-gray-300'} ${error ? 'border-red-500' : 'border-gray-300'}`}
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-600">{errors.email}</p>
@@ -100,7 +116,7 @@ export default function SignUp() {
                 onChange={handleChange}
                 placeholder="Set your password"
                 className={`mt-1 block w-full px-3 py-2 pr-10 border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500
-                  ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+                  ${errors.password ? 'border-red-500' : 'border-gray-300'} ${error ? 'border-red-500' : 'border-gray-300'}`}
               />
               <button
                 type="button"
@@ -125,28 +141,31 @@ export default function SignUp() {
             </label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                value={values.password}
+                type={showConfirmPassword ? 'text' : 'password'}
+                name="confirmPassword"
+                value={values.confirmPassword}
                 onChange={handleChange}
                 placeholder="Re-enter your password"
                 className={`mt-1 block w-full px-3 py-2 pr-10 border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500
-                  ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+                  ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
               />
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 className="absolute inset-y-0 right-0 mt-1 pr-3 flex items-center"
               >
-                {showPassword ? (
+                {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
                 ) : (
                   <Eye className="h-5 w-5 text-gray-400" />
                 )}
               </button>
             </div>
-            {errors.password && (
-              <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+            {errors.confirmPassword && (
+              <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
+            )}
+            {error && (
+              <p className="mt-1 text-sm text-red-600">{error}</p>
             )}
           </div>
 

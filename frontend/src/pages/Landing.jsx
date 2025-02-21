@@ -42,14 +42,17 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { useAuth } from '../auth/AuthProvider'
 import { walletIcons } from '../assets/image'
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout, connectWallet, disconnectWallet } from '../store/authSlice';
 
 export default function Landing() {
 
-    const { connectedWallet } = useAuth();
+    // const { connectedWallet } = useAuth();
     const [fromCurrency, setFromCurrency] = useState({ code: 'USDT', logo: usdtLogo, label: 'USDT' });
     const [toCurrency, setToCurrency] = useState({ code: 'EUR', logo: eurLogo, label: 'EUR' });
     const [sendAmount, setSendAmount] = useState('');
     const [receiveAmount, setReceiveAmount] = useState('');
+    const { isAuthenticated, connectedWallet } = useSelector((state) => state.auth);
 
     const handleSwap = () => {
         // Swap currencies

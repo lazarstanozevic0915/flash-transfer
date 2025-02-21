@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff } from 'lucide-react'
 import { useForm } from '../hooks/useForm'
@@ -6,13 +6,16 @@ import { validateSignIn } from '../utils/validation'
 import AuthLayout from '../components/AuthLayout'
 import SocialButtons from '../components/SocialButtons'
 import { MoneyTransferIllustration } from '../components/Illustrations'
-import { useAuth } from '../auth/AuthProvider'
+// import { useAuth } from '../auth/AuthProvider'
+import { useDispatch, useSelector } from 'react-redux';
+import { login, loginUser, clearError } from '../store/authSlice';
 import logo from '../assets/image/logo.svg'
 
 export default function SignIn() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false)
-  const { login } = useAuth()
+  const [ error, setError ] = useState('')
   
   const {
     values,
@@ -28,12 +31,26 @@ export default function SignIn() {
     validateSignIn
   )
 
+  useEffect(() => {
+    dispatch(clearError());
+  }, [dispatch]);
+
   const onSubmit = async (formValues) => {
-    console.log('Submitting:', formValues)
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    login();
-    navigate('/');  
-  }
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const resultAction = await dispatch(loginUser(formValues));
+      
+      if (loginUser.fulfilled.match(resultAction)) {
+        dispatch(login());
+        navigate('/');
+      } else {
+        setError('Invalid credentials. Please enter correct credentials or sign up');
+      }
+    } catch (error) {
+      setError('Something went wrong. Please try again.');
+    }
+  };
 
   return (
     <AuthLayout illustration={<MoneyTransferIllustration />}>
@@ -57,10 +74,14 @@ export default function SignIn() {
               type="email"
               name="email"
               value={values.email}
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+                setError('');
+              }}
               placeholder="Enter your email"
               className={`block w-full px-4 py-3 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500 
-                ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                ${errors.email ? 'border-red-500' : 'border-gray-300'}
+                ${error ? 'border-red-500' : 'border-gray-300'}`}
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-600">{errors.email}</p>
@@ -76,10 +97,14 @@ export default function SignIn() {
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 value={values.password}
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  setError('');
+                }}
                 placeholder="Password here"
                 className={`block w-full px-4 py-3 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500
-                  ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+                  ${errors.password ? 'border-red-500' : 'border-gray-300'}
+                  ${error ? 'border-red-500' : 'border-gray-300'}`}
               />
               <button
                 type="button"
@@ -95,6 +120,9 @@ export default function SignIn() {
             </div>
             {errors.password && (
               <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+            )}
+            {error && (
+              <p className="mt-1 text-sm text-red-600">{error}</p>
             )}
           </div>
 

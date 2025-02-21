@@ -1,11 +1,14 @@
 import React from 'react';
 import { ArrowDownToLine, ArrowUpToLine, Repeat } from 'lucide-react';
 import { currency } from '../assets/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout, connectWallet, disconnectWallet } from '../store/authSlice';
 import { useAuth } from '../auth/AuthProvider';
 
 const WalletDropdown = ({ isOpen, onClose, balance = "54,730.00" }) => {
   if (!isOpen) return null;
-  const { disconnectWallet } = useAuth();
+  const dispatch = useDispatch();
+  // const { disconnectWallet } = useAuth();
 
   return (
     <div className="absolute right-2 top-6 max-sm:right-12 max-sm:top-22 max-sm:scale-120 mt-2 w-72 bg-white pb-4 rounded-lg shadow-lg border border-gray-100 ">
@@ -62,7 +65,7 @@ const WalletDropdown = ({ isOpen, onClose, balance = "54,730.00" }) => {
             <button className='flex-1 p-2.5 bg-[#D3D8DD] text-[#FF3E24] rounded-lg'
               onClick={(e) => {
                 e.preventDefault();
-                disconnectWallet();
+                dispatch(disconnectWallet());
               }}
             >Disconnect</button>
             <button className='flex-1 p-2.5 bg-[#FFC000] text-[#181F30] rounded-lg'>Send</button>

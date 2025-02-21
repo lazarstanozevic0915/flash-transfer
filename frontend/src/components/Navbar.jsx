@@ -1,7 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../auth/AuthProvider';
 import { Bell, ChevronDown, LogOut, Menu, X } from 'lucide-react';
 import { blogUser1Img, currency, icons, language } from '../assets/image';
 import logo from '../assets/image/logo.svg';
@@ -12,11 +11,12 @@ import NFTDropdown from './NFTDropdown';
 import NotificationDropdown from './NotificationDropdown';
 import WalletConnect from './WalletConnect';
 import WalletConnectDropdown from './WalletConnectDropdown';
-import { ActionButtonList } from './ActionButtonList'
-import { InfoList } from './InfoList'
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/authSlice';
 
 export default function Navbar() {
-  const { isAuthenticated, connectedWallet } = useAuth();
+  const dispatch = useDispatch();
+  const { isAuthenticated, connectedWallet } = useSelector((state) => state.auth);
   const [activeDropdown, setActiveDropdown] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isWalletDropdownOpen, setIsWalletDropdownOpen] = useState(false);
@@ -32,7 +32,6 @@ export default function Navbar() {
     { to: '/help', label: 'Help' },
   ];
 
-  const { logout } = useAuth();
 
   return (
     <nav className='relative z-50 border-b bg-[#F6F6F6] border-[#D3D8DD]'>
@@ -335,7 +334,7 @@ export default function Navbar() {
                     )}
                   </button>
                   <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
-                    onClick={() => logout()}
+                    onClick={() => dispatch(logout())}
                   >
                     <LogOut className="w-4 h-4" />
                     <span>Log out</span>

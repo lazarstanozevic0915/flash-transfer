@@ -44,6 +44,9 @@ import ScrollRestoration from "./components/ScrollRestoration";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import ScrollToTop from "./components/ScrollToTop";
 
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
 function App() {
 
   const router = createBrowserRouter(
@@ -103,11 +106,11 @@ function App() {
   )
 
   return (
-    <AuthProvider>
-      {/* <ScrollRestoration />
-      <ScrollToTopButton /> */}
+    // <AuthProvider>
+    // </AuthProvider>
+    <Provider store={store}>
       <RouterProvider router = { router }  />
-    </AuthProvider>
+    </Provider>
   )
 }
 
