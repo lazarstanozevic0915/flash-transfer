@@ -35,7 +35,7 @@ export default function Navbar() {
     { to: '/help', label: 'Help' },
   ];
 
-  const { logout } = useAuth();
+  // const { logout } = useAuth();
 
 
   const { open, close } = useAppKit()
