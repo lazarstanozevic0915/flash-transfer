@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
 import Landing from "./pages/Landing";
 import SignIn from "./pages/SignIn";
@@ -52,58 +53,59 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<ScrollToTop />}>
-            <Route index element = { <Landing /> } />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-            <Route path="/app-info" element={<AppInfo />} />
-            <Route path="/kyc" element={<KycPage />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/beneficiary" element={<Beneficiary />} />
+        <Route index element={<Landing />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/app-info" element={<AppInfo />} />
+        <Route path="/kyc" element={<KycPage />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/beneficiary" element={<Beneficiary />} />
 
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/track-order" element={<TrackOrder />} />
-            <Route path="/find-location" element={<FindLocation />} />
-            <Route path="/store-location" element={<StoreLocation />} />
-            <Route path="/help" element={<HelpPage />} />
-            <Route path="/blog" element={<Blogs />} />
-            <Route path="/complaints" element={<CompliantsPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/history" element={<HistoryPage />} />
-            <Route path="/currency" element={<AllCurrencyPage />} />
-            <Route path="/send">
-              <Route index element={<SendPage />} />
-              <Route path="new-contact" element={<NewContactPage />} />
-              <Route path="my-contact" element={<MyContactPage />} />
-              <Route path="receiver-info" >
-                  <Route index element={<ReceiverInfoPage />} />
-                  <Route path="beneficiary" element={<BeneficiaryInfoPage />} />
-                  <Route path="send-crypto" element={<SendCryptoPage />} />
-                  <Route path="confirm-crypto" element={<ConfirmCryptoPage />} />
-              </Route>
-              <Route path="receiver-method" >
-                  <Route index element={<MobileMoneyPage />} />
-                  <Route path="cash" element={<CashPage />} />
-                  <Route path="card" element={<CardPage />} />
-              </Route>
-              <Route path="payment">
-              <Route index element={<PendingPage />} />
-              <Route path="success" element={<PaymentCompletePage />} />
-              </Route>
-              <Route path="review-details"> 
-                <Route index element={<ReviewDetailsPage />} />
-                <Route path="confirm" element={<PaymentReceivedPage />} />
-              </Route>
-            </Route>
-            <Route path="*" element={<NotFoundPage />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/track-order" element={<TrackOrder />} />
+        <Route path="/find-location" element={<FindLocation />} />
+        <Route path="/store-location" element={<StoreLocation />} />
+        <Route path="/help" element={<HelpPage />} />
+        <Route path="/blog" element={<Blogs />} />
+        <Route path="/complaints" element={<CompliantsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/currency" element={<AllCurrencyPage />} />
+        <Route path="/send">
+          <Route index element={<SendPage />} />
+          <Route path="new-contact" element={<NewContactPage />} />
+          <Route path="my-contact" element={<MyContactPage />} />
+          <Route path="receiver-info" >
+            <Route index element={<ReceiverInfoPage />} />
+            <Route path="beneficiary" element={<BeneficiaryInfoPage />} />
+            <Route path="send-crypto" element={<SendCryptoPage />} />
+            <Route path="confirm-crypto" element={<ConfirmCryptoPage />} />
+          </Route>
+          <Route path="receiver-method" >
+            <Route index element={<MobileMoneyPage />} />
+            <Route path="cash" element={<CashPage />} />
+            <Route path="card" element={<CardPage />} />
+          </Route>
+          <Route path="payment">
+            <Route index element={<PendingPage />} />
+            <Route path="success" element={<PaymentCompletePage />} />
+          </Route>
+          <Route path="review-details">
+            <Route index element={<ReviewDetailsPage />} />
+            <Route path="confirm" element={<PaymentReceivedPage />} />
+          </Route>
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     )
   )
+
 
   return (
     // <AuthProvider>

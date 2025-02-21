@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Bell, ChevronDown, LogOut, Menu, X } from 'lucide-react';
 import { blogUser1Img, currency, icons, language } from '../assets/image';
@@ -9,8 +9,11 @@ import WalletDropdown from './WalletDropdown';
 import CurrencyLanguageDropdown from './CurrencyLanguageDropdown';
 import NFTDropdown from './NFTDropdown';
 import NotificationDropdown from './NotificationDropdown';
-import WalletConnect from './WalletConnect';
 import WalletConnectDropdown from './WalletConnectDropdown';
+import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
+import { ActionButtonList } from './ActionButtonList';
+
+
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/authSlice';
 
@@ -31,6 +34,31 @@ export default function Navbar() {
     { to: '/track-order', label: 'Track a transfer' },
     { to: '/help', label: 'Help' },
   ];
+
+  const { logout } = useAuth();
+
+
+  const { open, close } = useAppKit()
+
+
+  const openModal = () => {
+    open({ view: 'AllWallets' })
+  }
+
+
+  const { address, isConnected, caipAddress, status, embeddedWalletInfo } = useAppKitAccount()
+
+  // Fetch wallet details when connected
+  useEffect(() => {
+    if (isConnected) {
+      console.log("Wallet Connected:", {
+        address,
+        caipAddress,
+        status,
+        embeddedWalletInfo,
+      });
+    }
+  }, [isConnected, address, caipAddress, status, embeddedWalletInfo]);
 
 
   return (
@@ -169,9 +197,7 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="flex items-center space-x-1 text-[12px] dm-sans-medium">
-                  <appkit-button />
-                  {/* <ActionButtonList /> */}
-                  {/* <InfoList /> */}
+                <ActionButtonList />
                 <NavLink to="/signin" className="py-4 px-6 hover:scale-105">Login</NavLink>
                 <NavLink to="/signup" className="py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105">Sign up</NavLink>
               </div>
