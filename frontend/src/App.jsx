@@ -45,8 +45,11 @@ import ScrollRestoration from "./components/ScrollRestoration";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import ScrollToTop from "./components/ScrollToTop";
 
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import { ToastContainer } from "react-toastify";
 
 function App() {
 
@@ -112,6 +115,14 @@ function App() {
     // </AuthProvider>
     <Provider store={store}>
       <RouterProvider router = { router }  />
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        theme="light"
+      />
     </Provider>
   )
 }

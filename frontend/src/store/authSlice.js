@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../api/axios';
+import { toast } from 'react-toastify';
 
 export const loginUser = createAsyncThunk(
     'auth/login',
@@ -73,6 +74,8 @@ const authSlice = createSlice({
         localStorage.removeItem('userData');
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('isWalletConnected');
+        api.post('/logout');
+        toast.success('Successfully logged out!')
     },
     connectWallet: (state, action) => {
       state.connectedWallet = action.payload;

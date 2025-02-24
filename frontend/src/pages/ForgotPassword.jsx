@@ -17,7 +17,6 @@ export default function ForgotPassword() {
         }
       )
       alert(response.data.statusDesc);
-      return response.data.statusDesc
     } catch (error) {
       console.error(error);
     }

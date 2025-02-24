@@ -10,6 +10,7 @@ import CurrencyLanguageDropdown from './CurrencyLanguageDropdown';
 import NFTDropdown from './NFTDropdown';
 import NotificationDropdown from './NotificationDropdown';
 import WalletConnectDropdown from './WalletConnectDropdown';
+import WalletConnect from './WalletConnect'
 import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
 import { ActionButtonList } from './ActionButtonList';
 
