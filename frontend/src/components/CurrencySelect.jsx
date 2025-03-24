@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import usdtLogo from '../assets/image/icons/currency/usdt.svg'
 import eurLogo from '../assets/image/icons/currency/eur.svg'
 import solanaLogo from '../assets/image/icons/currency/solana.svg'
 import { currency } from '../assets/image';
 
 const CurrencySelect = ({ selectedCurrency, onSelect }) => {
+  
   const [isOpen, setIsOpen] = useState(false);
+  const [currencies, setCurrencies] = useState([])
+  useEffect(() => {
+    const fetchCurrencies = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/exchange/currencies`)
 
-  const currencies = [
-    { code: 'EUR', logo: eurLogo, label: 'EUR' },
-    { code: 'USDT', logo: usdtLogo, label: 'USDT' },
-    { code: 'USDC', logo: currency.usdc, label: 'USDC' },
-    { code: 'BTC', logo: currency.btc, label: 'BTC' },
-    { code: 'ETH', logo: currency.eth, label: 'ETH' },
-    { code: 'BNB', logo: currency.bnb, label: 'BNB' },
-    { code: 'SOL', logo: solanaLogo, label: 'SOL' },
-    { code: 'TON', logo: currency.ton, label: 'TON' },
-    { code: 'MATIC', logo: currency.polygon, label: 'MATIC' },
-    { code: 'BASE', logo: currency.base, label: 'BASE' },
-    { code: 'AVAX', logo: currency.avax , label: 'AVAX' },
-    { code: 'FTM', logo: currency.fantom, label: 'FTM' },
-    { code: 'COM', logo: currency.comoros, label: 'COM' },
-    { code: 'ARB', logo: currency.arb, label: 'ARB' },
-    { code: 'DAI', logo: currency.dai, label: 'DAI' },
-    { code: 'FLASH', logo: currency.flash, label: 'FLASH' },
-    { code: 'CRN', logo: currency.cronos, label: 'CRN' },
-  ];
+        if (response.ok) {
+          const res = await response.json()
+          setCurrencies(res.data)
+        } else {
+          console.error('Failed to fetch currencies:', response.status)
+        }
+      } catch (error) {
+        console.error('Error fetching currencies:', error)
+      }
+    }
 
+    fetchCurrencies()
+  }, [])
   return (
     <div className="relative">
       <button
@@ -35,11 +34,11 @@ const CurrencySelect = ({ selectedCurrency, onSelect }) => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <img 
-          src={selectedCurrency.logo} 
+          src={selectedCurrency.icon} 
           alt={selectedCurrency.code}
           className="w-6 h-6 rounded-full"
         />
-        <span>{selectedCurrency.label}</span>
+        <span>{selectedCurrency.code}</span>
         <svg 
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
           fill="none" 
@@ -62,12 +61,12 @@ const CurrencySelect = ({ selectedCurrency, onSelect }) => {
               }}
             >
               <img 
-                src={currency.logo} 
+                src={currency.icon} 
                 alt={currency.code}
                 className="w-4 h-4 rounded-full"
               />
               <span className="dm-sans-light text-[13px] text-[#181F30]">
-                {currency.label}
+                {currency.code}
               </span>
             </button>
           ))}

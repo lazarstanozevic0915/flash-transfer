@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 import heroBackground from '../assets/image/hero-background.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { blogUser1Img, currency, icons, language } from '../assets/image';
+import { setSourceCurrency, setWalletAddress  } from '../store/paymentSlice';
 import DonutProgress from '../components/DonutProgress';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ConfirmCryptoPage = () => {
+    const { sourceCurrency, walletAddress, destinationCurrency, receiverMethod, paymentMethod } = useSelector((state) => state.payment);
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [ sending, setSending ] = useState(receiverMethod === 'wallet' && paymentMethod === 'cash'? destinationCurrency : sourceCurrency );
+    const [ address, setAddress ] = useState(walletAddress || '');
+
+     useEffect(() => {
+            if (sending && receiverMethod === 'wallet' && paymentMethod !== 'cash' ) dispatch(setSourceCurrency(sending));
+            if (address) dispatch(setWalletAddress(address));
+        }, [sending, address, dispatch]);
+    
+    
     const handleSubmit = (e) => {
         e.preventDefault();
+        navigate('/send/review-details');
       };
 
   return (
@@ -33,7 +49,7 @@ const ConfirmCryptoPage = () => {
                 {/* Steps */}
                 {[
                     { label: "Receiver's info", description: "Enter the informations", active: true },
-                    { label: "Receiver's Method", description: "Enter the informations", active: false },
+                    { label: "Receiver's Method", description: "Enter the informations", active: true },
                     { label: "Review Details", description: "Enter the informations", active: false },
                     { label: "Payment Complete", description: "Enter the informations", active: false }
                 ].map((step, index) => (
@@ -84,13 +100,13 @@ const ConfirmCryptoPage = () => {
                         <form className="h-full w-full flex flex-col gap-6 justify-between" onSubmit={handleSubmit}> 
                             <div className="flex flex-col gap-2 w-full">
                                 <label htmlFor="country" className='text-[#181F30] dm-sans-medium text-[14px] max-sm:text-[12px] text-left'>Enter the Crypto Address of an EVM chain: <br /> (ETH, Polygon, Base, Arbitrum, Optimism ...)</label>
-                                <input type="text" id='country' className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='0x.................................' required />
+                                <input type="text" id='country' value={address} onChange={(e) => setAddress(e.target.value)} className='border p-2.5 rounded-md text-[14px] border-[#D3D8DD]' placeholder='0x.................................'  required />
                             </div>
                             <div className="flex flex-col gap-2 w-full">
                                 <label htmlFor="city" className='text-[#181F30] dm-sans-medium text-[14px] text-left max-sm:text-[12px]'>Select the Crypto</label>
                                 <div className='relative w-full'>
                                 <div className='absolute left-3 top-2.5  '><img src={currency.usdt} alt="" className='w-6 h-6' /> </div>
-                                <input type="text" id='country' className='border p-2.5 pl-14 rounded-md text-[14px]  border-[#D3D8DD] w-full' placeholder='USDT' required />
+                                <input type="text" id='country' value={sending} onChange={(e) => setSending(e.target.value)} className='border p-2.5 pl-14 rounded-md text-[14px]  border-[#D3D8DD] w-full' placeholder='USDT' required />
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
                                     <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -115,7 +131,7 @@ const ConfirmCryptoPage = () => {
 
                             <div className="flex max-sm:flex-col-reverse gap-3">
                                 <NavLink to={``} className='w-full p-2.5 flex items-center justify-center border rounded-xl text-[14px] border-[#D3D8DD] font-medium text-[#6E757D]'>Cancel</NavLink>
-                                <button className='w-full p-2.5 rounded-xl text-[14px] bg-[#FFC000]'>Continue</button>
+                                <button type='submit' className='w-full p-2.5 rounded-xl text-[14px] bg-[#FFC000]'>Continue</button>
                             </div> 
                         </form>
                     </div>

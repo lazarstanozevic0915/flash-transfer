@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import heroBackground from '../assets/image/hero-background.png'
 
@@ -34,7 +34,7 @@ import apple from '../assets/image/icons/apple.svg'
 import googlePlay from '../assets/image/icons/googlePlay.svg'
 import phoneBack from '../assets/image/icons/phoneBack.svg'
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import CurrencySelect from '../components/CurrencySelect'
 import FAQSection from '../components/FAQSection'
 import TestimonialsSection from '../components/TestimonialSection'
@@ -43,29 +43,351 @@ import Navbar from '../components/Navbar'
 import { useAuth } from '../auth/AuthProvider'
 import { walletIcons } from '../assets/image'
 import { useDispatch, useSelector } from 'react-redux';
+import { setSourceCurrency, setDestinationCurrency, setAmount } from '../store/paymentSlice';
+
 import { login, logout, connectWallet, disconnectWallet } from '../store/authSlice';
 
+
+
 export default function Landing() {
+   // Redux state for wallet connection
+const { isAuthenticated, connectedWallet } = useSelector((state) => state.auth);
+// Currency state
+const [fromCurrency, setFromCurrency] = useState({ code: 'USDT', icon: usdtLogo });
+const [toCurrency, setToCurrency] = useState({ code: 'EUR', icon: eurLogo });
 
-    // const { connectedWallet } = useAuth();
-    const [fromCurrency, setFromCurrency] = useState({ code: 'USDT', logo: usdtLogo, label: 'USDT' });
-    const [toCurrency, setToCurrency] = useState({ code: 'EUR', logo: eurLogo, label: 'EUR' });
-    const [sendAmount, setSendAmount] = useState('');
-    const [receiveAmount, setReceiveAmount] = useState('');
-    const { isAuthenticated, connectedWallet } = useSelector((state) => state.auth);
+const navigate = useNavigate();
+const dispatch = useDispatch();
 
-    const handleSwap = () => {
-        // Swap currencies
-        const tempCurrency = fromCurrency;
-        setFromCurrency(toCurrency);
-        setToCurrency(tempCurrency);
+// Amount state
+const [sendAmount, setSendAmount] = useState('');
+const [receiveAmount, setReceiveAmount] = useState('');
 
-        // Swap amounts
-        const tempAmount = sendAmount;
-        setSendAmount(receiveAmount);
-        setReceiveAmount(tempAmount);
-    };
+// Exchange rate state
+const [exchangeRate, setExchangeRate] = useState(1);
+
+// Transaction details state
+const [transactionDetails, setTransactionDetails] = useState({
+    fee: '2.50',
+    transferTime: '1 Min',
+    totalToPay: '0.00',
+    recipientGets: '0.00'
+});
+
+// Loading and error states
+const [isLoading, setIsLoading] = useState(false);
+const [error, setError] = useState(null);
+
+// Form validity state
+const [isFormValid, setIsFormValid] = useState(false);
+
+// Selected payment method state
+const [paymentMethod, setPaymentMethod] = useState(null);
+
+// UI states
+const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
+const [activeCurrencySelector, setActiveCurrencySelector] = useState(null); // 'from' or 'to'
+
+// Step state for multi-step process
+const [currentStep, setCurrentStep] = useState(1);
+
+// Beneficiary information state
+const [beneficiary, setBeneficiary] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    country: '',
+    address: ''
+});
+
+// Payment provider state (for mobile money, etc.)
+const [selectedProvider, setSelectedProvider] = useState(null);
+
+// Recent transactions state
+const [recentTransactions, setRecentTransactions] = useState([]);
+
+// Saved beneficiaries state
+const [savedBeneficiaries, setSavedBeneficiaries] = useState([]);
+
+// Transaction confirmation state
+const [isConfirmed, setIsConfirmed] = useState(false);
+
+// Transaction ID state
+const [transactionId, setTransactionId] = useState(null);
+
+// Transaction status state
+const [transactionStatus, setTransactionStatus] = useState(null); // 'pending', 'completed', 'failed'
+
+useEffect(() => {
+    if (fromCurrency) dispatch(setSourceCurrency(fromCurrency.code));
+    if (toCurrency) dispatch(setDestinationCurrency(toCurrency.code));
+    if (sendAmount) dispatch(setAmount(sendAmount));
+}, [fromCurrency, toCurrency, sendAmount, dispatch]);
+
+
+// Effect to fetch exchange rate when currencies change
+useEffect(() => {
+    if (fromCurrency.code && toCurrency.code) {
+        fetchExchangeRate(fromCurrency.code, toCurrency.code);
+    }
+}, [fromCurrency.code, toCurrency.code]);
+
+// Effect to update transaction details when amount changes
+useEffect(() => {
+    if (sendAmount && !isNaN(sendAmount) && parseFloat(sendAmount) > 0) {
+        calculateExchange();
+    }
+}, [sendAmount, fromCurrency.code, toCurrency.code]);
+
+// Effect to check form validity
+useEffect(() => {
+    validateForm();
+}, [sendAmount, receiveAmount, fromCurrency, toCurrency]);
+
+// Fetch exchange rate from API
+const fetchExchangeRate = async (from, to) => {
+    setIsLoading(true);
+    setError(null);
     
+    try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/exchange/rates?from=${from}&to=${to}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            setExchangeRate(data.data.rate);
+            
+            // If send amount exists, recalculate
+            if (sendAmount && !isNaN(sendAmount) && parseFloat(sendAmount) > 0) {
+                calculateExchange();
+            }
+        } else {
+            setError(data.message || 'Failed to fetch exchange rate');
+        }
+    } catch (err) {
+        setError('Network error: Could not fetch exchange rate');
+        console.error('Exchange rate API error:', err);
+    } finally {
+        setIsLoading(false);
+    }
+};
+
+// Calculate exchange details via API
+const calculateExchange = async () => {
+    if (!sendAmount || isNaN(sendAmount) || parseFloat(sendAmount) <= 0) return;
+    
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/exchange/calculate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fromCurrency: fromCurrency.code,
+                toCurrency: toCurrency.code,
+                amount: sendAmount
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            const { 
+                exchangeRate, 
+                fee, 
+                feeCurrency, 
+                totalToPay, 
+                recipientGets, 
+                transferTime, 
+                transferTimeUnit 
+            } = data.data;
+            
+            // Update exchange rate
+            setExchangeRate(exchangeRate);
+            
+            // Update transaction details
+            setTransactionDetails({
+                fee: fee.toFixed(2),
+                feeCurrency,
+                transferTime: `${transferTime} ${transferTimeUnit}`,
+                totalToPay: totalToPay.toFixed(2),
+                recipientGets: recipientGets.toFixed(2)
+            });
+            
+            // Update receive amount
+            setReceiveAmount(recipientGets.toFixed(2));
+        } else {
+            setError(data.message || 'Failed to calculate exchange');
+        }
+    } catch (err) {
+        setError('Network error: Could not calculate exchange');
+        console.error('Exchange calculate API error:', err);
+    } finally {
+        setIsLoading(false);
+    }
+};
+
+// Check if a currency is a cryptocurrency
+const isCryptoCurrency = (code) => {
+    const cryptoList = ['BTC', 'ETH', 'USDT', 'USDC', 'BNB', 'SOL', 'AVAX', 'FLASH', 'DAI', 'SUI'];
+    return cryptoList.includes(code);
+};
+
+// Validate form inputs
+const validateForm = () => {
+    const isValid = 
+        sendAmount && 
+        !isNaN(sendAmount) && 
+        parseFloat(sendAmount) > 0 && 
+        receiveAmount &&
+        !isNaN(receiveAmount) && 
+        parseFloat(receiveAmount) > 0;
+        
+    setIsFormValid(isValid);
+};
+
+// Handle send amount change
+const handleSendAmountChange = (value) => {
+    setSendAmount(value);
+    
+    if (value && !isNaN(value) && parseFloat(value) > 0) {
+        // Call API to calculate exchange
+        const parsedValue = parseFloat(value);
+        calculateExchange();
+    } else {
+        setReceiveAmount('');
+        setTransactionDetails({
+            fee: '0.00',
+            transferTime: '1 Min',
+            totalToPay: '0.00',
+            recipientGets: '0.00'
+        });
+    }
+};
+
+// Handle receive amount change
+const handleReceiveAmountChange = (value) => {
+    setReceiveAmount(value);
+    
+    if (value && !isNaN(value) && parseFloat(value) > 0) {
+        // Calculate equivalent send amount based on current exchange rate
+        const sendValue = (parseFloat(value) / exchangeRate).toFixed(8);
+        setSendAmount(sendValue);
+        
+        // API call will be triggered by the useEffect when sendAmount changes
+    } else {
+        setSendAmount('');
+        setTransactionDetails({
+            fee: '0.00',
+            transferTime: '1 Min',
+            totalToPay: '0.00',
+            recipientGets: '0.00'
+        });
+    }
+};
+
+// Handle currency swap
+const handleSwap = () => {
+    // Swap currencies
+    const tempCurrency = { ...fromCurrency };
+    setFromCurrency({ ...toCurrency });
+    setToCurrency(tempCurrency);
+    
+    // Swap amounts
+    const tempAmount = sendAmount;
+    setSendAmount(receiveAmount);
+    setReceiveAmount(tempAmount);
+    
+    // Exchange rate will be fetched by useEffect when currencies change
+};
+
+// Handle currency selection
+const handleCurrencySelect = (type, currency) => {
+    if (type === 'from') {
+        setFromCurrency(currency);
+    } else {
+        setToCurrency(currency);
+    }
+    
+    // Close the dropdown
+    setShowCurrencyDropdown(false);
+    setActiveCurrencySelector(null);
+};
+
+// Handle continue button click
+const handleContinue = () => {
+    // Validate form
+    if (!isFormValid) return;
+    
+    // Move to next step
+    setCurrentStep(currentStep + 1);
+    navigate('/send');
+};
+
+// Handle cancel button click
+const handleCancel = () => {
+    // Reset form
+    setSendAmount('');
+    setReceiveAmount('');
+    setTransactionDetails({
+        fee: '0.00',
+        transferTime: '1 Min',
+        totalToPay: '0.00',
+        recipientGets: '0.00'
+    });
+    setCurrentStep(1);
+    setError(null);
+};
+
+// Handle beneficiary form change
+const handleBeneficiaryChange = (field, value) => {
+    setBeneficiary({
+        ...beneficiary,
+        [field]: value
+    });
+};
+
+// Handle payment method selection
+const handlePaymentMethodSelect = (method) => {
+    setPaymentMethod(method);
+};
+
+// Handle provider selection
+const handleProviderSelect = (provider) => {
+    setSelectedProvider(provider);
+};
+
+// Handle transaction confirmation
+const handleConfirmTransaction = () => {
+    setIsLoading(true);
+    
+    // Simulate API call with setTimeout
+    setTimeout(() => {
+        // Generate random transaction ID
+        const txId = 'TX' + Math.floor(Math.random() * 1000000);
+        
+        setTransactionId(txId);
+        setTransactionStatus('pending');
+        setIsConfirmed(true);
+        setIsLoading(false);
+        
+        // Add to recent transactions
+        setRecentTransactions([
+            {
+                id: txId,
+                fromCurrency: fromCurrency.code,
+                toCurrency: toCurrency.code,
+                sendAmount,
+                receiveAmount,
+                date: new Date().toISOString(),
+                status: 'pending'
+            },
+            ...recentTransactions
+        ]);
+    }, 1500);
+};
     const faqData = [
         {
             title: "How send crypto to Flash Transfer?",
@@ -93,220 +415,264 @@ export default function Landing() {
         }
     ];
 
-  return (
-    <div className='w-full dm-sans '>
-        <div className="w-full h-screen  max-md:h-[200vh] max-sm:h-[1120px] max-md:w-screen bg-[#F6F6F6] rounded-b-[50px] max-sm:rounded-b-xl relative" >
-            <div className="absolute max-sm:hidden bottom-0 right-0 z-10">
-                <img src={heroBackground} alt="" className=' h-[500px] w-[820px] object-fill' />
+    return (
+        <div className='w-full dm-sans'>
+    <div className="w-full h-screen max-md:h-[200vh] max-sm:h-[1120px] max-md:w-screen bg-[#F6F6F6] rounded-b-[50px] max-sm:rounded-b-xl relative">
+      <div className="absolute max-sm:hidden bottom-0 right-0 z-10">
+        <img src={heroBackground} alt="" className='h-[500px] w-[820px] object-fill' />
+      </div>
+      <Navbar />
+      <main className='w-full h-[88%] px-32 max-sm:px-2 py-6 max-sm:h-[1000px]'>
+        <div className="w-full h-full flex max-md:flex-col max-md:gap-5 justify-between items-center relative z-20">
+          <div className="w-[500px] max-sm:w-[300px] md:h-[400px] flex flex-col space-y-4">
+            <span className='text-[54px]/16 max-sm:text-[28px]/9 dm-sans-medium'>Send, buy, or sell crypto globally with Flash Transfer</span>
+            <p className='text-[#6E757D] dm-sans-light text-[14px]/7 max-sm:text-[12px]/6'>Exchange your cryptocurrency vs cash or buy cryptocurrency with cash form our approved partners. You can also send your cryptocurrency vs fiat worldwide using your no-custodial wallet (Flash wallet, Metamask, Phantom ...) </p>
+            <div className="flex items-center max-md:flex-col max-md:gap-4 justify-center space-x-4">
+              <NavLink to={``} className={`flex max-md:w-full max-md:justify-center max-md:p-2 items-center dm-sans-medium text-[14px] px-12 py-2 rounded-md bg-[#222222] text-white space-x-2`}>
+                <img src={youtubeIcon} alt="youtube icon" className='w-[26px] h-[26px] object-fill' />
+                <span>Tutorial</span>
+              </NavLink>
+              <NavLink to={``} className={`flex max-md:w-full max-sm:-ml-4 max-md:justify-center max-md:p-2 items-center dm-sans-semibold text-[14px] px-12 py-2 rounded-md bg-[#E7E7E7] space-x-2`}>
+                <img src={trustIcon} alt="Trust Pilot icon" className='w-[26px] h-[26px] object-fill' />
+                <span>Trustpilot</span>
+              </NavLink>
             </div>
-            <Navbar />
-            <main className='w-full h-[88%] px-32 max-sm:px-2 py-6 max-sm:h-[1000px]'>
-                <div className="w-full h-full flex max-md:flex-col max-md:gap-5 justify-between items-center relative z-20">
-                    <div className="w-[500px] max-sm:w-[300px] md:h-[400px] flex flex-col space-y-4">
-                        <span className='text-[54px]/16 max-sm:text-[28px]/9 dm-sans-medium'>Send, buy, or sell crypto globally with Flash Transfer</span>
-                        <p className='text-[#6E757D] dm-sans-light text-[14px]/7 max-sm:text-[12px]/6'>Exchange your cryptocurrency vs cash or buy cryptocurrency with cash form our approved partners. You can also send your cryptocurrency vs fiat worldwide using your no-custodial wallet (Flash wallet, Metamask, Phantom ...) </p>
-                        <div className="flex items-center max-md:flex-col max-md:gap-4 justify-center space-x-4">
-                            <NavLink to={``} className={` flex max-md:w-full max-md:justify-center max-md:p-2 items-center dm-sans-medium text-[14px] px-12 py-2 rounded-md bg-[#222222] text-white space-x-2 `}>
-                                <img src={youtubeIcon} alt="youtube icon" className='w-[26px] h-[26px] object-fill' />
-                                <span>Tutorial</span>
-                            </NavLink>
-                            <NavLink to={``} className={` flex max-md:w-full max-sm:-ml-4 max-md:justify-center max-md:p-2 items-center dm-sans-semibold text-[14px] px-12 py-2 rounded-md bg-[#E7E7E7] space-x-2 `}>
-                                <img src={trustIcon} alt="Trust Pilot icon" className='w-[26px] h-[26px] object-fill' />
-                                <span>Trustpilot</span>
-                            </NavLink>
-                        </div>
-                    </div>
-                    <div className="w-[440px] max-sm:w-[350px] h-full max-sm:h-[550px] max-sm:pb-0 p-4 rounded-2xl shadow-2xl bg-white">
-                        <div className="w-full h-full flex flex-col space-y-1">
-                            {
-                                connectedWallet !== '' && connectedWallet !== null  && (
-                                    <div className='h-[8%] border p-0.5 w-full mb-2 flex items-center justify-center gap-1 rounded-lg bg-[rgba(0,199,53,0.2)] border-[rgba(0,199,53,0.6)]'>
-                                        { connectedWallet === 'Flash Wallet' && <img src={walletIcons.flashIcon} alt="" className='w-7 h-7 onject-fill' /> }
-                                        { connectedWallet === 'Metamask' && <img src={walletIcons.metamaskIcon} alt="" className='w-5 h-5 mr-1 onject-fill' /> }
-                                        { connectedWallet === 'Phantom' && <img src={walletIcons.phantomIcon} alt="" className='w-5 h-5 mr-1 onject-fill' /> }
-                                        { connectedWallet === 'Ledger' && <img src={walletIcons.ledgerIcon} alt="" className='w-5 h-5 mr-1 onject-fill' /> }
-                                        <span className='font-normal text-[#181F30] text-[13px]'>
-                                            {`${connectedWallet} - Connected`}
-                                        </span>
-                                    </div>
-                                )
-                            }
-                            <div className={`w-full ${connectedWallet !== '' ? 'h-[40%]' : 'h-[48%]'} relative flex flex-col gap-2`}>
-                                <div className="w-full h-[50%] rounded-2xl bg-[#EFF0F1] p-3">
-                                    <div className="w-full h-[30%] flex items-center justify-between">
-                                        <div>
-                                            <CurrencySelect 
-                                                selectedCurrency={fromCurrency}
-                                                onSelect={(currency) => setFromCurrency(currency)}
-                                            />
-                                        </div>
-                                        <span className='bg-white text-[10px] dm-sans-light text-[#181F30] px-3 py-1 rounded-lg'>Send</span>
-                                    </div>
-                                    <div className=" w-full h-[70%] flex items-center justify-center pb-2">
-                                        <div className="flex flex-col items-center gap-1">
-                                            <input type="text" className='p-2 outline-none dm-sans-medium text-[#181F30] text-[20px] w-32 text-center' placeholder='0.9382' />
-                                            <span className='text-[11px] dm-sans-light text-[#181F30]'>Amount Send</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-full h-[50%] rounded-2xl bg-[#EFF0F1] p-3">
-                                    <div className="w-full h-[30%] flex items-center justify-between">
-                                        <div>
-                                            <CurrencySelect 
-                                                selectedCurrency={toCurrency}
-                                                onSelect={(currency) => setToCurrency(currency)}
-                                            />
-                                        </div>
-                                        <span className='bg-white text-[10px] dm-sans-light text-[#181F30] px-3 py-1 rounded-lg '>Receive</span>
-                                    </div>
-                                    <div className=" w-full h-[70%] max-sm:h-[70%] flex items-center justify-center">
-                                        <div className="flex flex-col items-center gap-1">
-                                            <input type="text" className='p-2 outline-none dm-sans-medium text-[#181F30] text-[20px] w-32 text-center' placeholder='0.9382' disabled />
-                                            <span className='text-[11px] dm-sans-light text-[#181F30]'>Receive Amount</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button className="w-10 h-10 rounded-full absolute top-[43%] left-[45%] bg-[#FFC40F] border-6 border-white flex items-center justify-center hover:cursor-pointer" title='swap' onClick={handleSwap}>
-                                    <img src={swapIcon} alt="swap" className='h-[12px] w-[12px] object-center'  />
-                                </button>
-                            </div>
-                            <div className="w-full h-[36%] max-sm:h-[50%] flex flex-col">
-                                <div className="flex w-full items-center text-[#000000] justify-center py-2 text-[12px] border-b border-[#D3D8DD]">
-                                    <span className='dm-sans-light'>{`1 USDT = 1 EUR`}</span>
-                                </div>
-                                <div className="flex flex-col w-full items-center text-[#000000] justify-center gap-1 py-3 text-[12px] border-b border-[#D3D8DD]">
-                                    <div className='flex w-full items justify-between'>
-                                        <span className='text-[#6A6A6A] dm-sans-light'>Exchange Rate</span>
-                                        <span className='dm-sans-medium'>{`1 USDT = 1 EUR`}</span>
-                                    </div>
-                                    <div className='flex w-full items justify-between'>
-                                        <span className='text-[#6A6A6A] dm-sans-light'>Fee</span>
-                                        <span className='dm-sans-medium'>{`+2.50 EUR`}</span>
-                                    </div>
-                                    <div className='flex w-full items justify-between'>
-                                        <span className='text-[#6A6A6A] dm-sans-light'>Transfer Time</span>
-                                        <span className='dm-sans-medium'>{`1 Min`}</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col w-full items-center text-[#000000] justify-center gap-1 py-2 text-[12px]">
-                                    <div className='flex w-full items justify-between'>
-                                        <span className='text-[#6A6A6A] dm-sans-light'>Total to Pay</span>
-                                        <span className='dm-sans-medium'>{`102.50 EUR`}</span>
-                                    </div>
-                                    <div className='flex w-full items justify-between'>
-                                        <span className='text-[#6A6A6A] dm-sans-light'>Recipient Gets</span>
-                                        <span className='dm-sans-medium'>{`100.00 EUR`}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="w-full h-[16%] flex flex-col max-sm:-mt-24 max-sm:space-y-2 space-y-1">
-                                <button className='h-[50%] text-[11px] rounded-lg bg-[#FFC000] dm-sans-medium'>Continue</button>
-                                <button className='h-[50%] text-[11px] rounded-lg border border-[#D3D8DD] dm-sans-medium'>Cancel</button>
-                            </div>
-                        </div>
-                    </div>
+          </div>
+          <div className="w-[440px] max-sm:w-[350px] h-full max-sm:h-[550px] max-sm:pb-0 p-4 rounded-2xl shadow-2xl bg-white">
+            <div className="w-full h-full flex flex-col space-y-1">
+              {connectedWallet !== '' && connectedWallet !== null && (
+                <div className='h-[8%] border p-0.5 w-full mb-2 flex items-center justify-center gap-1 rounded-lg bg-[rgba(0,199,53,0.2)] border-[rgba(0,199,53,0.6)]'>
+                  {connectedWallet === 'Flash Wallet' && <img src={walletIcons.flashIcon} alt="" className='w-7 h-7 onject-fill' />}
+                  {connectedWallet === 'Metamask' && <img src={walletIcons.metamaskIcon} alt="" className='w-5 h-5 mr-1 onject-fill' />}
+                  {connectedWallet === 'Phantom' && <img src={walletIcons.phantomIcon} alt="" className='w-5 h-5 mr-1 onject-fill' />}
+                  {connectedWallet === 'Ledger' && <img src={walletIcons.ledgerIcon} alt="" className='w-5 h-5 mr-1 onject-fill' />}
+                  <span className='font-normal text-[#181F30] text-[13px]'>
+                    {`${connectedWallet} - Connected`}
+                  </span>
                 </div>
-            </main>
+              )}
+              <div className={`w-full ${connectedWallet !== '' ? 'h-[40%]' : 'h-[48%]'} relative flex flex-col gap-2`}>
+                <div className="w-full h-[50%] rounded-2xl bg-[#EFF0F1] p-3">
+                  <div className="w-full h-[30%] flex items-center justify-between">
+                    <div>
+                      <CurrencySelect 
+                        selectedCurrency={fromCurrency}
+                        onSelect={(currency) => setFromCurrency(currency)}
+                      />
+                    </div>
+                    <span className='bg-white text-[10px] dm-sans-light text-[#181F30] px-3 py-1 rounded-lg'>Send</span>
+                  </div>
+                  <div className="w-full h-[70%] flex items-center justify-center pb-2">
+                    <div className="flex flex-col items-center gap-1">
+                      <input 
+                        type="text" 
+                        className='p-2 outline-none dm-sans-medium text-[#181F30] text-[20px] w-32 text-center' 
+                        placeholder='0.0000' 
+                        value={sendAmount}
+                        onChange={(e) => handleSendAmountChange(e.target.value)}
+                      />
+                      <span className='text-[11px] dm-sans-light text-[#181F30]'>Amount Send</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full h-[50%] rounded-2xl bg-[#EFF0F1] p-3">
+                  <div className="w-full h-[30%] flex items-center justify-between">
+                    <div>
+                      <CurrencySelect 
+                        selectedCurrency={toCurrency}
+                        onSelect={(currency) => setToCurrency(currency)}
+                      />
+                    </div>
+                    <span className='bg-white text-[10px] dm-sans-light text-[#181F30] px-3 py-1 rounded-lg'>Receive</span>
+                  </div>
+                  <div className="w-full h-[70%] max-sm:h-[70%] flex items-center justify-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <input 
+                        type="text" 
+                        className='p-2 outline-none dm-sans-medium text-[#181F30] text-[20px] w-32 text-center' 
+                        placeholder='0.0000'
+                        value={receiveAmount}
+                        onChange={(e) => handleReceiveAmountChange(e.target.value)}
+                      />
+                      <span className='text-[11px] dm-sans-light text-[#181F30]'>Receive Amount</span>
+                    </div>
+                  </div>
+                </div>
+                <button 
+                  className="w-10 h-10 rounded-full absolute top-[43%] left-[45%] bg-[#FFC40F] border-6 border-white flex items-center justify-center hover:cursor-pointer" 
+                  title='swap' 
+                  onClick={handleSwap}
+                  disabled={isLoading}
+                >
+                  <img src={swapIcon} alt="swap" className='h-[12px] w-[12px] object-center' />
+                </button>
+              </div>
+              <div className="w-full h-[36%] max-sm:h-[50%] flex flex-col">
+                <div className="flex w-full items-center text-[#000000] justify-center py-2 text-[12px] border-b border-[#D3D8DD]">
+                  {isLoading ? (
+                    <span className='dm-sans-light'>Loading exchange rate...</span>
+                  ) : error ? (
+                    <span className='dm-sans-light text-red-500'>{error}</span>
+                  ) : (
+                    <span className='dm-sans-light'>
+                      {`1 ${fromCurrency.code} = ${exchangeRate.toFixed(4)} ${toCurrency.code}`}
+                    </span>
+                  )}
+                </div>
+                <div className="flex flex-col w-full items-center text-[#000000] justify-center gap-1 py-3 text-[12px] border-b border-[#D3D8DD]">
+                  <div className='flex w-full items justify-between'>
+                    <span className='text-[#6A6A6A] dm-sans-light'>Exchange Rate</span>
+                    <span className='dm-sans-medium'>
+                      {`1 ${fromCurrency.code} = ${exchangeRate.toFixed(4)} ${toCurrency.code}`}
+                    </span>
+                  </div>
+                  <div className='flex w-full items justify-between'>
+                    <span className='text-[#6A6A6A] dm-sans-light'>Fee</span>
+                    <span className='dm-sans-medium'>
+                      {`+${transactionDetails.fee} ${toCurrency.code}`}
+                    </span>
+                  </div>
+                  <div className='flex w-full items justify-between'>
+                    <span className='text-[#6A6A6A] dm-sans-light'>Transfer Time</span>
+                    <span className='dm-sans-medium'>
+                      {transactionDetails.transferTime}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-col w-full items-center text-[#000000] justify-center gap-1 py-2 text-[12px]">
+                  <div className='flex w-full items justify-between'>
+                    <span className='text-[#6A6A6A] dm-sans-light'>Total to Pay</span>
+                    <span className='dm-sans-medium'>
+                      {`${transactionDetails.totalToPay} ${fromCurrency.code}`}
+                    </span>
+                  </div>
+                  <div className='flex w-full items justify-between'>
+                    <span className='text-[#6A6A6A] dm-sans-light'>Recipient Gets</span>
+                    <span className='dm-sans-medium'>
+                      {`${transactionDetails.recipientGets} ${toCurrency.code}`}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full h-[16%] flex flex-col max-sm:-mt-24 max-sm:space-y-2 space-y-1">
+                <button 
+                  className='h-[50%] text-[11px] rounded-lg bg-[#FFC000] dm-sans-medium disabled:opacity-50'
+                  onClick={handleContinue}
+                  disabled={!isFormValid || isLoading}
+                >
+                  Continue
+                </button>
+                <button 
+                  className='h-[50%] text-[11px] rounded-lg border border-[#D3D8DD] dm-sans-medium'
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="w-full bg-white pt-24 max-sm:pt-20 px-12 max-sm:px-0 space-y-14" >
-            <div className="w-full px-20 max-sm:px-4  flex flex-col items-center">
-                <div className='w-full flex flex-col items-center max-sm:px-2 space-y-6'>
-                    <span className='text-[36px] text-[#181F30] max-sm:text-[24px]/6 font-semibold max-sm:text-center'>Choose from our trusted partners</span>
-                    <div className='flex flex-col items-center max-md:items-start space-y-1'>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:text-center max-md:text-left'>We make sure your money is delivered quickly and easily <br className='max-sm:hidden' /> Choose payment types from our network: cash collection points, mobile money and bank transfer.</span>
-                    </div>
-                    <div className="grid grid-cols-5 max-sm:grid-cols-2 max-md:grid-cols-3 max-md:h-full max-sm:h-full w-full h-[200px] gap-4 grid-rows-2">
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={coinbaseLogo} alt="coinbase logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={binanceLogo} alt="binance logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={microsoftLogo} alt="microsoft logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={orangeMoneyLogo} alt="orange money logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={mtnLogo} alt="mtn logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={waveLogo} alt="wave logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={mooveMoneyLogo} alt="moove money logo" className='w-[5rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={walletConnectLogo} alt="wallet connect logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={blockmateLogo} alt="block mate logo" className='w-[8rem] object-cover' />
-                        </div>
-                        <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
-                            <img src={julayaLogo} alt="julaya logo" className='w-[8rem] object-cover' />
-                        </div>
-                    </div>
-                </div>
+      </main>
+    </div>
+    <div className="w-full bg-white pt-24 max-sm:pt-20 px-12 max-sm:px-0 space-y-14">
+      <div className="w-full px-20 max-sm:px-4 flex flex-col items-center">
+        <div className='w-full flex flex-col items-center max-sm:px-2 space-y-6'>
+          <span className='text-[36px] text-[#181F30] max-sm:text-[24px]/6 font-semibold max-sm:text-center'>Choose from our trusted partners</span>
+          <div className='flex flex-col items-center max-md:items-start space-y-1'>
+            <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:text-center max-md:text-left'>We make sure your money is delivered quickly and easily <br className='max-sm:hidden' /> Choose payment types from our network: cash collection points, mobile money and bank transfer.</span>
+          </div>
+          <div className="grid grid-cols-5 max-sm:grid-cols-2 max-md:grid-cols-3 max-md:h-full max-sm:h-full w-full h-[200px] gap-4 grid-rows-2">
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={coinbaseLogo} alt="coinbase logo" className='w-[8rem] object-cover' />
             </div>
-            <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-6 max-sm:py-12 max-md:py-5 relative flex max-sm:grid items-center bg-[#F6F6F6] rounded-4xl max-sm:rounded-2xl">
-                <div className="absolute bottom-2 right-32">
-                    <img src={heroBackground} alt="" className='w-[700px]' />
-                </div>
-                <div className='w-full h-[70%] max-md:h-full relative z-20 flex max-md:grid max-md:gap-4 items-center space-x-6'>
-                    <div className='flex flex-col space-y-4 w-[30%] max-md:w-full'>
-                        <span className='bg-white text-[10px] dm-sans-light max-sm:text-[13px] text-[#181F30] w-36 max-sm:w-fit border-[#D3D8DD] border px-3 py-1 rounded-2xl'>Fast, Secure Exchange</span>
-                        <span className='text-[36px]/12 max-md:hidden dm-sans-medium'>Global Fiat and Crypto  Exchange at Your Fingertips</span>
-                        <span className='md:hidden text-[22px]/7 dm-sans-medium'>Global Fiat and Crypto <br />  Exchange at Your Fingertips</span>
-                        <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:w-[92%] max-md:text-[13px]'>
-                        Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.
-                        </span>
-                    </div>
-                    <div className='w-[60%] max-md:w-full h-full max-sm:mt-4 flex max-md:grid space-x-6'>
-                        <div className='w-[46%] max-md:w-full h-full flex space-y-6 flex-col items-end'>
-                            <div className='w-[86%] max-md:w-full max-md:h-full h-[60%] rounded-2xl bg-white p-4 flex flex-col justify-between'>
-                                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px] max-md:pb-5 '>20</span>
-                                <div className='space-y-2 grid pb-6'>
-                                    <span className='text-[#181F30] max-sm:hidden dm-sans-bold text-[10px] max-sm:text-[16px]'>
-                                        Popular cryptocurrencies available !
-                                    </span>
-                                    <span className='text-[#181F30] md:hidden dm-sans-bold text-[12px] max-sm:text-[16px]'>
-                                        Popular cryptocurrencies <br /> available !
-                                    </span>
-                                    <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
-                                        You can exchange your cryptocurrencies: BTC, ETH, FLASH, USDC, USDT, DAI, BNB, POL, SOL, AVAX, CRO, SUI and more.
-                                    </span>
-                                </div>
-                            </div>
-                            <div className='w-full h-[40%] max-md:h-full rounded-2xl bg-white p-4 flex flex-col max-md:grid max-md:space-y-6 justify-between'>
-                                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px]'>200+</span>
-                                <div className='space-y-2 grid'>
-                                    <span className='text-[#181F30] dm-sans-bold text-[10px] max-sm:text-[16px]'>
-                                        Fiat Currencies Support
-                                    </span>
-                                    <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
-                                        We support all Fiat currencies in the world!
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-[50%] max-md:w-full h-full flex items-center'>
-                            <div className='h-[50%] w-[90%] max-md:w-full max-md:h-full mt-6 rounded-2xl bg-white p-4 flex flex-col justify-between'>
-                                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px]'>5k</span>
-                                <div className='space-y-2 grid pb-6'>
-                                    <span className='text-[#181F30] dm-sans-bold text-[10px] max-sm:text-[16px]'>
-                                        Active Users
-                                    </span>
-                                    <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
-                                        Our users are satisfied with the speed, low fees and support !
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={binanceLogo} alt="binance logo" className='w-[8rem] object-cover' />
             </div>
-            <div className="w-full px-20 max-md:px-4 flex flex-col items-center">
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={microsoftLogo} alt="microsoft logo" className='w-[8rem] object-cover' />
+            </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={orangeMoneyLogo} alt="orange money logo" className='w-[8rem] object-cover' />
+            </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={mtnLogo} alt="mtn logo" className='w-[8rem] object-cover' />
+            </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={waveLogo} alt="wave logo" className='w-[8rem] object-cover' />
+            </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={mooveMoneyLogo} alt="moove money logo" className='w-[5rem] object-cover' />
+            </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={walletConnectLogo} alt="wallet connect logo" className='w-[8rem] object-cover' />
+            </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={blockmateLogo} alt="block mate logo" className='w-[8rem] object-cover' />
+            </div>
+            <div className='w-full h-full py-3 border border-[#D3D8DD] rounded-md flex items-center justify-center'>
+              <img src={julayaLogo} alt="julaya logo" className='w-[8rem] object-cover' />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full h-[80vh] max-md:h-full px-20 max-md:px-6 max-sm:py-12 max-md:py-5 relative flex max-sm:grid items-center bg-[#F6F6F6] rounded-4xl max-sm:rounded-2xl">
+        <div className="absolute bottom-2 right-32">
+          <img src={heroBackground} alt="" className='w-[700px]' />
+        </div>
+        <div className='w-full h-[70%] max-md:h-full relative z-20 flex max-md:grid max-md:gap-4 items-center space-x-6'>
+          <div className='flex flex-col space-y-4 w-[30%] max-md:w-full'>
+            <span className='bg-white text-[10px] dm-sans-light max-sm:text-[13px] text-[#181F30] w-36 max-sm:w-fit border-[#D3D8DD] border px-3 py-1 rounded-2xl'>Fast, Secure Exchange</span>
+            <span className='text-[36px]/12 max-md:hidden dm-sans-medium'>Global Fiat and Crypto Exchange at Your Fingertips</span>
+            <span className='md:hidden text-[22px]/7 dm-sans-medium'>Global Fiat and Crypto <br /> Exchange at Your Fingertips</span>
+            <span className='text-[#6E757D] dm-sans-light text-[14px] max-sm:w-[92%] max-md:text-[13px]'>
+              Exchange your favorite cryptocurrencies and fiat currencies seamlessly with fast transactions, low fees, and 24/7 support.
+            </span>
+          </div>
+          <div className='w-[60%] max-md:w-full h-full max-sm:mt-4 flex max-md:grid space-x-6'>
+            <div className='w-[46%] max-md:w-full h-full flex space-y-6 flex-col items-end'>
+              <div className='w-[86%] max-md:w-full max-md:h-full h-[60%] rounded-2xl bg-white p-4 flex flex-col justify-between'>
+                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px] max-md:pb-5'>20</span>
+                <div className='space-y-2 grid pb-6'>
+                  <span className='text-[#181F30] max-sm:hidden dm-sans-bold text-[10px] max-sm:text-[16px]'>
+                    Popular cryptocurrencies available !
+                  </span>
+                  <span className='text-[#181F30] md:hidden dm-sans-bold text-[12px] max-sm:text-[16px]'>
+                    Popular cryptocurrencies <br /> available !
+                  </span>
+                  <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
+                    You can exchange your cryptocurrencies: BTC, ETH, FLASH, USDC, USDT, DAI, BNB, POL, SOL, AVAX, CRO, SUI and more.
+                  </span>
+                </div>
+              </div>
+              <div className='w-full h-[40%] max-md:h-full rounded-2xl bg-white p-4 flex flex-col max-md:grid max-md:space-y-6 justify-between'>
+                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px]'>200+</span>
+                <div className='space-y-2 grid'>
+                  <span className='text-[#181F30] dm-sans-bold text-[10px] max-sm:text-[16px]'>
+                    Fiat Currencies Support
+                  </span>
+                  <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
+                    We support all Fiat currencies in the world!
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className='w-[50%] max-md:w-full h-full flex items-center'>
+              <div className='h-[50%] w-[90%] max-md:w-full max-md:h-full mt-6 rounded-2xl bg-white p-4 flex flex-col justify-between'>
+                <span className='text-[36px]/12 dm-sans-medium max-md:text-[42px]'>5k</span>
+                <div className='space-y-2 grid pb-6'>
+                  <span className='text-[#181F30] dm-sans-bold text-[10px] max-sm:text-[16px]'>
+                    Active Users
+                  </span>
+                  <span className='text-[#6E757D] dm-sans-medium text-[10px] max-sm:text-[14px]'>
+                    Our users are satisfied with the speed, low fees and support !
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full px-20 max-md:px-4 flex flex-col items-center">
                 <div className='w-full flex flex-col items-center max-sm:mt-5 max-sm:items-center space-y-6 max-sm:space-y-4'>
                     <span className='text-[36px] text-[#181F30] max-sm:text-[24px]/6 font-semibold max-sm:text-center'>Why Choose Us</span>
                     <div className='flex flex-col items-center space-y-1'>
@@ -467,5 +833,5 @@ export default function Landing() {
         </div>
         <Footer />
     </div>
-  )
+    );
 }

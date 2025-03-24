@@ -7,16 +7,100 @@ import heroBackground from '../assets/image/hero-background.png';
 import track from "../assets/image/icons/track.svg";
 import { Check, Printer } from 'lucide-react';
 import DonutProgress from '../components/DonutProgress';
+import { useSelector } from 'react-redux';
 
 const PaymentReceivedPage = () => {
 
+    const { amount, sourceCurrency } = useSelector((state) => state.payment);
 
     const handleSubmit = (e) => {
         e.preventDefault();
       };
 
+      const handlePrint = () => {
+        window.print();
+      };
+      // Add a style tag with print-specific CSS
+    const printStyles = `
+    @media print {
+        /* Hide elements during print */
+        nav, .max-sm\\:hidden, .max-sm\\:flex, .print-hidden, footer {
+            display: none !important;
+        }
+        
+        /* Reset background for better printing */
+        .bg-\\[\\#F6F6F6\\] {
+            background-color: white !important;
+            height: auto !important;
+        }
+        
+        /* Main content adjustments */
+        .min-h-screen {
+            min-height: auto !important;
+        }
+        
+        /* Content container adjustments */
+        .w-\\[800px\\] {
+            width: 100% !important;
+            min-height: auto !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        /* Remove unnecessary spacing */
+        .pt-24, .pb-40, .space-y-4, .p-6, .mb-6 {
+            padding: 0 !important;
+            margin: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-bottom: 10px !important;
+        }
+        
+        /* Form spacing */
+        form.gap-6 {
+            gap: 10px !important;
+        }
+        
+        /* Shadow and border adjustments */
+        .shadow-md, .rounded-4xl, .rounded-2xl {
+            box-shadow: none !important;
+            border-radius: 0 !important;
+        }
+        
+        /* Hide background image */
+        .absolute.top-0.left-\\[26\\%\\] {
+            display: none !important;
+        }
+        
+        /* Scale text down a bit for better fit */
+        .text-\\[44px\\]\\/10 {
+            font-size: 32px !important;
+        }
+        
+        /* Container adjustments */
+        .w-full.rounded-4xl.bg-white.shadow-md.p-6 {
+            padding: 10px !important;
+        }
+        
+        /* Page break adjustments */
+        html, body {
+            height: auto !important;
+            overflow: auto !important;
+        }
+        
+        /* Ensure everything fits on one page */
+        @page {
+            size: auto;
+            margin: 10mm;
+        }
+    }
+    `;
+
+
   return (
     <div className="min-h-screen dm-sans">
+        {/* Print styles */}
+        <style>{printStyles}</style>
       {/* Header */}
      <Navbar />
 
@@ -118,7 +202,7 @@ const PaymentReceivedPage = () => {
                                     </div>
                                     <div className="flex justify-between py-3 border-b border-[#F6F6F6]">
                                         <span>Rising</span>
-                                        <span className="font-semibold">203.90 EUR</span>
+                                        <span className="font-semibold">{amount} {sourceCurrency}</span>
                                     </div>
                                     <div className="flex justify-between py-3 border-b border-[#F6F6F6]">
                                         <span>Bic/Swift</span>
@@ -137,7 +221,7 @@ const PaymentReceivedPage = () => {
 
                             <div className="">
                                 <h2 className="text-blue-500 font-semibold">Step 3</h2>
-                                <p>Your money will be available once we have received the total amount of 203.90 EUR</p>
+                                <p>Your money will be available once we have received the total amount of {amount} {sourceCurrency}</p>
                             </div>
 
                             <div className="flex items-center bg-gray-200 py-4 px-3 max-sm:text-[13px] rounded-lg mb-6 max-sm:mb-0.5">
@@ -145,7 +229,7 @@ const PaymentReceivedPage = () => {
                                 <p className="font-semibold text-[15px]  text-[#6E757D] ml-2">Tracking Number (FTN): <br className='md:hidden' /> <span className="text-gray-800">771 824 9542</span></p>
                             </div>
 
-                            <button className="w-full flex items-center justify-center py-3 max-sm:py-4 bg-yellow-500 text-gray-900 font-bold rounded-lg gap-2 hover:bg-yellow-600 transition-colors">
+                            <button className="w-full flex items-center justify-center py-3 max-sm:py-4 bg-yellow-500 text-gray-900 font-bold rounded-lg gap-2 hover:bg-yellow-600 transition-colors print-hidden" onClick={handlePrint}>
                                 <Printer />
                                 Print
                             </button>

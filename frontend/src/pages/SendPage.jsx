@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+import { setPaymentMethod, setReceiverMethod } from '../store/paymentSlice';
 
 import heroBackground from '../assets/image/hero-background.png';
 import { icons } from '../assets/image';
@@ -12,23 +14,49 @@ import CashPick from '../icons/CashPick';
 import CashWallet from '../icons/CashWallet';
 import MobileMoney from '../icons/MobileMoney';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SendPage = () => {
-  const [activePage, setActivePage] = useState('form');
-  const [activePay, setActivePay] = useState('cash');
-  const [activeReceive, setActiveReceive] = useState('cash');
-  const [error, setError] = useState('');
-  const [status, setStatus] = useState('inProgress');
+  const dispatch = useDispatch();
+  const { paymentMethod, receiverMethod } = useSelector((state) => state.payment);
+
+  // const [activePage, setActivePage] = useState('form');
+  // const [activePay, setActivePay] = useState('cash');
+  // const [activeReceive, setActiveReceive] = useState('cash');
+  // const [error, setError] = useState('');
+  // const [status, setStatus] = useState('inProgress');
+
+  // Initialize local state with Redux state values
+  const [activePay, setActivePay] = useState(paymentMethod || 'cash');
+  const [activeReceive, setActiveReceive] = useState(receiverMethod || 'cash');
+
+  // Update Redux when local state changes
+  useEffect(() => {
+    dispatch(setPaymentMethod(activePay));
+  }, [activePay, dispatch]);
+
+  useEffect(() => {
+    dispatch(setReceiverMethod(activeReceive));
+  }, [activeReceive, dispatch]);
+
+  const handlePaymentMethodChange = (method) => {
+    setActivePay(method);
+  };
+
+  const handleReceiverMethodChange = (method) => {
+    setActiveReceive(method);
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const trackingNumber = e.target['tracking-number'].value;
-    if (trackingNumber === '' || trackingNumber.length !== 10) {
-      setError('Enter 10-Digit tracking number');
-    } else {
-      setActivePage('status');
-      setStatus(trackingNumber.endsWith('1') ? 'inProgress' : 'cancelled');
-    }
+    // const trackingNumber = e.target['tracking-number'].value;
+    // if (trackingNumber === '' || trackingNumber.length !== 10) {
+    //   setError('Enter 10-Digit tracking number');
+    // } else {
+    //   setActivePage('status');
+    //   setStatus(trackingNumber.endsWith('1') ? 'inProgress' : 'cancelled');
+    // }
   };
 
   return (
@@ -70,28 +98,28 @@ const SendPage = () => {
                         <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-4">
                       <button 
                           className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${activePay === 'cash' ? 'bg-blue-500 text-white' : ''}`}
-                          onClick={() => setActivePay('cash')}
+                          onClick={() => handlePaymentMethodChange('cash')}
                       >
                           <HandCash color={activePay === 'cash' ? 'white' : '#2475FF'} />
                           <h3>Cash Payment</h3>
                       </button>
                             <button 
                                 className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'wallet' && 'bg-blue-500 text-white'} `}
-                                onClick={() => setActivePay('wallet')}
+                                onClick={() => handlePaymentMethodChange('wallet')}
                             >
                                 <CryptoWallet color={activePay === 'wallet' ? 'white' : '#2475FF'} />
                                 <h3 className=''>Crypto Wallet</h3>
                             </button>
                             <button 
                                 className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'card' && 'bg-blue-500 text-white'} `}
-                                onClick={() => setActivePay('card')}
+                                onClick={() => handlePaymentMethodChange('card')}
                             >
                                 <CreditCard color={activePay === 'card' ? 'white' : '#2475FF'} />
                                 <h3 className=''>Credit Card</h3>
                             </button>
                             <button 
                                 className={`flex items-center justify-center text-[13px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activePay === 'bank' && 'bg-blue-500 text-white'} `}
-                                onClick={() => setActivePay('bank')}
+                                onClick={() => handlePaymentMethodChange('bank')}
                             >
                                 <Bank color={activePay === 'bank' ? 'white' : '#2475FF'} />
                                 <h3 className=''>Bank Transfer</h3>
@@ -103,30 +131,30 @@ const SendPage = () => {
                         <div className="grid grid-cols-3 gap-4">
                             <button 
                                 className={`flex flex-col items-center justify-center text-[14px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activeReceive === 'cash' && 'bg-blue-500 text-white'} `}
-                                onClick={() => setActiveReceive('cash')}
+                                onClick={() => handleReceiverMethodChange('cash')}
                             >
                                 <CashPick color={activeReceive === 'cash' ? 'blue-500' : 'white'} />
                                 <h3 className=''>Cash Payment</h3>
                             </button>
                             <button 
                                 className={`flex flex-col items-center justify-center text-[14px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activeReceive === 'wallet' && 'bg-blue-500 text-white'} `}
-                                onClick={() => setActiveReceive('wallet')}
+                                onClick={() => handleReceiverMethodChange('wallet')}
                             >
                                 <CashWallet color={activeReceive === 'wallet' ? 'blue-500' : 'white'} />
                                 <h3 className=''>Crypto Wallet</h3>
                             </button>
                             <button 
                                 className={`flex flex-col items-center justify-center text-[14px] bg-[#F4F5F7] text-[#181F30] p-4 rounded-2xl cursor-pointer gap-2 ${ activeReceive === 'mobile' && 'bg-blue-500 text-white'} `}
-                                onClick={() => setActiveReceive('mobile')}
+                                onClick={() => handleReceiverMethodChange('mobile')}
                             >
                                 <MobileMoney color={activeReceive === 'mobile' ? 'blue-500' : ''} />
-                                <h3 className=''>Credit Card</h3>
+                                <h3 className=''>Mobile Money</h3>
                             </button>
                         </div>
                     </div>
                     <div className="flex max-sm:flex-col-reverse gap-4">
-                        <NavLink to={`/send/new-contact`} className='w-full p-3 flex items-center justify-center border rounded-xl text-[14px] border-[#2475FF] text-[#2475FF]'>Add From Contact</NavLink>
-                        <button className='w-full p-3 rounded-xl text-[14px] bg-[#FFC000]'>Add New</button>
+                        <NavLink  to={`/send/my-contact`} className='w-full p-3 flex items-center justify-center border rounded-xl text-[14px] border-[#2475FF] text-[#2475FF]'>Add From Contact</NavLink>
+                        <NavLink to={`/send/new-contact`} className='w-full p-3 rounded-xl flex items-center justify-center text-[14px] bg-[#FFC000]'>Add New</NavLink>
                     </div>
                 </form>
               </div>

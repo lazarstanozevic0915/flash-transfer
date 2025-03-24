@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 import heroBackground from '../assets/image/hero-background.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { blogUser1Img, icons, language } from '../assets/image';
 import { Check } from 'lucide-react';
 import logo from "../assets/image/logo.svg";
@@ -20,6 +20,7 @@ const SendCryptoPage = () => {
 
   const fullAddress = "1A1zP1eP5QGefi2DMPTfTL5S1A1zP1eP5QGefi2DMPTfTL5S"; // Full address to copy
   const [copied, setCopied] = useState(false);
+  const navigate = useNavigate();
 
   const handleCopy = async () => {
     try {
@@ -52,6 +53,7 @@ const SendCryptoPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        navigate('/send/receiver-info/confirm-crypto');
       };
 
   return (
@@ -170,6 +172,7 @@ const SendCryptoPage = () => {
                                               <span className="text-sm font-medium text-gray-700 min-w-[80px]">{name}</span>
                                             </div>
                                             <button 
+                                              type='submit'
                                               className="px-4 py-2 bg-[#D3D8DD] rounded-full text-sm flex justify-end text-gray-500 hover:bg-gray-100"
                                             >
                                               Connect

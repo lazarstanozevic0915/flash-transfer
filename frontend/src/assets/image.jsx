@@ -82,6 +82,9 @@ import swap2Icon from './image/icons/swap2.svg';
 import transaction2Icon from './image/icons/transaction2.svg';
 import logout2Icon from './image/icons/logout2.svg';
 
+import bank from './image/icons/bank.svg';
+import card from './image/icons/mastercard2.svg';
+
 import grade from './image/icons/grade.png';
 
 import arb from './image/icons/currency/arb.svg';
@@ -192,7 +195,7 @@ import aboutus from './image/users/aboutUsHero.png';
 import UAEflag from './image/offices/UAE.svg';
 import UKflag from './image/offices/UK.svg';
 import Franceflag from './image/offices/france.svg';
-import HongKongflag from './image/offices/hongKong.svg';
+import HongKongflag from './image/offices/hongkong.svg';
 import dohaflag from './image/offices/doha.svg';
 import IvoryCoastflag from './image/offices/ivorycoast.svg';
 import Singaporflag from './image/offices/singapor.svg';
@@ -317,6 +320,8 @@ export const icons = {
   swap2Icon,
   transaction2Icon,
   logout2Icon,
+  bank,
+  card
 };
 
 export const currency = {

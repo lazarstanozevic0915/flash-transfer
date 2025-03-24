@@ -14,7 +14,7 @@ export default function PaymentCompletePage() {
           <div className="mb-8">
             <img src={complete} alt="Pending" className="h-24 w-auto" />
           </div>
-          <h1 className="text-2xl font-bold mb-4">Payment Pending</h1>
+          <h1 className="text-2xl font-bold mb-4">Payment Complete</h1>
           <div className="flex flex-col mb-6 border border-gray-200 p-4 w-full rounded-lg">
             <div className="flex justify-between mb-2">
               <span className="text-gray-500">You Sent</span>

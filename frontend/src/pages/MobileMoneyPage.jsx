@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 import heroBackground from '../assets/image/hero-background.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { setProvider } from '../store/paymentSlice';
 import { blogUser1Img, icons, language, moov2Img, mtn2Img, orangeMoney2Img, wave2Img } from '../assets/image';
 import { Check } from 'lucide-react';
 import DonutProgress from '../components/DonutProgress';
+import { useDispatch, useSelector } from 'react-redux';
 
 const MobileMoneyPage = () => {
+    const { provider } = useSelector((state) => state.payment);
 
-    const [ selectedOption, setSelectedOption ] = useState('')
+    const [ selectedOption, setSelectedOption ] = useState(provider || '');
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (selectedOption) dispatch(setProvider(selectedOption));
+    }, [selectedOption, dispatch]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(selectedOption);
+        
+        if (selectedOption) {
+            navigate('/send/review-details');
+        }
       };
 
   return (
@@ -95,8 +109,9 @@ const MobileMoneyPage = () => {
 
                             <div>
                                 <button 
-                                    className={`flex p-2.5 border-b-2 border-[#F6F6F6] w-full gap-3 ${ selectedOption === 'orange' && 'bg-[#F6F6F6]'} `}
-                                    onClick={() => setSelectedOption('orange')}
+                                    type='button'
+                                    className={`flex p-2.5 border-b-2 border-[#F6F6F6] w-full gap-3 ${ selectedOption === 'ORANGE' && 'bg-[#F6F6F6]'} `}
+                                    onClick={() => setSelectedOption('ORANGE')}
                                 >
                                     <div className='h-15 w-16 rounded-md bg-[#F4F5F7]'>
                                         <img src={orangeMoney2Img} alt="" className='w-full h-full object-contain' />
@@ -111,8 +126,9 @@ const MobileMoneyPage = () => {
                                     </div>
                                 </button>
                                 <button 
-                                    className={`flex p-2.5 border-b-2 border-[#F6F6F6] w-full gap-3  ${ selectedOption === 'wave' && 'bg-[#F6F6F6]'} `}
-                                    onClick={() => setSelectedOption('wave')}
+                                    type='button'
+                                    className={`flex p-2.5 border-b-2 border-[#F6F6F6] w-full gap-3  ${ selectedOption === 'WAVE' && 'bg-[#F6F6F6]'} `}
+                                    onClick={() => setSelectedOption('WAVE')}
                                 >
                                     <div className='h-15 w-16 rounded-md bg-[#F4F5F7]'>
                                         <img src={wave2Img} alt="" className='w-full h-full object-contain' />
@@ -127,8 +143,9 @@ const MobileMoneyPage = () => {
                                     </div>
                                 </button>
                                 <button 
-                                    className={`flex p-2.5 border-b-2 border-[#F6F6F6] w-full gap-3  ${ selectedOption === 'mtn' && 'bg-[#F6F6F6]'} `}
-                                    onClick={() => setSelectedOption('mtn')}
+                                    type='button'
+                                    className={`flex p-2.5 border-b-2 border-[#F6F6F6] w-full gap-3  ${ selectedOption === 'MTN' && 'bg-[#F6F6F6]'} `}
+                                    onClick={() => setSelectedOption('MTN')}
                                 >
                                     <div className='h-15 w-16 rounded-md bg-[#F4F5F7]'>
                                         <img src={mtn2Img} alt="" className='w-full h-full object-contain' />
@@ -143,8 +160,9 @@ const MobileMoneyPage = () => {
                                     </div>
                                 </button>
                                 <button 
-                                    className={`flex p-2.5 border-b border-[#F6F6F6] w-full gap-3  ${ selectedOption === 'moov' && 'bg-[#F6F6F6]'} `}
-                                    onClick={() => setSelectedOption('moov')}
+                                    type='button'
+                                    className={`flex p-2.5 border-b border-[#F6F6F6] w-full gap-3  ${ selectedOption === 'MOOV' && 'bg-[#F6F6F6]'} `}
+                                    onClick={() => setSelectedOption('MOOV')}
                                 >
                                     <div className='h-15 w-16 rounded-md bg-[#F4F5F7]'>
                                         <img src={moov2Img} alt="" className='w-full h-full object-contain' />
@@ -162,7 +180,7 @@ const MobileMoneyPage = () => {
 
                             <div className="flex gap-3 max-sm:flex-col-reverse">
                                 <NavLink to={``} className='w-full p-2.5 flex items-center justify-center border rounded-xl text-[14px] border-[#D3D8DD] font-medium text-[#6E757D]'>Back</NavLink>
-                                <button className='w-full p-2.5 rounded-xl text-[14px] bg-[#FFC000]'>Continue</button>
+                                <button type='submit' className='w-full p-2.5 rounded-xl text-[14px] bg-[#FFC000]'>Continue</button>
                             </div> 
                         </form>
                     </div>

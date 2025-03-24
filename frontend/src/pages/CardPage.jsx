@@ -4,17 +4,18 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 import heroBackground from '../assets/image/hero-background.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 // import { blogUser1Img, icons } from '../assets/image';
 import { Check } from 'lucide-react';
 import DonutProgress from '../components/DonutProgress';
 import mastercard from '../assets/mastercard.svg';
 
 const CardPage = () => {
-
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        navigate('/send/receiver-info');
       };
 
   return (
@@ -124,7 +125,7 @@ const CardPage = () => {
                             
                             <div className="flex max-sm:flex-col-reverse gap-3">
                                 <NavLink to={``} className='w-full p-2.5 flex items-center justify-center border rounded-xl text-[14px] border-[#D3D8DD] font-medium text-[#6E757D]'>Back</NavLink>
-                                <button className='w-full p-2.5 rounded-xl text-[14px] bg-[#2475FF] text-white'>+ Add new card</button>
+                                <button type='submit' className='w-full p-2.5 rounded-xl text-[14px] bg-[#2475FF] text-white'>+ Add new card</button>
                             </div> 
                         </form>
                     </div>

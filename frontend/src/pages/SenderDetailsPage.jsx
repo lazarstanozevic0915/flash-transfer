@@ -7,15 +7,14 @@ import { language } from '../assets/image';
 import { useForm } from '../hooks/useForm';
 import { validateNewContact } from '../utils/validation';
 import { addNewBeneficiary } from '../Services/beneficiary';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearError } from '../store/authSlice';
 import { toast } from 'react-toastify';
 
-const NewContactPage = () => {
+const SenderDetailsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token  = localStorage.getItem("token");
   const [error, setError] = useState('');
   const [status, setStatus] = useState('inProgress');
   const [country, setCountry] = useState('');
@@ -27,7 +26,7 @@ const NewContactPage = () => {
   const [countries, setCountries] = useState([]);
   const [selectedFlag, setSelectedFlag] = useState('');
 
-  const { values, errors, isSubmitting, handleChange, handleSubmit } = useForm(
+  const { values, errors, isSubmitting, handleChange, } = useForm(
       {
         firstName: '',
         lastName: '',
@@ -74,39 +73,10 @@ const NewContactPage = () => {
     fetchCountries();
   }, [dispatch]);
 
-  const onSubmit = async (formValues) => {      
-    const res = await addNewBeneficiary({
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      email: formValues.email,
-      mobileNumber: formValues.mobileNumber,
-      country: formValues.country,
-      streetAddress: formValues.streetAddress,
-      city: formValues.city,
-      state: formValues.state,
-      zipCode: formValues.zipCode,
-      purpose: formValues.purpose,
-      sourceOfFunds: formValues.sourceOfFunds,
-      requestType: "WEB",
-    }, token)
-
-      console.log(res, "res in beneficiary");
-      
-      if (res.status == "success") {
-        // await wait(1000);
-        toast.success(res.message);
-        navigate("/send/my-contact");
-    } else {
-      toast.error(res.message);
-      var error = errorResponseHandler(res);
-      error.map((err) => {
-        toast.error(err);
-      });
-
-      setError("User already exists. Please check again!");
-    }
+  const handleSubmit = (e) => {   
+      e.preventDefault();
+      navigate('/send/review-details');
   };
-  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const handleCountrySelect = (country) => {
     setCountry(country.name);
@@ -145,14 +115,14 @@ const NewContactPage = () => {
         
         <div className={`w-[700px] min-h-screen py-20 max-sm:px-4 space-y-6 relative z-20 flex flex-col items-center justify-center`}>
           <span className="text-[44px]/12 dm-sans-medium max-sm:text-center max-sm:text-[36px] max-sm:mb-2 ">
-            Add New Contact
+            Sender Details
           </span>
           <p className="text-[#6E757D] dm-sans-light text-[14px] text-center max-sm:text-[15.8px]">
             Home is behind, the world ahead and there are many paths to tread<br className='max-sm:hidden' /> through shadows to the edge.
           </p>
           <div className="w-full rounded-4xl bg-white shadow-md p-6">
               <div className="w-full h-full flex flex-col space-y-2 justify-between rounded-2xl">
-                <form onSubmit={(e) => handleSubmit(e, onSubmit)} className="h-full w-full flex flex-col gap-6 justify-between">  
+                <form onSubmit={handleSubmit} className="h-full w-full flex flex-col gap-6 justify-between">  
                   <div className="flex max-sm:flex-col gap-5 w-full">
                     <div className="flex flex-col gap-2 w-full">
                         <label htmlFor="firstName" className='text-[#181F30] dm-sans-medium text-[14px] text-left'>First name*</label>
@@ -399,12 +369,10 @@ const NewContactPage = () => {
                       )}
                   </div>
                   {error && <div className="text-red-500 text-sm">{error}</div>}
-                <button type="submit"
-                  disabled={isSubmitting} 
-                  className='rounded-lg p-2.5 text-[14px] bg-[#FFC000]'
-                  >
-                {isSubmitting ? "Adding Benficiary..." : "Continue"}
-                </button>
+                  <div className="flex max-sm:flex-col-reverse gap-3">
+                      <NavLink to={``} className='w-full p-2.5 flex items-center justify-center border rounded-xl text-[14px] border-[#D3D8DD] font-medium text-[#6E757D]'>Cancel</NavLink>
+                      <button type="submit" className='w-full p-2.5 rounded-xl text-[14px] bg-[#FFC000]'>Save</button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -415,4 +383,4 @@ const NewContactPage = () => {
   );
 };
 
-export default NewContactPage;
+export default SenderDetailsPage;

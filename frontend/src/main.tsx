@@ -3,10 +3,18 @@ import { createRoot } from "react-dom/client";
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { projectId, metadata, networks, wagmiAdapter, solanaWeb3JsAdapter } from "./config";
+
+import {
+  projectId,
+  metadata,
+  networks,
+  wagmiAdapter,
+  solanaWeb3JsAdapter,
+} from "./config";
 import App from "./App";
 import "./index.css";
-
+import dotenv from "dotenv";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 const queryClient = new QueryClient();
 
 // General AppKit Config
@@ -21,7 +29,7 @@ const generalConfig = {
 };
 
 // Create AppKit Modal
-createAppKit({
+const modal = createAppKit({
   adapters: [wagmiAdapter, solanaWeb3JsAdapter],
   ...generalConfig,
 });
@@ -31,9 +39,15 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
+      <GoogleOAuthProvider
+        clientId={
+          "247313278717-fh2cfe65c1b0tjqp4obhhggobr6n090i.apps.googleusercontent.com"
+        }
+      >
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </GoogleOAuthProvider>
     </WagmiProvider>
   </React.StrictMode>
 );

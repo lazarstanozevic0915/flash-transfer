@@ -1,35 +1,33 @@
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Eye, EyeOff } from 'lucide-react'
-import { useForm } from '../hooks/useForm'
-import { validateSignIn } from '../utils/validation'
-import AuthLayout from '../components/AuthLayout'
-import SocialButtons from '../components/SocialButtons'
-import { MoneyTransferIllustration } from '../components/Illustrations'
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
+import { useForm } from "../hooks/useForm";
+import { validateSignIn } from "../utils/validation";
+import AuthLayout from "../components/AuthLayout";
+import SocialButtons from "../components/SocialButtons";
+import { MoneyTransferIllustration } from "../components/Illustrations";
 // import { useAuth } from '../auth/AuthProvider'
-import { useDispatch, useSelector } from 'react-redux';
-import { login, loginUser, clearError } from '../store/authSlice';
-import logo from '../assets/image/logo.svg'
-
+import { useDispatch, useSelector } from "react-redux";
+import { login, loginUser, clearError } from "../store/authSlice";
+import logo from "../assets/image/logo.svg";
+import { signInWithEmail } from "../Services/authentication-service";
+import { toast } from "react-toastify";
 export default function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [showPassword, setShowPassword] = useState(false)
-  const [ error, setError ] = useState('')
-  
-  const {
-    values,
-    errors,
-    isSubmitting,
-    handleChange,
-    handleSubmit,
-  } = useForm(
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const { setUser } = useSelector(
+    (state) => state.auth
+  );
+
+  const { values, errors, isSubmitting, handleChange, handleSubmit } = useForm(
     {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validateSignIn
-  )
+  );
 
   useEffect(() => {
     dispatch(clearError());
@@ -37,28 +35,32 @@ export default function SignIn() {
 
   const onSubmit = async (formValues) => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const resultAction = await dispatch(loginUser(formValues));
-      
-      if (loginUser.fulfilled.match(resultAction)) {
+      const res = await signInWithEmail(formValues);
+      if (res.status === "success") {
+        toast.success(res.message);
+        localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("userData", JSON.stringify(res.data.data));
         dispatch(login());
-        navigate('/');
+        navigate("/");
       } else {
-        setError('Invalid credentials. Please enter correct credentials or sign up');
+        console.log(res.errors);
+        toast.error(res.message);
       }
     } catch (error) {
-      setError('Something went wrong. Please try again.');
+      setError("Something went wrong. Please try again.");
     }
   };
-
   return (
     <AuthLayout illustration={<MoneyTransferIllustration />}>
       <div className="w-full">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className=' md:hidden flex justify-center items-center'>
-          <img src={logo} alt="" className='h-[80px] w-[80px] object-contain' />
+          <div className=" md:hidden flex justify-center items-center">
+            <img
+              src={logo}
+              alt=""
+              className="h-[80px] w-[80px] object-contain"
+            />
           </div>
           <h2 className="text-2xl font-semibold mb-2">Sign in</h2>
           <p className="text-gray-600">Welcome back 👋</p>
@@ -76,35 +78,35 @@ export default function SignIn() {
               value={values.email}
               onChange={(e) => {
                 handleChange(e);
-                setError('');
+                setError("");
               }}
               placeholder="Enter your email"
               className={`block w-full px-4 py-3 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500 
-                ${errors.email ? 'border-red-500' : 'border-gray-300'}
-                ${error ? 'border-red-500' : 'border-gray-300'}`}
+                ${errors.email ? "border-red-500" : "border-gray-300"}
+                ${error ? "border-red-500" : "border-gray-300"}`}
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-600">{errors.email}</p>
             )}
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-800 mb-1">
               Password
             </label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={values.password}
                 onChange={(e) => {
                   handleChange(e);
-                  setError('');
+                  setError("");
                 }}
                 placeholder="Password here"
                 className={`block w-full px-4 py-3 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500
-                  ${errors.password ? 'border-red-500' : 'border-gray-300'}
-                  ${error ? 'border-red-500' : 'border-gray-300'}`}
+                  ${errors.password ? "border-red-500" : "border-gray-300"}
+                  ${error ? "border-red-500" : "border-gray-300"}`}
               />
               <button
                 type="button"
@@ -121,9 +123,7 @@ export default function SignIn() {
             {errors.password && (
               <p className="mt-1 text-sm text-red-600">{errors.password}</p>
             )}
-            {error && (
-              <p className="mt-1 text-sm text-red-600">{error}</p>
-            )}
+            {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
           </div>
 
           <div className="flex items-center justify-end">
@@ -144,19 +144,22 @@ export default function SignIn() {
             disabled={isSubmitting}
             className="w-full py-3 px-4 rounded-lg text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
           >
-            {isSubmitting ? 'Signing in...' : 'Log in'}
+            {isSubmitting ? "Signing in..." : "Log in"}
           </button>
         </form>
 
         <SocialButtons />
 
         <p className="md:mt-8 text-center text-sm text-gray-600 mt-18">
-          Don't have an account?{' '}
-          <Link to="/signup" className="text-blue-600 hover:text-blue-500 font-medium">
+          Don't have an account?{" "}
+          <Link
+            to="/signup"
+            className="text-blue-600 hover:text-blue-500 font-medium"
+          >
             Register now
           </Link>
         </p>
       </div>
     </AuthLayout>
-  )
+  );
 }

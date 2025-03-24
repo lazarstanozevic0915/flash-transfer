@@ -1,83 +1,163 @@
 // src/components/Navbar.jsx
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Bell, ChevronDown, LogOut, Menu, X } from 'lucide-react';
-import { blogUser1Img, currency, icons, language } from '../assets/image';
-import logo from '../assets/image/logo.svg';
-import ProfileDropdown from './ProfileDropdown';
-import WalletDropdown from './WalletDropdown';
-import CurrencyLanguageDropdown from './CurrencyLanguageDropdown';
-import NFTDropdown from './NFTDropdown';
-import NotificationDropdown from './NotificationDropdown';
-import WalletConnectDropdown from './WalletConnectDropdown';
-import WalletConnect from './WalletConnect'
-import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
-import { ActionButtonList } from './ActionButtonList';
-
-
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../store/authSlice';
+import React, { useState, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
+import { Bell, ChevronDown, LogOut, Menu, X } from "lucide-react";
+import { blogUser1Img, currency, icons, language } from "../assets/image";
+import logo from "../assets/image/logo.svg";
+import ProfileDropdown from "./ProfileDropdown";
+import WalletDropdown from "./WalletDropdown";
+import CurrencyLanguageDropdown from "./CurrencyLanguageDropdown";
+import NFTDropdown from "./NFTDropdown";
+import NotificationDropdown from "./NotificationDropdown";
+import WalletConnectDropdown from "./WalletConnectDropdown";
+import WalletConnect from "./WalletConnect";
+import {
+  useAppKit,
+  useAppKitAccount,
+  useDisconnect,
+} from "@reown/appkit/react";
+import { ActionButtonList } from "./ActionButtonList";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../store/authSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const isInitialMount = useRef(true);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticated, connectedWallet } = useSelector((state) => state.auth);
-  const [activeDropdown, setActiveDropdown] = useState('');
+  const { isAuthenticated, connectedWallet } = useSelector(
+    (state) => state.auth
+  );
+  const { disconnect } = useDisconnect();
+  const [activeDropdown, setActiveDropdown] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isWalletDropdownOpen, setIsWalletDropdownOpen] = useState(false);
   const [isCurrencyDropdownOpen, setIsCurrencyDropdownOpen] = useState(false);
   const [isNftDropdownOpen, setIsNftDropdownOpen] = useState(false);
-  const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] = useState(false);
+  const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] =
+    useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const mobileMenuLinks = [
-    { to: '/send', label: 'Send' },
-    { to: '/find-location', label: 'Find location' },
-    { to: '/track-order', label: 'Track a transfer' },
-    { to: '/help', label: 'Help' },
+    { to: "/send", label: "Send" },
+    { to: "/find-location", label: "Find location" },
+    { to: "/track-order", label: "Track a transfer" },
+    { to: "/help", label: "Help" },
   ];
 
-  // const { logout } = useAuth();
-
-
-  const { open, close } = useAppKit()
-
+  const { open, close } = useAppKit();
 
   const openModal = () => {
-    open({ view: 'AllWallets' })
-  }
+    open({ view: "AllWallets" });
+  };
 
+  const {
+    address,
+    isConnected,
+    caipAddress,
+    status,
+    embeddedWalletInfo,
+    provider,
+    providerType,
+    signMessage,
+  } = useAppKitAccount();
 
-  const { address, isConnected, caipAddress, status, embeddedWalletInfo } = useAppKitAccount()
+  // Check for token on initial load and disconnect wallet if not found
 
-  // Fetch wallet details when connected
+  // Handle wallet connection/disconnection
   useEffect(() => {
-    if (isConnected) {
+    if (isInitialMount.current) {
+      if (isConnected) {
+        disconnectWallet();
+      }
+      isInitialMount.current = false;
+    }
+
+    if (!isInitialMount.current) {
+      // console.log("non Initial");
+      isInitialMount.current = true;
+      if (isConnected) {
+        walletUserAuthentications();
+      } else {
+        // console.log("Wallet Disconnected:", {
+        //   address,
+        //   caipAddress,
+        //   status,
+        //   embeddedWalletInfo,
+        // });
+      }
+    }
+  }, [isConnected, address]);
+
+  const disconnectWallet = async () => {
+    try {
+      console.log("Disconnecting wallet");
+      // Remove wallet info from localStorage to ensure it's gone
+      localStorage.clear();
+
+      await disconnect();
+      console.log(
+        "Wallet disconnected successfully " + localStorage.getItem("wallet")
+      );
+    } catch (error) {
+      console.error("Error disconnecting wallet:", error);
+    }
+  };
+
+  const walletUserAuthentications = async () => {
+    const walletProvider = "Unknown";
+
+    try {
+      // Store wallet info in localStorage
+      localStorage.setItem(
+        "wallet",
+        JSON.stringify({
+          walletAddress: address,
+          caipAddress,
+        })
+      );
+
       console.log("Wallet Connected:", {
-        address,
+        walletAddress: address,
         caipAddress,
         status,
+        walletProvider,
         embeddedWalletInfo,
       });
-    }
-  }, [isConnected, address, caipAddress, status, embeddedWalletInfo]);
 
+      // Navigate to signin page instead of signup
+      navigate("/signup");
+    } catch (error) {
+      console.error("Error in wallet authentication:", error);
+    }
+  };
 
   return (
-    <nav className='relative z-50 border-b bg-[#F6F6F6] border-[#D3D8DD]'>
+    <nav className="relative z-50 border-b bg-[#F6F6F6] border-[#D3D8DD]">
       <div className="px-4 md:px-32 py-3">
         {/* Desktop and Mobile Header */}
         <div className="flex items-center justify-between">
           <div className="flex gap-6">
             {/* Logo */}
             <NavLink to={`/`} className="flex items-center space-x-1">
-              <img src={logo} alt="Flash Transfer logo" className='h-[34px] w-[38px] max-sm:h-[48px]' />
-              <span className='inter-semibold text-[16px] text-[#181F30] max-sm:hidden'>Flash Transfer</span>
+              <img
+                src={logo}
+                alt="Flash Transfer logo"
+                className="h-[34px] w-[38px] max-sm:h-[48px]"
+              />
+              <span className="inter-semibold text-[16px] text-[#181F30] max-sm:hidden">
+                Flash Transfer
+              </span>
             </NavLink>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-5 mt-1 items-center dm-sans-light text-[#6E757D] text-[12px]">
-              {mobileMenuLinks.map(link => (
-                <NavLink key={link.to} to={link.to} className="hover:text-[#111] hover:dm-sans-bold">
+              {mobileMenuLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className="hover:text-[#111] hover:dm-sans-bold"
+                >
                   {link.label}
                 </NavLink>
               ))}
@@ -91,25 +171,35 @@ export default function Navbar() {
                 {/* Amount Display */}
                 <div className="flex items-center space-x-2 border-[#EBECED] bg-[rgba(255,255,255,0.8)] border p-1.5 pr-6 rounded-3xl">
                   <div className="flex gap-1 items-center text-[#6E757D]">
-                    <img src={currency.usdt} alt="" className='w-5 h-5 object-fill' />
+                    <img
+                      src={currency.usdt}
+                      alt=""
+                      className="w-5 h-5 object-fill"
+                    />
                     <ChevronDown size={12} />
                   </div>
-                  <span className="text-[#6E757D] opacity-60 font-light">|</span>
-                  <span className="text-[13px] font-light text-[#6E757D]">$100.00</span>
+                  <span className="text-[#6E757D] opacity-60 font-light">
+                    |
+                  </span>
+                  <span className="text-[13px] font-light text-[#6E757D]">
+                    $100.00
+                  </span>
                 </div>
 
                 {/* Action Icons */}
                 <div className="flex items-center space-x-3">
                   {/* NFT Icon */}
-                  <div className='relative w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white'
+                  <div
+                    className="relative w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white"
                     onClick={() => {
-                      setActiveDropdown('nft')
-                      setIsNftDropdownOpen(!isNftDropdownOpen)
-                    }}>
+                      setActiveDropdown("nft");
+                      setIsNftDropdownOpen(!isNftDropdownOpen);
+                    }}
+                  >
                     <img src={icons.nft} alt="" className="w-4 h-4" />
-                    {activeDropdown === 'nft' && (
+                    {activeDropdown === "nft" && (
                       <NFTDropdown
-                        isOpen={isNftDropdownOpen && activeDropdown === 'nft'}
+                        isOpen={isNftDropdownOpen && activeDropdown === "nft"}
                         onClose={!isNftDropdownOpen}
                       />
                     )}
@@ -117,46 +207,55 @@ export default function Navbar() {
 
                   {/* Wallet Icon */}
                   <div className="relative">
-                    <div className='w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white'
+                    <div
+                      className="w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white"
                       onClick={(e) => {
                         e.preventDefault();
-                        setActiveDropdown('wallet');
+                        setActiveDropdown("wallet");
                         setIsWalletDropdownOpen(!isWalletDropdownOpen);
-                      }}>
+                      }}
+                    >
                       <img src={icons.wallet} alt="" className="w-4 h-4" />
                     </div>
                     <div>
-                      {
-                        activeDropdown === 'wallet' && connectedWallet === '' ?
-                          (
-                            <WalletConnectDropdown
-                              isOpen={isWalletDropdownOpen && activeDropdown === 'wallet'}
-                              onClose={!isWalletDropdownOpen}
-                            />
-                          )
-                          :
-                          (
-                            <div>
-                              <WalletDropdown
-                                isOpen={isWalletDropdownOpen && activeDropdown === 'wallet'}
-                                onClose={activeDropdown !== 'wallet'}
-                              />
-                            </div>
-                          )}
+                      {activeDropdown === "wallet" && connectedWallet === "" ? (
+                        <WalletConnectDropdown
+                          isOpen={
+                            isWalletDropdownOpen && activeDropdown === "wallet"
+                          }
+                          onClose={!isWalletDropdownOpen}
+                        />
+                      ) : (
+                        <div>
+                          <WalletDropdown
+                            isOpen={
+                              isWalletDropdownOpen &&
+                              activeDropdown === "wallet"
+                            }
+                            onClose={activeDropdown !== "wallet"}
+                          />
+                        </div>
+                      )}
                     </div>
-
                   </div>
 
                   {/* Notification Bell */}
-                  <div className='relative w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white'
+                  <div
+                    className="relative w-7 h-7 items-center flex justify-center cursor-pointer rounded-full bg-white"
                     onClick={() => {
-                      setActiveDropdown('notification')
-                      setIsNotificationDropdownOpen(!isNotificationDropdownOpen)
-                    }}>
+                      setActiveDropdown("notification");
+                      setIsNotificationDropdownOpen(
+                        !isNotificationDropdownOpen
+                      );
+                    }}
+                  >
                     <Bell className="w-4 h-4 text-gray-600" />
-                    {activeDropdown === 'notification' && (
+                    {activeDropdown === "notification" && (
                       <NotificationDropdown
-                        isOpen={isNotificationDropdownOpen && activeDropdown === 'notification'}
+                        isOpen={
+                          isNotificationDropdownOpen &&
+                          activeDropdown === "notification"
+                        }
                         onClose={!isNotificationDropdownOpen}
                       />
                     )}
@@ -164,32 +263,52 @@ export default function Navbar() {
                 </div>
 
                 {/* Language Selector */}
-                <div className="relative w-8 h-8 flex items-center justify-center cursor-pointer rounded-full bg-white"
+                <div
+                  className="relative w-8 h-8 flex items-center justify-center cursor-pointer rounded-full bg-white"
                   onClick={() => {
-                    setActiveDropdown('currency')
-                    setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)
-                  }}>
-                  <img src={language.english} alt="US Flag" className="w-4 h-4" />
-                  {activeDropdown === 'currency' && (
+                    setActiveDropdown("currency");
+                    setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen);
+                  }}
+                >
+                  <img
+                    src={language.english}
+                    alt="US Flag"
+                    className="w-4 h-4"
+                  />
+                  {activeDropdown === "currency" && (
                     <CurrencyLanguageDropdown
-                      isOpen={isCurrencyDropdownOpen && activeDropdown === 'currency'}
+                      isOpen={
+                        isCurrencyDropdownOpen && activeDropdown === "currency"
+                      }
                       onClose={!isCurrencyDropdownOpen}
                     />
                   )}
                 </div>
 
                 {/* Profile */}
-                <div className="relative flex items-center space-x-2 cursor-pointer"
+                <div
+                  className="relative flex items-center space-x-2 cursor-pointer"
                   onClick={() => {
-                    setActiveDropdown('profile')
-                    setIsDropdownOpen(!isDropdownOpen)
-                  }}>
+                    setActiveDropdown("profile");
+                    setIsDropdownOpen(!isDropdownOpen);
+                  }}
+                >
                   <div className="p-1 rounded-full gap-2 bg-white flex text-[#D3D8DD] border-[#D3D8DD] items-center justify-center">
-                    <img src={blogUser1Img} alt="" className='w-7 h-7 object-fill' />
+                    {/* <img
+                      src={blogUser1Img}
+                      alt=""
+                      className="w-7 h-7 object-fill"
+                    /> */}
+                    <div className="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
                     <ChevronDown size={16} />
-                    {activeDropdown === 'profile' && (
+                    {activeDropdown === "profile" && (
                       <ProfileDropdown
-                        isOpen={isDropdownOpen && activeDropdown === 'profile'}
+                        isOpen={isDropdownOpen && activeDropdown === "profile"}
                         onClose={!isDropdownOpen}
                       />
                     )}
@@ -199,8 +318,18 @@ export default function Navbar() {
             ) : (
               <div className="flex items-center space-x-1 text-[12px] dm-sans-medium">
                 <ActionButtonList />
-                <NavLink to="/signin" className="py-4 px-6 hover:scale-105">Login</NavLink>
-                <NavLink to="/signup" className="py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105">Sign up</NavLink>
+                <NavLink to="/signin" className="py-4 px-6 hover:scale-105">
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/signup"
+                  onClick={() => {
+                    localStorage.clear();
+                  }}
+                  className="py-3 px-6 bg-[#FFC000] rounded-xl hover:scale-105"
+                >
+                  Sign up
+                </NavLink>
               </div>
             )}
           </div>
@@ -231,7 +360,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white">
           <div className="px-4 py-3 space-y-4">
             {/* Mobile Navigation Links */}
-            {mobileMenuLinks.map(link => (
+            {mobileMenuLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
@@ -266,106 +395,136 @@ export default function Navbar() {
             {/* Mobile User Menu Items (when authenticated) */}
             {isAuthenticated && (
               <div className="pt-4 border-t border-gray-200">
-                <div className="flex items-center space-x-2 px-4 py-2"
+                <div
+                  className="flex items-center space-x-2 px-4 py-2"
                   onClick={() => {
-                    setActiveDropdown('profile')
-                    setIsDropdownOpen(!isDropdownOpen)
+                    setActiveDropdown("profile");
+                    setIsDropdownOpen(!isDropdownOpen);
                   }}
                 >
-                  <img src={blogUser1Img} alt="" className="w-8 h-8 rounded-full" />
-                  <span className="text-sm font-medium text-gray-700">Profile</span>
-                  {activeDropdown === 'profile' && (
+                  {/* <img
+                    src={blogUser1Img}
+                    alt=""
+                    className="w-8 h-8 rounded-full"
+                  /> */}
+                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                  </div>
+                  <span className="text-sm font-medium text-gray-700">
+                    Profile
+                  </span>
+                  {activeDropdown === "profile" && (
                     <ProfileDropdown
-                      isOpen={isDropdownOpen && activeDropdown === 'profile'}
+                      isOpen={isDropdownOpen && activeDropdown === "profile"}
                       onClose={!isDropdownOpen}
                     />
                   )}
                 </div>
                 <div className="pt-4 border-t border-gray-200">
-                  <div className="flex items-center space-x-2 px-4 py-2"
+                  <div
+                    className="flex items-center space-x-2 px-4 py-2"
                     onClick={() => {
-                      setActiveDropdown('currency')
-                      setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)
+                      setActiveDropdown("currency");
+                      setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen);
                     }}
                   >
-                    <img src={language.english} alt="" className="w-6 h-6 rounded-full" />
-                    <span className="text-sm font-medium text-gray-700">Language</span>
-                    {activeDropdown === 'currency' && (
+                    <img
+                      src={language.english}
+                      alt=""
+                      className="w-6 h-6 rounded-full"
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                      Language
+                    </span>
+                    {activeDropdown === "currency" && (
                       <CurrencyLanguageDropdown
-                        isOpen={isCurrencyDropdownOpen && activeDropdown === 'currency'}
+                        isOpen={
+                          isCurrencyDropdownOpen &&
+                          activeDropdown === "currency"
+                        }
                         onClose={!isCurrencyDropdownOpen}
                       />
                     )}
                   </div>
-
                 </div>
                 <div className="px-4 py-2 space-y-1">
-                  <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                  <button
+                    className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
                     onClick={(e) => {
                       e.preventDefault();
-                      setActiveDropdown('wallet');
+                      setActiveDropdown("wallet");
                       setIsWalletDropdownOpen(!isWalletDropdownOpen);
                     }}
                   >
                     <img src={icons.wallet} alt="" className="w-4 h-4" />
                     <span>Wallet</span>
                     <div>
-                      {
-                        activeDropdown === 'wallet' && connectedWallet === '' ?
-                          (
-                            <WalletConnectDropdown
-                              isOpen={isWalletDropdownOpen && activeDropdown === 'wallet'}
-                              onClose={!isWalletDropdownOpen}
-                            />
-                          )
-                          :
-                          (
-                            <div>
-                              <WalletDropdown
-                                isOpen={isWalletDropdownOpen && activeDropdown === 'wallet'}
-                                onClose={activeDropdown !== 'wallet'}
-                              />
-                            </div>
-                          )}
+                      {activeDropdown === "wallet" && connectedWallet === "" ? (
+                        <WalletConnectDropdown
+                          isOpen={
+                            isWalletDropdownOpen && activeDropdown === "wallet"
+                          }
+                          onClose={!isWalletDropdownOpen}
+                        />
+                      ) : (
+                        <div>
+                          <WalletDropdown
+                            isOpen={
+                              isWalletDropdownOpen &&
+                              activeDropdown === "wallet"
+                            }
+                            onClose={activeDropdown !== "wallet"}
+                          />
+                        </div>
+                      )}
                     </div>
-
                   </button>
-                  <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                  <button
+                    className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
                     onClick={() => {
-                      setActiveDropdown('nft')
-                      setIsNftDropdownOpen(!isNftDropdownOpen)
+                      setActiveDropdown("nft");
+                      setIsNftDropdownOpen(!isNftDropdownOpen);
                     }}
                   >
                     <img src={icons.nft} alt="" className="w-4 h-4" />
                     <span>NFTs</span>
-                    {activeDropdown === 'nft' && (
+                    {activeDropdown === "nft" && (
                       <NFTDropdown
-                        isOpen={isNftDropdownOpen && activeDropdown === 'nft'}
+                        isOpen={isNftDropdownOpen && activeDropdown === "nft"}
                         onClose={!isNftDropdownOpen}
                       />
                     )}
                   </button>
-                  <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                  <button
+                    className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
                     onClick={() => {
-                      setActiveDropdown('notification')
-                      setIsNotificationDropdownOpen(!isNotificationDropdownOpen)
+                      setActiveDropdown("notification");
+                      setIsNotificationDropdownOpen(
+                        !isNotificationDropdownOpen
+                      );
                     }}
                   >
                     <Bell className="w-4 h-4" />
                     <span>Notifications</span>
-                    {activeDropdown === 'notification' && (
+                    {activeDropdown === "notification" && (
                       <NotificationDropdown
-                        isOpen={isNotificationDropdownOpen && activeDropdown === 'notification'}
+                        isOpen={
+                          isNotificationDropdownOpen &&
+                          activeDropdown === "notification"
+                        }
                         onClose={!isNotificationDropdownOpen}
                       />
                     )}
                   </button>
-                  <button className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
+                  <button
+                    className="flex items-center space-x-2 w-full px-2 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50"
                     onClick={() => dispatch(logout())}
                   >
                     <LogOut className="w-4 h-4" />
                     <span>Log out</span>
-
                   </button>
                 </div>
               </div>
