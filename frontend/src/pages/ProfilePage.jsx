@@ -20,9 +20,15 @@ export default function ProfilePage() {
     country: '',
   });
 
+<<<<<<< HEAD
   // useEffect(() => {
   //   dispatch(checkAuthStatus());
   // }, [dispatch]);
+=======
+  useEffect(() => {
+    dispatch(checkAuthStatus());
+  }, [dispatch]);
+>>>>>>> f4f54c78e1a0e5cd4a03cbe17fc0293591ee0cbb
 
   useEffect(() => {
     if (user) {
